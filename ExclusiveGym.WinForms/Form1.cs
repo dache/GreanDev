@@ -44,17 +44,17 @@ namespace ExclusiveGym.WinForms
             Controls.Add(ZkFprint);
             InitialAxZkfp();
 
-            //var member = new Member();
-            //member.MemberId = 1;
-            //member.Name = "Decha";
-            //member.BirthDate = DateTime.Now;
-            //member.CreateDate = DateTime.Now;
+            var member = new Member();
+            member.MemberId = 1;
+            member.Name = "Decha";
+            member.BirthDate = DateTime.Now;
+            member.CreateDate = DateTime.Now;
 
-            //using(var db = new ExclusiveGymContext())
-            //{
-            //    db.Members.Add(member);
-            //    db.SaveChanges();
-            //}
+            using (var db = new ExclusiveGymContext())
+            {
+                db.Members.Add(member);
+                db.SaveChanges();
+            }
 
             //var db = new ExclusiveGymContext();
             //var member = db.Members.Where(f => f.FingerPrint == "").Single();
