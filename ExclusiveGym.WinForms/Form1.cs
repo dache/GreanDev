@@ -26,13 +26,14 @@ namespace ExclusiveGym.WinForms
 
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
-        private AxZKFPEngX ZkFprint = new AxZKFPEngX();
+        private AxZKFPEngX m_zkFprint;
         private bool Check;
 
         private List<UserFinger> Fingers = new List<UserFinger>();
 
         public Form1()
         {
+            m_zkFprint = FingerPrint.GetSingleton().GetSDK();
             InitializeComponent();
             Application.AddMessageFilter(this);
             controlsToMove.Add(this.TitleBarPanel);
@@ -41,7 +42,7 @@ namespace ExclusiveGym.WinForms
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            Controls.Add(ZkFprint);
+            Controls.Add(m_zkFprint);
             InitialAxZkfp();
 
             //var member = new Member();
@@ -69,18 +70,18 @@ namespace ExclusiveGym.WinForms
         {
             try
             {
-                ZkFprint.OnCapture += zkFprint_OnCapture;
-                ZkFprint.OnImageReceived += zkFprint_OnImageReceived;
-                ZkFprint.OnFeatureInfo += zkFprint_OnFeatureInfo;
+                m_zkFprint.OnCapture += zkFprint_OnCapture;
+                m_zkFprint.OnImageReceived += zkFprint_OnImageReceived;
+                m_zkFprint.OnFeatureInfo += zkFprint_OnFeatureInfo;
                 //zkFprint.OnFingerTouching 
                 //zkFprint.OnFingerLeaving
-                ZkFprint.OnEnroll += zkFprint_OnEnroll;
+                m_zkFprint.OnEnroll += zkFprint_OnEnroll;
 
-                if (ZkFprint.InitEngine() == 0)
+                if (m_zkFprint.InitEngine() == 0)
                 {
-                    ZkFprint.FPEngineVersion = "9";
-                    ZkFprint.EnrollCount = 3;
-                    deviceSerial.Text += " " + ZkFprint.SensorSN + " Count: " + ZkFprint.SensorCount.ToString() + " Index: " + ZkFprint.SensorIndex.ToString();
+                    m_zkFprint.FPEngineVersion = "9";
+                    m_zkFprint.EnrollCount = 3;
+                    deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
                     ShowHintInfo("Device successfully connected");
                 }
 
@@ -97,7 +98,7 @@ namespace ExclusiveGym.WinForms
             Bitmap bmp = new Bitmap(fpicture.Width, fpicture.Height);
             g = Graphics.FromImage(bmp);
             int dc = g.GetHdc().ToInt32();
-            ZkFprint.PrintImageAt(dc, 0, 0, bmp.Width, bmp.Height);
+            m_zkFprint.PrintImageAt(dc, 0, 0, bmp.Width, bmp.Height);
             g.Dispose();
             fpicture.Image = bmp;
         }
@@ -106,13 +107,13 @@ namespace ExclusiveGym.WinForms
         {
 
             String strTemp = string.Empty;
-            if (ZkFprint.EnrollIndex != 1)
+            if (m_zkFprint.EnrollIndex != 1)
             {
-                if (ZkFprint.IsRegister)
+                if (m_zkFprint.IsRegister)
                 {
-                    if (ZkFprint.EnrollIndex - 1 > 0)
+                    if (m_zkFprint.EnrollIndex - 1 > 0)
                     {
-                        int eindex = ZkFprint.EnrollIndex - 1;
+                        int eindex = m_zkFprint.EnrollIndex - 1;
                         strTemp = "Please scan again ..." + eindex;
                     }
                 }
@@ -125,7 +126,7 @@ namespace ExclusiveGym.WinForms
             {
 
                 Console.WriteLine("zkFprint_OnEnroll");
-                string template = ZkFprint.EncodeTemplate1(e.aTemplate);
+                string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
                 // txtTemplate.Text = template;
                 ShowHintInfo("Registration successful. You can verify now");
                 //btnRegister.Enabled = false;
@@ -146,12 +147,12 @@ namespace ExclusiveGym.WinForms
         private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
         {
             Console.WriteLine("zkFprint_OnCapture");
-            string template = ZkFprint.EncodeTemplate1(e.aTemplate);
+            string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
             Console.WriteLine("Scan string : " + template);
             bool found = false;
             foreach (UserFinger uf in Fingers)
             {
-                if (ZkFprint.VerFingerFromStr(ref template, uf.FingerPrint, false, ref Check))
+                if (m_zkFprint.VerFingerFromStr(ref template, uf.FingerPrint, false, ref Check))
                 {
                     ShowHintInfo("Verified");
                     MessageBox.Show($"Hello, {uf.Name}");
@@ -179,12 +180,12 @@ namespace ExclusiveGym.WinForms
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
-            if (ZkFprint.IsRegister)
+            if (m_zkFprint.IsRegister)
             {
-                ZkFprint.CancelEnroll();
+                m_zkFprint.CancelEnroll();
             }
 
-            ZkFprint.BeginCapture();
+            m_zkFprint.BeginCapture();
             ShowHintInfo("Please give fingerprint sample.");
 
 
@@ -193,9 +194,9 @@ namespace ExclusiveGym.WinForms
         private void btnRegister_Click(object sender, EventArgs e)
         {
             //ZkFprint.CancelCapture();
-            ZkFprint.CancelEnroll();
-            ZkFprint.EnrollCount = 3;
-            ZkFprint.BeginEnroll();
+            m_zkFprint.CancelEnroll();
+            m_zkFprint.EnrollCount = 3;
+            m_zkFprint.BeginEnroll();
             ShowHintInfo("Please give fingerprint regis.");
 
         }

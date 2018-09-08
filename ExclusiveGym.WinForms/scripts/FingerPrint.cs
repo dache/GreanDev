@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AxZKFPEngXControl;
 
 class FingerPrint
 {
     private static FingerPrint m_singleton;
+
+    private AxZKFPEngX m_zkFprint = new AxZKFPEngX();
 
     public static FingerPrint GetSingleton()
     {
@@ -21,5 +23,8 @@ class FingerPrint
 
     }
 
-
+    public AxZKFPEngX GetSDK()
+    {
+        return m_zkFprint;
+    }
 }
