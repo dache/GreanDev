@@ -44,17 +44,17 @@ namespace ExclusiveGym.WinForms
             Controls.Add(ZkFprint);
             InitialAxZkfp();
 
-            var member = new Member();
-            member.MemberId = 1;
-            member.Name = "Decha";
-            member.BirthDate = DateTime.Now;
-            member.CreateDate = DateTime.Now;
+            //var member = new Member();
+            //member.MemberId = 1;
+            //member.Name = "Decha";
+            //member.BirthDate = DateTime.Now;
+            //member.CreateDate = DateTime.Now;
 
-            using (var db = new ExclusiveGymContext())
-            {
-                db.Members.Add(member);
-                db.SaveChanges();
-            }
+            //using (var db = new ExclusiveGymContext())
+            //{
+            //    db.Members.Add(member);
+            //    db.SaveChanges();
+            //}
 
             //var db = new ExclusiveGymContext();
             //var member = db.Members.Where(f => f.FingerPrint == "").Single();
@@ -158,14 +158,14 @@ namespace ExclusiveGym.WinForms
                     found = true;
                     break;
                 }
-                else
-                    ShowHintInfo("Not Verified");
             }
 
             if (!found)
             {
-                MessageBox.Show("User Is Not Register!");
-                ShowHintInfo("Not Verified");
+                DisplayNeedRegistryForm();
+                //MessageBox.Show("User Is Not Register!");
+
+                //ShowHintInfo("Not Verified");
             }
 
         }
@@ -247,12 +247,16 @@ namespace ExclusiveGym.WinForms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var dialogForm = new DialogForm("Exclusive Gym","ไม่พบข้อมูลสมาชิก ต้องการสมัครสมาชิกใหม่หรือไม่");
-            if(dialogForm.ShowDialog() == DialogResult.OK)
+            DisplayNeedRegistryForm();
+        }
+        private void DisplayNeedRegistryForm()
+        {
+            var dialogForm = new DialogForm("Exclusive Gym", "ไม่พบข้อมูลสมาชิก ต้องการสมัครสมาชิกใหม่หรือไม่");
+            if (dialogForm.ShowDialog() == DialogResult.OK)
             {
                 var memberForm = new MemberForm();
                 memberForm.ShowDialog();
-            }           
+            }
         }
     }
 
