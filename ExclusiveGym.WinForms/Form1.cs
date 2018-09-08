@@ -223,6 +223,16 @@ namespace ExclusiveGym.WinForms
             }
             return false;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var dialogForm = new DialogForm();
+            if(dialogForm.ShowDialog() == DialogResult.OK)
+            {
+                var memberForm = new MemberForm();
+                memberForm.ShowDialog();
+            }           
+        }
     }
 
     public class UserFinger
