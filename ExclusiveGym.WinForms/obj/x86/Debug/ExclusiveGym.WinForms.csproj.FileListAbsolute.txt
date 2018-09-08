@@ -11,8 +11,6 @@ C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\Exc
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.csproj.CopyComplete
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.exe
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.pdb
-C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\Interop.ZKFPEngXControl.dll
-C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\stdole.dll
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.MemberForm.resources
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.UserControls.MemberControl.resources
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.DialogForm.resources
@@ -42,3 +40,6 @@ C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Debug\Exclusi
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.csproj.CopyComplete
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.exe
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.pdb
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\Interop.ZKFPEngXControl.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\stdole.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.FingerPrintForm.resources
