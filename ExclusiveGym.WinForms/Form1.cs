@@ -12,7 +12,7 @@ using AxZKFPEngXControl;
 
 namespace ExclusiveGym.WinForms
 {
-    public partial class Form1 : Form,IMessageFilter
+    public partial class Form1 : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -48,7 +48,7 @@ namespace ExclusiveGym.WinForms
         {
             try
             {
-
+                ZkFprint.OnCapture += zkFprint_OnCapture;
                 ZkFprint.OnImageReceived += zkFprint_OnImageReceived;
                 ZkFprint.OnFeatureInfo += zkFprint_OnFeatureInfo;
                 //zkFprint.OnFingerTouching 
@@ -103,9 +103,9 @@ namespace ExclusiveGym.WinForms
             if (e.actionResult)
             {
 
-
+                Console.WriteLine("zkFprint_OnEnroll");
                 string template = ZkFprint.EncodeTemplate1(e.aTemplate);
-                txtTemplate.Text = template;
+                // txtTemplate.Text = template;
                 ShowHintInfo("Registration successful. You can verify now");
                 //btnRegister.Enabled = false;
                 //btnVerify.Enabled = true;
@@ -113,6 +113,7 @@ namespace ExclusiveGym.WinForms
                 var newUser = new UserFinger();
                 newUser.Name = txtName.Text;
                 newUser.FingerPrint = template;
+                Console.WriteLine("regis finger string : " + template);
                 Fingers.Add(newUser);
             }
             else
@@ -123,25 +124,28 @@ namespace ExclusiveGym.WinForms
         }
         private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
         {
+            Console.WriteLine("zkFprint_OnCapture");
             string template = ZkFprint.EncodeTemplate1(e.aTemplate);
-           
-
-            //if (ZkFprint.VerFingerFromStr(ref template, txtTemplate.Text, false, ref Check))
-            //{
-            //    ShowHintInfo("Verified");
-
-                var userFinger = Fingers.Where(f => f.FingerPrint == template).SingleOrDefault();
-                if (userFinger == null)
+            Console.WriteLine("Scan string : " + template);
+            bool found = false;
+            foreach (UserFinger uf in Fingers)
+            {
+                if (ZkFprint.VerFingerFromStr(ref template, uf.FingerPrint, false, ref Check))
                 {
-                    MessageBox.Show("User Is Not Register!");
+                    ShowHintInfo("Verified");
+                    MessageBox.Show($"Hello, {uf.Name}");
+                    found = true;
+                    break;
                 }
                 else
-                {
-                    MessageBox.Show($"Hello, {userFinger.Name}");
-                }
-            //}
-            //else
-            //    ShowHintInfo("Not Verified");
+                    ShowHintInfo("Not Verified");
+            }
+
+            if (!found)
+            {
+                MessageBox.Show("User Is Not Register!");
+                ShowHintInfo("Not Verified");
+            }
 
         }
 
@@ -156,12 +160,9 @@ namespace ExclusiveGym.WinForms
         {
             if (ZkFprint.IsRegister)
             {
-
-
                 ZkFprint.CancelEnroll();
-
             }
-            ZkFprint.OnCapture += zkFprint_OnCapture;
+
             ZkFprint.BeginCapture();
             ShowHintInfo("Please give fingerprint sample.");
 
@@ -170,11 +171,11 @@ namespace ExclusiveGym.WinForms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
+            //ZkFprint.CancelCapture();
             ZkFprint.CancelEnroll();
             ZkFprint.EnrollCount = 3;
             ZkFprint.BeginEnroll();
-            ShowHintInfo("Please give fingerprint sample.");
+            ShowHintInfo("Please give fingerprint regis.");
 
         }
 
