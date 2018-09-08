@@ -16,3 +16,7 @@ C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\std
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.MemberForm.resources
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.UserControls.MemberControl.resources
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.DialogForm.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\EntityFramework.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\EntityFramework.SqlServer.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\EntityFramework.xml
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\EntityFramework.SqlServer.xml
