@@ -14,10 +14,13 @@ namespace ExclusiveGym.WinForms
     {
         private const int WS_EX_TRANSPARENT = 0x20;
 
-        public DialogForm()
+
+        public DialogForm(string caption, string message)
         {
             InitializeComponent();
             SetStyle(ControlStyles.Opaque, true);
+            lblHeader.Text = caption;
+            lblMessage.Text = message;
         }
 
         protected override CreateParams CreateParams

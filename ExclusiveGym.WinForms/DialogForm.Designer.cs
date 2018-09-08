@@ -46,9 +46,9 @@
             this.panel5.Controls.Add(this.btnSave);
             this.panel5.Controls.Add(this.btnCancel);
             this.panel5.Controls.Add(this.lblMessage);
-            this.panel5.Location = new System.Drawing.Point(298, 217);
+            this.panel5.Location = new System.Drawing.Point(260, 236);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(440, 150);
+            this.panel5.Size = new System.Drawing.Size(440, 160);
             this.panel5.TabIndex = 13;
             // 
             // lblHeader
@@ -71,7 +71,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSave.Location = new System.Drawing.Point(220, 105);
+            this.btnSave.Location = new System.Drawing.Point(220, 115);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.btnSave.Size = new System.Drawing.Size(220, 45);
@@ -86,11 +86,12 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(79)))), ((int)(((byte)(80)))));
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(213)))), ((int)(((byte)(212)))));
-            this.btnCancel.Location = new System.Drawing.Point(0, 105);
+            this.btnCancel.Location = new System.Drawing.Point(0, 115);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnCancel.Size = new System.Drawing.Size(220, 45);
@@ -118,7 +119,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.ClientSize = new System.Drawing.Size(1000, 650);
             this.Controls.Add(this.panel5);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
