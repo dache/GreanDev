@@ -14,6 +14,8 @@ namespace ExclusiveGym.WinForms
     {
         private const int WS_EX_TRANSPARENT = 0x20;
 
+        public int MyProperty { get; set; }
+
         public MemberForm()
         {
             InitializeComponent();            
