@@ -226,7 +226,7 @@ namespace ExclusiveGym.WinForms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var dialogForm = new DialogForm();
+            var dialogForm = new DialogForm("Exclusive Gym","ไม่พบข้อมูลสมาชิก ต้องการสมัครสมาชิกใหม่หรือไม่");
             if(dialogForm.ShowDialog() == DialogResult.OK)
             {
                 var memberForm = new MemberForm();

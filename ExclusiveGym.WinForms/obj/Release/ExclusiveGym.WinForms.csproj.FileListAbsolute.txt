@@ -1,0 +1,15 @@
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Release\ExclusiveGym.WinForms.exe.config
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Release\ExclusiveGym.WinForms.exe
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Release\ExclusiveGym.WinForms.pdb
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Release\AxInterop.ZKFPEngXControl.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.DialogForm.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.Form1.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.MemberForm.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.Properties.Resources.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.UserControls.HomeControl.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.UserControls.MemberControl.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.csproj.GenerateResource.cache
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.csproj.CoreCompileInputs.cache
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.csproj.CopyComplete
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.exe
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Release\ExclusiveGym.WinForms.pdb
