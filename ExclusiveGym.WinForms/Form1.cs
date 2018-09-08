@@ -40,7 +40,7 @@ namespace ExclusiveGym.WinForms
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            Controls.Add(ZkFprint);
+           Controls.Add(ZkFprint);
             InitialAxZkfp();
         }
 
