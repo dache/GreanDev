@@ -41,6 +41,13 @@ namespace ExclusiveGym.WinForms
         private void Form1_Load(object sender, EventArgs e)
         {
             InitialAxZkfp();
+
+            var m = new Member();
+            m.CreateDate = DateTime.Now;
+            m.BirthDate = DateTime.Now;
+            
+            var db = new ExclusiveGymContext();
+            db.Members.Add(m);
         }
 
         private void InitialAxZkfp()

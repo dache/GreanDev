@@ -14,3 +14,11 @@ C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Debug\Exclusi
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Debug\ExclusiveGym.WinForms.DialogForm.resources
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Debug\ExclusiveGym.WinForms.MemberForm.resources
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Debug\ExclusiveGym.WinForms.UserControls.MemberControl.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Debug\EntityFramework.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Debug\Interop.ZKFPEngXControl.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Debug\stdole.dll
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Debug\EntityFramework.xml
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Debug\ExclusiveGym.WinForms.FingerPrintForm.resources
+C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\Debug\ExclusiveGym.WinForms.WelcomeDialogForm.resources
