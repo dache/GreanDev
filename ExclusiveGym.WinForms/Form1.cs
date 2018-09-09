@@ -52,14 +52,14 @@ namespace ExclusiveGym.WinForms
                 {
                     m_zkFprint.FPEngineVersion = "9";
                     m_zkFprint.EnrollCount = 3;
-                    deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
-                    ShowHintInfo("Device successfully connected");
+                    //deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
+                    Console.WriteLine("Device successfully connected");
                 }
 
             }
             catch (Exception ex)
             {
-                ShowHintInfo("Device init err, error: " + ex.Message);
+                Console.WriteLine("Device init err, error: " + ex.Message);
             }
         }
 
@@ -71,36 +71,15 @@ namespace ExclusiveGym.WinForms
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
             Console.WriteLine("zkFprint_OnImageReceived");
-            Graphics g = fpicture.CreateGraphics();
-            Bitmap bmp = new Bitmap(fpicture.Width, fpicture.Height);
-            g = Graphics.FromImage(bmp);
-            int dc = g.GetHdc().ToInt32();
-            m_zkFprint.PrintImageAt(dc, 0, 0, bmp.Width, bmp.Height);
-            g.Dispose();
-            fpicture.Image = bmp;
         }
 
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
             Console.WriteLine("zkFprint_OnFeatureInfo");
-            String strTemp = string.Empty;
-            if (m_zkFprint.EnrollIndex != 1)
-            {
-                if (m_zkFprint.IsRegister)
-                {
-                    if (m_zkFprint.EnrollIndex - 1 > 0)
-                    {
-                        int eindex = m_zkFprint.EnrollIndex - 1;
-                        strTemp = "Please scan again ..." + eindex;
-                    }
-                }
-            }
-            ShowHintInfo(strTemp);
         }
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
             Console.WriteLine("zkFprint_OnEnroll");
-           
         }
         private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
         {
@@ -112,9 +91,6 @@ namespace ExclusiveGym.WinForms
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
-                    //ShowHintInfo("Verified");
-                    //MessageBox.Show($"Hello, {member.Name}");
-
                     var welcomeForm = new WelcomeDialogForm(member);
                     welcomeForm.ShowDialog();
 
@@ -130,33 +106,13 @@ namespace ExclusiveGym.WinForms
 
         }
 
-
-
-        private void ShowHintInfo(String s)
-        {
-            prompt.Text = s;
-        }
-
+      
         private void btnVerify_Click(object sender, EventArgs e)
         {
             
 
         }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            m_zkFprint.CancelEnroll();
-            m_zkFprint.EnrollCount = 3;
-            m_zkFprint.BeginEnroll();
-            ShowHintInfo("Please give fingerprint regis.");
-
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            fpicture.Image = null;
-        }
-
+        
         private void InitMenu()
         {
 

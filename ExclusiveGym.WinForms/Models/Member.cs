@@ -30,6 +30,18 @@ namespace ExclusiveGym.WinForms.Models
         public bool IsActive { get; set; }
     }
 
+    public class MedicalProblem
+    {
+        public string Detail { get; set; }
+    }
+
+    public class ApplyCourse
+    {
+        public int MemberId { get; set; }
+        public int CourseID { get; set; }
+        public DateTime ExpireDate { get; set; }
+    }
+
     public enum enumGender
     {
         Male = 1,
