@@ -93,22 +93,32 @@ namespace ExclusiveGym.WinForms
             Console.WriteLine("zkFprint_OnCapture");
             string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
             Console.WriteLine("Scan string : " + template);
-            bool found = false;
+
+            Member currentMember = null;
             foreach (Member member in FingerPrint.GetSingleton().GetMemberList())
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
-                    var welcomeForm = new WelcomeDialogForm(member);
-                    welcomeForm.ShowDialog();
-
-                    found = true;
+                    currentMember = member;
                     break;
                 }
             }
 
-            if (!found)
+            if (currentMember == null)
             {
                 DisplayNeedRegistryForm();
+            }
+            else
+            {
+                if (currentMember.ExpireDate == null || currentMember.ExpireDate < DateTime.Now)
+                {
+                    MessageBox.Show("เลือกโปรโมชั่นที่ต้องการ");
+                }
+                else
+                {
+                    var welcomeForm = new WelcomeDialogForm(currentMember);
+                    welcomeForm.ShowDialog();
+                }
             }
 
         }
