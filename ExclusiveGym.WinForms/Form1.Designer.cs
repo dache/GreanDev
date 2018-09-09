@@ -42,19 +42,9 @@
             this.btnSlideMenu = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.fpicture = new System.Windows.Forms.PictureBox();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.btnVerify = new System.Windows.Forms.Button();
-            this.txtTemplate = new System.Windows.Forms.TextBox();
-            this.prompt = new System.Windows.Forms.Label();
-            this.deviceSerial = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fpicture)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuPanel
@@ -78,10 +68,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Prompt", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(6, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 36);
+            this.label2.Size = new System.Drawing.Size(114, 29);
             this.label2.TabIndex = 7;
             this.label2.Text = "Exclusive";
             // 
@@ -249,100 +239,11 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // fpicture
-            // 
-            this.fpicture.Location = new System.Drawing.Point(271, 76);
-            this.fpicture.Name = "fpicture";
-            this.fpicture.Size = new System.Drawing.Size(224, 242);
-            this.fpicture.TabIndex = 2;
-            this.fpicture.TabStop = false;
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.Location = new System.Drawing.Point(501, 102);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(75, 23);
-            this.btnRegister.TabIndex = 3;
-            this.btnRegister.Text = "btnRegister";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // btnVerify
-            // 
-            this.btnVerify.Location = new System.Drawing.Point(501, 222);
-            this.btnVerify.Name = "btnVerify";
-            this.btnVerify.Size = new System.Drawing.Size(75, 23);
-            this.btnVerify.TabIndex = 4;
-            this.btnVerify.Text = "btnVerify";
-            this.btnVerify.UseVisualStyleBackColor = true;
-            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
-            // 
-            // txtTemplate
-            // 
-            this.txtTemplate.Location = new System.Drawing.Point(501, 76);
-            this.txtTemplate.Name = "txtTemplate";
-            this.txtTemplate.Size = new System.Drawing.Size(287, 20);
-            this.txtTemplate.TabIndex = 5;
-            // 
-            // prompt
-            // 
-            this.prompt.AutoSize = true;
-            this.prompt.Location = new System.Drawing.Point(268, 324);
-            this.prompt.Name = "prompt";
-            this.prompt.Size = new System.Drawing.Size(35, 13);
-            this.prompt.TabIndex = 6;
-            this.prompt.Text = "label3";
-            // 
-            // deviceSerial
-            // 
-            this.deviceSerial.AutoSize = true;
-            this.deviceSerial.Location = new System.Drawing.Point(268, 342);
-            this.deviceSerial.Name = "deviceSerial";
-            this.deviceSerial.Size = new System.Drawing.Size(68, 13);
-            this.deviceSerial.TabIndex = 7;
-            this.deviceSerial.Text = "deviceSerial ";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(502, 195);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(231, 20);
-            this.txtName.TabIndex = 8;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(611, 324);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(305, 438);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.deviceSerial);
-            this.Controls.Add(this.prompt);
-            this.Controls.Add(this.txtTemplate);
-            this.Controls.Add(this.btnVerify);
-            this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.fpicture);
             this.Controls.Add(this.TitleBarPanel);
             this.Controls.Add(this.MenuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -354,9 +255,7 @@
             this.MenuPanel.PerformLayout();
             this.TitleBarPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fpicture)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -374,16 +273,7 @@
         private System.Windows.Forms.Panel TitleBarPanel;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox fpicture;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnVerify;
-        private System.Windows.Forms.TextBox txtTemplate;
-        private System.Windows.Forms.Label prompt;
-        private System.Windows.Forms.Label deviceSerial;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox btnSlideMenu;
-        private System.Windows.Forms.Button button3;
     }
 }
 

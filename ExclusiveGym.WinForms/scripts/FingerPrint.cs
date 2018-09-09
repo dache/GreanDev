@@ -10,7 +10,7 @@ class FingerPrint
 {
     private static FingerPrint m_singleton;
 
-    private AxZKFPEngX m_zkFprint;
+    private AxZKFPEngX m_zkFprint = new AxZKFPEngX();
 
     private List<Member> m_members;
 
@@ -23,8 +23,9 @@ class FingerPrint
 
     private FingerPrint()
     {
-        m_zkFprint = new AxZKFPEngX();
-        LoadMember();
+       // m_zkFprint = new AxZKFPEngX();
+        
+            LoadMember();
     }
 
     private void LoadMember()

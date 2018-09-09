@@ -28,7 +28,7 @@ namespace ExclusiveGym.WinForms
 
         private AxZKFPEngX m_zkFprint;
         private bool Check;
-
+        
 
         public Form1()
         {
@@ -45,9 +45,9 @@ namespace ExclusiveGym.WinForms
             var m = new Member();
             m.CreateDate = DateTime.Now;
             m.BirthDate = DateTime.Now;
-
-            //var db = new ExclusiveGymContext();
-            //db.Members.Add(m);
+            
+            var db = new ExclusiveGymContext();
+            db.Members.Add(m);
         }
 
         private void InitialAxZkfp()
@@ -59,14 +59,14 @@ namespace ExclusiveGym.WinForms
                 {
                     m_zkFprint.FPEngineVersion = "9";
                     m_zkFprint.EnrollCount = 3;
-                    deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
-                    ShowHintInfo("Device successfully connected");
+                    //deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
+                    Console.WriteLine("Device successfully connected");
                 }
 
             }
             catch (Exception ex)
             {
-                ShowHintInfo("Device init err, error: " + ex.Message);
+                Console.WriteLine("Device init err, error: " + ex.Message);
             }
         }
 
@@ -74,103 +74,52 @@ namespace ExclusiveGym.WinForms
         {
             FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
-
+        
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
             Console.WriteLine("zkFprint_OnImageReceived");
-            Graphics g = fpicture.CreateGraphics();
-            Bitmap bmp = new Bitmap(fpicture.Width, fpicture.Height);
-            g = Graphics.FromImage(bmp);
-            int dc = g.GetHdc().ToInt32();
-            m_zkFprint.PrintImageAt(dc, 0, 0, bmp.Width, bmp.Height);
-            g.Dispose();
-            fpicture.Image = bmp;
         }
 
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
             Console.WriteLine("zkFprint_OnFeatureInfo");
-            String strTemp = string.Empty;
-            if (m_zkFprint.EnrollIndex != 1)
-            {
-                if (m_zkFprint.IsRegister)
-                {
-                    if (m_zkFprint.EnrollIndex - 1 > 0)
-                    {
-                        int eindex = m_zkFprint.EnrollIndex - 1;
-                        strTemp = "Please scan again ..." + eindex;
-                    }
-                }
-            }
-            ShowHintInfo(strTemp);
         }
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
             Console.WriteLine("zkFprint_OnEnroll");
-
         }
         private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
         {
             Console.WriteLine("zkFprint_OnCapture");
             string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
             Console.WriteLine("Scan string : " + template);
-
-            Member currentMember = null;
+            bool found = false;
             foreach (Member member in FingerPrint.GetSingleton().GetMemberList())
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
-                    currentMember = member;
+                    var welcomeForm = new WelcomeDialogForm(member);
+                    welcomeForm.ShowDialog();
+
+                    found = true;
                     break;
                 }
             }
 
-            if (currentMember == null)
+            if (!found)
             {
                 DisplayNeedRegistryForm();
             }
-            else
-            {
-                if (currentMember.ExpireDate == null || currentMember.ExpireDate < DateTime.Now)
-                {
-                    MessageBox.Show("เลือกโปรโมชั่นที่ต้องการ");
-                }
-                else
-                {
-                    var welcomeForm = new WelcomeDialogForm(currentMember);
-                    welcomeForm.ShowDialog();
-                }    
-            }
 
         }
 
-
-
-        private void ShowHintInfo(String s)
-        {
-            prompt.Text = s;
-        }
-
+      
         private void btnVerify_Click(object sender, EventArgs e)
         {
-
-
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            m_zkFprint.CancelEnroll();
-            m_zkFprint.EnrollCount = 3;
-            m_zkFprint.BeginEnroll();
-            ShowHintInfo("Please give fingerprint regis.");
+            
 
         }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            fpicture.Image = null;
-        }
-
+        
         private void InitMenu()
         {
 
@@ -231,5 +180,5 @@ namespace ExclusiveGym.WinForms
         }
     }
 
-
+    
 }
