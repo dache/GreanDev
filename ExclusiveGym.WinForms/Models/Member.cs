@@ -29,10 +29,13 @@ namespace ExclusiveGym.WinForms.Models
         public DateTime? ExpireDate { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
+        public List<MedicalProblem> Problems { get; set; }
     }
 
     public class MedicalProblem
     {
+        public int MedicalID { get; set; }
+        public int MemberID { get; set; }
         public string Detail { get; set; }
     }
 

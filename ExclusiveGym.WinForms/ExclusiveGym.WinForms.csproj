@@ -113,6 +113,7 @@
     <Compile Include="MemberForm.Designer.cs">
       <DependentUpon>MemberForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ExclusiveGymContext.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Program.cs" />
