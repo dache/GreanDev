@@ -28,12 +28,11 @@ namespace ExclusiveGym.WinForms
 
         private AxZKFPEngX m_zkFprint;
         private bool Check;
-
-        private List<UserFinger> Fingers = new List<UserFinger>();
+        
 
         public Form1()
         {
-            m_zkFprint = FingerPrint.GetSingleton().GetSDK();
+            m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
             InitializeComponent();
             Application.AddMessageFilter(this);
             controlsToMove.Add(this.TitleBarPanel);
@@ -41,42 +40,14 @@ namespace ExclusiveGym.WinForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            Controls.Add(m_zkFprint);
             InitialAxZkfp();
-
-            //var member = new Member();
-            //member.MemberId = 1;
-            //member.Name = "Decha";
-            //member.BirthDate = DateTime.Now;
-            //member.CreateDate = DateTime.Now;
-
-            //using (var db = new ExclusiveGymContext())
-            //{
-            //    db.Members.Add(member);
-            //    db.SaveChanges();
-            //}
-
-            //var db = new ExclusiveGymContext();
-            //var member = db.Members.Where(f => f.FingerPrint == "").Single();
-
-
-
-
-
         }
 
         private void InitialAxZkfp()
         {
             try
             {
-                m_zkFprint.OnCapture += zkFprint_OnCapture;
-                m_zkFprint.OnImageReceived += zkFprint_OnImageReceived;
-                m_zkFprint.OnFeatureInfo += zkFprint_OnFeatureInfo;
-                //zkFprint.OnFingerTouching 
-                //zkFprint.OnFingerLeaving
-                m_zkFprint.OnEnroll += zkFprint_OnEnroll;
-
+                SetupFingerprint();
                 if (m_zkFprint.InitEngine() == 0)
                 {
                     m_zkFprint.FPEngineVersion = "9";
@@ -92,8 +63,14 @@ namespace ExclusiveGym.WinForms
             }
         }
 
+        private void SetupFingerprint()
+        {
+            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+        }
+        
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
+            Console.WriteLine("zkFprint_OnImageReceived");
             Graphics g = fpicture.CreateGraphics();
             Bitmap bmp = new Bitmap(fpicture.Width, fpicture.Height);
             g = Graphics.FromImage(bmp);
@@ -105,7 +82,7 @@ namespace ExclusiveGym.WinForms
 
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
-
+            Console.WriteLine("zkFprint_OnFeatureInfo");
             String strTemp = string.Empty;
             if (m_zkFprint.EnrollIndex != 1)
             {
@@ -122,27 +99,8 @@ namespace ExclusiveGym.WinForms
         }
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
-            if (e.actionResult)
-            {
-
-                Console.WriteLine("zkFprint_OnEnroll");
-                string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
-                // txtTemplate.Text = template;
-                ShowHintInfo("Registration successful. You can verify now");
-                //btnRegister.Enabled = false;
-                //btnVerify.Enabled = true;
-
-                var newUser = new UserFinger();
-                newUser.Name = txtName.Text;
-                newUser.FingerPrint = template;
-                Console.WriteLine("regis finger string : " + template);
-                Fingers.Add(newUser);
-            }
-            else
-            {
-                ShowHintInfo("Error, please register again.");
-
-            }
+            Console.WriteLine("zkFprint_OnEnroll");
+           
         }
         private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
         {
@@ -150,12 +108,12 @@ namespace ExclusiveGym.WinForms
             string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
             Console.WriteLine("Scan string : " + template);
             bool found = false;
-            foreach (UserFinger uf in Fingers)
+            foreach (Member member in FingerPrint.GetSingleton().GetMemberList())
             {
-                if (m_zkFprint.VerFingerFromStr(ref template, uf.FingerPrint, false, ref Check))
+                if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
                     ShowHintInfo("Verified");
-                    MessageBox.Show($"Hello, {uf.Name}");
+                    MessageBox.Show($"Hello, {member.Name}");
                     found = true;
                     break;
                 }
@@ -164,9 +122,6 @@ namespace ExclusiveGym.WinForms
             if (!found)
             {
                 DisplayNeedRegistryForm();
-                //MessageBox.Show("User Is Not Register!");
-
-                //ShowHintInfo("Not Verified");
             }
 
         }
@@ -180,20 +135,12 @@ namespace ExclusiveGym.WinForms
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
-            if (m_zkFprint.IsRegister)
-            {
-                m_zkFprint.CancelEnroll();
-            }
-
-            m_zkFprint.BeginCapture();
-            ShowHintInfo("Please give fingerprint sample.");
-
+            
 
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            //ZkFprint.CancelCapture();
             m_zkFprint.CancelEnroll();
             m_zkFprint.EnrollCount = 3;
             m_zkFprint.BeginEnroll();
@@ -224,8 +171,6 @@ namespace ExclusiveGym.WinForms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var f = new MemberForm();
-            f.ShowDialog();
         }
 
         private void btnSlideMenu_Click(object sender, EventArgs e)
@@ -248,22 +193,25 @@ namespace ExclusiveGym.WinForms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DisplayNeedRegistryForm();
+            OpenMemberForm();
         }
         private void DisplayNeedRegistryForm()
         {
             var dialogForm = new DialogForm("Exclusive Gym", "ไม่พบข้อมูลสมาชิก ต้องการสมัครสมาชิกใหม่หรือไม่");
             if (dialogForm.ShowDialog() == DialogResult.OK)
             {
-                var memberForm = new MemberForm();
-                memberForm.ShowDialog();
+                OpenMemberForm();
             }
+        }
+
+        private void OpenMemberForm()
+        {
+            FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            var memberForm = new MemberForm();
+            memberForm.m_registryiSdone = SetupFingerprint;
+            memberForm.ShowDialog();
         }
     }
 
-    public class UserFinger
-    {
-        public string Name { get; set; }
-        public string FingerPrint { get; set; }
-    }
+    
 }
