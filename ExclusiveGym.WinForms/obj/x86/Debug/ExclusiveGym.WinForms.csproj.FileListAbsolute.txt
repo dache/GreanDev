@@ -43,3 +43,4 @@ C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Debug\Exclusi
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\Interop.ZKFPEngXControl.dll
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\bin\x86\Debug\stdole.dll
 C:\Users\decha\source\repos\ExclusiveGym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.FingerPrintForm.resources
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Debug\ExclusiveGym.WinForms.FingerPrintForm.resources
