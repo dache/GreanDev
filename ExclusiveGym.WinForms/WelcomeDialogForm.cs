@@ -18,6 +18,7 @@ namespace ExclusiveGym.WinForms
         public WelcomeDialogForm(Member member)
         {
             InitializeComponent();
+            SetStyle(ControlStyles.Opaque, true);
 
             lblMessage.Text = $"สวัสดี คุณ{member.Name} {member.LastName}";
             lblTime.Text = $"เข้าฟิสเนต เวลา {DateTime.Now}";

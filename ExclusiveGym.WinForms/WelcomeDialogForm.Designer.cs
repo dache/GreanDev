@@ -43,7 +43,7 @@
             this.panel1.Controls.Add(this.lblMessage);
             this.panel1.Controls.Add(this.lblHeader);
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Location = new System.Drawing.Point(275, 209);
+            this.panel1.Location = new System.Drawing.Point(294, 247);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 184);
             this.panel1.TabIndex = 0;
@@ -103,7 +103,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(984, 611);
+            this.ClientSize = new System.Drawing.Size(1000, 650);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WelcomeDialogForm";
