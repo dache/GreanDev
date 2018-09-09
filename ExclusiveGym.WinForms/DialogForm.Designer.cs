@@ -55,7 +55,7 @@
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeader.Location = new System.Drawing.Point(15, 13);
+            this.lblHeader.Location = new System.Drawing.Point(15, 15);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(90, 32);
             this.lblHeader.TabIndex = 0;

@@ -112,8 +112,12 @@ namespace ExclusiveGym.WinForms
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
-                    ShowHintInfo("Verified");
-                    MessageBox.Show($"Hello, {member.Name}");
+                    //ShowHintInfo("Verified");
+                    //MessageBox.Show($"Hello, {member.Name}");
+
+                    var welcomeForm = new WelcomeDialogForm(member);
+                    welcomeForm.ShowDialog();
+
                     found = true;
                     break;
                 }
