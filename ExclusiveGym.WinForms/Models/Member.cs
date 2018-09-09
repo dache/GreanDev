@@ -26,6 +26,7 @@ namespace ExclusiveGym.WinForms.Models
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string FingerPrint { get; set; }
+        public DateTime? ExpireDate { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
     }
