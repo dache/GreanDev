@@ -28,7 +28,7 @@ namespace ExclusiveGym.WinForms
 
         private AxZKFPEngX m_zkFprint;
         private bool Check;
-        
+
 
         public Form1()
         {
@@ -45,9 +45,9 @@ namespace ExclusiveGym.WinForms
             var m = new Member();
             m.CreateDate = DateTime.Now;
             m.BirthDate = DateTime.Now;
-            
-            var db = new ExclusiveGymContext();
-            db.Members.Add(m);
+
+            //var db = new ExclusiveGymContext();
+            //db.Members.Add(m);
         }
 
         private void InitialAxZkfp()
@@ -74,7 +74,7 @@ namespace ExclusiveGym.WinForms
         {
             FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
-        
+
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
             Console.WriteLine("zkFprint_OnImageReceived");
@@ -107,32 +107,39 @@ namespace ExclusiveGym.WinForms
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
             Console.WriteLine("zkFprint_OnEnroll");
-           
+
         }
         private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
         {
             Console.WriteLine("zkFprint_OnCapture");
             string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
             Console.WriteLine("Scan string : " + template);
-            bool found = false;
+
+            Member currentMember = null;
             foreach (Member member in FingerPrint.GetSingleton().GetMemberList())
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
-                    //ShowHintInfo("Verified");
-                    //MessageBox.Show($"Hello, {member.Name}");
-
-                    var welcomeForm = new WelcomeDialogForm(member);
-                    welcomeForm.ShowDialog();
-
-                    found = true;
+                    currentMember = member;
                     break;
                 }
             }
 
-            if (!found)
+            if (currentMember == null)
             {
                 DisplayNeedRegistryForm();
+            }
+            else
+            {
+                if (currentMember.ExpireDate == null || currentMember.ExpireDate < DateTime.Now)
+                {
+                    MessageBox.Show("เลือกโปรโมชั่นที่ต้องการ");
+                }
+                else
+                {
+                    var welcomeForm = new WelcomeDialogForm(currentMember);
+                    welcomeForm.ShowDialog();
+                }    
             }
 
         }
@@ -146,7 +153,7 @@ namespace ExclusiveGym.WinForms
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
-            
+
 
         }
 
@@ -224,5 +231,5 @@ namespace ExclusiveGym.WinForms
         }
     }
 
-    
+
 }
