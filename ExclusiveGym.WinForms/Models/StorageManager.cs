@@ -44,6 +44,11 @@ class StorageManager
         return GetDB().Courses.Select(x => x).ToList();
     }
 
+    public List<AccessLog> GetAccessLogList()
+    {
+        return GetDB().AccessLog.Select(x => x).ToList();
+    }
+
     public Course GetDailyCourse()
     {
         return GetDB().Courses.Where(x => x.CourseType == COURSETYPE.DAILY).FirstOrDefault();
