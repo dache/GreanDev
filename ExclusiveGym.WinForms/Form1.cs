@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using AxZKFPEngXControl;
 using ExclusiveGym.WinForms.Models;
 
+
+
 namespace ExclusiveGym.WinForms
 {
     public partial class Form1 : Form, IMessageFilter
@@ -28,10 +30,11 @@ namespace ExclusiveGym.WinForms
 
         private AxZKFPEngX m_zkFprint;
         private bool Check;
-        
 
+        private Member m_testMember;
         public Form1()
         {
+            StorageManager.GetSingleton();
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
             InitializeComponent();
             Application.AddMessageFilter(this);
@@ -42,13 +45,16 @@ namespace ExclusiveGym.WinForms
         {
             InitialAxZkfp();
 
-            var m = new Member();
-            m.CreateDate = DateTime.Now;
-            m.BirthDate = DateTime.Now;
-            
-            var db = new ExclusiveGymContext();
-            db.Members.Add(m);
+            SampleData();
         }
+
+        private void SampleData()
+        {
+            StorageManager.GetSingleton().CreateSampleMember();
+            StorageManager.GetSingleton().CreateSampleCourse();
+        }
+
+        
 
         private void InitialAxZkfp()
         {
@@ -95,7 +101,7 @@ namespace ExclusiveGym.WinForms
             Console.WriteLine("Scan string : " + template);
 
             Member currentMember = null;
-            foreach (Member member in FingerPrint.GetSingleton().GetMemberList())
+            foreach (Member member in StorageManager.GetSingleton().GetMemberList())
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
@@ -112,7 +118,7 @@ namespace ExclusiveGym.WinForms
             {
                 if (currentMember.ExpireDate == null || currentMember.ExpireDate < DateTime.Now)
                 {
-                    MessageBox.Show("เลือกโปรโมชั่นที่ต้องการ");
+                    DisplayNeedApplySomeCourse();
                 }
                 else
                 {
@@ -188,6 +194,43 @@ namespace ExclusiveGym.WinForms
             memberForm.m_registryiSdone = SetupFingerprint;
             memberForm.ShowDialog();
         }
+
+        private void DisplayNeedApplySomeCourse()
+        {
+            //MessageBox.Show("เลือกโปรโมชั่นที่ต้องการ");
+            
+            var DialogNeedApplyCourse = new DialogNeedApplyCourse(StorageManager.GetSingleton().GetSampleMember(), ApplyCourseCallback);
+            DialogNeedApplyCourse.ShowDialog();
+        }
+
+        private void ApplyCourseCallback()
+        {
+            var welcomeForm = new WelcomeDialogForm(StorageManager.GetSingleton().GetSampleMember());
+            welcomeForm.ShowDialog();
+        }
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //case 1
+            DisplayNeedRegistryForm();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            //case 2
+            Member scanedMember = StorageManager.GetSingleton().GetSampleMember();
+            if (scanedMember.ExpireDate == null || scanedMember.ExpireDate <= DateTime.Now)
+            {
+                DisplayNeedApplySomeCourse();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //case 3
+            var welcomeForm = new WelcomeDialogForm(StorageManager.GetSingleton().GetSampleMember());
+            welcomeForm.ShowDialog();
+        }
+        
     }
 
     
