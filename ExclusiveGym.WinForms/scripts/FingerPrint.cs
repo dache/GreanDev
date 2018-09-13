@@ -23,39 +23,8 @@ class FingerPrint
 
     private FingerPrint()
     {
-       // m_zkFprint = new AxZKFPEngX();
-        
-            LoadMember();
     }
-
-    private void LoadMember()
-    {
-        m_members = new List<Member>();
-        try
-        {
-            using (var db = new ExclusiveGymContext())
-            {
-                m_members = db.Members.Select(x => x).ToList();
-            }
-        }
-        catch
-        {
-
-        }
-        
-    }
-
-    public void AddMember(Member m)
-    {
-        if (!m_members.Contains(m))
-            m_members.Add(m);
-    }
-
-    public List<Member> GetMemberList()
-    {
-        return m_members;
-    }
-
+    
     public AxZKFPEngX GetFingerprint()
     {
         return m_zkFprint;

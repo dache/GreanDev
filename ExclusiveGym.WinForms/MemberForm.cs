@@ -24,9 +24,9 @@ namespace ExclusiveGym.WinForms
 
             FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
-        public delegate void DoneRegistry();
+        
 
-        public DoneRegistry m_registryiSdone;
+        public FinishCallback m_registryiSdone;
 
         private AxZKFPEngX m_zkFprint;
 
@@ -64,20 +64,15 @@ namespace ExclusiveGym.WinForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            using (var db = new ExclusiveGymContext())
-            {
-                var newMember = new Member();
-                newMember.Name = txtName.Text;
-                newMember.LastName = txtLastName.Text;
-                newMember.CreateDate = DateTime.Now;
-                newMember.BirthDate = DateTime.Now;
-                newMember.FingerPrint = lblFingerPrint.Text;
+            var newMember = new Member();
+            newMember.Name = txtName.Text;
+            newMember.LastName = txtLastName.Text;
+            newMember.CreateDate = DateTime.Now;
+            newMember.BirthDate = DateTime.Now;
+            newMember.FingerPrint = lblFingerPrint.Text;
 
-                FingerPrint.GetSingleton().AddMember(newMember);
-                db.Members.Add(newMember);
-                db.SaveChanges();
-                CloseForm();
-            }
+            StorageManager.GetSingleton().AddMember(newMember);
+            CloseForm();
         }
 
         public void ReceiveFingerPrint(string fingerPrint)
@@ -101,7 +96,7 @@ namespace ExclusiveGym.WinForms
             string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
             Console.WriteLine("Scan string : " + template);
             bool Check = false;
-            foreach (Member member in FingerPrint.GetSingleton().GetMemberList())
+            foreach (Member member in StorageManager.GetSingleton().GetMemberList())
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {

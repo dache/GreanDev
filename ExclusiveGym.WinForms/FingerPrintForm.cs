@@ -14,8 +14,7 @@ namespace ExclusiveGym.WinForms
     public partial class FingerPrintForm : Form
     {
         private const int WS_EX_TRANSPARENT = 0x20;
-
-        public delegate void SendFingerPrint(string fingerPrint);
+        
         public SendFingerPrint m_fingerPrintCallback;
 
         private AxZKFPEngX m_zkFprint;

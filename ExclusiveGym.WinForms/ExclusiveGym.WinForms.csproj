@@ -95,6 +95,12 @@
     <Compile Include="DialogForm.Designer.cs">
       <DependentUpon>DialogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogNeedApplyCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogNeedApplyCourse.Designer.cs">
+      <DependentUpon>DialogNeedApplyCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="FingerPrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCourseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCourseList.Designer.cs">
+      <DependentUpon>FormCourseList.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,9 +127,13 @@
     </Compile>
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ExclusiveGymContext.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\ModelConfigurations.cs" />
+    <Compile Include="Models\StorageManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="scripts\DelegateDecare.cs" />
     <Compile Include="scripts\FingerPrint.cs" />
     <Compile Include="UserControls\HomeControl.cs">
       <SubType>UserControl</SubType>
@@ -140,11 +156,17 @@
     <EmbeddedResource Include="DialogForm.resx">
       <DependentUpon>DialogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DialogNeedApplyCourse.resx">
+      <DependentUpon>DialogNeedApplyCourse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FingerPrintForm.resx">
       <DependentUpon>FingerPrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCourseList.resx">
+      <DependentUpon>FormCourseList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberForm.resx">
       <DependentUpon>MemberForm.cs</DependentUpon>

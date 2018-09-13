@@ -16,5 +16,18 @@ namespace ExclusiveGym.WinForms.Models
 
         public DbSet<Member> Members { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<MemberApplyCourse> MemberApplyCourses { get; set; }
+
+        public DbSet<AccessLog> AccessLog { get; set; }
+        public DbSet<ApplyCourseLog> ApplyCourseLog { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new MemberConfiguration());
+            modelBuilder.Configurations.Add(new MedicalProblemConfiguration());
+            modelBuilder.Configurations.Add(new CourseConfiguration());
+            modelBuilder.Configurations.Add(new ApplyCourseLogConfiguration());
+            modelBuilder.Configurations.Add(new AccessLogConfiguration());
+        }
     }
 }

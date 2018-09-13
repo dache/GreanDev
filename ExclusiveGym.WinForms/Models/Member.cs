@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,12 @@ namespace ExclusiveGym.WinForms.Models
 {
     public class Member
     {
+        public Member()
+        {
+            Problems = new List<MedicalProblem>();
+        }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int MemberId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -34,16 +42,13 @@ namespace ExclusiveGym.WinForms.Models
 
     public class MedicalProblem
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int MedicalID { get; set; }
-        public int MemberID { get; set; }
-        public string Detail { get; set; }
-    }
+        public string ProblemName { get; set; }
 
-    public class ApplyCourse
-    {
         public int MemberId { get; set; }
-        public int CourseID { get; set; }
-        public DateTime ExpireDate { get; set; }
+        public Member Member { get; set; }
     }
 
     public enum enumGender
