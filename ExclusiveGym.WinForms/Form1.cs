@@ -34,9 +34,13 @@ namespace ExclusiveGym.WinForms
         private Member m_testMember;
         public Form1()
         {
+            InitializeComponent();
+            
+            //
             StorageManager.GetSingleton();
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
-            InitializeComponent();
+
+            // Custom Move title bar 
             Application.AddMessageFilter(this);
             controlsToMove.Add(this.TitleBarPanel);
         }
@@ -45,7 +49,7 @@ namespace ExclusiveGym.WinForms
         {
             InitialAxZkfp();
 
-            SampleData();
+            //SampleData();
         }
 
         private void SampleData()
@@ -68,7 +72,6 @@ namespace ExclusiveGym.WinForms
                     //deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
                     Console.WriteLine("Device successfully connected");
                 }
-
             }
             catch (Exception ex)
             {
@@ -85,7 +88,6 @@ namespace ExclusiveGym.WinForms
         {
             Console.WriteLine("zkFprint_OnImageReceived");
         }
-
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
             Console.WriteLine("zkFprint_OnFeatureInfo");

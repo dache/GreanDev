@@ -125,6 +125,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DialogForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DialogForm";
             this.panel5.ResumeLayout(false);

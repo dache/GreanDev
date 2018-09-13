@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using AxZKFPEngXControl;
 using ExclusiveGym.WinForms.Models;
 
-class FingerPrint
+public class FingerPrint
 {
     private static FingerPrint m_singleton;
 
-    private AxZKFPEngX m_zkFprint = new AxZKFPEngX();
+    private static AxZKFPEngX m_zkFprint;
 
     private List<Member> m_members;
 
@@ -27,6 +27,10 @@ class FingerPrint
     
     public AxZKFPEngX GetFingerprint()
     {
+        if(m_zkFprint == null)
+        {
+            m_zkFprint = new AxZKFPEngX();
+        }
         return m_zkFprint;
     }
 

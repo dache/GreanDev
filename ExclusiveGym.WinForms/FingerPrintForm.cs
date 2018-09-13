@@ -14,7 +14,7 @@ namespace ExclusiveGym.WinForms
     public partial class FingerPrintForm : Form
     {
         private const int WS_EX_TRANSPARENT = 0x20;
-        
+
         public SendFingerPrint m_fingerPrintCallback;
 
         private AxZKFPEngX m_zkFprint;
@@ -43,11 +43,11 @@ namespace ExclusiveGym.WinForms
             }
             base.OnPaint(e);
         }
-        
+
         private void FingerPrintForm_Load(object sender, EventArgs e)
         {
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
-            
+
             FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
             //Console.WriteLine();
             // m_zkFprint.BeginCapture();
@@ -94,17 +94,17 @@ namespace ExclusiveGym.WinForms
         {
             Console.WriteLine("zkFprint_OnEnroll 2");
             if (e.actionResult)
-            {                
+            {
                 string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
                 FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
                 m_fingerPrintCallback(template);
-                
+
                 this.Close();
             }
             else
             {
                 ShowMessage("Error, please register again.");
-
+                this.Close();
             }
         }
 

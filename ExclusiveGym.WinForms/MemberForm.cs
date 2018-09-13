@@ -15,20 +15,22 @@ namespace ExclusiveGym.WinForms
     public partial class MemberForm : Form
     {
         private const int WS_EX_TRANSPARENT = 0x20;
-               
-        public MemberForm()
-        {
-            InitializeComponent();            
-            SetStyle(ControlStyles.Opaque, true);
-            m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
-
-            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
-        }
-        
 
         public FinishCallback m_registryiSdone;
 
         private AxZKFPEngX m_zkFprint;
+
+        public MemberForm()
+        {
+            InitializeComponent();            
+            SetStyle(ControlStyles.Opaque, true);            
+        }
+
+        private void MemberForm_Load(object sender, EventArgs e)
+        {
+            m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
+            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+        }
 
         private void CloseForm()
         {
@@ -153,5 +155,7 @@ namespace ExclusiveGym.WinForms
 
             //}
         }
+
+        
     }
 }

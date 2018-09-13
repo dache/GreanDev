@@ -22,7 +22,7 @@ namespace ExclusiveGym.WinForms
 
             lblMessage.Text = $"สวัสดี คุณ{member.Name} {member.LastName}";
             lblTime.Text = $"เข้าฟิสเนต เวลา {DateTime.Now}";
-            StorageManager.GetSingleton().MemberAccessGym(member);
+            //StorageManager.GetSingleton().MemberAccessGym(member);
         }
 
         protected override CreateParams CreateParams
