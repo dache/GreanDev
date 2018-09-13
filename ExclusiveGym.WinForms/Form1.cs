@@ -42,12 +42,12 @@ namespace ExclusiveGym.WinForms
         {
             InitialAxZkfp();
 
-            var m = new Member();
-            m.CreateDate = DateTime.Now;
-            m.BirthDate = DateTime.Now;
+            //var m = new Member();
+            //m.CreateDate = DateTime.Now;
+            //m.BirthDate = DateTime.Now;
             
-            var db = new ExclusiveGymContext();
-            db.Members.Add(m);
+            //var db = new ExclusiveGymContext();
+            //db.Members.Add(m);
         }
 
         private void InitialAxZkfp()
