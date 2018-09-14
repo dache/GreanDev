@@ -10,7 +10,7 @@ class StorageManager
     private static StorageManager m_singleton;
 
     private ExclusiveGymContext m_gymDB;
-    
+
     public static StorageManager GetSingleton()
     {
         if (m_singleton == null)
@@ -23,7 +23,7 @@ class StorageManager
         m_gymDB = new ExclusiveGymContext();
     }
 
-    private  void  SaveDB()
+    private void SaveDB()
     {
         GetDB().SaveChanges();
     }
@@ -31,7 +31,7 @@ class StorageManager
     {
         return m_gymDB;
     }
-    
+
     public void AddMember(Member m)
     {
         GetDB().Members.Add(m);
@@ -46,6 +46,24 @@ class StorageManager
     public List<Course> GetCourseList()
     {
         return GetDB().Courses.Select(x => x).ToList();
+    }
+
+    public List<Course> GetAllCourses()
+    {
+        var courses = GetDB().Courses.ToList();
+        if (courses.Count == 0)
+        {            
+            var course = new Course() { CourseID = 1, CourseName = "รายวัน", TotalDay = 1, CoursePrice = 100, CourseType = COURSETYPE.DAILY, CreateDate = DateTime.Now };
+            GetDB().Courses.Add(course);
+            course = new Course() { CourseID = 2, CourseName = "3 เดือน", TotalDay = 1, CoursePrice = 300, CourseType = COURSETYPE.MONTLY, CreateDate = DateTime.Now };
+            GetDB().Courses.Add(course);
+            course = new Course() { CourseID = 3, CourseName = "6 เดือน", TotalDay = 1, CoursePrice = 600, CourseType = COURSETYPE.MONTLY, CreateDate = DateTime.Now };
+            GetDB().Courses.Add(course);
+            course = new Course() { CourseID = 4, CourseName = "12 เดือน", TotalDay = 1, CoursePrice = 1000, CourseType = COURSETYPE.MONTLY, CreateDate = DateTime.Now };
+            GetDB().Courses.Add(course);
+            GetDB().SaveChanges();
+        }
+        return GetDB().Courses.ToList();
     }
 
     public List<AccessLog> GetAccessLogList()
@@ -85,13 +103,13 @@ class StorageManager
         acl.CourseID = course.CourseID;
         acl.CoursePrice = course.CoursePrice;
         GetDB().ApplyCourseLog.Add(acl);
-        
+
         member.ExpireDate = member.ExpireDate.Value.AddDays(course.TotalDay);
         GetDB().Entry(member).State = System.Data.Entity.EntityState.Modified;
-        
+
 
         MemberApplyCourse mac = GetMemberApplyCourseByMemberID(member.MemberId);
-        if(mac == null)
+        if (mac == null)
         {
             mac = new MemberApplyCourse();
             mac.CourseID = course.CourseID;

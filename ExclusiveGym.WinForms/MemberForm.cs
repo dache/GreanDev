@@ -20,10 +20,19 @@ namespace ExclusiveGym.WinForms
 
         private AxZKFPEngX m_zkFprint;
 
+        public Member Member { get; set; }
+
         public MemberForm()
         {
             InitializeComponent();            
             SetStyle(ControlStyles.Opaque, true);            
+        }
+
+        public MemberForm(Member member)
+        {            
+            InitializeComponent();
+            this.Member = member;
+            lblHeader.Text = "ดู/แก้ไข ข้อมูลสมาชิก";
         }
 
         private async void MemberForm_Load(object sender, EventArgs e)

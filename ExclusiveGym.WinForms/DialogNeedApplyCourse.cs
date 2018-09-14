@@ -20,13 +20,50 @@ namespace ExclusiveGym.WinForms
 
         public DialogNeedApplyCourse(Member member, FinishCallback callback)
         {
-            
+
             m_finishCallback = callback;
             m_currentMemberWillApply = member;
             InitializeComponent();
             SetStyle(ControlStyles.Opaque, true);
             label1.Text = $"Hello : {member.Name + " " + member.LastName}";
             SetStyle(ControlStyles.Opaque, true);
+
+            // create button course
+            var courses = StorageManager.GetSingleton().GetAllCourses().ToList();
+            foreach (var course in courses)
+            {
+                Panel panel = new Panel() { Width = 300, Height = 80, BorderStyle = BorderStyle.FixedSingle };
+                Label lblName = new Label()
+                {
+                    Text = course.CourseName,
+                    Location = new Point(5, 5),
+                    Font = new Font(new FontFamily("Prompt"), 14),
+                    ForeColor = Color.DimGray
+                };
+                panel.Controls.Add(lblName);
+                Button btn = new Button()
+                {
+                    Text = "สมัคร",
+                    Width = 80,
+                    Height = 30,
+                    FlatStyle = FlatStyle.Flat,
+                    Location = new Point(215, 5),
+                    BackColor = Color.FromArgb(27, 158, 224),
+                    ForeColor = Color.White,
+                    Font = new Font(new FontFamily("Prompt"), 11)                    
+                };
+                panel.Controls.Add(btn);
+                Label lblPrice = new Label()
+                {
+                    Text = course.CoursePrice.ToString(),
+                    Location = new Point(5, 34),
+                    Font = new Font(new FontFamily("Prompt"), 20),
+                    ForeColor = Color.YellowGreen,
+                    Height = 40
+                };
+                panel.Controls.Add(lblPrice);
+                courseFlowLayout.Controls.Add(panel);
+            }
         }
 
         private void Daily_Click(object sender, EventArgs e)
@@ -62,5 +99,7 @@ namespace ExclusiveGym.WinForms
             }
             base.OnPaint(e);
         }
+
+
     }
 }
