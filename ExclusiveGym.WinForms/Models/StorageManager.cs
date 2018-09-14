@@ -157,4 +157,13 @@ class StorageManager
 
         SaveDB();
     }
+    public void GetIncomeToday()
+    {
+
+    }
+
+    public void GetMemberAccessGymToday()
+    {
+
+    }
 }

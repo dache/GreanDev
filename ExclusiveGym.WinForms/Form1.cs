@@ -126,6 +126,16 @@ namespace ExclusiveGym.WinForms
                 {
                     var welcomeForm = new WelcomeDialogForm(currentMember);
                     welcomeForm.ShowDialog();
+                    MemberApplyCourse memberApplyCourse = StorageManager.GetSingleton().GetMemberApplyCourseByMemberID(currentMember.MemberId);
+                    Course course = StorageManager.GetSingleton().GetCourseByID(memberApplyCourse.CourseID);
+                    if (course.CourseType == COURSETYPE.DAILY)
+                    {
+                        // display data to gridview type daily
+                    }
+                    else
+                    {
+                       // display data to gridview type monthly
+                    }
                 }
             }
 

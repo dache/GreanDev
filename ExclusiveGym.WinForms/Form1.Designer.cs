@@ -42,6 +42,15 @@
             this.btnSlideMenu = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.DailyListview = new System.Windows.Forms.ListView();
+            this.memberName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.accessTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DailyLabel = new System.Windows.Forms.Label();
+            this.MonthlyListview = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Monthlylabel = new System.Windows.Forms.Label();
+            this.IncomeToday = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).BeginInit();
@@ -239,11 +248,83 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // DailyListview
+            // 
+            this.DailyListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.memberName,
+            this.accessTime});
+            this.DailyListview.Location = new System.Drawing.Point(655, 214);
+            this.DailyListview.Name = "DailyListview";
+            this.DailyListview.Size = new System.Drawing.Size(294, 360);
+            this.DailyListview.TabIndex = 2;
+            this.DailyListview.UseCompatibleStateImageBehavior = false;
+            this.DailyListview.View = System.Windows.Forms.View.Details;
+            // 
+            // memberName
+            // 
+            this.memberName.Text = "Name";
+            // 
+            // accessTime
+            // 
+            this.accessTime.Text = "Time";
+            // 
+            // DailyLabel
+            // 
+            this.DailyLabel.AutoSize = true;
+            this.DailyLabel.Location = new System.Drawing.Point(908, 181);
+            this.DailyLabel.Name = "DailyLabel";
+            this.DailyLabel.Size = new System.Drawing.Size(30, 13);
+            this.DailyLabel.TabIndex = 3;
+            this.DailyLabel.Text = "Daily";
+            // 
+            // MonthlyListview
+            // 
+            this.MonthlyListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.MonthlyListview.Location = new System.Drawing.Point(237, 214);
+            this.MonthlyListview.Name = "MonthlyListview";
+            this.MonthlyListview.Size = new System.Drawing.Size(272, 360);
+            this.MonthlyListview.TabIndex = 4;
+            this.MonthlyListview.UseCompatibleStateImageBehavior = false;
+            this.MonthlyListview.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Time";
+            // 
+            // Monthlylabel
+            // 
+            this.Monthlylabel.AutoSize = true;
+            this.Monthlylabel.Location = new System.Drawing.Point(234, 181);
+            this.Monthlylabel.Name = "Monthlylabel";
+            this.Monthlylabel.Size = new System.Drawing.Size(44, 13);
+            this.Monthlylabel.TabIndex = 5;
+            this.Monthlylabel.Text = "Monthly";
+            // 
+            // IncomeToday
+            // 
+            this.IncomeToday.AutoSize = true;
+            this.IncomeToday.Location = new System.Drawing.Point(750, 79);
+            this.IncomeToday.Name = "IncomeToday";
+            this.IncomeToday.Size = new System.Drawing.Size(45, 13);
+            this.IncomeToday.TabIndex = 6;
+            this.IncomeToday.Text = "Income ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.IncomeToday);
+            this.Controls.Add(this.Monthlylabel);
+            this.Controls.Add(this.MonthlyListview);
+            this.Controls.Add(this.DailyLabel);
+            this.Controls.Add(this.DailyListview);
             this.Controls.Add(this.TitleBarPanel);
             this.Controls.Add(this.MenuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -256,6 +337,7 @@
             this.TitleBarPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -274,6 +356,15 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox btnSlideMenu;
+        private System.Windows.Forms.ListView DailyListview;
+        private System.Windows.Forms.ColumnHeader memberName;
+        private System.Windows.Forms.ColumnHeader accessTime;
+        private System.Windows.Forms.Label DailyLabel;
+        private System.Windows.Forms.ListView MonthlyListview;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Label Monthlylabel;
+        private System.Windows.Forms.Label IncomeToday;
     }
 }
 
