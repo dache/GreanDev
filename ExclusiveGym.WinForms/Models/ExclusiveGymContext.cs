@@ -11,7 +11,7 @@ namespace ExclusiveGym.WinForms.Models
     {
         public ExclusiveGymContext() : base("ExclusiveGymDB")
         {
-
+            Database.CreateIfNotExists();
         }
 
         public DbSet<Member> Members { get; set; }

@@ -44,11 +44,11 @@ namespace ExclusiveGym.WinForms
             base.OnPaint(e);
         }
 
-        private void FingerPrintForm_Load(object sender, EventArgs e)
+        private async void FingerPrintForm_Load(object sender, EventArgs e)
         {
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
 
-            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            await FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
             //Console.WriteLine();
             // m_zkFprint.BeginCapture();
             // m_zkFprint.CancelEnroll();
@@ -90,13 +90,13 @@ namespace ExclusiveGym.WinForms
             ShowMessage(strTemp);
         }
 
-        private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
+        private async void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
             Console.WriteLine("zkFprint_OnEnroll 2");
             if (e.actionResult)
             {
                 string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
-                FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+                await FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
                 m_fingerPrintCallback(template);
 
                 this.Close();

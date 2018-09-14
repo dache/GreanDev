@@ -26,8 +26,6 @@ namespace ExclusiveGym.WinForms.Models
         public int MemberId { get; set; }
         public int CourseID { get; set; }
         public DateTime ApplyDate { get; set; }
-        
-        public Member Member { get; set; }
     }
 
     public enum COURSETYPE

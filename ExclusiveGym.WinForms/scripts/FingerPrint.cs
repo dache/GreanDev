@@ -34,7 +34,7 @@ public class FingerPrint
         return m_zkFprint;
     }
 
-    public void SetupFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls
+    public async Task SetupFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls
         , IZKFPEngXEvents_OnFeatureInfoEventHandler OnFeatureInfo,
         IZKFPEngXEvents_OnImageReceivedEventHandler OnImageReceived,
         IZKFPEngXEvents_OnEnrollEventHandler OnEnroll,
@@ -48,7 +48,7 @@ public class FingerPrint
         m_zkFprint.BeginCapture();
     }
 
-    public void RemoveFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls
+    public async Task RemoveFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls
         , IZKFPEngXEvents_OnFeatureInfoEventHandler OnFeatureInfo,
         IZKFPEngXEvents_OnImageReceivedEventHandler OnImageReceived,
         IZKFPEngXEvents_OnEnrollEventHandler OnEnroll,

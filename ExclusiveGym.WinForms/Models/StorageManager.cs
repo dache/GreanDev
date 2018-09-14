@@ -23,6 +23,10 @@ class StorageManager
         m_gymDB = new ExclusiveGymContext();
     }
 
+    private  void  SaveDB()
+    {
+        GetDB().SaveChanges();
+    }
     public ExclusiveGymContext GetDB()
     {
         return m_gymDB;
@@ -31,7 +35,7 @@ class StorageManager
     public void AddMember(Member m)
     {
         GetDB().Members.Add(m);
-        GetDB().SaveChanges();
+        SaveDB();
     }
 
     public List<Member> GetMemberList()
@@ -81,7 +85,7 @@ class StorageManager
         acl.CourseID = course.CourseID;
         acl.CoursePrice = course.CoursePrice;
         GetDB().ApplyCourseLog.Add(acl);
-
+        
         member.ExpireDate = member.ExpireDate.Value.AddDays(course.TotalDay);
         GetDB().Entry(member).State = System.Data.Entity.EntityState.Modified;
         
@@ -102,7 +106,7 @@ class StorageManager
             mac.MemberId = member.MemberId;
             GetDB().Entry(mac).State = System.Data.Entity.EntityState.Modified;
         }
-        GetDB().SaveChanges();
+        SaveDB();
     }
 
     public void MemberAccessGym(Member member)
@@ -114,7 +118,7 @@ class StorageManager
         accessLog.AccessType = course.CourseType;
         accessLog.MemberID = member.MemberId;
         GetDB().AccessLog.Add(accessLog);
-        GetDB().SaveChanges();
+        SaveDB();
     }
     public void CreateSampleMember()
     {
@@ -151,6 +155,6 @@ class StorageManager
 
         GetDB().Courses.Add(monthlyCourse);
 
-        GetDB().SaveChanges();
+        SaveDB();
     }
 }

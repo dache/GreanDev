@@ -79,9 +79,9 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private void SetupFingerprint()
+        private async void SetupFingerprint()
         {
-            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            await FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
         
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
@@ -189,9 +189,9 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private void OpenMemberForm()
+        private async void OpenMemberForm()
         {
-            FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            await FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
             var memberForm = new MemberForm();
             memberForm.m_registryiSdone = SetupFingerprint;
             memberForm.ShowDialog();
@@ -213,7 +213,8 @@ namespace ExclusiveGym.WinForms
         private void button2_Click_1(object sender, EventArgs e)
         {
             //case 1
-            DisplayNeedRegistryForm();
+             DisplayNeedRegistryForm();
+            //SampleData();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
