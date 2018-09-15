@@ -24,12 +24,16 @@ namespace ExclusiveGym.WinForms
 
         public MemberForm()
         {
-            InitializeComponent();            
-            SetStyle(ControlStyles.Opaque, true);            
+            InitializeComponent();
+            SetStyle(ControlStyles.Opaque, true);
+            lblMemberCourse.Visible = false;
+            lblCourse.Visible = false;
+            // new Member
+            this.Member = new Member();
         }
 
         public MemberForm(Member member)
-        {            
+        {
             InitializeComponent();
             this.Member = member;
             lblHeader.Text = "ดู/แก้ไข ข้อมูลสมาชิก";
@@ -38,7 +42,7 @@ namespace ExclusiveGym.WinForms
         private async void MemberForm_Load(object sender, EventArgs e)
         {
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
-           await FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            await FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
 
         private async void CloseForm()
@@ -54,36 +58,52 @@ namespace ExclusiveGym.WinForms
             CloseForm();
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
-                return cp;
-            }
-        }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            using (var brush = new SolidBrush(Color.FromArgb(50 * 255 / 100, this.BackColor)))
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }            
-            base.OnPaint(e);
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var newMember = new Member();
-            newMember.Name = txtName.Text;
-            newMember.LastName = txtLastName.Text;
-            newMember.CreateDate = DateTime.Now;
-            newMember.BirthDate = DateTime.Now;
-            newMember.FingerPrint = lblFingerPrint.Text;
+            if (isFromValid())
+            {
+                this.Member.Name = txtName.Text;
+                this.Member.LastName = txtLastName.Text;
+                this.Member.ThaiId = txtThaiId.Text;
+                this.Member.BirthDate = DateTime.Now;
+                this.Member.Age = Convert.ToInt32(txtAge.Text);
+                this.Member.FingerPrint = lblFingerPrint.Text;
+                this.Member.Gender = (chkMale.Checked) ? enumGender.Male : enumGender.Female;
+                this.Member.HouseNumber = txtHouseNumber.Text;
+                this.Member.VillageNumber = txtVillageNumber.Text;
+                this.Member.VillageName = txtVillageName.Text;
+                this.Member.Lane = txtLane.Text;
+                this.Member.Road = txtRoad.Text;
+                this.Member.SubDistrict = txtSubDistrict.Text;
+                this.Member.District = txtDistrict.Text;
+                this.Member.Province = txtProvince.Text;
+                this.Member.PostCode = txtPostCode.Text;
+                this.Member.PhoneNumber = txtPhoneNumber.Text;
+                this.Member.Email = txtEmail.Text;
+                this.Member.CreateDate = DateTime.Now;
+                this.Member.IsActive = true;
+                this.Member.Problems = GetMedicalProblem();
 
-            StorageManager.GetSingleton().AddMember(newMember);
-            CloseForm();
+                StorageManager.GetSingleton().AddMember(this.Member);
+                CloseForm();
+            }
+        }
+
+        private bool isFromValid()
+        {
+            if (txtAge.Text == "")
+            {
+                MessageBox.Show("กรุณาเลือกวันเกิด");
+                return false;
+            }
+            if(!chkMale.Checked && !chkFemale.Checked)
+            {
+                MessageBox.Show("กรุณาเลือกเพศ");
+                return false;
+            }
+            return true;
         }
 
         public async void ReceiveFingerPrint(string fingerPrint)
@@ -119,52 +139,98 @@ namespace ExclusiveGym.WinForms
         }
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
-            Console.WriteLine("zkFprint_OnImageReceived 2");
-            //Graphics g = fingerPicture.CreateGraphics();
-            //Bitmap bmp = new Bitmap(fingerPicture.Width, fingerPicture.Height);
-            //g = Graphics.FromImage(bmp);
-            //int dc = g.GetHdc().ToInt32();
-            //m_zkFprint.PrintImageAt(dc, 0, 0, bmp.Width, bmp.Height);
-            //g.Dispose();
-            //fingerPicture.Image = bmp;
+            Console.WriteLine("zkFprint_OnImageReceived 2");            
         }
 
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
-            Console.WriteLine("zkFprint_OnFeatureInfo 2");
-            //String strTemp = string.Empty;
-            //if (m_zkFprint.EnrollIndex != 1)
-            //{
-            //    if (m_zkFprint.IsRegister)
-            //    {
-            //        if (m_zkFprint.EnrollIndex - 1 > 0)
-            //        {
-            //            int eindex = m_zkFprint.EnrollIndex - 1;
-            //            strTemp = "Please scan again ..." + eindex;
-            //        }
-            //    }
-            //}
-            //ShowMessage(strTemp);
+            Console.WriteLine("zkFprint_OnFeatureInfo 2");            
         }
 
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
-            Console.WriteLine("zkFprint_OnEnroll 2");
-            //if (e.actionResult)
-            //{
-            //    string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
-            //    FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
-            //    m_fingerPrintCallback(template);
-
-            //    this.Close();
-            //}
-            //else
-            //{
-            //    ShowMessage("Error, please register again.");
-
-            //}
+            Console.WriteLine("zkFprint_OnEnroll 2");           
         }
 
-        
+        #region BG Tranparent
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
+                return cp;
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            using (var brush = new SolidBrush(Color.FromArgb(50 * 255 / 100, this.BackColor)))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+            base.OnPaint(e);
+        }
+        #endregion
+
+        private List<MedicalProblem> GetMedicalProblem()
+        {
+            var mp = new List<MedicalProblem>();
+            foreach (CheckBox c in problemPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
+            {
+                var problem = new MedicalProblem();
+                problem.MedicalID = Convert.ToInt32(c.Name.ToString().Replace("chk", ""));
+                problem.ProblemName = c.Text;
+                problem.MemberId = this.Member.MemberId;
+                problem.Member = this.Member;
+                mp.Add(problem);
+            }
+            return mp;
+        }
+
+        private void chkNoProblem_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (CheckBox c in problemPanel.Controls.OfType<CheckBox>().ToList())
+            {
+                if (c != chkNoProblem)
+                {
+                    if (chkNoProblem.Checked)
+                    {
+                        c.Enabled = false;
+                        c.Checked = false;
+                    }
+                    else
+                    {
+                        c.Enabled = true;
+                    }
+                }
+            }
+        }
+
+        private void datePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime zeroTime = new DateTime(1, 1, 1);
+            DateTime toDay = DateTime.Now;
+            TimeSpan span = (toDay - datePicker.Value);           
+            int years = (zeroTime + span).Year - 1;
+            txtAge.Text = years.ToString();
+        }
+
+        private void chkGender_CheckedChanged(object sender,EventArgs e)
+        {
+            CheckBox currentChk = (CheckBox)sender;
+            if (currentChk.Checked)
+            {
+                if (currentChk == chkMale)
+                {
+                    chkFemale.Checked = false;
+                }
+                else
+                {
+                    chkMale.Checked = false;
+                }
+            }
+            
+        }
     }
 }

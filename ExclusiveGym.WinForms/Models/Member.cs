@@ -20,6 +20,7 @@ namespace ExclusiveGym.WinForms.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
+        public int Age { get; set; }
         public enumGender Gender { get; set; }
         public string ThaiId { get; set; }
         public string HouseNumber { get; set; }
@@ -55,5 +56,16 @@ namespace ExclusiveGym.WinForms.Models
     {
         Male = 1,
         Female = 2
+    }
+
+    public enum enumProblem
+    {
+        NoProblem,
+        Heart,
+        HighBlood,
+        Asthma, // หอบหืด
+        AchesAndPains,
+        Diabetes, // เบาหวาน
+        Other
     }
 }

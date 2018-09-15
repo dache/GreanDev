@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AxZKFPEngXControl;
 using ExclusiveGym.WinForms.Models;
-
+using ExclusiveGym.WinForms.CustomControls;
 
 
 namespace ExclusiveGym.WinForms
@@ -42,7 +42,7 @@ namespace ExclusiveGym.WinForms
 
             // Custom Move title bar 
             Application.AddMessageFilter(this);
-            controlsToMove.Add(this.TitleBarPanel);
+            controlsToMove.Add(this.TitleBarPanel);            
         }
 
         private void Form1_Load(object sender, EventArgs e)

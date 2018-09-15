@@ -86,6 +86,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\OpacityBGForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\OpacityBGForm.Designer.cs">
+      <DependentUpon>OpacityBGForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\TransparentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     <Compile Include="WelcomeDialogForm.Designer.cs">
       <DependentUpon>WelcomeDialogForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomControls\OpacityBGForm.resx">
+      <DependentUpon>OpacityBGForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogForm.resx">
       <DependentUpon>DialogForm.cs</DependentUpon>
     </EmbeddedResource>
