@@ -32,7 +32,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label29 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label62 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblIncome = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,7 +76,6 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.label62);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.lblIncome);
             this.panel4.Controls.Add(this.label8);
@@ -85,16 +83,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(434, 115);
             this.panel4.TabIndex = 13;
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("Prompt", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(3, 6);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(78, 97);
-            this.label62.TabIndex = 3;
-            this.label62.Text = "$";
             // 
             // label6
             // 
@@ -110,16 +98,15 @@
             // 
             // lblIncome
             // 
-            this.lblIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIncome.AutoSize = true;
             this.lblIncome.Font = new System.Drawing.Font("Prompt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncome.ForeColor = System.Drawing.Color.LightPink;
             this.lblIncome.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblIncome.Location = new System.Drawing.Point(74, 40);
+            this.lblIncome.Location = new System.Drawing.Point(268, 36);
             this.lblIncome.Name = "lblIncome";
-            this.lblIncome.Size = new System.Drawing.Size(288, 72);
+            this.lblIncome.Size = new System.Drawing.Size(62, 72);
             this.lblIncome.TabIndex = 1;
-            this.lblIncome.Text = "12,000,000";
+            this.lblIncome.Text = "0";
             this.lblIncome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
@@ -219,7 +206,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label62;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblIncome;
         private System.Windows.Forms.Label label8;
