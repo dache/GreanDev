@@ -327,13 +327,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Name = "HomeControl";
-            this.Size = new System.Drawing.Size(796, 577);
+            this.Size = new System.Drawing.Size(800, 580);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -25,12 +25,26 @@ namespace ExclusiveGym.WinForms.UserControls
 
             gvMembers.DataSource = members;
 
-            //gvMembers.Columns[3].Visible = false;
-            gvMembers.Columns[4].Visible = false;
+            gvMembers.Columns[0].Visible = false;
+            gvMembers.Columns[3].Visible = false;
             gvMembers.Columns[5].Visible = false;
+            gvMembers.Columns[6].Visible = false;
             gvMembers.Columns[7].Visible = false;
+            gvMembers.Columns[8].Visible = false;
+            gvMembers.Columns[9].Visible = false;
+            gvMembers.Columns[10].Visible = false;
+            gvMembers.Columns[11].Visible = false;
+            gvMembers.Columns[12].Visible = false;
+            gvMembers.Columns[13].Visible = false;
+            gvMembers.Columns[14].Visible = false;
+            gvMembers.Columns[15].Visible = false;
+            gvMembers.Columns[16].Visible = false;
+            gvMembers.Columns[17].Visible = false;
+            gvMembers.Columns[18].Visible = false;
+            gvMembers.Columns[20].Visible = false;
+            gvMembers.Columns[21].Visible = false;
 
-     
+
             //foreach (DataGridViewRow row in gvMembers.Rows)
             //{
             //    Member member = (Member)row.DataBoundItem;
@@ -40,7 +54,7 @@ namespace ExclusiveGym.WinForms.UserControls
             //    }else if(member.MemberType == enumMemberType.Month)
             //    {
             //        row.Cells[0].Style.BackColor = Color.Blue;
-                   
+
             //    }
             //    else
             //    {
@@ -49,7 +63,7 @@ namespace ExclusiveGym.WinForms.UserControls
             //    row.DefaultCellStyle.BackColor = Color.Red;
             //}
             //gvMembers.Rows[2].Cells[2].Style.BackColor = Color.Red;
-            
+
         }
 
         private void txtMemberSearch_Enter(object sender, EventArgs e)
@@ -76,7 +90,21 @@ namespace ExclusiveGym.WinForms.UserControls
             memberForm.ShowDialog();
         }
 
+        private void txtMemberSearch_TextChanged(object sender, EventArgs e)
+        {
+            List<Member> members = StorageManager.GetSingleton().GetMemberList();
 
+            var name = txtMemberSearch.Text.Trim();
+            if(name == "" || name == "ค้นหาจาก ชื่อหรือนามสกุล")
+            {
+                gvMembers.DataSource = members;
+            }
+            else
+            {
+                gvMembers.DataSource = members.Where(f => f.Name.StartsWith(name)).ToList();
+            }
+            
+        }
     }
    
 }
