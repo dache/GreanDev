@@ -232,6 +232,16 @@ namespace ExclusiveGym.WinForms
             welcomeForm.ShowDialog();
         }
 
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            var member = StorageManager.GetSingleton().GetMemberByID(2);
+            var dialogForm = new DialogForm("Exclusive Gym", $"คุณ {member.Name} {member.LastName} \r\nยังไม่ได้สมัครคอร์ส ต้องการสมัครคอร์สหรือไม่");
+            if (dialogForm.ShowDialog() == DialogResult.OK)
+            {
+                var DialogNeedApplyCourse = new DialogNeedApplyCourse(member, ApplyCourseCallback);
+                DialogNeedApplyCourse.ShowDialog();
+            }
+        }
     }
 
 

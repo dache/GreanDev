@@ -38,6 +38,11 @@ class StorageManager
         SaveDB();
     }
 
+    public Member GetMemeberById(int memberId)
+    {
+        return GetDB().Members.Where(f => f.MemberId == memberId).SingleOrDefault();
+    }
+
     public List<Member> GetMemberList()
     {
         return GetDB().Members.Select(x => x).ToList();

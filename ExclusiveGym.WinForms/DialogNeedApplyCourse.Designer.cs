@@ -58,7 +58,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(157, 104);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(691, 438);
+            this.panel1.Size = new System.Drawing.Size(700, 438);
             this.panel1.TabIndex = 4;
             // 
             // courseFlowLayout
@@ -90,14 +90,15 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSave.Location = new System.Drawing.Point(359, 393);
+            this.btnSave.Location = new System.Drawing.Point(350, 393);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnSave.Size = new System.Drawing.Size(370, 45);
+            this.btnSave.Size = new System.Drawing.Size(350, 45);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "บันทึก";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -108,14 +109,15 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(213)))), ((int)(((byte)(212)))));
-            this.btnCancel.Location = new System.Drawing.Point(-11, 393);
+            this.btnCancel.Location = new System.Drawing.Point(0, 393);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCancel.Size = new System.Drawing.Size(370, 45);
+            this.btnCancel.Size = new System.Drawing.Size(350, 45);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "ยกเลิก";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // DialogNeedApplyCourse
             // 

@@ -93,17 +93,16 @@ namespace ExclusiveGym.WinForms
             CheckBox chk = (CheckBox)sender;
             if (chk.Checked)
             {
+                foreach (Panel panel in chk.Parent.Parent.Controls)
+                {
+                    CheckBox c = panel.Controls.OfType<CheckBox>().SingleOrDefault();
+                    if (c != chk) c.Checked = false;
+                }
                 chk.Parent.BackColor = Color.Red;
             }
             else
             {
                 chk.Parent.BackColor = Color.White;
-            }
-
-            foreach(Panel panel in chk.Parent.Parent.Controls)
-            {
-                CheckBox c = panel.Controls.OfType<CheckBox>().SingleOrDefault();
-                c.Checked = false;
             }
         }
 
@@ -126,8 +125,18 @@ namespace ExclusiveGym.WinForms
             }
             base.OnPaint(e);
         }
+
         #endregion
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            // Apply Course
+        }
     }
 }
