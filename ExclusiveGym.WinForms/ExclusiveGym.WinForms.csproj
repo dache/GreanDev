@@ -226,6 +226,24 @@
     <EmbeddedResource Include="WelcomeDialogForm.resx">
       <DependentUpon>WelcomeDialogForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Fonts\Prompt-Black.ttf" />
+    <None Include="Fonts\Prompt-BlackItalic.ttf" />
+    <None Include="Fonts\Prompt-Bold.ttf" />
+    <None Include="Fonts\Prompt-BoldItalic.ttf" />
+    <None Include="Fonts\Prompt-ExtraBold.ttf" />
+    <None Include="Fonts\Prompt-ExtraBoldItalic.ttf" />
+    <None Include="Fonts\Prompt-ExtraLight.ttf" />
+    <None Include="Fonts\Prompt-ExtraLightItalic.ttf" />
+    <None Include="Fonts\Prompt-Italic.ttf" />
+    <None Include="Fonts\Prompt-Light.ttf" />
+    <None Include="Fonts\Prompt-LightItalic.ttf" />
+    <None Include="Fonts\Prompt-Medium.ttf" />
+    <None Include="Fonts\Prompt-MediumItalic.ttf" />
+    <None Include="Fonts\Prompt-Regular.ttf" />
+    <None Include="Fonts\Prompt-SemiBold.ttf" />
+    <None Include="Fonts\Prompt-SemiBoldItalic.ttf" />
+    <None Include="Fonts\Prompt-Thin.ttf" />
+    <None Include="Fonts\Prompt-ThinItalic.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
