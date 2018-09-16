@@ -87,6 +87,7 @@
             this.gvMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvMembers.Size = new System.Drawing.Size(767, 387);
             this.gvMembers.TabIndex = 0;
+            this.gvMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMembers_CellClick);
             // 
             // panel1
             // 
