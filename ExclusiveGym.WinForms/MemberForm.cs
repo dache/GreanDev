@@ -30,6 +30,9 @@ namespace ExclusiveGym.WinForms
             lblCourse.Visible = false;
             // new Member
             this.Member = new Member();
+
+            // 
+            btnSave.BringToFront();
         }
 
         public MemberForm(Member member)
@@ -37,6 +40,50 @@ namespace ExclusiveGym.WinForms
             InitializeComponent();
             this.Member = member;
             lblHeader.Text = "ดู/แก้ไข ข้อมูลสมาชิก";
+            InitMember();
+
+            btnEdit.BringToFront();
+        }
+
+        private void InitMember()
+        {
+            // Detail
+            txtName.Text = this.Member.Name;
+            txtLastName.Text = this.Member.LastName;
+            txtThaiId.Text = this.Member.ThaiId;
+            datePicker.Value = this.Member.BirthDate;
+            txtAge.Text = this.Member.Age.ToString();
+            lblFingerPrint.Text = this.Member.FingerPrint;
+
+            chkMale.Checked = (this.Member.Gender == enumGender.Male);
+            chkFemale.Checked = (this.Member.Gender == enumGender.Female);
+
+            txtHouseNumber.Text = this.Member.HouseNumber;
+            txtVillageNumber.Text = this.Member.VillageNumber;
+            txtVillageName.Text = this.Member.VillageName;
+            txtLane.Text = this.Member.Lane;
+            txtRoad.Text = this.Member.Road;
+            txtSubDistrict.Text = this.Member.SubDistrict;
+            txtDistrict.Text = this.Member.District;
+            txtProvince.Text = this.Member.Province;
+            txtPostCode.Text = this.Member.PostCode;
+            txtPhoneNumber.Text = this.Member.PhoneNumber;
+            txtEmail.Text = this.Member.Email;
+
+            foreach(var problem in StorageManager.GetSingleton().GetMedicalProblemsByMemberId(this.Member.MemberId))
+            {               
+                var chk = problemPanel.Controls.OfType<CheckBox>().Where(f => f.Text == problem.ProblemName).SingleOrDefault();
+                chk.Checked = true;
+            }
+            //
+            foreach (var memberKnow in StorageManager.GetSingleton().GetMemberKnowsByMemberId(this.Member.MemberId))
+            {
+                var chk = memberKnowPanel.Controls.OfType<CheckBox>().Where(f => f.Name.ToString().Replace("chkKnow", "") == memberKnow.MemberKnowFrom.ToString("D")).SingleOrDefault();
+                chk.Checked = true;
+            }           
+
+            // Member Course
+            //lblCourse.Text = "";
         }
 
         private async void MemberForm_Load(object sender, EventArgs e)
@@ -97,7 +144,7 @@ namespace ExclusiveGym.WinForms
             var mk = new List<MemberKnow>();
             foreach (CheckBox c in memberKnowPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
             {
-                var mem = new MemberKnow();                
+                var mem = new MemberKnow();
                 mem.MemberKnowFrom = (enumMemberKnow)Enum.Parse(typeof(enumMemberKnow), c.Name.ToString().Replace("chkKnow", "")); //Convert.ToInt32();
                 mem.MemberId = this.Member.MemberId;
                 mem.Member = this.Member;
@@ -113,12 +160,12 @@ namespace ExclusiveGym.WinForms
                 MessageBox.Show("กรุณาเลือกวันเกิด");
                 return false;
             }
-            if(!chkMale.Checked && !chkFemale.Checked)
+            if (!chkMale.Checked && !chkFemale.Checked)
             {
                 MessageBox.Show("กรุณาเลือกเพศ");
                 return false;
             }
-            if(lblFingerPrint.Text == "")
+            if (lblFingerPrint.Text == "")
             {
                 MessageBox.Show("กรุณาเก็บลายนิ้วมือ");
                 return false;
@@ -159,17 +206,17 @@ namespace ExclusiveGym.WinForms
         }
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
-            Console.WriteLine("zkFprint_OnImageReceived 2");            
+            Console.WriteLine("zkFprint_OnImageReceived 2");
         }
 
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
-            Console.WriteLine("zkFprint_OnFeatureInfo 2");            
+            Console.WriteLine("zkFprint_OnFeatureInfo 2");
         }
 
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
-            Console.WriteLine("zkFprint_OnEnroll 2");           
+            Console.WriteLine("zkFprint_OnEnroll 2");
         }
 
         #region BG Tranparent
@@ -232,12 +279,12 @@ namespace ExclusiveGym.WinForms
         {
             DateTime zeroTime = new DateTime(1, 1, 1);
             DateTime toDay = DateTime.Now;
-            TimeSpan span = (toDay - datePicker.Value);           
+            TimeSpan span = (toDay - datePicker.Value);
             int years = (zeroTime + span).Year - 1;
             txtAge.Text = years.ToString();
         }
 
-        private void chkGender_CheckedChanged(object sender,EventArgs e)
+        private void chkGender_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox currentChk = (CheckBox)sender;
             if (currentChk.Checked)
@@ -251,7 +298,19 @@ namespace ExclusiveGym.WinForms
                     chkMale.Checked = false;
                 }
             }
-            
+
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            this.Member.Name = txtName.Text;
+            this.Member.LastName = txtLastName.Text;
+            this.Member.ThaiId = txtThaiId.Text;
+            StorageManager.GetSingleton().GetDB().Entry(this.Member).State = System.Data.Entity.EntityState.Modified;
+            StorageManager.GetSingleton().SaveDB();
+
+            this.Close();
+        }
+    
     }
 }

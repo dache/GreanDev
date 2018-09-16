@@ -44,6 +44,11 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.Columns[20].Visible = false;
             gvMembers.Columns[21].Visible = false;
 
+            gvMembers.Columns[1].HeaderText = "ชื่อ";
+            gvMembers.Columns[2].HeaderText = "นามสกุล";
+            gvMembers.Columns[4].HeaderText = "อายุ";
+            gvMembers.Columns[19].HeaderText = "วันหมดอายุ";
+
 
             //foreach (DataGridViewRow row in gvMembers.Rows)
             //{
@@ -63,6 +68,49 @@ namespace ExclusiveGym.WinForms.UserControls
             //    row.DefaultCellStyle.BackColor = Color.Red;
             //}
             //gvMembers.Rows[2].Cells[2].Style.BackColor = Color.Red;
+
+            DataGridViewButtonColumn courseButton = new DataGridViewButtonColumn();
+            courseButton.Name = "courseButton";
+            courseButton.Text = "สมัครคอร์ส";        
+            courseButton.HeaderText = "";
+            courseButton.UseColumnTextForButtonValue = true;
+            if (gvMembers.Columns["courseButton"] == null)
+            {
+                gvMembers.Columns.Insert(22, courseButton);
+            }
+
+            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
+            editButton.Name = "editButton";
+            editButton.Text = "แก้ไข";
+            editButton.HeaderText = "";
+            editButton.UseColumnTextForButtonValue = true;
+            if (gvMembers.Columns["editButton"] == null)
+            {
+                gvMembers.Columns.Insert(23, editButton);
+            }
+
+        }
+
+        private void gvMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == gvMembers.Columns["editButton"].Index)
+            {
+                //Do something with your button.
+                Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                var mForm = new MemberForm(member);
+                mForm.ShowDialog();
+            }
+            if (e.ColumnIndex == gvMembers.Columns["courseButton"].Index)
+            {
+                //Do something with your button.
+                Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                var mForm = new DialogNeedApplyCourse(member, NonFunc);
+                mForm.ShowDialog();
+            }
+        }
+
+        private void NonFunc()
+        {
 
         }
 

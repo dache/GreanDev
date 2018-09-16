@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberForm));
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.memberKnowPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.chkKnow1 = new System.Windows.Forms.CheckBox();
+            this.chkKnow2 = new System.Windows.Forms.CheckBox();
+            this.chkKnow3 = new System.Windows.Forms.CheckBox();
+            this.chkKnow4 = new System.Windows.Forms.CheckBox();
             this.problemPanel = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -83,11 +89,6 @@
             this.txtThaiId = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
-            this.chkKnow4 = new System.Windows.Forms.CheckBox();
-            this.chkKnow3 = new System.Windows.Forms.CheckBox();
-            this.chkKnow2 = new System.Windows.Forms.CheckBox();
-            this.chkKnow1 = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblHeader = new System.Windows.Forms.Label();
@@ -105,8 +106,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.memberKnowPanel = new System.Windows.Forms.Panel();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
+            this.memberKnowPanel.SuspendLayout();
             this.problemPanel.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -126,7 +128,6 @@
             this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.memberKnowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -135,6 +136,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.Color.White;
+            this.mainPanel.Controls.Add(this.btnEdit);
             this.mainPanel.Controls.Add(this.memberKnowPanel);
             this.mainPanel.Controls.Add(this.problemPanel);
             this.mainPanel.Controls.Add(this.lblCourse);
@@ -185,6 +187,73 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(740, 573);
             this.mainPanel.TabIndex = 12;
+            // 
+            // memberKnowPanel
+            // 
+            this.memberKnowPanel.Controls.Add(this.label7);
+            this.memberKnowPanel.Controls.Add(this.chkKnow1);
+            this.memberKnowPanel.Controls.Add(this.chkKnow2);
+            this.memberKnowPanel.Controls.Add(this.chkKnow3);
+            this.memberKnowPanel.Controls.Add(this.chkKnow4);
+            this.memberKnowPanel.Location = new System.Drawing.Point(16, 367);
+            this.memberKnowPanel.Name = "memberKnowPanel";
+            this.memberKnowPanel.Size = new System.Drawing.Size(634, 59);
+            this.memberKnowPanel.TabIndex = 50;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.Location = new System.Drawing.Point(6, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 22);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "ท่านทราบข่าวสารจาก";
+            // 
+            // chkKnow1
+            // 
+            this.chkKnow1.AutoSize = true;
+            this.chkKnow1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow1.Location = new System.Drawing.Point(15, 30);
+            this.chkKnow1.Name = "chkKnow1";
+            this.chkKnow1.Size = new System.Drawing.Size(140, 23);
+            this.chkKnow1.TabIndex = 15;
+            this.chkKnow1.Text = "ประชาสัมพันธ์โฆษณา";
+            this.chkKnow1.UseVisualStyleBackColor = true;
+            // 
+            // chkKnow2
+            // 
+            this.chkKnow2.AutoSize = true;
+            this.chkKnow2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow2.Location = new System.Drawing.Point(161, 30);
+            this.chkKnow2.Name = "chkKnow2";
+            this.chkKnow2.Size = new System.Drawing.Size(78, 23);
+            this.chkKnow2.TabIndex = 16;
+            this.chkKnow2.Text = "Internet";
+            this.chkKnow2.UseVisualStyleBackColor = true;
+            // 
+            // chkKnow3
+            // 
+            this.chkKnow3.AutoSize = true;
+            this.chkKnow3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow3.Location = new System.Drawing.Point(245, 30);
+            this.chkKnow3.Name = "chkKnow3";
+            this.chkKnow3.Size = new System.Drawing.Size(88, 23);
+            this.chkKnow3.TabIndex = 17;
+            this.chkKnow3.Text = "Facebook";
+            this.chkKnow3.UseVisualStyleBackColor = true;
+            // 
+            // chkKnow4
+            // 
+            this.chkKnow4.AutoSize = true;
+            this.chkKnow4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow4.Location = new System.Drawing.Point(339, 30);
+            this.chkKnow4.Name = "chkKnow4";
+            this.chkKnow4.Size = new System.Drawing.Size(119, 23);
+            this.chkKnow4.TabIndex = 18;
+            this.chkKnow4.Text = "จากเพื่อนที่แนะนำ";
+            this.chkKnow4.UseVisualStyleBackColor = true;
             // 
             // problemPanel
             // 
@@ -318,9 +387,9 @@
             this.lblCourse.ForeColor = System.Drawing.Color.Salmon;
             this.lblCourse.Location = new System.Drawing.Point(153, 42);
             this.lblCourse.Name = "lblCourse";
-            this.lblCourse.Size = new System.Drawing.Size(81, 32);
+            this.lblCourse.Size = new System.Drawing.Size(175, 32);
             this.lblCourse.TabIndex = 48;
-            this.lblCourse.Text = "3 เดือน";
+            this.lblCourse.Text = "ยังไม่ได้เป็นสมาชิก";
             // 
             // lblMemberCourse
             // 
@@ -754,61 +823,6 @@
             this.datePicker.TabIndex = 28;
             this.datePicker.ValueChanged += new System.EventHandler(this.datePicker_ValueChanged);
             // 
-            // chkKnow4
-            // 
-            this.chkKnow4.AutoSize = true;
-            this.chkKnow4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow4.Location = new System.Drawing.Point(339, 30);
-            this.chkKnow4.Name = "chkKnow4";
-            this.chkKnow4.Size = new System.Drawing.Size(119, 23);
-            this.chkKnow4.TabIndex = 18;
-            this.chkKnow4.Text = "จากเพื่อนที่แนะนำ";
-            this.chkKnow4.UseVisualStyleBackColor = true;
-            // 
-            // chkKnow3
-            // 
-            this.chkKnow3.AutoSize = true;
-            this.chkKnow3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow3.Location = new System.Drawing.Point(245, 30);
-            this.chkKnow3.Name = "chkKnow3";
-            this.chkKnow3.Size = new System.Drawing.Size(88, 23);
-            this.chkKnow3.TabIndex = 17;
-            this.chkKnow3.Text = "Facebook";
-            this.chkKnow3.UseVisualStyleBackColor = true;
-            // 
-            // chkKnow2
-            // 
-            this.chkKnow2.AutoSize = true;
-            this.chkKnow2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow2.Location = new System.Drawing.Point(161, 30);
-            this.chkKnow2.Name = "chkKnow2";
-            this.chkKnow2.Size = new System.Drawing.Size(78, 23);
-            this.chkKnow2.TabIndex = 16;
-            this.chkKnow2.Text = "Internet";
-            this.chkKnow2.UseVisualStyleBackColor = true;
-            // 
-            // chkKnow1
-            // 
-            this.chkKnow1.AutoSize = true;
-            this.chkKnow1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow1.Location = new System.Drawing.Point(15, 30);
-            this.chkKnow1.Name = "chkKnow1";
-            this.chkKnow1.Size = new System.Drawing.Size(140, 23);
-            this.chkKnow1.TabIndex = 15;
-            this.chkKnow1.Text = "ประชาสัมพันธ์โฆษณา";
-            this.chkKnow1.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(6, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 22);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "ท่านทราบข่าวสารจาก";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -1005,17 +1019,24 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "วันเกิด";
             // 
-            // memberKnowPanel
+            // btnEdit
             // 
-            this.memberKnowPanel.Controls.Add(this.label7);
-            this.memberKnowPanel.Controls.Add(this.chkKnow1);
-            this.memberKnowPanel.Controls.Add(this.chkKnow2);
-            this.memberKnowPanel.Controls.Add(this.chkKnow3);
-            this.memberKnowPanel.Controls.Add(this.chkKnow4);
-            this.memberKnowPanel.Location = new System.Drawing.Point(16, 367);
-            this.memberKnowPanel.Name = "memberKnowPanel";
-            this.memberKnowPanel.Size = new System.Drawing.Size(634, 59);
-            this.memberKnowPanel.TabIndex = 50;
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(81)))), ((int)(((byte)(255)))));
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btnEdit.Location = new System.Drawing.Point(370, 528);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnEdit.Size = new System.Drawing.Size(370, 45);
+            this.btnEdit.TabIndex = 51;
+            this.btnEdit.Text = "แก้ไข";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // MemberForm
             // 
@@ -1034,6 +1055,8 @@
             this.Load += new System.EventHandler(this.MemberForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            this.memberKnowPanel.ResumeLayout(false);
+            this.memberKnowPanel.PerformLayout();
             this.problemPanel.ResumeLayout(false);
             this.problemPanel.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1070,8 +1093,6 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.memberKnowPanel.ResumeLayout(false);
-            this.memberKnowPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1155,5 +1176,6 @@
         private System.Windows.Forms.TextBox txtOtherProblem;
         private System.Windows.Forms.Panel problemPanel;
         private System.Windows.Forms.Panel memberKnowPanel;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

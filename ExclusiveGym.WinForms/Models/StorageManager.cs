@@ -23,7 +23,7 @@ class StorageManager
         m_gymDB = new ExclusiveGymContext();
     }
 
-    private void SaveDB()
+    public void SaveDB()
     {
         GetDB().SaveChanges();
     }
@@ -38,6 +38,7 @@ class StorageManager
         SaveDB();
     }
 
+    #region MEMBER
     public Member GetMemeberById(int memberId)
     {
         return GetDB().Members.Where(f => f.MemberId == memberId).SingleOrDefault();
@@ -45,9 +46,20 @@ class StorageManager
 
     public List<Member> GetMemberList()
     {
-        //if (GetDB().Members.ToList<Member>().Count == 0) return new List<Member>();
-        return GetDB().Members.Select(x => x).ToList();
+        return GetDB().Members.ToList();
     }
+
+    public List<MedicalProblem> GetMedicalProblemsByMemberId(int id)
+    {
+        return GetDB().MedicalProblems.Where(f => f.MemberId == id).ToList();
+    }
+
+    public List<MemberKnow> GetMemberKnowsByMemberId(int id)
+    {
+        return GetDB().MemberKnows.Where(f => f.MemberId == id).ToList();
+    }
+    #endregion
+
 
     public List<Course> GetCourseList()
     {
@@ -86,10 +98,6 @@ class StorageManager
     {
         return GetDB().Courses.Where(x => x.CourseID == id).FirstOrDefault();
     }
-    public Member GetMemberByID(int id)
-    {
-        return GetDB().Members.Where(x => x.MemberId == id).FirstOrDefault();
-    }
 
     public MemberApplyCourse GetMemberApplyCourseByMemberID(int id)
     {
@@ -98,7 +106,7 @@ class StorageManager
 
     public Member GetSampleMember()
     {
-        return GetMemberByID(1);
+        return GetMemeberById(1);
     }
 
     public void MemberApplyCourse(Member member, Course course)
