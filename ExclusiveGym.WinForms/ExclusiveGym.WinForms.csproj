@@ -147,6 +147,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scripts\DelegateDecare.cs" />
     <Compile Include="scripts\FingerPrint.cs" />
+    <Compile Include="UserControls\CourseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CourseControl.Designer.cs">
+      <DependentUpon>CourseControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -158,6 +164,12 @@
     </Compile>
     <Compile Include="UserControls\MemberControl.Designer.cs">
       <DependentUpon>MemberControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReportControl.Designer.cs">
+      <DependentUpon>ReportControl.cs</DependentUpon>
     </Compile>
     <Compile Include="WelcomeDialogForm.cs">
       <SubType>Form</SubType>
@@ -199,11 +211,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\CourseControl.resx">
+      <DependentUpon>CourseControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberControl.resx">
       <DependentUpon>MemberControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReportControl.resx">
+      <DependentUpon>ReportControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeDialogForm.resx">
       <DependentUpon>WelcomeDialogForm.cs</DependentUpon>

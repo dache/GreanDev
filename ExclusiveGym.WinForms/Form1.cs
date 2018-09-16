@@ -129,6 +129,11 @@ namespace ExclusiveGym.WinForms
                     m_zkFprint.EnrollCount = 3;
                     //deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
                     Console.WriteLine("Device successfully connected");
+                    lblDeviceStatus.Text = "Connected";
+                }
+                else
+                {
+                    lblDeviceStatus.Text = "Not Connected";
                 }
             }
             catch (Exception ex)
@@ -221,7 +226,7 @@ namespace ExclusiveGym.WinForms
             Button btn = (Button)sender;
             currentMenuPanel.Top = btn.Top;
 
-            
+
             if (btn == btnHomeMenu)
             {
                 homeControl1.BringToFront();
@@ -229,6 +234,14 @@ namespace ExclusiveGym.WinForms
             else if (btn == btnMemberMenu)
             {
                 memberControl1.BringToFront();
+            }
+            else if (btn == btnPromotionMenu)
+            {
+                courseControl1.BringToFront();
+            }
+            else if (btn == btnIncomeMenu)
+            {
+                reportControl1.BringToFront();
             }
         }
 
