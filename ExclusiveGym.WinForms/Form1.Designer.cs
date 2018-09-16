@@ -38,7 +38,6 @@
             this.btnMemberMenu = new System.Windows.Forms.Button();
             this.btnHomeMenu = new System.Windows.Forms.Button();
             this.TitleBarPanel = new System.Windows.Forms.Panel();
-            this.btnSlideMenu = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,7 +51,6 @@
             this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,7 +175,6 @@
             // TitleBarPanel
             // 
             this.TitleBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(155)))), ((int)(((byte)(140)))));
-            this.TitleBarPanel.Controls.Add(this.btnSlideMenu);
             this.TitleBarPanel.Controls.Add(this.btnClose);
             this.TitleBarPanel.Controls.Add(this.button1);
             this.TitleBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -185,17 +182,6 @@
             this.TitleBarPanel.Name = "TitleBarPanel";
             this.TitleBarPanel.Size = new System.Drawing.Size(795, 40);
             this.TitleBarPanel.TabIndex = 1;
-            // 
-            // btnSlideMenu
-            // 
-            this.btnSlideMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSlideMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnSlideMenu.Image")));
-            this.btnSlideMenu.Location = new System.Drawing.Point(6, 4);
-            this.btnSlideMenu.Name = "btnSlideMenu";
-            this.btnSlideMenu.Size = new System.Drawing.Size(32, 32);
-            this.btnSlideMenu.TabIndex = 10;
-            this.btnSlideMenu.TabStop = false;
-            this.btnSlideMenu.Click += new System.EventHandler(this.btnSlideMenu_Click);
             // 
             // btnClose
             // 
@@ -340,7 +326,6 @@
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
             this.TitleBarPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -360,7 +345,6 @@
         private System.Windows.Forms.Panel TitleBarPanel;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox btnSlideMenu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Label lblDate;

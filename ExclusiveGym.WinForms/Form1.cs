@@ -254,11 +254,11 @@ namespace ExclusiveGym.WinForms
         {
         }
 
-        private void btnSlideMenu_Click(object sender, EventArgs e)
-        {
-            var menuWidth = (MenuPanel.Width == 205) ? 50 : 205;
-            MenuPanel.Width = menuWidth;
-        }
+        //private void btnSlideMenu_Click(object sender, EventArgs e)
+        //{
+        //    var menuWidth = (MenuPanel.Width == 205) ? 50 : 205;
+        //    MenuPanel.Width = menuWidth;
+        //}
 
         public bool PreFilterMessage(ref Message m)
         {
