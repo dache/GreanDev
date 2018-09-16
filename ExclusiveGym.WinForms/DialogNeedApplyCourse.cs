@@ -18,6 +18,9 @@ namespace ExclusiveGym.WinForms
         private FinishCallback m_finishCallback;
         private Member m_currentMemberWillApply;
 
+
+        private Course currentCourse;
+
         public DialogNeedApplyCourse(Member member, FinishCallback callback)
         {
 
@@ -33,6 +36,7 @@ namespace ExclusiveGym.WinForms
             foreach (var course in courses)
             {
                 Panel panel = new Panel() { Width = 300, Height = 80, BorderStyle = BorderStyle.FixedSingle, BackColor = Color.White };
+                panel.Tag = course;
                 Label lblName = new Label()
                 {
                     Text = course.CourseName,
@@ -107,14 +111,17 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private void panel_Click(object sender,System.EventArgs e)
+        private void panel_Click(object sender, System.EventArgs e)
         {
             Panel panel = (Panel)sender;
             foreach (Panel p in panel.Parent.Controls)
             {
                 if (p != panel) p.BackColor = Color.White;
             }
-            panel.BackColor = (panel.BackColor == Color.White) ? Color.OrangeRed : Color.White;
+            //panel.BackColor = (panel.BackColor == Color.White) ? Color.OrangeRed : Color.White;
+            panel.BackColor = Color.OrangeRed;
+
+            currentCourse = (Course)panel.Tag;
         }
 
         #region BGOpacity
@@ -146,8 +153,11 @@ namespace ExclusiveGym.WinForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Close();
+            
             // Apply Course
+            var a = this.currentCourse;
+
+            this.Close();
         }
     }
 }

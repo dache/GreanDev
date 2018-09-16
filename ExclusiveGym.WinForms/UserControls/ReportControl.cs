@@ -14,6 +14,7 @@ namespace ExclusiveGym.WinForms.UserControls
     public partial class ReportControl : UserControl
     {
         private string m_sumTxt;
+
         public ReportControl()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace ExclusiveGym.WinForms.UserControls
             List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByDay(dailyDatePicker.Value.Day, dailyDatePicker.Value.Month, dailyDatePicker.Value.Year);
             dailyDataView.DataSource = applyCourseLogs;
             DisplayText(dailySumPriceLabel, applyCourseLogs);
+            dailyDataView.Columns[0].Width = 200;
         }
 
         private void monthlyView_Click(object sender, EventArgs e)

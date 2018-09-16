@@ -64,6 +64,19 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.Columns[4].HeaderText = "อายุ";
             gvMembers.Columns[19].HeaderText = "วันหมดอายุ";
 
+            gvMembers.Columns[1].Width = 180;
+            gvMembers.Columns[2].Width = 180;
+            gvMembers.Columns[4].Width = 70;
+            gvMembers.Columns[19].Width = 120;
+
+            gvMembers.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvMembers.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvMembers.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvMembers.Columns[19].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            
+            gvMembers.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvMembers.Columns[19].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             //foreach (DataGridViewRow row in gvMembers.Rows)
             //{
             //    Member member = (Member)row.DataBoundItem;

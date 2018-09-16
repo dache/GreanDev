@@ -49,7 +49,6 @@
             this.gvMembers.AllowUserToDeleteRows = false;
             this.gvMembers.AllowUserToResizeColumns = false;
             this.gvMembers.AllowUserToResizeRows = false;
-            this.gvMembers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gvMembers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;

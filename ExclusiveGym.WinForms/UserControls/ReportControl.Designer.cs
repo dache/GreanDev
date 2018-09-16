@@ -61,10 +61,11 @@
             this.ReportTabpage.Controls.Add(this.dailyTab);
             this.ReportTabpage.Controls.Add(this.monthlyTab);
             this.ReportTabpage.Controls.Add(this.yearTab);
+            this.ReportTabpage.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportTabpage.Location = new System.Drawing.Point(0, 3);
             this.ReportTabpage.Name = "ReportTabpage";
             this.ReportTabpage.SelectedIndex = 0;
-            this.ReportTabpage.Size = new System.Drawing.Size(797, 577);
+            this.ReportTabpage.Size = new System.Drawing.Size(776, 577);
             this.ReportTabpage.TabIndex = 1;
             // 
             // dailyTab
@@ -74,10 +75,10 @@
             this.dailyTab.Controls.Add(this.dailySumPriceLabel);
             this.dailyTab.Controls.Add(this.dailyDataView);
             this.dailyTab.Controls.Add(this.label2);
-            this.dailyTab.Location = new System.Drawing.Point(4, 22);
+            this.dailyTab.Location = new System.Drawing.Point(4, 33);
             this.dailyTab.Name = "dailyTab";
             this.dailyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.dailyTab.Size = new System.Drawing.Size(789, 551);
+            this.dailyTab.Size = new System.Drawing.Size(768, 540);
             this.dailyTab.TabIndex = 0;
             this.dailyTab.Text = "รายวัน";
             this.dailyTab.UseVisualStyleBackColor = true;
@@ -85,50 +86,60 @@
             // dailyDatePicker
             // 
             this.dailyDatePicker.CustomFormat = "dd-MMM-yyyy";
-            this.dailyDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dailyDatePicker.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailyDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dailyDatePicker.Location = new System.Drawing.Point(288, 34);
+            this.dailyDatePicker.Location = new System.Drawing.Point(126, 12);
             this.dailyDatePicker.Name = "dailyDatePicker";
-            this.dailyDatePicker.Size = new System.Drawing.Size(120, 22);
+            this.dailyDatePicker.Size = new System.Drawing.Size(120, 27);
             this.dailyDatePicker.TabIndex = 29;
             // 
             // dailyView
             // 
-            this.dailyView.Location = new System.Drawing.Point(604, 13);
+            this.dailyView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.dailyView.FlatAppearance.BorderSize = 0;
+            this.dailyView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dailyView.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dailyView.ForeColor = System.Drawing.Color.White;
+            this.dailyView.Location = new System.Drawing.Point(636, 11);
             this.dailyView.Name = "dailyView";
-            this.dailyView.Size = new System.Drawing.Size(138, 57);
+            this.dailyView.Size = new System.Drawing.Size(120, 35);
             this.dailyView.TabIndex = 20;
             this.dailyView.Text = "ดูรายงาน";
-            this.dailyView.UseVisualStyleBackColor = true;
+            this.dailyView.UseVisualStyleBackColor = false;
             this.dailyView.Click += new System.EventHandler(this.dailyView_Click);
             // 
             // dailySumPriceLabel
             // 
             this.dailySumPriceLabel.AutoSize = true;
-            this.dailySumPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dailySumPriceLabel.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailySumPriceLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.dailySumPriceLabel.Location = new System.Drawing.Point(285, 507);
+            this.dailySumPriceLabel.Location = new System.Drawing.Point(570, 479);
             this.dailySumPriceLabel.Name = "dailySumPriceLabel";
-            this.dailySumPriceLabel.Size = new System.Drawing.Size(129, 18);
+            this.dailySumPriceLabel.Size = new System.Drawing.Size(186, 29);
             this.dailySumPriceLabel.TabIndex = 19;
             this.dailySumPriceLabel.Text = "รายได้รวม  : {0} บาท";
             // 
             // dailyDataView
             // 
+            this.dailyDataView.AllowUserToAddRows = false;
+            this.dailyDataView.AllowUserToDeleteRows = false;
+            this.dailyDataView.AllowUserToResizeColumns = false;
             this.dailyDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dailyDataView.Location = new System.Drawing.Point(29, 76);
+            this.dailyDataView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dailyDataView.Location = new System.Drawing.Point(19, 52);
             this.dailyDataView.Name = "dailyDataView";
-            this.dailyDataView.Size = new System.Drawing.Size(713, 409);
+            this.dailyDataView.RowHeadersVisible = false;
+            this.dailyDataView.Size = new System.Drawing.Size(737, 409);
             this.dailyDataView.TabIndex = 18;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(47, 34);
+            this.label2.Location = new System.Drawing.Point(15, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 18);
+            this.label2.Size = new System.Drawing.Size(105, 24);
             this.label2.TabIndex = 13;
             this.label2.Text = "กรุณาเลือกวัน";
             // 
@@ -139,10 +150,10 @@
             this.monthlyTab.Controls.Add(this.monthlyView);
             this.monthlyTab.Controls.Add(this.monthlySumPriceLabel);
             this.monthlyTab.Controls.Add(this.montDataView);
-            this.monthlyTab.Location = new System.Drawing.Point(4, 22);
+            this.monthlyTab.Location = new System.Drawing.Point(4, 33);
             this.monthlyTab.Name = "monthlyTab";
             this.monthlyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.monthlyTab.Size = new System.Drawing.Size(789, 551);
+            this.monthlyTab.Size = new System.Drawing.Size(768, 540);
             this.monthlyTab.TabIndex = 1;
             this.monthlyTab.Text = "รายเดือน";
             this.monthlyTab.UseVisualStyleBackColor = true;
@@ -150,51 +161,55 @@
             // monthDateTimePicker
             // 
             this.monthDateTimePicker.CustomFormat = "MMM-yyyy";
-            this.monthDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthDateTimePicker.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.monthDateTimePicker.Location = new System.Drawing.Point(299, 34);
+            this.monthDateTimePicker.Location = new System.Drawing.Point(143, 12);
             this.monthDateTimePicker.Name = "monthDateTimePicker";
-            this.monthDateTimePicker.Size = new System.Drawing.Size(120, 22);
+            this.monthDateTimePicker.Size = new System.Drawing.Size(120, 27);
             this.monthDateTimePicker.TabIndex = 31;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(58, 34);
+            this.label1.Location = new System.Drawing.Point(15, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 18);
+            this.label1.Size = new System.Drawing.Size(122, 24);
             this.label1.TabIndex = 30;
             this.label1.Text = "กรุณาเลือกเดือน";
             // 
             // monthlyView
             // 
-            this.monthlyView.Location = new System.Drawing.Point(615, 9);
+            this.monthlyView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.monthlyView.FlatAppearance.BorderSize = 0;
+            this.monthlyView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.monthlyView.ForeColor = System.Drawing.Color.White;
+            this.monthlyView.Location = new System.Drawing.Point(636, 11);
             this.monthlyView.Name = "monthlyView";
-            this.monthlyView.Size = new System.Drawing.Size(138, 57);
+            this.monthlyView.Size = new System.Drawing.Size(120, 35);
             this.monthlyView.TabIndex = 28;
             this.monthlyView.Text = "ดูรายงาน";
-            this.monthlyView.UseVisualStyleBackColor = true;
+            this.monthlyView.UseVisualStyleBackColor = false;
             this.monthlyView.Click += new System.EventHandler(this.monthlyView_Click);
             // 
             // monthlySumPriceLabel
             // 
             this.monthlySumPriceLabel.AutoSize = true;
-            this.monthlySumPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthlySumPriceLabel.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthlySumPriceLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.monthlySumPriceLabel.Location = new System.Drawing.Point(296, 503);
+            this.monthlySumPriceLabel.Location = new System.Drawing.Point(570, 479);
             this.monthlySumPriceLabel.Name = "monthlySumPriceLabel";
-            this.monthlySumPriceLabel.Size = new System.Drawing.Size(129, 18);
+            this.monthlySumPriceLabel.Size = new System.Drawing.Size(186, 29);
             this.monthlySumPriceLabel.TabIndex = 27;
             this.monthlySumPriceLabel.Text = "รายได้รวม  : {0} บาท";
             // 
             // montDataView
             // 
             this.montDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.montDataView.Location = new System.Drawing.Point(40, 72);
+            this.montDataView.Location = new System.Drawing.Point(19, 52);
             this.montDataView.Name = "montDataView";
-            this.montDataView.Size = new System.Drawing.Size(713, 409);
+            this.montDataView.Size = new System.Drawing.Size(737, 409);
             this.montDataView.TabIndex = 26;
             // 
             // yearTab
@@ -204,10 +219,10 @@
             this.yearTab.Controls.Add(this.yearView);
             this.yearTab.Controls.Add(this.yearSumPriceLabel);
             this.yearTab.Controls.Add(this.yearDataView);
-            this.yearTab.Location = new System.Drawing.Point(4, 22);
+            this.yearTab.Location = new System.Drawing.Point(4, 33);
             this.yearTab.Name = "yearTab";
             this.yearTab.Padding = new System.Windows.Forms.Padding(3);
-            this.yearTab.Size = new System.Drawing.Size(789, 551);
+            this.yearTab.Size = new System.Drawing.Size(768, 540);
             this.yearTab.TabIndex = 2;
             this.yearTab.Text = "รายปี";
             this.yearTab.UseVisualStyleBackColor = true;
@@ -215,51 +230,55 @@
             // yearDateTimePicker
             // 
             this.yearDateTimePicker.CustomFormat = "yyyy";
-            this.yearDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearDateTimePicker.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yearDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.yearDateTimePicker.Location = new System.Drawing.Point(288, 24);
+            this.yearDateTimePicker.Location = new System.Drawing.Point(117, 12);
             this.yearDateTimePicker.Name = "yearDateTimePicker";
-            this.yearDateTimePicker.Size = new System.Drawing.Size(120, 22);
+            this.yearDateTimePicker.Size = new System.Drawing.Size(120, 27);
             this.yearDateTimePicker.TabIndex = 31;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(47, 24);
+            this.label3.Location = new System.Drawing.Point(15, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 18);
+            this.label3.Size = new System.Drawing.Size(96, 24);
             this.label3.TabIndex = 30;
             this.label3.Text = "กรุณาเลือกปี";
             // 
             // yearView
             // 
-            this.yearView.Location = new System.Drawing.Point(615, 9);
+            this.yearView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.yearView.FlatAppearance.BorderSize = 0;
+            this.yearView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.yearView.ForeColor = System.Drawing.Color.White;
+            this.yearView.Location = new System.Drawing.Point(636, 11);
             this.yearView.Name = "yearView";
-            this.yearView.Size = new System.Drawing.Size(138, 57);
+            this.yearView.Size = new System.Drawing.Size(120, 35);
             this.yearView.TabIndex = 28;
             this.yearView.Text = "ดูรายงาน";
-            this.yearView.UseVisualStyleBackColor = true;
+            this.yearView.UseVisualStyleBackColor = false;
             this.yearView.Click += new System.EventHandler(this.yearView_Click);
             // 
             // yearSumPriceLabel
             // 
             this.yearSumPriceLabel.AutoSize = true;
-            this.yearSumPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearSumPriceLabel.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yearSumPriceLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.yearSumPriceLabel.Location = new System.Drawing.Point(296, 503);
+            this.yearSumPriceLabel.Location = new System.Drawing.Point(570, 479);
             this.yearSumPriceLabel.Name = "yearSumPriceLabel";
-            this.yearSumPriceLabel.Size = new System.Drawing.Size(129, 18);
+            this.yearSumPriceLabel.Size = new System.Drawing.Size(186, 29);
             this.yearSumPriceLabel.TabIndex = 27;
             this.yearSumPriceLabel.Text = "รายได้รวม  : {0} บาท";
             // 
             // yearDataView
             // 
             this.yearDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.yearDataView.Location = new System.Drawing.Point(40, 72);
+            this.yearDataView.Location = new System.Drawing.Point(19, 52);
             this.yearDataView.Name = "yearDataView";
-            this.yearDataView.Size = new System.Drawing.Size(713, 409);
+            this.yearDataView.Size = new System.Drawing.Size(737, 409);
             this.yearDataView.TabIndex = 26;
             // 
             // ReportControl

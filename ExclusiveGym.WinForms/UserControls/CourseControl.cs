@@ -36,12 +36,7 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void CourseControl_Load(object sender, EventArgs e)
         {
-            InitCourse();
-            
-            DataGridViewColumn column = gvCourses.Columns[1];
-            column.Width = 500;
-
-            gvCourses.Columns[1].Width = 500;
+            InitCourse();            
         }
 
         private void InitCourse()
@@ -53,18 +48,30 @@ namespace ExclusiveGym.WinForms.UserControls
             gvCourses.Columns[0].Visible = false;
             gvCourses.Columns[5].Visible = false;
 
-            gvCourses.Columns[1].HeaderText = "ชื่อคอร์ส";
-                   
+            gvCourses.Columns[1].HeaderText = "ชื่อคอร์ส";                   
             gvCourses.Columns[2].HeaderText = "ประเภทคอร์ส";            
             gvCourses.Columns[3].HeaderText = "ราคา";
             gvCourses.Columns[4].HeaderText = "จำนวนวัน";
+            
+            gvCourses.Columns[1].Width = 250;
+            gvCourses.Columns[2].Width = 150;
+            gvCourses.Columns[3].Width = 100;
+            gvCourses.Columns[4].Width = 120;
+
+            gvCourses.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvCourses.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvCourses.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvCourses.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            gvCourses.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvCourses.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
             editButton.Name = "editButton";
             editButton.Text = "แก้ไข";
             editButton.HeaderText = "";
             editButton.UseColumnTextForButtonValue = true;
-            editButton.Width = 200;
+            editButton.Width = 130;
             if (gvCourses.Columns["editButton"] == null)
             {
                 gvCourses.Columns.Insert(6, editButton);
