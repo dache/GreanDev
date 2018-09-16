@@ -45,7 +45,6 @@ namespace ExclusiveGym.WinForms
             // Custom Move title bar 
             Application.AddMessageFilter(this);
             controlsToMove.Add(this.TitleBarPanel);
-            Console.WriteLine(new DateTime(1999, 1, 1,12,22,5).Date == new DateTime(1999, 1, 1));
         }
 
         private void Form1_Load(object sender, EventArgs e)

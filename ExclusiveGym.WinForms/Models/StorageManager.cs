@@ -202,7 +202,7 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
     {
-        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Date == new DateTime(year, month, day)).ToList();
+        return GetDB().ApplyCourseLog.Where(applycourseLog => applycourseLog.ApplyDate.Day == day && applycourseLog.ApplyDate.Month == month && applycourseLog.ApplyDate.Year == year).ToList();
     }
 
     public List<ApplyCourseLog> GetIncomeByMonth(int month, int year)
