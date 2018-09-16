@@ -155,8 +155,8 @@ namespace ExclusiveGym.WinForms
         {
             
             // Apply Course
-            var a = this.currentCourse;
-
+            Course a = this.currentCourse;
+            StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply, a);
             this.Close();
         }
     }

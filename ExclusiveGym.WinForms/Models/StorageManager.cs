@@ -125,7 +125,16 @@ class StorageManager
         acl.CoursePrice = course.CoursePrice;
         GetDB().ApplyCourseLog.Add(acl);
 
-        member.ExpireDate = member.ExpireDate.Value.AddDays(course.TotalDay);
+        if(member.ExpireDate ==  null)
+        {
+            member.ExpireDate = DateTime.Now;
+            member.ExpireDate.Value.AddDays(course.TotalDay- 1);
+        }
+        else
+        {
+            member.ExpireDate = member.ExpireDate.Value.AddDays(course.TotalDay);
+        }
+       
         GetDB().Entry(member).State = System.Data.Entity.EntityState.Modified;
 
 
