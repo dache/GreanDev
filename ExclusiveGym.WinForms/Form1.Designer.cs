@@ -32,7 +32,6 @@
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.currentMenuPanel = new System.Windows.Forms.Panel();
-            this.btnEmployeeMenu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnIncomeMenu = new System.Windows.Forms.Button();
             this.btnPromotionMenu = new System.Windows.Forms.Button();
@@ -42,16 +41,15 @@
             this.btnSlideMenu = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDeviceStatus = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
+            this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
+            this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
             this.memberControl1 = new ExclusiveGym.WinForms.UserControls.MemberControl();
             this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblDeviceStatus = new System.Windows.Forms.Label();
-            this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
-            this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).BeginInit();
@@ -63,7 +61,6 @@
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(213)))), ((int)(((byte)(212)))));
             this.MenuPanel.Controls.Add(this.label2);
             this.MenuPanel.Controls.Add(this.currentMenuPanel);
-            this.MenuPanel.Controls.Add(this.btnEmployeeMenu);
             this.MenuPanel.Controls.Add(this.label1);
             this.MenuPanel.Controls.Add(this.btnIncomeMenu);
             this.MenuPanel.Controls.Add(this.btnPromotionMenu);
@@ -93,24 +90,6 @@
             this.currentMenuPanel.Name = "currentMenuPanel";
             this.currentMenuPanel.Size = new System.Drawing.Size(10, 45);
             this.currentMenuPanel.TabIndex = 6;
-            // 
-            // btnEmployeeMenu
-            // 
-            this.btnEmployeeMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEmployeeMenu.FlatAppearance.BorderSize = 0;
-            this.btnEmployeeMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployeeMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployeeMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEmployeeMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeMenu.Image")));
-            this.btnEmployeeMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmployeeMenu.Location = new System.Drawing.Point(12, 265);
-            this.btnEmployeeMenu.Name = "btnEmployeeMenu";
-            this.btnEmployeeMenu.Size = new System.Drawing.Size(193, 45);
-            this.btnEmployeeMenu.TabIndex = 0;
-            this.btnEmployeeMenu.Text = "    Employee";
-            this.btnEmployeeMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEmployeeMenu.UseVisualStyleBackColor = true;
-            this.btnEmployeeMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // label1
             // 
@@ -201,7 +180,6 @@
             this.TitleBarPanel.Controls.Add(this.btnSlideMenu);
             this.TitleBarPanel.Controls.Add(this.btnClose);
             this.TitleBarPanel.Controls.Add(this.button1);
-            this.TitleBarPanel.Controls.Add(this.button2);
             this.TitleBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TitleBarPanel.Location = new System.Drawing.Point(205, 0);
             this.TitleBarPanel.Name = "TitleBarPanel";
@@ -251,16 +229,6 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(66, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
@@ -273,6 +241,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(795, 30);
             this.panel1.TabIndex = 8;
+            // 
+            // lblDeviceStatus
+            // 
+            this.lblDeviceStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblDeviceStatus.AutoSize = true;
+            this.lblDeviceStatus.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeviceStatus.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblDeviceStatus.Location = new System.Drawing.Point(105, 6);
+            this.lblDeviceStatus.Name = "lblDeviceStatus";
+            this.lblDeviceStatus.Size = new System.Drawing.Size(46, 19);
+            this.lblDeviceStatus.TabIndex = 2;
+            this.lblDeviceStatus.Text = "status";
+            this.lblDeviceStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label3.Location = new System.Drawing.Point(6, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 19);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Device Status :";
             // 
             // lblDate
             // 
@@ -298,6 +291,20 @@
             this.lblTimer.TabIndex = 0;
             this.lblTimer.Text = "00:00:00";
             // 
+            // reportControl1
+            // 
+            this.reportControl1.Location = new System.Drawing.Point(205, 37);
+            this.reportControl1.Name = "reportControl1";
+            this.reportControl1.Size = new System.Drawing.Size(800, 580);
+            this.reportControl1.TabIndex = 12;
+            // 
+            // courseControl1
+            // 
+            this.courseControl1.Location = new System.Drawing.Point(204, 37);
+            this.courseControl1.Name = "courseControl1";
+            this.courseControl1.Size = new System.Drawing.Size(800, 580);
+            this.courseControl1.TabIndex = 11;
+            // 
             // memberControl1
             // 
             this.memberControl1.Location = new System.Drawing.Point(204, 40);
@@ -307,60 +314,21 @@
             // 
             // homeControl1
             // 
-            this.homeControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
-            this.homeControl1.Location = new System.Drawing.Point(204, 40);
+            this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.homeControl1.Location = new System.Drawing.Point(204, 41);
             this.homeControl1.Name = "homeControl1";
-            this.homeControl1.Size = new System.Drawing.Size(796, 577);
-            this.homeControl1.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label3.Location = new System.Drawing.Point(6, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 19);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Device Status :";
-            // 
-            // lblDeviceStatus
-            // 
-            this.lblDeviceStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblDeviceStatus.AutoSize = true;
-            this.lblDeviceStatus.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeviceStatus.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblDeviceStatus.Location = new System.Drawing.Point(105, 6);
-            this.lblDeviceStatus.Name = "lblDeviceStatus";
-            this.lblDeviceStatus.Size = new System.Drawing.Size(46, 19);
-            this.lblDeviceStatus.TabIndex = 2;
-            this.lblDeviceStatus.Text = "status";
-            this.lblDeviceStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // courseControl1
-            // 
-            this.courseControl1.Location = new System.Drawing.Point(204, 37);
-            this.courseControl1.Name = "courseControl1";
-            this.courseControl1.Size = new System.Drawing.Size(800, 580);
-            this.courseControl1.TabIndex = 11;
-            // 
-            // reportControl1
-            // 
-            this.reportControl1.Location = new System.Drawing.Point(205, 37);
-            this.reportControl1.Name = "reportControl1";
-            this.reportControl1.Size = new System.Drawing.Size(800, 580);
-            this.reportControl1.TabIndex = 12;
+            this.homeControl1.Size = new System.Drawing.Size(800, 580);
+            this.homeControl1.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.homeControl1);
             this.Controls.Add(this.reportControl1);
             this.Controls.Add(this.courseControl1);
             this.Controls.Add(this.memberControl1);
-            this.Controls.Add(this.homeControl1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TitleBarPanel);
             this.Controls.Add(this.MenuPanel);
@@ -384,7 +352,6 @@
         private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.Button btnHomeMenu;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnEmployeeMenu;
         private System.Windows.Forms.Button btnIncomeMenu;
         private System.Windows.Forms.Button btnPromotionMenu;
         private System.Windows.Forms.Button btnMemberMenu;
@@ -394,16 +361,15 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox btnSlideMenu;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Label lblDate;
-        private UserControls.HomeControl homeControl1;
         private UserControls.MemberControl memberControl1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblDeviceStatus;
         private UserControls.CourseControl courseControl1;
         private UserControls.ReportControl reportControl1;
+        private UserControls.HomeControl homeControl1;
     }
 }
 

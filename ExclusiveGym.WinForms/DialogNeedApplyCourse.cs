@@ -54,13 +54,13 @@ namespace ExclusiveGym.WinForms
                 //    Font = new Font(new FontFamily("Prompt"), 11)
                 //};
                 //panel.Controls.Add(btn);
-                CheckBox chk = new CheckBox()
-                {
-                    Text = "เลือก",
-                    Location = new Point(150, 5)
-                };
-                chk.CheckedChanged += chkCourse_CheckedChanged;
-                panel.Controls.Add(chk);
+                //CheckBox chk = new CheckBox()
+                //{
+                //    Text = "เลือก",
+                //    Location = new Point(150, 5)
+                //};
+                //chk.CheckedChanged += chkCourse_CheckedChanged;
+                //panel.Controls.Add(chk);
                 Label lblPrice = new Label()
                 {
                     Text = course.CoursePrice.ToString(),

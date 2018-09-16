@@ -306,8 +306,32 @@ namespace ExclusiveGym.WinForms
             this.Member.Name = txtName.Text;
             this.Member.LastName = txtLastName.Text;
             this.Member.ThaiId = txtThaiId.Text;
-            StorageManager.GetSingleton().GetDB().Entry(this.Member).State = System.Data.Entity.EntityState.Modified;
-            StorageManager.GetSingleton().SaveDB();
+
+            this.Member.Name = txtName.Text;
+            this.Member.LastName = txtLastName.Text;
+            this.Member.ThaiId = txtThaiId.Text;
+            this.Member.BirthDate = DateTime.Now;
+            this.Member.Age = Convert.ToInt32(txtAge.Text);
+            //this.Member.FingerPrint = lblFingerPrint.Text;
+            this.Member.Gender = (chkMale.Checked) ? enumGender.Male : enumGender.Female;
+            this.Member.HouseNumber = txtHouseNumber.Text;
+            this.Member.VillageNumber = txtVillageNumber.Text;
+            this.Member.VillageName = txtVillageName.Text;
+            this.Member.Lane = txtLane.Text;
+            this.Member.Road = txtRoad.Text;
+            this.Member.SubDistrict = txtSubDistrict.Text;
+            this.Member.District = txtDistrict.Text;
+            this.Member.Province = txtProvince.Text;
+            this.Member.PostCode = txtPostCode.Text;
+            this.Member.PhoneNumber = txtPhoneNumber.Text;
+            this.Member.Email = txtEmail.Text;           
+            
+            //this.Member.Problems = GetMedicalProblem();
+            //this.Member.MemberKnows = GetMemberKnows();
+
+            StorageManager.GetSingleton().SaveObjectChanged(this.Member);
+
+            m_registryiSdone();
 
             this.Close();
         }

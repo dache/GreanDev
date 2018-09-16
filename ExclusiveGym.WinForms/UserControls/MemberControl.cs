@@ -20,7 +20,22 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void MemberControl_Load(object sender, EventArgs e)
         {
-            Random r = new Random();
+            InitMember();
+        }
+
+        private void FinishCallback()
+        {
+            gvMembers.DataSource = null;
+            gvMembers.Update();
+            gvMembers.Refresh();
+            gvMembers.Columns.Remove("courseButton");
+            gvMembers.Columns.Remove("editButton");
+
+            InitMember();
+        }
+
+        private void InitMember()
+        {
             List<Member> members = StorageManager.GetSingleton().GetMemberList();
 
             gvMembers.DataSource = members;
@@ -49,7 +64,6 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.Columns[4].HeaderText = "อายุ";
             gvMembers.Columns[19].HeaderText = "วันหมดอายุ";
 
-
             //foreach (DataGridViewRow row in gvMembers.Rows)
             //{
             //    Member member = (Member)row.DataBoundItem;
@@ -71,7 +85,7 @@ namespace ExclusiveGym.WinForms.UserControls
 
             DataGridViewButtonColumn courseButton = new DataGridViewButtonColumn();
             courseButton.Name = "courseButton";
-            courseButton.Text = "สมัครคอร์ส";        
+            courseButton.Text = "สมัครคอร์ส";
             courseButton.HeaderText = "";
             courseButton.UseColumnTextForButtonValue = true;
             if (gvMembers.Columns["courseButton"] == null)
@@ -88,7 +102,6 @@ namespace ExclusiveGym.WinForms.UserControls
             {
                 gvMembers.Columns.Insert(23, editButton);
             }
-
         }
 
         private void gvMembers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -98,6 +111,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 //Do something with your button.
                 Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
                 var mForm = new MemberForm(member);
+                mForm.m_registryiSdone = FinishCallback;
                 mForm.ShowDialog();
             }
             if (e.ColumnIndex == gvMembers.Columns["courseButton"].Index)
@@ -135,6 +149,7 @@ namespace ExclusiveGym.WinForms.UserControls
         private void btnNewMember_Click(object sender, EventArgs e)
         {
             var memberForm = new MemberForm();
+            memberForm.m_registryiSdone = FinishCallback;
             memberForm.ShowDialog();
         }
 

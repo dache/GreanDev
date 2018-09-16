@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExclusiveGym.WinForms.Models;
+using ExclusiveGym.WinForms.CustomControls;
 
 namespace ExclusiveGym.WinForms
 {
-    public partial class CourseForm : Form
+    public partial class CourseForm : OpacityBGForm
     {
         private FinishCallback m_finishCallback;
         private Course m_currentCourse;
@@ -19,12 +20,17 @@ namespace ExclusiveGym.WinForms
         public CourseForm(Course course, FinishCallback callback)
         {
             InitializeComponent();
-            if(course == null)
+
+            typeBox.Items.Add(new ComboboxItem() { Text = "รายวัน", Value = COURSETYPE.DAILY });
+            typeBox.Items.Add(new ComboboxItem() { Text = "รายเดือน", Value = COURSETYPE.MONTLY });
+
+            if (course == null)
             {
                 HeaderTxt.Text = "เพิ่มข้อมูล";
-                btnSave.Text = "สร้าง";
+                btnSave.Text = "เพิ่ม";
                 m_currentCourse = new Course();
                 m_currentCourse.CreateDate = DateTime.Now;
+                typeBox.SelectedIndex = 1;
             }
             else
             {
@@ -34,9 +40,8 @@ namespace ExclusiveGym.WinForms
                 btnSave.Text = "บันทึก";
                 txtName.Text = m_currentCourse.CourseName;
                 priceTxt.Text = m_currentCourse.CoursePrice.ToString();
-                totalDayTxt.Text = m_currentCourse.TotalDay.ToString();
-                typeBox.Text = m_currentCourse.CourseType.ToString() ;
-                
+                totalDayTxt.Text = m_currentCourse.TotalDay.ToString();                
+                typeBox.SelectedIndex = (m_currentCourse.CourseType == COURSETYPE.DAILY) ? 0 : 1;
             }
             m_finishCallback = callback;
         }
@@ -50,7 +55,7 @@ namespace ExclusiveGym.WinForms
         {
             m_currentCourse.CourseName = txtName.Text;
             m_currentCourse.CoursePrice = int.Parse(priceTxt.Text);
-            if(typeBox.Text == "รายวัน")
+            if (typeBox.Text == "รายวัน")
                 m_currentCourse.CourseType = COURSETYPE.DAILY;
             else
                 m_currentCourse.CourseType = COURSETYPE.MONTLY;
@@ -65,6 +70,17 @@ namespace ExclusiveGym.WinForms
 
             m_finishCallback();
             this.Close();
+        }
+    }
+
+    public class ComboboxItem
+    {
+        public string Text { get; set; }
+        public object Value { get; set; }
+
+        public override string ToString()
+        {
+            return Text;
         }
     }
 }

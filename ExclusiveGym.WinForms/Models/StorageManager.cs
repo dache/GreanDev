@@ -27,6 +27,13 @@ class StorageManager
     {
         GetDB().SaveChanges();
     }
+
+    public void SaveObjectChanged(object obj)
+    {
+        StorageManager.GetSingleton().GetDB().Entry(obj).State = System.Data.Entity.EntityState.Modified;
+        StorageManager.GetSingleton().SaveDB();
+    }
+
     public ExclusiveGymContext GetDB()
     {
         return m_gymDB;
