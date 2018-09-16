@@ -42,19 +42,16 @@
             this.btnSlideMenu = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.DailyListview = new System.Windows.Forms.ListView();
-            this.memberName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.accessTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DailyLabel = new System.Windows.Forms.Label();
-            this.MonthlyListview = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Monthlylabel = new System.Windows.Forms.Label();
-            this.IncomeToday = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.memberControl1 = new ExclusiveGym.WinForms.UserControls.MemberControl();
+            this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
@@ -200,10 +197,11 @@
             this.TitleBarPanel.Controls.Add(this.btnSlideMenu);
             this.TitleBarPanel.Controls.Add(this.btnClose);
             this.TitleBarPanel.Controls.Add(this.button1);
+            this.TitleBarPanel.Controls.Add(this.button2);
             this.TitleBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TitleBarPanel.Location = new System.Drawing.Point(205, 0);
             this.TitleBarPanel.Name = "TitleBarPanel";
-            this.TitleBarPanel.Size = new System.Drawing.Size(795, 42);
+            this.TitleBarPanel.Size = new System.Drawing.Size(795, 40);
             this.TitleBarPanel.TabIndex = 1;
             // 
             // btnSlideMenu
@@ -249,76 +247,9 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // DailyListview
-            // 
-            this.DailyListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.memberName,
-            this.accessTime});
-            this.DailyListview.Location = new System.Drawing.Point(655, 214);
-            this.DailyListview.Name = "DailyListview";
-            this.DailyListview.Size = new System.Drawing.Size(294, 360);
-            this.DailyListview.TabIndex = 2;
-            this.DailyListview.UseCompatibleStateImageBehavior = false;
-            this.DailyListview.View = System.Windows.Forms.View.Details;
-            // 
-            // memberName
-            // 
-            this.memberName.Text = "Name";
-            // 
-            // accessTime
-            // 
-            this.accessTime.Text = "Time";
-            // 
-            // DailyLabel
-            // 
-            this.DailyLabel.AutoSize = true;
-            this.DailyLabel.Location = new System.Drawing.Point(908, 181);
-            this.DailyLabel.Name = "DailyLabel";
-            this.DailyLabel.Size = new System.Drawing.Size(30, 13);
-            this.DailyLabel.TabIndex = 3;
-            this.DailyLabel.Text = "Daily";
-            // 
-            // MonthlyListview
-            // 
-            this.MonthlyListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.MonthlyListview.Location = new System.Drawing.Point(237, 214);
-            this.MonthlyListview.Name = "MonthlyListview";
-            this.MonthlyListview.Size = new System.Drawing.Size(272, 360);
-            this.MonthlyListview.TabIndex = 4;
-            this.MonthlyListview.UseCompatibleStateImageBehavior = false;
-            this.MonthlyListview.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Name";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Time";
-            // 
-            // Monthlylabel
-            // 
-            this.Monthlylabel.AutoSize = true;
-            this.Monthlylabel.Location = new System.Drawing.Point(234, 181);
-            this.Monthlylabel.Name = "Monthlylabel";
-            this.Monthlylabel.Size = new System.Drawing.Size(44, 13);
-            this.Monthlylabel.TabIndex = 5;
-            this.Monthlylabel.Text = "Monthly";
-            // 
-            // IncomeToday
-            // 
-            this.IncomeToday.AutoSize = true;
-            this.IncomeToday.Location = new System.Drawing.Point(750, 79);
-            this.IncomeToday.Name = "IncomeToday";
-            this.IncomeToday.Size = new System.Drawing.Size(45, 13);
-            this.IncomeToday.TabIndex = 6;
-            this.IncomeToday.Text = "Income ";
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(356, 112);
+            this.button2.Location = new System.Drawing.Point(66, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 7;
@@ -326,17 +257,64 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.lblTimer);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(205, 620);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(795, 30);
+            this.panel1.TabIndex = 8;
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblDate.Location = new System.Drawing.Point(634, 6);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(88, 19);
+            this.lblDate.TabIndex = 1;
+            this.lblDate.Text = "16/09/2018 |";
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTimer.Location = new System.Drawing.Point(721, 6);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(69, 19);
+            this.lblTimer.TabIndex = 0;
+            this.lblTimer.Text = "00:00:00";
+            // 
+            // memberControl1
+            // 
+            this.memberControl1.Location = new System.Drawing.Point(204, 40);
+            this.memberControl1.Name = "memberControl1";
+            this.memberControl1.Size = new System.Drawing.Size(800, 570);
+            this.memberControl1.TabIndex = 10;
+            // 
+            // homeControl1
+            // 
+            this.homeControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+            this.homeControl1.Location = new System.Drawing.Point(204, 40);
+            this.homeControl1.Name = "homeControl1";
+            this.homeControl1.Size = new System.Drawing.Size(796, 577);
+            this.homeControl1.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.IncomeToday);
-            this.Controls.Add(this.Monthlylabel);
-            this.Controls.Add(this.MonthlyListview);
-            this.Controls.Add(this.DailyLabel);
-            this.Controls.Add(this.DailyListview);
+            this.Controls.Add(this.memberControl1);
+            this.Controls.Add(this.homeControl1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.TitleBarPanel);
             this.Controls.Add(this.MenuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -348,8 +326,9 @@
             this.MenuPanel.PerformLayout();
             this.TitleBarPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSlideMenu)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -368,16 +347,12 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox btnSlideMenu;
-        private System.Windows.Forms.ListView DailyListview;
-        private System.Windows.Forms.ColumnHeader memberName;
-        private System.Windows.Forms.ColumnHeader accessTime;
-        private System.Windows.Forms.Label DailyLabel;
-        private System.Windows.Forms.ListView MonthlyListview;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.Label Monthlylabel;
-        private System.Windows.Forms.Label IncomeToday;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Label lblDate;
+        private UserControls.HomeControl homeControl1;
+        private UserControls.MemberControl memberControl1;
     }
 }
 

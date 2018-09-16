@@ -32,7 +32,7 @@ namespace ExclusiveGym.WinForms
             var courses = StorageManager.GetSingleton().GetAllCourses().ToList();
             foreach (var course in courses)
             {
-                Panel panel = new Panel() { Width = 300, Height = 80, BorderStyle = BorderStyle.FixedSingle };
+                Panel panel = new Panel() { Width = 300, Height = 80, BorderStyle = BorderStyle.FixedSingle, BackColor = Color.White };
                 Label lblName = new Label()
                 {
                     Text = course.CourseName,
@@ -40,6 +40,7 @@ namespace ExclusiveGym.WinForms
                     Font = new Font(new FontFamily("Prompt"), 14),
                     ForeColor = Color.DimGray
                 };
+                panel.Click += panel_Click;
                 panel.Controls.Add(lblName);
                 //Button btn = new Button()
                 //{
@@ -104,6 +105,16 @@ namespace ExclusiveGym.WinForms
             {
                 chk.Parent.BackColor = Color.White;
             }
+        }
+
+        private void panel_Click(object sender,System.EventArgs e)
+        {
+            Panel panel = (Panel)sender;
+            foreach (Panel p in panel.Parent.Controls)
+            {
+                if (p != panel) p.BackColor = Color.White;
+            }
+            panel.BackColor = (panel.BackColor == Color.White) ? Color.OrangeRed : Color.White;
         }
 
         #region BGOpacity
