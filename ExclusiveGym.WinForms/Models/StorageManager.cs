@@ -181,13 +181,29 @@ class StorageManager
 
         SaveDB();
     }
+
     public void GetIncomeToday()
     {
-
+        
     }
 
     public void GetMemberAccessGymToday()
     {
 
+    }
+
+    public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
+    {
+        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Date == new DateTime(year, month, day)).ToList();
+    }
+
+    public List<ApplyCourseLog> GetIncomeByMonth(int month, int year)
+    {
+        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year ).ToList();
+    }
+
+    public List<ApplyCourseLog> GetIncomeByYear(int year)
+    {
+        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Year == year).ToList();
     }
 }
