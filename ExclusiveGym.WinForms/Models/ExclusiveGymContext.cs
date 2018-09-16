@@ -17,6 +17,8 @@ namespace ExclusiveGym.WinForms.Models
         public DbSet<Member> Members { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<MemberApplyCourse> MemberApplyCourses { get; set; }
+        public DbSet<MedicalProblem> MedicalProblems { get; set; }
+        public DbSet<MemberKnow> MemberKnows { get; set; }
 
         public DbSet<AccessLog> AccessLog { get; set; }
         public DbSet<ApplyCourseLog> ApplyCourseLog { get; set; }
