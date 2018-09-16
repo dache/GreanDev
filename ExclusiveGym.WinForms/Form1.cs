@@ -196,14 +196,8 @@ namespace ExclusiveGym.WinForms
                     welcomeForm.ShowDialog();
                     MemberApplyCourse memberApplyCourse = StorageManager.GetSingleton().GetMemberApplyCourseByMemberID(currentMember.MemberId);
                     Course course = StorageManager.GetSingleton().GetCourseByID(memberApplyCourse.CourseID);
-                    if (course.CourseType == COURSETYPE.DAILY)
-                    {
-                        // display data to gridview type daily
-                    }
-                    else
-                    {
-                        // display data to gridview type monthly
-                    }
+                    homeControl1.Refresh();
+
                 }
             }
 
@@ -293,11 +287,14 @@ namespace ExclusiveGym.WinForms
             memberForm.ShowDialog();
         }
 
-        private void ApplyCourseCallback()
+        private void ApplyCourseCallback(Member member)
         {
-            var welcomeForm = new WelcomeDialogForm(StorageManager.GetSingleton().GetSampleMember());
+            var welcomeForm = new WelcomeDialogForm(member);
             welcomeForm.ShowDialog();
+
+            homeControl1.Refresh();
         }
+
         private void button2_Click_1(object sender, EventArgs e)
         {
             //case 1

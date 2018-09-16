@@ -77,7 +77,7 @@ class StorageManager
     {
         var courses = GetDB().Courses.ToList();
         if (courses.Count == 0)
-        {            
+        {
             var course = new Course() { CourseID = 1, CourseName = "รายวัน", TotalDay = 1, CoursePrice = 100, CourseType = COURSETYPE.DAILY, CreateDate = DateTime.Now };
             GetDB().Courses.Add(course);
             course = new Course() { CourseID = 2, CourseName = "3 เดือน", TotalDay = 1, CoursePrice = 300, CourseType = COURSETYPE.MONTLY, CreateDate = DateTime.Now };
@@ -93,7 +93,7 @@ class StorageManager
 
     public List<AccessLog> GetAccessLogList()
     {
-        return GetDB().AccessLog.Select(x => x).ToList();
+        return GetDB().AccessLog.Include("Member").ToList();
     }
 
     public Course GetDailyCourse()
@@ -125,16 +125,15 @@ class StorageManager
         acl.CoursePrice = course.CoursePrice;
         GetDB().ApplyCourseLog.Add(acl);
 
-        if(member.ExpireDate ==  null)
+        if (member.ExpireDate == null)
         {
-            member.ExpireDate = DateTime.Now;
-            member.ExpireDate.Value.AddDays(course.TotalDay- 1);
+            member.ExpireDate = DateTime.Now.AddDays(course.TotalDay);
         }
         else
         {
             member.ExpireDate = member.ExpireDate.Value.AddDays(course.TotalDay);
         }
-       
+
         GetDB().Entry(member).State = System.Data.Entity.EntityState.Modified;
 
 
@@ -159,14 +158,21 @@ class StorageManager
 
     public void MemberAccessGym(Member member)
     {
-        MemberApplyCourse mac = GetMemberApplyCourseByMemberID(member.MemberId);
-        Course course = GetCourseByID(mac.CourseID);
-        AccessLog accessLog = new AccessLog();
-        accessLog.AccessDate = DateTime.Now;
-        accessLog.AccessType = course.CourseType;
-        accessLog.MemberID = member.MemberId;
-        GetDB().AccessLog.Add(accessLog);
-        SaveDB();
+        var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day 
+        && f.AccessDate.Month == DateTime.Now.Month 
+        && f.AccessDate.Year == DateTime.Now.Year) && 
+        f.MemberID == member.MemberId).SingleOrDefault();
+        if (access == null)
+        {
+            MemberApplyCourse mac = GetMemberApplyCourseByMemberID(member.MemberId);
+            Course course = GetCourseByID(mac.CourseID);
+            AccessLog accessLog = new AccessLog();
+            accessLog.AccessDate = DateTime.Now;
+            accessLog.AccessType = course.CourseType;
+            accessLog.MemberID = member.MemberId;
+            GetDB().AccessLog.Add(accessLog);
+            SaveDB();
+        }
     }
     public void CreateSampleMember()
     {
@@ -208,7 +214,7 @@ class StorageManager
 
     public void GetIncomeToday()
     {
-        
+
     }
 
     public List<AccessLog> GetMemberAccessGymToday()
@@ -223,7 +229,7 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByMonth(int month, int year)
     {
-        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year ).ToList();
+        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year).ToList();
     }
 
     public List<ApplyCourseLog> GetIncomeByYear(int year)

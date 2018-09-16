@@ -15,13 +15,13 @@ namespace ExclusiveGym.WinForms
     {
         private const int WS_EX_TRANSPARENT = 0x20;
 
-        private FinishCallback m_finishCallback;
+        private FinishCallbackWithMember m_finishCallback;
         private Member m_currentMemberWillApply;
 
 
         private Course currentCourse;
 
-        public DialogNeedApplyCourse(Member member, FinishCallback callback)
+        public DialogNeedApplyCourse(Member member, FinishCallbackWithMember callback)
         {
 
             m_finishCallback = callback;
@@ -46,25 +46,6 @@ namespace ExclusiveGym.WinForms
                 };
                 panel.Click += panel_Click;
                 panel.Controls.Add(lblName);
-                //Button btn = new Button()
-                //{
-                //    Text = "สมัคร",
-                //    Width = 80,
-                //    Height = 30,
-                //    FlatStyle = FlatStyle.Flat,
-                //    Location = new Point(215, 5),
-                //    BackColor = Color.FromArgb(27, 158, 224),
-                //    ForeColor = Color.White,
-                //    Font = new Font(new FontFamily("Prompt"), 11)
-                //};
-                //panel.Controls.Add(btn);
-                //CheckBox chk = new CheckBox()
-                //{
-                //    Text = "เลือก",
-                //    Location = new Point(150, 5)
-                //};
-                //chk.CheckedChanged += chkCourse_CheckedChanged;
-                //panel.Controls.Add(chk);
                 Label lblPrice = new Label()
                 {
                     Text = course.CoursePrice.ToString(),
@@ -82,15 +63,15 @@ namespace ExclusiveGym.WinForms
         {
             StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply,
                 StorageManager.GetSingleton().GetDailyCourse());
-            m_finishCallback();
+            m_finishCallback(this.m_currentMemberWillApply);
             this.Close();
         }
 
         private void FindOtherCourse_Click(object sender, EventArgs e)
         {
-            var FormCourseList = new FormCourseList(m_currentMemberWillApply, m_finishCallback);
-            FormCourseList.ShowDialog();
-            this.Close();
+            //var FormCourseList = new FormCourseList(m_currentMemberWillApply, m_finishCallback);
+            //FormCourseList.ShowDialog();
+            //this.Close();
         }
 
         private void chkCourse_CheckedChanged(object sender, System.EventArgs e)
@@ -151,12 +132,14 @@ namespace ExclusiveGym.WinForms
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+       
+
+        private void btnApply_Click(object sender, EventArgs e)
         {
-            
-            // Apply Course
             Course a = this.currentCourse;
+
             StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply, a);
+            m_finishCallback(this.m_currentMemberWillApply);
             this.Close();
         }
     }

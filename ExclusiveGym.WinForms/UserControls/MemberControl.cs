@@ -131,7 +131,7 @@ namespace ExclusiveGym.WinForms.UserControls
             {
                 //Do something with your button.
                 Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
-                var mForm = new DialogNeedApplyCourse(member, NonFunc);
+                var mForm = new DialogNeedApplyCourse(member, null);
                 mForm.ShowDialog();
             }
         }

@@ -17,7 +17,7 @@ namespace ExclusiveGym.WinForms.CustomControls
         {
             InitializeComponent();
 
-            lblName.Text = $"{accessLog}";
+            lblName.Text = $"{accessLog.Member.Name}  {accessLog.Member.LastName}";
             lblMemberType.Text = (accessLog.AccessType == COURSETYPE.DAILY) ? "รายวัน" : "รายเดือน";
             lblCurrentTime.Text = accessLog.AccessDate.ToString("hh:mm:ss");
         }

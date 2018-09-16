@@ -16,6 +16,7 @@ namespace ExclusiveGym.WinForms.Models
         public int MemberID { get; set; }
         public COURSETYPE AccessType { get; set; }
         public DateTime AccessDate { get; set; }
+        public Member Member { get; set; }
     }
 
     public class ApplyCourseLog
