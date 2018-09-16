@@ -211,9 +211,9 @@ class StorageManager
         
     }
 
-    public void GetMemberAccessGymToday()
+    public List<AccessLog> GetMemberAccessGymToday()
     {
-
+        return GetDB().AccessLog.Where(accesslog => accesslog.AccessDate.Day == DateTime.Now.Day && accesslog.AccessDate.Month == DateTime.Now.Month && accesslog.AccessDate.Year == DateTime.Now.Year).ToList();
     }
 
     public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
