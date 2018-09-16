@@ -66,7 +66,6 @@
             // 
             this.gvCourses.AllowUserToAddRows = false;
             this.gvCourses.AllowUserToDeleteRows = false;
-            this.gvCourses.AllowUserToResizeColumns = false;
             this.gvCourses.AllowUserToResizeRows = false;
             this.gvCourses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.gvCourses.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;

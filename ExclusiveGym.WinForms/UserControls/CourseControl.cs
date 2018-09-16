@@ -36,7 +36,12 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void CourseControl_Load(object sender, EventArgs e)
         {
-            InitCourse();            
+            InitCourse();
+            
+            DataGridViewColumn column = gvCourses.Columns[1];
+            column.Width = 500;
+
+            gvCourses.Columns[1].Width = 500;
         }
 
         private void InitCourse()
@@ -49,7 +54,8 @@ namespace ExclusiveGym.WinForms.UserControls
             gvCourses.Columns[5].Visible = false;
 
             gvCourses.Columns[1].HeaderText = "ชื่อคอร์ส";
-            gvCourses.Columns[2].HeaderText = "ประเภทคอร์ส";
+                   
+            gvCourses.Columns[2].HeaderText = "ประเภทคอร์ส";            
             gvCourses.Columns[3].HeaderText = "ราคา";
             gvCourses.Columns[4].HeaderText = "จำนวนวัน";
 
@@ -58,6 +64,7 @@ namespace ExclusiveGym.WinForms.UserControls
             editButton.Text = "แก้ไข";
             editButton.HeaderText = "";
             editButton.UseColumnTextForButtonValue = true;
+            editButton.Width = 200;
             if (gvCourses.Columns["editButton"] == null)
             {
                 gvCourses.Columns.Insert(6, editButton);
