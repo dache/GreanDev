@@ -28,5 +28,8 @@ namespace ExclusiveGym.WinForms.Models
         public int CoursePrice { get; set; }
         public DateTime ApplyDate { get; set; }
         public int MemberId { get; set; }
+
+        public Course Course { get; set; }
+        public Member Member { get; set; }
     }
 }

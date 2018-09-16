@@ -111,13 +111,15 @@
             // dailySumPriceLabel
             // 
             this.dailySumPriceLabel.AutoSize = true;
+            this.dailySumPriceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dailySumPriceLabel.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailySumPriceLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.dailySumPriceLabel.Location = new System.Drawing.Point(570, 479);
+            this.dailySumPriceLabel.Location = new System.Drawing.Point(557, 478);
             this.dailySumPriceLabel.Name = "dailySumPriceLabel";
             this.dailySumPriceLabel.Size = new System.Drawing.Size(186, 29);
             this.dailySumPriceLabel.TabIndex = 19;
             this.dailySumPriceLabel.Text = "รายได้รวม  : {0} บาท";
+            this.dailySumPriceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dailyDataView
             // 
