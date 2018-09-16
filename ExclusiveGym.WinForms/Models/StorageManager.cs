@@ -45,6 +45,7 @@ class StorageManager
 
     public List<Member> GetMemberList()
     {
+        //if (GetDB().Members.ToList<Member>().Count == 0) return new List<Member>();
         return GetDB().Members.Select(x => x).ToList();
     }
 

@@ -16,5 +16,16 @@ namespace ExclusiveGym.WinForms.UserControls
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var CourseForm = new CourseForm(null, FinishCallback);
+            CourseForm.ShowDialog();
+        }
+
+        private void FinishCallback()
+        {
+
+        }
     }
 }

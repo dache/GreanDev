@@ -24,42 +24,74 @@ public class FingerPrint
     private FingerPrint()
     {
     }
-    
+
     public AxZKFPEngX GetFingerprint()
     {
-        if(m_zkFprint == null)
+        if (m_zkFprint == null)
         {
             m_zkFprint = new AxZKFPEngX();
+
+            m_zkFprint.OnCapture += zkFprint_OnCapture;
+            m_zkFprint.OnImageReceived += zkFprint_OnImageReceived;
+            m_zkFprint.OnFeatureInfo += zkFprint_OnFeatureInfo;
+            m_zkFprint.OnEnroll += zkFprint_OnEnroll;
+            // m_zkFprint.Dispose();
         }
         return m_zkFprint;
     }
 
-    public async Task SetupFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls
-        , IZKFPEngXEvents_OnFeatureInfoEventHandler OnFeatureInfo,
-        IZKFPEngXEvents_OnImageReceivedEventHandler OnImageReceived,
-        IZKFPEngXEvents_OnEnrollEventHandler OnEnroll,
-        IZKFPEngXEvents_OnCaptureEventHandler OnCapture)
+    public void InitForm(System.Windows.Forms.Control.ControlCollection Controls)
+    {
+        //Controls.Add(m_zkFprint);
+    }
+    private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
+    {
+        Console.WriteLine("zkFprint_OnImageReceived");
+        m_currentOnImageReceived(sender, e);
+    }
+    private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
+    {
+        Console.WriteLine("zkFprint_OnFeatureInfo");
+        m_currentOnFeatureInfo(sender, e);
+    }
+    private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
+    {
+        Console.WriteLine("zkFprint_OnEnroll");
+        m_currentOnEnroll(sender, e);
+    }
+    private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
+    {
+        Console.WriteLine("zkFprint_OnCapture");
+        m_currentOnCapture(sender, e);
+    }
+    
+    private IZKFPEngXEvents_OnCaptureEventHandler m_currentOnCapture;
+    private IZKFPEngXEvents_OnFeatureInfoEventHandler m_currentOnFeatureInfo;
+    private IZKFPEngXEvents_OnImageReceivedEventHandler m_currentOnImageReceived;
+    private IZKFPEngXEvents_OnEnrollEventHandler m_currentOnEnroll;
+
+    public void SetupFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls
+    , IZKFPEngXEvents_OnFeatureInfoEventHandler OnFeatureInfo,
+    IZKFPEngXEvents_OnImageReceivedEventHandler OnImageReceived,
+    IZKFPEngXEvents_OnEnrollEventHandler OnEnroll,
+    IZKFPEngXEvents_OnCaptureEventHandler OnCapture)
     {
         Controls.Add(m_zkFprint);
-        m_zkFprint.OnCapture += OnCapture;
-        m_zkFprint.OnImageReceived += OnImageReceived;
-        m_zkFprint.OnFeatureInfo += OnFeatureInfo;
-        m_zkFprint.OnEnroll += OnEnroll;
+        m_currentOnCapture = OnCapture;
+        m_currentOnImageReceived = OnImageReceived;
+        m_currentOnFeatureInfo = OnFeatureInfo;
+        m_currentOnEnroll = OnEnroll;
         m_zkFprint.BeginCapture();
     }
 
-    public async Task RemoveFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls
-        , IZKFPEngXEvents_OnFeatureInfoEventHandler OnFeatureInfo,
-        IZKFPEngXEvents_OnImageReceivedEventHandler OnImageReceived,
-        IZKFPEngXEvents_OnEnrollEventHandler OnEnroll,
-        IZKFPEngXEvents_OnCaptureEventHandler OnCapture)
+    public void RemoveFingerprintEvent(System.Windows.Forms.Control.ControlCollection Controls)
     {
         Controls.Remove(m_zkFprint);
 
-        m_zkFprint.OnCapture -= OnCapture;
-        m_zkFprint.OnImageReceived -= OnImageReceived;
-        m_zkFprint.OnFeatureInfo -= OnFeatureInfo;
-        m_zkFprint.OnEnroll -= OnEnroll;
+        m_currentOnCapture = null;
+        m_currentOnImageReceived = null;
+        m_currentOnFeatureInfo = null;
+        m_currentOnEnroll = null;
         m_zkFprint.CancelCapture();
         m_zkFprint.CancelEnroll();
     }

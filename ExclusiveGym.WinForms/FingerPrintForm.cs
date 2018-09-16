@@ -48,7 +48,7 @@ namespace ExclusiveGym.WinForms
         {
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
 
-            await FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
             //Console.WriteLine();
             // m_zkFprint.BeginCapture();
             // m_zkFprint.CancelEnroll();
@@ -96,7 +96,7 @@ namespace ExclusiveGym.WinForms
             if (e.actionResult)
             {
                 string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
-                await FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+                 FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
                 m_fingerPrintCallback(template);
 
                 this.Close();
