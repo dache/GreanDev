@@ -41,18 +41,25 @@ namespace ExclusiveGym.WinForms
                     ForeColor = Color.DimGray
                 };
                 panel.Controls.Add(lblName);
-                Button btn = new Button()
+                //Button btn = new Button()
+                //{
+                //    Text = "สมัคร",
+                //    Width = 80,
+                //    Height = 30,
+                //    FlatStyle = FlatStyle.Flat,
+                //    Location = new Point(215, 5),
+                //    BackColor = Color.FromArgb(27, 158, 224),
+                //    ForeColor = Color.White,
+                //    Font = new Font(new FontFamily("Prompt"), 11)
+                //};
+                //panel.Controls.Add(btn);
+                CheckBox chk = new CheckBox()
                 {
-                    Text = "สมัคร",
-                    Width = 80,
-                    Height = 30,
-                    FlatStyle = FlatStyle.Flat,
-                    Location = new Point(215, 5),
-                    BackColor = Color.FromArgb(27, 158, 224),
-                    ForeColor = Color.White,
-                    Font = new Font(new FontFamily("Prompt"), 11)                    
+                    Text = "เลือก",
+                    Location = new Point(150, 5)
                 };
-                panel.Controls.Add(btn);
+                chk.CheckedChanged += chkCourse_CheckedChanged;
+                panel.Controls.Add(chk);
                 Label lblPrice = new Label()
                 {
                     Text = course.CoursePrice.ToString(),
@@ -81,6 +88,26 @@ namespace ExclusiveGym.WinForms
             this.Close();
         }
 
+        private void chkCourse_CheckedChanged(object sender, System.EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            if (chk.Checked)
+            {
+                chk.Parent.BackColor = Color.Red;
+            }
+            else
+            {
+                chk.Parent.BackColor = Color.White;
+            }
+
+            foreach(Panel panel in chk.Parent.Parent.Controls)
+            {
+                CheckBox c = panel.Controls.OfType<CheckBox>().SingleOrDefault();
+                c.Checked = false;
+            }
+        }
+
+        #region BGOpacity
         protected override CreateParams CreateParams
         {
             get
@@ -99,6 +126,7 @@ namespace ExclusiveGym.WinForms
             }
             base.OnPaint(e);
         }
+        #endregion
 
 
     }

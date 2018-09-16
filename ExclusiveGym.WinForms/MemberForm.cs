@@ -85,10 +85,25 @@ namespace ExclusiveGym.WinForms
                 this.Member.CreateDate = DateTime.Now;
                 this.Member.IsActive = true;
                 this.Member.Problems = GetMedicalProblem();
+                this.Member.MemberKnows = GetMemberKnows();
 
                 StorageManager.GetSingleton().AddMember(this.Member);
                 CloseForm();
             }
+        }
+
+        private List<MemberKnow> GetMemberKnows()
+        {
+            var mk = new List<MemberKnow>();
+            foreach (CheckBox c in memberKnowPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
+            {
+                var mem = new MemberKnow();                
+                mem.MemberKnowFrom = (enumMemberKnow)Enum.Parse(typeof(enumMemberKnow), c.Name.ToString().Replace("chkKnow", "")); //Convert.ToInt32();
+                mem.MemberId = this.Member.MemberId;
+                mem.Member = this.Member;
+                mk.Add(mem);
+            }
+            return mk;
         }
 
         private bool isFromValid()
@@ -101,6 +116,11 @@ namespace ExclusiveGym.WinForms
             if(!chkMale.Checked && !chkFemale.Checked)
             {
                 MessageBox.Show("กรุณาเลือกเพศ");
+                return false;
+            }
+            if(lblFingerPrint.Text == "")
+            {
+                MessageBox.Show("กรุณาเก็บลายนิ้วมือ");
                 return false;
             }
             return true;
@@ -178,8 +198,9 @@ namespace ExclusiveGym.WinForms
             var mp = new List<MedicalProblem>();
             foreach (CheckBox c in problemPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
             {
+                string mId = c.Name.ToString().Replace("chk", "");
                 var problem = new MedicalProblem();
-                problem.MedicalID = Convert.ToInt32(c.Name.ToString().Replace("chk", ""));
+                problem.MedicalID = (mId == "NoProblem") ? 0 : Convert.ToInt32(mId);
                 problem.ProblemName = c.Text;
                 problem.MemberId = this.Member.MemberId;
                 problem.Member = this.Member;

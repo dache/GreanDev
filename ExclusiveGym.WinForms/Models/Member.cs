@@ -39,6 +39,7 @@ namespace ExclusiveGym.WinForms.Models
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
         public List<MedicalProblem> Problems { get; set; }
+        public List<MemberKnow> MemberKnows { get; set; }
     }
 
     public class MedicalProblem
@@ -48,6 +49,16 @@ namespace ExclusiveGym.WinForms.Models
         public int MedicalID { get; set; }
         public string ProblemName { get; set; }
 
+        public int MemberId { get; set; }
+        public Member Member { get; set; }
+    }
+
+    public class MemberKnow
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public int MemberKnowId { get; set; }
+        public enumMemberKnow MemberKnowFrom { get; set; }
         public int MemberId { get; set; }
         public Member Member { get; set; }
     }
@@ -67,5 +78,13 @@ namespace ExclusiveGym.WinForms.Models
         AchesAndPains,
         Diabetes, // เบาหวาน
         Other
+    }
+
+    public enum enumMemberKnow
+    {
+        Advertise = 1,
+        Internet = 2,
+        Facebook = 3,
+        FromFriend = 4
     }
 }

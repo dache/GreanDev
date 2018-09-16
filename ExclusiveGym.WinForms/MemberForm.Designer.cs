@@ -30,6 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberForm));
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.problemPanel = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.txtOtherProblem = new System.Windows.Forms.TextBox();
+            this.chk1 = new System.Windows.Forms.CheckBox();
+            this.chk2 = new System.Windows.Forms.CheckBox();
+            this.chk3 = new System.Windows.Forms.CheckBox();
+            this.chk4 = new System.Windows.Forms.CheckBox();
+            this.chk5 = new System.Windows.Forms.CheckBox();
+            this.chkNoProblem = new System.Windows.Forms.CheckBox();
+            this.chk6 = new System.Windows.Forms.CheckBox();
             this.lblCourse = new System.Windows.Forms.Label();
             this.lblMemberCourse = new System.Windows.Forms.Label();
             this.lblFingerPrint = new System.Windows.Forms.Label();
@@ -72,18 +83,10 @@
             this.txtThaiId = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
-            this.chk6 = new System.Windows.Forms.CheckBox();
-            this.chkNoProblem = new System.Windows.Forms.CheckBox();
-            this.chk5 = new System.Windows.Forms.CheckBox();
-            this.chk4 = new System.Windows.Forms.CheckBox();
-            this.chk3 = new System.Windows.Forms.CheckBox();
-            this.chk2 = new System.Windows.Forms.CheckBox();
-            this.chk1 = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkKnow4 = new System.Windows.Forms.CheckBox();
+            this.chkKnow3 = new System.Windows.Forms.CheckBox();
+            this.chkKnow2 = new System.Windows.Forms.CheckBox();
+            this.chkKnow1 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -102,10 +105,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.txtOtherProblem = new System.Windows.Forms.TextBox();
-            this.problemPanel = new System.Windows.Forms.Panel();
+            this.memberKnowPanel = new System.Windows.Forms.Panel();
             this.mainPanel.SuspendLayout();
+            this.problemPanel.SuspendLayout();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -123,8 +126,7 @@
             this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.problemPanel.SuspendLayout();
+            this.memberKnowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -133,6 +135,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.Color.White;
+            this.mainPanel.Controls.Add(this.memberKnowPanel);
             this.mainPanel.Controls.Add(this.problemPanel);
             this.mainPanel.Controls.Add(this.lblCourse);
             this.mainPanel.Controls.Add(this.lblMemberCourse);
@@ -165,11 +168,6 @@
             this.mainPanel.Controls.Add(this.panel7);
             this.mainPanel.Controls.Add(this.label21);
             this.mainPanel.Controls.Add(this.datePicker);
-            this.mainPanel.Controls.Add(this.checkBox4);
-            this.mainPanel.Controls.Add(this.checkBox3);
-            this.mainPanel.Controls.Add(this.checkBox2);
-            this.mainPanel.Controls.Add(this.checkBox1);
-            this.mainPanel.Controls.Add(this.label7);
             this.mainPanel.Controls.Add(this.label6);
             this.mainPanel.Controls.Add(this.label5);
             this.mainPanel.Controls.Add(this.lblHeader);
@@ -187,6 +185,131 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(740, 573);
             this.mainPanel.TabIndex = 12;
+            // 
+            // problemPanel
+            // 
+            this.problemPanel.Controls.Add(this.label8);
+            this.problemPanel.Controls.Add(this.panel6);
+            this.problemPanel.Controls.Add(this.chk1);
+            this.problemPanel.Controls.Add(this.chk2);
+            this.problemPanel.Controls.Add(this.chk3);
+            this.problemPanel.Controls.Add(this.chk4);
+            this.problemPanel.Controls.Add(this.chk5);
+            this.problemPanel.Controls.Add(this.chkNoProblem);
+            this.problemPanel.Controls.Add(this.chk6);
+            this.problemPanel.Location = new System.Drawing.Point(16, 427);
+            this.problemPanel.Name = "problemPanel";
+            this.problemPanel.Size = new System.Drawing.Size(634, 93);
+            this.problemPanel.TabIndex = 49;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.DimGray;
+            this.label8.Location = new System.Drawing.Point(7, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(163, 22);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "ท่านมีโรคประจำตัวหรือไม่";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.panel6.Controls.Add(this.txtOtherProblem);
+            this.panel6.Location = new System.Drawing.Point(188, 56);
+            this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(5);
+            this.panel6.Size = new System.Drawing.Size(126, 30);
+            this.panel6.TabIndex = 11;
+            // 
+            // txtOtherProblem
+            // 
+            this.txtOtherProblem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.txtOtherProblem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtOtherProblem.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOtherProblem.Location = new System.Drawing.Point(5, 5);
+            this.txtOtherProblem.Name = "txtOtherProblem";
+            this.txtOtherProblem.Size = new System.Drawing.Size(110, 20);
+            this.txtOtherProblem.TabIndex = 7;
+            // 
+            // chk1
+            // 
+            this.chk1.AutoSize = true;
+            this.chk1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk1.Location = new System.Drawing.Point(137, 27);
+            this.chk1.Name = "chk1";
+            this.chk1.Size = new System.Drawing.Size(74, 23);
+            this.chk1.TabIndex = 20;
+            this.chk1.Text = "โรคหัวใจ";
+            this.chk1.UseVisualStyleBackColor = true;
+            // 
+            // chk2
+            // 
+            this.chk2.AutoSize = true;
+            this.chk2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk2.Location = new System.Drawing.Point(217, 27);
+            this.chk2.Name = "chk2";
+            this.chk2.Size = new System.Drawing.Size(137, 23);
+            this.chk2.TabIndex = 21;
+            this.chk2.Text = "โรคความดันโลหิตสูง";
+            this.chk2.UseVisualStyleBackColor = true;
+            // 
+            // chk3
+            // 
+            this.chk3.AutoSize = true;
+            this.chk3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk3.Location = new System.Drawing.Point(360, 27);
+            this.chk3.Name = "chk3";
+            this.chk3.Size = new System.Drawing.Size(88, 23);
+            this.chk3.TabIndex = 22;
+            this.chk3.Text = "โรคหอบหืด";
+            this.chk3.UseVisualStyleBackColor = true;
+            // 
+            // chk4
+            // 
+            this.chk4.AutoSize = true;
+            this.chk4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk4.Location = new System.Drawing.Point(454, 27);
+            this.chk4.Name = "chk4";
+            this.chk4.Size = new System.Drawing.Size(118, 23);
+            this.chk4.TabIndex = 23;
+            this.chk4.Text = "ปวดเมื่อยตามข้อ";
+            this.chk4.UseVisualStyleBackColor = true;
+            // 
+            // chk5
+            // 
+            this.chk5.AutoSize = true;
+            this.chk5.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk5.Location = new System.Drawing.Point(16, 56);
+            this.chk5.Name = "chk5";
+            this.chk5.Size = new System.Drawing.Size(92, 23);
+            this.chk5.TabIndex = 24;
+            this.chk5.Text = "โรคเบาหวาน";
+            this.chk5.UseVisualStyleBackColor = true;
+            // 
+            // chkNoProblem
+            // 
+            this.chkNoProblem.AutoSize = true;
+            this.chkNoProblem.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNoProblem.Location = new System.Drawing.Point(16, 27);
+            this.chkNoProblem.Name = "chkNoProblem";
+            this.chkNoProblem.Size = new System.Drawing.Size(115, 23);
+            this.chkNoProblem.TabIndex = 26;
+            this.chkNoProblem.Text = "ไม่มีโรคประจำตัว";
+            this.chkNoProblem.UseVisualStyleBackColor = true;
+            this.chkNoProblem.CheckedChanged += new System.EventHandler(this.chkNoProblem_CheckedChanged);
+            // 
+            // chk6
+            // 
+            this.chk6.AutoSize = true;
+            this.chk6.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk6.Location = new System.Drawing.Point(111, 56);
+            this.chk6.Name = "chk6";
+            this.chk6.Size = new System.Drawing.Size(71, 23);
+            this.chk6.TabIndex = 27;
+            this.chk6.Text = "โรคอื่นๆ";
+            this.chk6.UseVisualStyleBackColor = true;
             // 
             // lblCourse
             // 
@@ -214,11 +337,10 @@
             // 
             this.lblFingerPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFingerPrint.AutoSize = true;
-            this.lblFingerPrint.Location = new System.Drawing.Point(693, 145);
+            this.lblFingerPrint.Location = new System.Drawing.Point(711, 157);
             this.lblFingerPrint.Name = "lblFingerPrint";
-            this.lblFingerPrint.Size = new System.Drawing.Size(35, 13);
+            this.lblFingerPrint.Size = new System.Drawing.Size(0, 13);
             this.lblFingerPrint.TabIndex = 47;
-            this.lblFingerPrint.Text = "label3";
             // 
             // btnFingerPrint
             // 
@@ -632,145 +754,56 @@
             this.datePicker.TabIndex = 28;
             this.datePicker.ValueChanged += new System.EventHandler(this.datePicker_ValueChanged);
             // 
-            // chk6
+            // chkKnow4
             // 
-            this.chk6.AutoSize = true;
-            this.chk6.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk6.Location = new System.Drawing.Point(111, 56);
-            this.chk6.Name = "chk6";
-            this.chk6.Size = new System.Drawing.Size(71, 23);
-            this.chk6.TabIndex = 27;
-            this.chk6.Text = "โรคอื่นๆ";
-            this.chk6.UseVisualStyleBackColor = true;
+            this.chkKnow4.AutoSize = true;
+            this.chkKnow4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow4.Location = new System.Drawing.Point(339, 30);
+            this.chkKnow4.Name = "chkKnow4";
+            this.chkKnow4.Size = new System.Drawing.Size(119, 23);
+            this.chkKnow4.TabIndex = 18;
+            this.chkKnow4.Text = "จากเพื่อนที่แนะนำ";
+            this.chkKnow4.UseVisualStyleBackColor = true;
             // 
-            // chkNoProblem
+            // chkKnow3
             // 
-            this.chkNoProblem.AutoSize = true;
-            this.chkNoProblem.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkNoProblem.Location = new System.Drawing.Point(16, 27);
-            this.chkNoProblem.Name = "chkNoProblem";
-            this.chkNoProblem.Size = new System.Drawing.Size(115, 23);
-            this.chkNoProblem.TabIndex = 26;
-            this.chkNoProblem.Text = "ไม่มีโรคประจำตัว";
-            this.chkNoProblem.UseVisualStyleBackColor = true;
-            this.chkNoProblem.CheckedChanged += new System.EventHandler(this.chkNoProblem_CheckedChanged);
+            this.chkKnow3.AutoSize = true;
+            this.chkKnow3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow3.Location = new System.Drawing.Point(245, 30);
+            this.chkKnow3.Name = "chkKnow3";
+            this.chkKnow3.Size = new System.Drawing.Size(88, 23);
+            this.chkKnow3.TabIndex = 17;
+            this.chkKnow3.Text = "Facebook";
+            this.chkKnow3.UseVisualStyleBackColor = true;
             // 
-            // chk5
+            // chkKnow2
             // 
-            this.chk5.AutoSize = true;
-            this.chk5.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk5.Location = new System.Drawing.Point(16, 56);
-            this.chk5.Name = "chk5";
-            this.chk5.Size = new System.Drawing.Size(92, 23);
-            this.chk5.TabIndex = 24;
-            this.chk5.Text = "โรคเบาหวาน";
-            this.chk5.UseVisualStyleBackColor = true;
+            this.chkKnow2.AutoSize = true;
+            this.chkKnow2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow2.Location = new System.Drawing.Point(161, 30);
+            this.chkKnow2.Name = "chkKnow2";
+            this.chkKnow2.Size = new System.Drawing.Size(78, 23);
+            this.chkKnow2.TabIndex = 16;
+            this.chkKnow2.Text = "Internet";
+            this.chkKnow2.UseVisualStyleBackColor = true;
             // 
-            // chk4
+            // chkKnow1
             // 
-            this.chk4.AutoSize = true;
-            this.chk4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk4.Location = new System.Drawing.Point(454, 27);
-            this.chk4.Name = "chk4";
-            this.chk4.Size = new System.Drawing.Size(118, 23);
-            this.chk4.TabIndex = 23;
-            this.chk4.Text = "ปวดเมื่อยตามข้อ";
-            this.chk4.UseVisualStyleBackColor = true;
-            // 
-            // chk3
-            // 
-            this.chk3.AutoSize = true;
-            this.chk3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk3.Location = new System.Drawing.Point(360, 27);
-            this.chk3.Name = "chk3";
-            this.chk3.Size = new System.Drawing.Size(88, 23);
-            this.chk3.TabIndex = 22;
-            this.chk3.Text = "โรคหอบหืด";
-            this.chk3.UseVisualStyleBackColor = true;
-            // 
-            // chk2
-            // 
-            this.chk2.AutoSize = true;
-            this.chk2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk2.Location = new System.Drawing.Point(217, 27);
-            this.chk2.Name = "chk2";
-            this.chk2.Size = new System.Drawing.Size(137, 23);
-            this.chk2.TabIndex = 21;
-            this.chk2.Text = "โรคความดันโลหิตสูง";
-            this.chk2.UseVisualStyleBackColor = true;
-            // 
-            // chk1
-            // 
-            this.chk1.AutoSize = true;
-            this.chk1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk1.Location = new System.Drawing.Point(137, 27);
-            this.chk1.Name = "chk1";
-            this.chk1.Size = new System.Drawing.Size(74, 23);
-            this.chk1.TabIndex = 20;
-            this.chk1.Text = "โรคหัวใจ";
-            this.chk1.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DimGray;
-            this.label8.Location = new System.Drawing.Point(7, 2);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(163, 22);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "ท่านมีโรคประจำตัวหรือไม่";
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(351, 398);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(119, 23);
-            this.checkBox4.TabIndex = 18;
-            this.checkBox4.Text = "จากเพื่อนที่แนะนำ";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(257, 398);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(88, 23);
-            this.checkBox3.TabIndex = 17;
-            this.checkBox3.Text = "Facebook";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(173, 398);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(78, 23);
-            this.checkBox2.TabIndex = 16;
-            this.checkBox2.Text = "Internet";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(27, 398);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 23);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "ประชาสัมพันธ์โฆษณา";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkKnow1.AutoSize = true;
+            this.chkKnow1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkKnow1.Location = new System.Drawing.Point(15, 30);
+            this.chkKnow1.Name = "chkKnow1";
+            this.chkKnow1.Size = new System.Drawing.Size(140, 23);
+            this.chkKnow1.TabIndex = 15;
+            this.chkKnow1.Text = "ประชาสัมพันธ์โฆษณา";
+            this.chkKnow1.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(18, 373);
+            this.label7.Location = new System.Drawing.Point(6, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(139, 22);
             this.label7.TabIndex = 14;
@@ -972,41 +1005,17 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "วันเกิด";
             // 
-            // panel6
+            // memberKnowPanel
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
-            this.panel6.Controls.Add(this.txtOtherProblem);
-            this.panel6.Location = new System.Drawing.Point(188, 56);
-            this.panel6.Name = "panel6";
-            this.panel6.Padding = new System.Windows.Forms.Padding(5);
-            this.panel6.Size = new System.Drawing.Size(126, 30);
-            this.panel6.TabIndex = 11;
-            // 
-            // txtOtherProblem
-            // 
-            this.txtOtherProblem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
-            this.txtOtherProblem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtOtherProblem.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherProblem.Location = new System.Drawing.Point(5, 5);
-            this.txtOtherProblem.Name = "txtOtherProblem";
-            this.txtOtherProblem.Size = new System.Drawing.Size(110, 20);
-            this.txtOtherProblem.TabIndex = 7;
-            // 
-            // problemPanel
-            // 
-            this.problemPanel.Controls.Add(this.label8);
-            this.problemPanel.Controls.Add(this.panel6);
-            this.problemPanel.Controls.Add(this.chk1);
-            this.problemPanel.Controls.Add(this.chk2);
-            this.problemPanel.Controls.Add(this.chk3);
-            this.problemPanel.Controls.Add(this.chk4);
-            this.problemPanel.Controls.Add(this.chk5);
-            this.problemPanel.Controls.Add(this.chkNoProblem);
-            this.problemPanel.Controls.Add(this.chk6);
-            this.problemPanel.Location = new System.Drawing.Point(16, 427);
-            this.problemPanel.Name = "problemPanel";
-            this.problemPanel.Size = new System.Drawing.Size(634, 93);
-            this.problemPanel.TabIndex = 49;
+            this.memberKnowPanel.Controls.Add(this.label7);
+            this.memberKnowPanel.Controls.Add(this.chkKnow1);
+            this.memberKnowPanel.Controls.Add(this.chkKnow2);
+            this.memberKnowPanel.Controls.Add(this.chkKnow3);
+            this.memberKnowPanel.Controls.Add(this.chkKnow4);
+            this.memberKnowPanel.Location = new System.Drawing.Point(16, 367);
+            this.memberKnowPanel.Name = "memberKnowPanel";
+            this.memberKnowPanel.Size = new System.Drawing.Size(634, 59);
+            this.memberKnowPanel.TabIndex = 50;
             // 
             // MemberForm
             // 
@@ -1025,6 +1034,10 @@
             this.Load += new System.EventHandler(this.MemberForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            this.problemPanel.ResumeLayout(false);
+            this.problemPanel.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -1057,10 +1070,8 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.problemPanel.ResumeLayout(false);
-            this.problemPanel.PerformLayout();
+            this.memberKnowPanel.ResumeLayout(false);
+            this.memberKnowPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1081,10 +1092,10 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkKnow4;
+        private System.Windows.Forms.CheckBox chkKnow3;
+        private System.Windows.Forms.CheckBox chkKnow2;
+        private System.Windows.Forms.CheckBox chkKnow1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -1143,5 +1154,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtOtherProblem;
         private System.Windows.Forms.Panel problemPanel;
+        private System.Windows.Forms.Panel memberKnowPanel;
     }
 }
