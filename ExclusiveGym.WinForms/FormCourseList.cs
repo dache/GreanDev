@@ -21,7 +21,7 @@ namespace ExclusiveGym.WinForms
             m_finishCallback = callback;
             m_currentMemberWillApply = member;
             InitializeComponent();
-            label1.Text = $"Select course for : {member.Name + " " + member.LastName}";
+            //label1.Text = $"Select course for : {member.Name + " " + member.LastName}";
         }
      
         private void ApplyCourse_Click(object sender, EventArgs e)

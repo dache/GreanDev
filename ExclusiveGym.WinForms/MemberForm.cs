@@ -89,12 +89,12 @@ namespace ExclusiveGym.WinForms
         private async void MemberForm_Load(object sender, EventArgs e)
         {
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
-            await FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
 
         private async void CloseForm()
         {
-            await FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
             if (m_registryiSdone != null)
                 m_registryiSdone();
             this.Close();
@@ -175,13 +175,13 @@ namespace ExclusiveGym.WinForms
 
         public async void ReceiveFingerPrint(string fingerPrint)
         {
-            await FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+             FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
             lblFingerPrint.Text = fingerPrint;
         }
 
         private async void btnFingerPrint_Click(object sender, EventArgs e)
         {
-            await FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+             FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
             var fingerForm = new FingerPrintForm();
             fingerForm.m_fingerPrintCallback = ReceiveFingerPrint;
             fingerForm.ShowDialog();
