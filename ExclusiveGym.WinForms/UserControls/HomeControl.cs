@@ -17,26 +17,34 @@ namespace ExclusiveGym.WinForms.UserControls
         public HomeControl()
         {
             InitializeComponent();
-
-            var logs = StorageManager.GetSingleton().GetAccessLogList();
-            foreach(var memberLog in logs)
-            {
-                var customControl = new MemberSignControl(memberLog);
-                tableLayoutPanel1.Controls.Add(customControl);
-            }
-
-            lblMemberCount.Text = logs.Count().ToString();
+            InitHome();
         }
 
-        public void Refresh()
+        private void InitHome()
         {
-            tableLayoutPanel1.Controls.Clear();
+
             var logs = StorageManager.GetSingleton().GetAccessLogList();
             foreach (var memberLog in logs)
             {
                 var customControl = new MemberSignControl(memberLog);
                 tableLayoutPanel1.Controls.Add(customControl);
             }
+
+            lblMemberCount.Text = logs.Count().ToString();
+            List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByDay(DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
+            int income = 0;
+            foreach (ApplyCourseLog acl in applyCourseLogs)
+            {
+                var course = StorageManager.GetSingleton().GetCourseByID(acl.CourseID);
+                if (course.CourseType == COURSETYPE.DAILY) income += acl.CoursePrice;
+            }
+
+            lblIncome.Text = income.ToString();
+        }
+        public void Refresh()
+        {
+            tableLayoutPanel1.Controls.Clear();
+            InitHome();
         }
     }
 }

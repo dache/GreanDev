@@ -34,7 +34,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label62 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblIncome = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -79,7 +79,7 @@
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label62);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.lblIncome);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Location = new System.Drawing.Point(346, 453);
             this.panel4.Name = "panel4";
@@ -108,18 +108,19 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "บาท";
             // 
-            // label7
+            // lblIncome
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Prompt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.LightPink;
-            this.label7.Location = new System.Drawing.Point(74, 40);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(288, 72);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "12,000,000";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIncome.AutoSize = true;
+            this.lblIncome.Font = new System.Drawing.Font("Prompt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIncome.ForeColor = System.Drawing.Color.LightPink;
+            this.lblIncome.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblIncome.Location = new System.Drawing.Point(74, 40);
+            this.lblIncome.Name = "lblIncome";
+            this.lblIncome.Size = new System.Drawing.Size(288, 72);
+            this.lblIncome.TabIndex = 1;
+            this.lblIncome.Text = "12,000,000";
+            this.lblIncome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -220,7 +221,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblIncome;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;

@@ -104,6 +104,8 @@ namespace ExclusiveGym.WinForms
             else
             {
                 ShowMessage("Error, please register again.");
+                MessageBox.Show("Error, please register again.");
+                m_fingerPrintCallback("");
                 this.Close();
             }
         }

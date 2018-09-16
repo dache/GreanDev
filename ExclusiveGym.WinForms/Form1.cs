@@ -59,6 +59,8 @@ namespace ExclusiveGym.WinForms
             //start timer when form loads
             t.Start();  //this will use t_Tick() method
 
+            
+
             // 
             homeControl1.BringToFront();
         }
