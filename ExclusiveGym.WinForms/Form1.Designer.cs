@@ -39,16 +39,19 @@
             this.btnHomeMenu = new System.Windows.Forms.Button();
             this.TitleBarPanel = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
             this.memberControl1 = new ExclusiveGym.WinForms.UserControls.MemberControl();
-            this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -57,6 +60,10 @@
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(213)))), ((int)(((byte)(212)))));
+            this.MenuPanel.Controls.Add(this.panel2);
+            this.MenuPanel.Controls.Add(this.label6);
+            this.MenuPanel.Controls.Add(this.label5);
+            this.MenuPanel.Controls.Add(this.label4);
             this.MenuPanel.Controls.Add(this.label2);
             this.MenuPanel.Controls.Add(this.currentMenuPanel);
             this.MenuPanel.Controls.Add(this.label1);
@@ -74,17 +81,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 9);
+            this.label2.Font = new System.Drawing.Font("Prompt", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(18, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 29);
+            this.label2.Size = new System.Drawing.Size(162, 49);
             this.label2.TabIndex = 7;
             this.label2.Text = "Exclusive";
             // 
             // currentMenuPanel
             // 
             this.currentMenuPanel.BackColor = System.Drawing.Color.Maroon;
-            this.currentMenuPanel.Location = new System.Drawing.Point(0, 61);
+            this.currentMenuPanel.Location = new System.Drawing.Point(0, 105);
             this.currentMenuPanel.Name = "currentMenuPanel";
             this.currentMenuPanel.Size = new System.Drawing.Size(10, 45);
             this.currentMenuPanel.TabIndex = 6;
@@ -94,7 +101,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(123, 20);
+            this.label1.Location = new System.Drawing.Point(116, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 38);
             this.label1.TabIndex = 5;
@@ -109,7 +116,7 @@
             this.btnIncomeMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnIncomeMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnIncomeMenu.Image")));
             this.btnIncomeMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIncomeMenu.Location = new System.Drawing.Point(12, 214);
+            this.btnIncomeMenu.Location = new System.Drawing.Point(12, 258);
             this.btnIncomeMenu.Name = "btnIncomeMenu";
             this.btnIncomeMenu.Size = new System.Drawing.Size(193, 45);
             this.btnIncomeMenu.TabIndex = 0;
@@ -127,11 +134,11 @@
             this.btnPromotionMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPromotionMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnPromotionMenu.Image")));
             this.btnPromotionMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPromotionMenu.Location = new System.Drawing.Point(12, 163);
+            this.btnPromotionMenu.Location = new System.Drawing.Point(12, 207);
             this.btnPromotionMenu.Name = "btnPromotionMenu";
             this.btnPromotionMenu.Size = new System.Drawing.Size(193, 45);
             this.btnPromotionMenu.TabIndex = 0;
-            this.btnPromotionMenu.Text = "    Promotion";
+            this.btnPromotionMenu.Text = "    Course";
             this.btnPromotionMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPromotionMenu.UseVisualStyleBackColor = true;
             this.btnPromotionMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -145,7 +152,7 @@
             this.btnMemberMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnMemberMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMemberMenu.Image")));
             this.btnMemberMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMemberMenu.Location = new System.Drawing.Point(12, 112);
+            this.btnMemberMenu.Location = new System.Drawing.Point(12, 156);
             this.btnMemberMenu.Name = "btnMemberMenu";
             this.btnMemberMenu.Size = new System.Drawing.Size(193, 45);
             this.btnMemberMenu.TabIndex = 0;
@@ -163,7 +170,7 @@
             this.btnHomeMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnHomeMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnHomeMenu.Image")));
             this.btnHomeMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHomeMenu.Location = new System.Drawing.Point(12, 61);
+            this.btnHomeMenu.Location = new System.Drawing.Point(12, 105);
             this.btnHomeMenu.Name = "btnHomeMenu";
             this.btnHomeMenu.Size = new System.Drawing.Size(193, 45);
             this.btnHomeMenu.TabIndex = 0;
@@ -176,7 +183,6 @@
             // 
             this.TitleBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(155)))), ((int)(((byte)(140)))));
             this.TitleBarPanel.Controls.Add(this.btnClose);
-            this.TitleBarPanel.Controls.Add(this.button1);
             this.TitleBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TitleBarPanel.Location = new System.Drawing.Point(205, 0);
             this.TitleBarPanel.Name = "TitleBarPanel";
@@ -199,21 +205,6 @@
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(706, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 30);
-            this.button1.TabIndex = 8;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -277,6 +268,52 @@
             this.lblTimer.TabIndex = 0;
             this.lblTimer.Text = "00:00:00";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 564);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 19);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Develope By.";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(26, 583);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(155, 29);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Drunken Coder";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(83, 612);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 19);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "083-163-4088";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(11, 558);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(181, 1);
+            this.panel2.TabIndex = 11;
+            // 
+            // homeControl1
+            // 
+            this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.homeControl1.Location = new System.Drawing.Point(204, 41);
+            this.homeControl1.Name = "homeControl1";
+            this.homeControl1.Size = new System.Drawing.Size(800, 580);
+            this.homeControl1.TabIndex = 13;
+            // 
             // reportControl1
             // 
             this.reportControl1.Location = new System.Drawing.Point(205, 37);
@@ -297,14 +334,6 @@
             this.memberControl1.Name = "memberControl1";
             this.memberControl1.Size = new System.Drawing.Size(800, 570);
             this.memberControl1.TabIndex = 10;
-            // 
-            // homeControl1
-            // 
-            this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
-            this.homeControl1.Location = new System.Drawing.Point(204, 41);
-            this.homeControl1.Name = "homeControl1";
-            this.homeControl1.Size = new System.Drawing.Size(800, 580);
-            this.homeControl1.TabIndex = 13;
             // 
             // Form1
             // 
@@ -344,7 +373,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel TitleBarPanel;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Label lblDate;
@@ -354,6 +382,10 @@
         private UserControls.CourseControl courseControl1;
         private UserControls.ReportControl reportControl1;
         private UserControls.HomeControl homeControl1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

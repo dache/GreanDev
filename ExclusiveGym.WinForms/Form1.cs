@@ -63,6 +63,7 @@ namespace ExclusiveGym.WinForms
 
             // 
             homeControl1.BringToFront();
+            btnHomeMenu.BackColor = Color.DimGray;
         }
 
         #region Timer
@@ -214,9 +215,14 @@ namespace ExclusiveGym.WinForms
 
         protected void btnMenu_Click(object sender, EventArgs e)
         {
+            btnHomeMenu.BackColor = Color.Transparent;
+            btnMemberMenu.BackColor = Color.Transparent;
+            btnPromotionMenu.BackColor = Color.Transparent;
+            btnIncomeMenu.BackColor = Color.Transparent;
+
             Button btn = (Button)sender;
             currentMenuPanel.Top = btn.Top;
-
+            btn.BackColor = Color.DimGray ;
 
             if (btn == btnHomeMenu)
             {

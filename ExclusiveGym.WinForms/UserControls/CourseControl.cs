@@ -71,6 +71,11 @@ namespace ExclusiveGym.WinForms.UserControls
             editButton.HeaderText = "";
             editButton.UseColumnTextForButtonValue = true;
             editButton.Width = 130;
+            editButton.DefaultCellStyle.BackColor = Color.FromArgb(240, 173, 78);
+            editButton.FlatStyle = FlatStyle.Flat;
+            editButton.DefaultCellStyle.ForeColor = Color.White;
+            editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
+            
             if (gvCourses.Columns["editButton"] == null)
             {
                 gvCourses.Columns.Insert(6, editButton);

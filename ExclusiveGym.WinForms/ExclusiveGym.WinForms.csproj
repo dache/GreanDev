@@ -280,6 +280,7 @@
   <ItemGroup>
     <Content Include="DLL\AxInterop.ZKFPEngXControl.dll" />
     <Content Include="DLL\Interop.ZKFPEngXControl.dll" />
+    <Content Include="Images\baht.png" />
     <Content Include="Images\home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

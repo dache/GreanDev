@@ -106,6 +106,10 @@ namespace ExclusiveGym.WinForms.UserControls
             courseButton.Text = "สมัครคอร์ส";
             courseButton.HeaderText = "";
             courseButton.UseColumnTextForButtonValue = true;
+            courseButton.DefaultCellStyle.BackColor = Color.FromArgb(91, 192, 222);
+            courseButton.FlatStyle = FlatStyle.Flat;
+            courseButton.DefaultCellStyle.ForeColor = Color.White;
+            courseButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
             if (gvMembers.Columns["courseButton"] == null)
             {
                 gvMembers.Columns.Insert(22, courseButton);
@@ -116,10 +120,18 @@ namespace ExclusiveGym.WinForms.UserControls
             editButton.Text = "แก้ไข";
             editButton.HeaderText = "";
             editButton.UseColumnTextForButtonValue = true;
+            editButton.DefaultCellStyle.BackColor = Color.FromArgb(240, 173, 78);
+            editButton.FlatStyle = FlatStyle.Flat;
+            editButton.DefaultCellStyle.ForeColor = Color.White;
+            editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
             if (gvMembers.Columns["editButton"] == null)
             {
                 gvMembers.Columns.Insert(23, editButton);
             }
+
+            gvMembers.ClearSelection();
+            //gvMembers.DefaultCellStyle.SelectionBackColor = Color.Transparent;
+            
         }
 
         private void gvMembers_CellClick(object sender, DataGridViewCellEventArgs e)

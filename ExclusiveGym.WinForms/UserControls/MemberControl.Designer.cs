@@ -50,6 +50,7 @@
             this.gvMembers.AllowUserToResizeColumns = false;
             this.gvMembers.AllowUserToResizeRows = false;
             this.gvMembers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gvMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -134,19 +135,18 @@
             // 
             // btnNewMember
             // 
-            this.btnNewMember.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(185)))), ((int)(((byte)(145)))));
+            this.btnNewMember.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnNewMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnNewMember.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNewMember.FlatAppearance.BorderSize = 0;
             this.btnNewMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewMember.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewMember.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNewMember.Image = ((System.Drawing.Image)(resources.GetObject("btnNewMember.Image")));
-            this.btnNewMember.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNewMember.Location = new System.Drawing.Point(662, 44);
             this.btnNewMember.Name = "btnNewMember";
             this.btnNewMember.Size = new System.Drawing.Size(120, 35);
             this.btnNewMember.TabIndex = 3;
             this.btnNewMember.Text = "เพิ่มสมาชิก";
-            this.btnNewMember.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNewMember.UseVisualStyleBackColor = false;
             this.btnNewMember.Click += new System.EventHandler(this.btnNewMember_Click);
             // 

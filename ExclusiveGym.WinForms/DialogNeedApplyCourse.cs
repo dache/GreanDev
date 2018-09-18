@@ -48,13 +48,20 @@ namespace ExclusiveGym.WinForms
                 panel.Controls.Add(lblName);
                 Label lblPrice = new Label()
                 {
-                    Text = course.CoursePrice.ToString(),
+                    Text = $"฿{course.CoursePrice.ToString()}",
                     Location = new Point(5, 34),
                     Font = new Font(new FontFamily("Prompt"), 20),
-                    ForeColor = Color.YellowGreen,
-                    Height = 40
+                    ForeColor = Color.DimGray,
+                    Height = 40,
+                    Width = 150
                 };
                 panel.Controls.Add(lblPrice);
+                //Button btn = new Button() { Text = "เลือก", Width = 100, Height = 35 };
+                //btn.Location = new Point(195, 5);
+                //panel.Controls.Add(btn);
+                PictureBox pb = new PictureBox();
+                pb.Image = Image.FromFile(@"Images\baht.png");
+                panel.Controls.Add(pb);
                 courseFlowLayout.Controls.Add(panel);
             }
         }
@@ -100,7 +107,7 @@ namespace ExclusiveGym.WinForms
                 if (p != panel) p.BackColor = Color.White;
             }
             //panel.BackColor = (panel.BackColor == Color.White) ? Color.OrangeRed : Color.White;
-            panel.BackColor = Color.OrangeRed;
+            panel.BackColor = Color.FromArgb(240, 173, 78);
 
             currentCourse = (Course)panel.Tag;
         }
