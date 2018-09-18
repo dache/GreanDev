@@ -64,6 +64,8 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.Columns[2].HeaderText = "นามสกุล";
             gvMembers.Columns[4].HeaderText = "อายุ";
             gvMembers.Columns[19].HeaderText = "วันหมดอายุ";
+            gvMembers.Columns[19].DefaultCellStyle.Format = "dd MMMM yyyy";
+            gvMembers.Columns[19].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
 
             gvMembers.Columns[1].Width = 180;
             gvMembers.Columns[2].Width = 180;
@@ -71,6 +73,7 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.Columns[19].Width = 120;
 
             //log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"))
+            
             gvMembers.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvMembers.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvMembers.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;

@@ -34,7 +34,7 @@ namespace ExclusiveGym.WinForms.UserControls
             {
                 var r = new ReportTypeDaily()
                 {
-                    ApplyDate = log.ApplyDate.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")),
+                    ApplyDate = log.ApplyDate,
                     CourseName = log.Course.CourseName,
                     CoursePrice = log.CoursePrice,
                     MemberName = $"{log.Member.Name}  {log.Member.LastName}"
@@ -55,7 +55,8 @@ namespace ExclusiveGym.WinForms.UserControls
             dailyDataView.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dailyDataView.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            //dailyDataView.Columns[0].DefaultCellStyle.Format = "dd/MMM/yyyy";
+            dailyDataView.Columns[0].DefaultCellStyle.Format = "dd MMMM yyyy";
+            dailyDataView.Columns[0].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
             dailyDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dailyDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -75,7 +76,7 @@ namespace ExclusiveGym.WinForms.UserControls
             {
                 var r = new ReportTypeMonthly()
                 {
-                    ApplyDate = log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")),
+                    ApplyDate = log.ApplyDate,
                     CourseName = log.Course.CourseName,
                     CoursePrice = log.CoursePrice
                 };
@@ -93,7 +94,8 @@ namespace ExclusiveGym.WinForms.UserControls
             montDataView.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             montDataView.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-           // montDataView.Columns[0].DefaultCellStyle.Format = "dd/MMM/yyyy";
+            montDataView.Columns[0].DefaultCellStyle.Format = "MMMM yyyy";
+            montDataView.Columns[0].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
             montDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             montDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -112,7 +114,7 @@ namespace ExclusiveGym.WinForms.UserControls
             {
                 var r = new ReportTypeYear()
                 {
-                    ApplyDate = log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")),
+                    ApplyDate = log.ApplyDate,
                     CourseName = log.Course.CourseName,
                     CoursePrice = log.CoursePrice
                 };
@@ -126,11 +128,12 @@ namespace ExclusiveGym.WinForms.UserControls
             yearDataView.Columns[1].HeaderText = "ชื่อครอส";
             yearDataView.Columns[2].HeaderText = "ราคา";
 
+            yearDataView.Columns[0].DefaultCellStyle.Format = "MMMM yyyy";
+            yearDataView.Columns[0].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
             yearDataView.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             yearDataView.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             yearDataView.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-           //yearDataView.Columns[0].DefaultCellStyle.Format = "MMM/yyyy";
+            
             yearDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             yearDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -159,7 +162,7 @@ namespace ExclusiveGym.WinForms.UserControls
 
     public class ReportTypeDaily
     {
-        public string ApplyDate { get; set; }
+        public DateTime ApplyDate { get; set; }
         public string CourseName { get; set; }
         public decimal CoursePrice { get; set; }
         public string MemberName { get; set; }
@@ -167,14 +170,14 @@ namespace ExclusiveGym.WinForms.UserControls
 
     public class ReportTypeMonthly
     {
-        public string ApplyDate { get; set; }
+        public DateTime ApplyDate { get; set; }
         public string CourseName { get; set; }
         public decimal CoursePrice { get; set; }
     }
 
     public class ReportTypeYear
     {
-        public string ApplyDate { get; set; }
+        public DateTime ApplyDate { get; set; }
         public string CourseName { get; set; }
         public decimal CoursePrice { get; set; }
     }

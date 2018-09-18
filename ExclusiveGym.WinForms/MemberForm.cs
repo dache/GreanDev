@@ -361,7 +361,7 @@ namespace ExclusiveGym.WinForms
                 }
                 StorageManager.GetSingleton().SaveObjectChanged(this.Member);
 
-                //StorageManager.GetSingleton().MemberApplyCourse(this.Member, StorageManager.GetSingleton().GetCourseByID(5));
+                //StorageManager.GetSingleton().MemberApplyCourse(this.Member, StorageManager.GetSingleton().GetCourseByID(1));
                 //StorageManager.GetSingleton().MemberAccessGym(this.Member);
                 m_registryiSdone();
 

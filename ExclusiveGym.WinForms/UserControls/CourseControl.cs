@@ -52,7 +52,6 @@ namespace ExclusiveGym.WinForms.UserControls
             gvCourses.Columns[2].HeaderText = "ประเภทคอร์ส";            
             gvCourses.Columns[3].HeaderText = "ราคา";
             gvCourses.Columns[4].HeaderText = "จำนวนวัน";
-            
             gvCourses.Columns[1].Width = 250;
             gvCourses.Columns[2].Width = 150;
             gvCourses.Columns[3].Width = 100;
