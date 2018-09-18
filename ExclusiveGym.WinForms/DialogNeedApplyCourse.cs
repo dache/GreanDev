@@ -28,7 +28,7 @@ namespace ExclusiveGym.WinForms
             m_currentMemberWillApply = member;
             InitializeComponent();
             SetStyle(ControlStyles.Opaque, true);
-            label1.Text = $"Hello : {member.Name + " " + member.LastName}";
+            label1.Text = $"ยินดีต้อนรับ : {member.Name + " " + member.LastName}";
             SetStyle(ControlStyles.Opaque, true);
 
             // create button course
@@ -39,12 +39,14 @@ namespace ExclusiveGym.WinForms
                 panel.Tag = course;
                 Label lblName = new Label()
                 {
-                    Text = course.CourseName,
+                    Text = $"{course.CourseName} ({course.TotalDay} วัน)",
                     Location = new Point(5, 5),
                     Font = new Font(new FontFamily("Prompt"), 14),
-                    ForeColor = Color.DimGray
+                    ForeColor = Color.DimGray,
+                    Width = 200
                 };
                 panel.Click += panel_Click;
+                lblName.Click += lbl_Click;
                 panel.Controls.Add(lblName);
                 Label lblPrice = new Label()
                 {
@@ -55,6 +57,7 @@ namespace ExclusiveGym.WinForms
                     Height = 40,
                     Width = 150
                 };
+                lblPrice.Click += lbl_Click;
                 panel.Controls.Add(lblPrice);
                 //Button btn = new Button() { Text = "เลือก", Width = 100, Height = 35 };
                 //btn.Location = new Point(195, 5);
@@ -121,6 +124,20 @@ namespace ExclusiveGym.WinForms
         {
             PictureBox pb = (PictureBox)sender;
             Panel panel = (Panel)pb.Parent;
+            foreach (Panel p in panel.Parent.Controls)
+            {
+                if (p != panel) p.BackColor = Color.White;
+            }
+            //panel.BackColor = (panel.BackColor == Color.White) ? Color.OrangeRed : Color.White;
+            panel.BackColor = Color.FromArgb(240, 173, 78);
+
+            currentCourse = (Course)panel.Tag;
+        }
+
+        private void lbl_Click(object sender, System.EventArgs e)
+        {
+            Label label = (Label)sender;
+            Panel panel = (Panel)label.Parent;
             foreach (Panel p in panel.Parent.Controls)
             {
                 if (p != panel) p.BackColor = Color.White;
