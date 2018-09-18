@@ -38,8 +38,8 @@ namespace ExclusiveGym.WinForms.Models
         public DateTime? ExpireDate { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsActive { get; set; }
-        public List<MedicalProblem> Problems { get; set; }
-        public List<MemberKnow> MemberKnows { get; set; }
+        public virtual List<MedicalProblem> Problems { get; set; }
+        public virtual List<MemberKnow> MemberKnows { get; set; }
     }
 
     public class MedicalProblem

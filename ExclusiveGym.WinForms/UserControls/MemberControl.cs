@@ -38,6 +38,7 @@ namespace ExclusiveGym.WinForms.UserControls
         {
             List<Member> members = StorageManager.GetSingleton().GetMemberList();
 
+
             gvMembers.DataSource = members;
 
             gvMembers.Columns[0].Visible = false;
@@ -69,6 +70,7 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.Columns[4].Width = 70;
             gvMembers.Columns[19].Width = 120;
 
+            //log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"))
             gvMembers.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvMembers.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvMembers.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;

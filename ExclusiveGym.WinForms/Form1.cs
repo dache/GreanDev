@@ -50,7 +50,7 @@ namespace ExclusiveGym.WinForms
         private void Form1_Load(object sender, EventArgs e)
         {
             InitialAxZkfp();
-
+            homeControl1.Refresh();
             // Date
             lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy") + " |";
             //timer interval
@@ -112,12 +112,7 @@ namespace ExclusiveGym.WinForms
         }
         #endregion
 
-        private void SampleData()
-        {
-            StorageManager.GetSingleton().CreateSampleMember();
-            StorageManager.GetSingleton().CreateSampleCourse();
-        }
-
+      
 
 
         private void InitialAxZkfp()

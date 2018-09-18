@@ -22,71 +22,161 @@ namespace ExclusiveGym.WinForms.UserControls
             dailySumPriceLabel.Text = "รายได้รวม : 0";
             monthlySumPriceLabel.Text = dailySumPriceLabel.Text;
             yearSumPriceLabel.Text = dailySumPriceLabel.Text;
-            //monthDateTimePicker.
+            dailyDatePicker.CustomFormat = dailyDatePicker.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
+            monthDateTimePicker.CustomFormat = monthDateTimePicker.Value.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
         }
 
         private void dailyView_Click(object sender, EventArgs e)
         {
             List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByDay(dailyDatePicker.Value.Day, dailyDatePicker.Value.Month, dailyDatePicker.Value.Year);
-            DisplayText(dailySumPriceLabel, applyCourseLogs, dailyDataView);
-        }
-
-        private void monthlyView_Click(object sender, EventArgs e)
-        {
-            List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByMonth(dailyDatePicker.Value.Month, dailyDatePicker.Value.Year);
-            DisplayText(monthlySumPriceLabel, applyCourseLogs, montDataView);
-        }
-
-        private void yearView_Click(object sender, EventArgs e)
-        {
-            List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByYear(dailyDatePicker.Value.Year);
-            DisplayText(yearSumPriceLabel, applyCourseLogs, yearDataView);
-        }
-
-        private void DisplayText(Label label, List<ApplyCourseLog> applyCourseLogs, DataGridView gv)
-        {
-            List<ReportData> reportData = new List<ReportData>();
+            List<ReportTypeDaily> reportData = new List<ReportTypeDaily>();
             foreach (var log in applyCourseLogs)
             {
-                var r = new ReportData()
+                var r = new ReportTypeDaily()
                 {
-                    ApplyDate = log.ApplyDate,
+                    ApplyDate = log.ApplyDate.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")),
                     CourseName = log.Course.CourseName,
-                    CoursePrice = log.Course.CoursePrice,
+                    CoursePrice = log.CoursePrice,
                     MemberName = $"{log.Member.Name}  {log.Member.LastName}"
                 };
                 reportData.Add(r);
             }
-            gv.DataSource = reportData;
-
+            dailyDataView.DataSource = reportData;
             decimal sumPrice = reportData.Sum(f => f.CoursePrice);
-            label.Text = string.Format(m_sumTxt, sumPrice); // Tostring("C2");
+            dailySumPriceLabel.Text = string.Format(m_sumTxt, sumPrice);
 
-            gv.Columns[0].HeaderText = "ชื่อคอร์ส";
-            gv.Columns[1].HeaderText = "ราคา";
-            gv.Columns[2].HeaderText = "วันที่สมัคร";
-            gv.Columns[3].HeaderText = "ชื่อสมาชิก";
+            dailyDataView.Columns[0].HeaderText = "วันที่";
+            dailyDataView.Columns[1].HeaderText = "ชื่อครอส";
+            dailyDataView.Columns[2].HeaderText = "ราคา";
+            dailyDataView.Columns[3].HeaderText = "ชื่อสมาชิก";
 
-            gv.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gv.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gv.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gv.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dailyDataView.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dailyDataView.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dailyDataView.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dailyDataView.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            gv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dailyDataView.Columns[0].DefaultCellStyle.Format = "dd/MMM/yyyy";
+            dailyDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dailyDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            gv.Columns[0].Width = 200;
-            gv.Columns[1].Width = 100;
-            gv.Columns[2].Width = 150;
-            gv.Columns[3].Width = 250;            
+
+            dailyDataView.Columns[0].Width = 200;
+            dailyDataView.Columns[1].Width = 100;
+            dailyDataView.Columns[2].Width = 100;
+            dailyDataView.Columns[3].Width = 250;
+            dailyDataView.Refresh();
+        }
+
+        private void monthlyView_Click(object sender, EventArgs e)
+        {
+            List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByMonth(monthDateTimePicker.Value.Month, monthDateTimePicker.Value.Year);
+            List<ReportTypeMonthly> reportData = new List<ReportTypeMonthly>();
+            foreach (var log in applyCourseLogs)
+            {
+                var r = new ReportTypeMonthly()
+                {
+                    ApplyDate = log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")),
+                    CourseName = log.Course.CourseName,
+                    CoursePrice = log.CoursePrice
+                };
+                reportData.Add(r);
+            }
+            montDataView.DataSource = reportData;
+            decimal sumPrice = reportData.Sum(f => f.CoursePrice);
+            monthlySumPriceLabel.Text = string.Format(m_sumTxt, sumPrice);
+
+            montDataView.Columns[0].HeaderText = "วันที่";
+            montDataView.Columns[1].HeaderText = "ชื่อครอส";
+            montDataView.Columns[2].HeaderText = "ราคา";
+
+            montDataView.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            montDataView.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            montDataView.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+           // montDataView.Columns[0].DefaultCellStyle.Format = "dd/MMM/yyyy";
+            montDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            montDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            montDataView.Columns[0].Width = 200;
+            montDataView.Columns[1].Width = 100;
+            montDataView.Columns[2].Width = 100;
+            montDataView.Refresh();
+        }
+
+        private void yearView_Click(object sender, EventArgs e)
+        {
+            List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByYear(yearDateTimePicker.Value.Year);
+            List<ReportTypeYear> reportData = new List<ReportTypeYear>();
+            foreach (var log in applyCourseLogs)
+            {
+                var r = new ReportTypeYear()
+                {
+                    ApplyDate = log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")),
+                    CourseName = log.Course.CourseName,
+                    CoursePrice = log.CoursePrice
+                };
+                reportData.Add(r);
+            }
+            yearDataView.DataSource = reportData;
+            decimal sumPrice = reportData.Sum(f => f.CoursePrice);
+            yearSumPriceLabel.Text = string.Format(m_sumTxt, sumPrice);
+
+            yearDataView.Columns[0].HeaderText = "วันที่";
+            yearDataView.Columns[1].HeaderText = "ชื่อครอส";
+            yearDataView.Columns[2].HeaderText = "ราคา";
+
+            yearDataView.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            yearDataView.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            yearDataView.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+           //yearDataView.Columns[0].DefaultCellStyle.Format = "MMM/yyyy";
+            yearDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            yearDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            yearDataView.Columns[0].Width = 200;
+            yearDataView.Columns[1].Width = 100;
+            yearDataView.Columns[2].Width = 100;
+            yearDataView.Refresh();
+        }
+
+        private void dailyDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            dailyDatePicker.CustomFormat = dailyDatePicker.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
+        }
+
+        private void monthDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            monthDateTimePicker.CustomFormat = monthDateTimePicker.Value.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
+        }
+
+        private void yearDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
-    public class ReportData
+    public class ReportTypeDaily
     {
+        public string ApplyDate { get; set; }
         public string CourseName { get; set; }
         public decimal CoursePrice { get; set; }
-        public DateTime ApplyDate { get; set; }
         public string MemberName { get; set; }
     }
+
+    public class ReportTypeMonthly
+    {
+        public string ApplyDate { get; set; }
+        public string CourseName { get; set; }
+        public decimal CoursePrice { get; set; }
+    }
+
+    public class ReportTypeYear
+    {
+        public string ApplyDate { get; set; }
+        public string CourseName { get; set; }
+        public decimal CoursePrice { get; set; }
+    }
+    
 }

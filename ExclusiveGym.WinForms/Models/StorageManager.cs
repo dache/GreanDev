@@ -30,8 +30,8 @@ class StorageManager
 
     public void SaveObjectChanged(object obj)
     {
-        StorageManager.GetSingleton().GetDB().Entry(obj).State = System.Data.Entity.EntityState.Modified;
-        StorageManager.GetSingleton().SaveDB();
+        GetDB().Entry(obj).State = System.Data.Entity.EntityState.Modified;
+        SaveDB();
     }
 
     public ExclusiveGymContext GetDB()
@@ -64,6 +64,16 @@ class StorageManager
     public List<MemberKnow> GetMemberKnowsByMemberId(int id)
     {
         return GetDB().MemberKnows.Where(f => f.MemberId == id).ToList();
+    }
+
+    public MedicalProblem GetMedicalProblemsById(int id)
+    {
+        return GetDB().MedicalProblems.Where(f => f.MedicalID == id).SingleOrDefault();
+    }
+
+    public MemberKnow GetMemberKnowsById(int id)
+    {
+        return GetDB().MemberKnows.Where(f => f.MemberKnowId == id).SingleOrDefault();
     }
     #endregion
 
@@ -111,11 +121,7 @@ class StorageManager
         return GetDB().MemberApplyCourses.Where(x => x.MemberId == id).FirstOrDefault();
     }
 
-    public Member GetSampleMember()
-    {
-        return GetMemeberById(1);
-    }
-
+ 
     public void MemberApplyCourse(Member member, Course course)
     {
         ApplyCourseLog acl = new ApplyCourseLog();
@@ -174,68 +180,58 @@ class StorageManager
             SaveDB();
         }
     }
-    public void CreateSampleMember()
-    {
-        Member m = new Member();
-        m.Name = "wittawas";
-        m.LastName = "singlow";
-        m.CreateDate = DateTime.Now;
-        m.BirthDate = DateTime.Now;
-        m.FingerPrint = "xxx";
-        m.ExpireDate = DateTime.Now;
-        MedicalProblem mp = new MedicalProblem();
-        mp.ProblemName = "some problem";
-        m.Problems.Add(mp);
-        AddMember(m);
-    }
-
-    public void CreateSampleCourse()
-    {
-        Course dailyCourse = new Course();
-        dailyCourse.CourseName = "daily";
-        dailyCourse.CoursePrice = 100;
-        dailyCourse.CourseType = COURSETYPE.DAILY;
-        dailyCourse.TotalDay = 1;
-        dailyCourse.CreateDate = DateTime.Now;
-
-        GetDB().Courses.Add(dailyCourse);
-
-        Course monthlyCourse = new Course();
-        monthlyCourse.CourseName = "ExclusiveCourse";
-        monthlyCourse.CoursePrice = 3500;
-        monthlyCourse.CourseType = COURSETYPE.MONTLY;
-        monthlyCourse.TotalDay = 30;
-        monthlyCourse.CreateDate = DateTime.Now;
-
-        GetDB().Courses.Add(monthlyCourse);
-
-        SaveDB();
-    }
-
-    public void GetIncomeToday()
-    {
-
-    }
-
+  
+    
     public List<AccessLog> GetMemberAccessGymToday()
     {
         return GetDB().AccessLog.Where(accesslog => accesslog.AccessDate.Day == DateTime.Now.Day && accesslog.AccessDate.Month == DateTime.Now.Month && accesslog.AccessDate.Year == DateTime.Now.Year).ToList();
     }
-
+    
     public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
     {
-        return GetDB().ApplyCourseLog.Where(applycourseLog => applycourseLog.ApplyDate.Day == day 
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(applycourseLog => applycourseLog.ApplyDate.Day == day 
         && applycourseLog.ApplyDate.Month == month 
         && applycourseLog.ApplyDate.Year == year).ToList();
+
+        var query = list.GroupBy(o => o).Select(g => new ApplyCourseLog
+        {
+            CourseID = g.Key.CourseID,
+            ApplyDate = g.Key.ApplyDate,
+            Course = g.Where(o=> o.CourseID == g.Key.CourseID && o.ApplyDate == g.Key.ApplyDate).FirstOrDefault().Course,
+            Member = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Member,
+            MemberId = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().MemberId,
+            CoursePrice = g.Sum(x => x.CoursePrice)
+        }).ToList();
+        return query;
     }
 
     public List<ApplyCourseLog> GetIncomeByMonth(int month, int year)
     {
-        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year).ToList();
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year).ToList();
+        var query = list.GroupBy(o => new { o.CourseID, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
+        {
+            CourseID = g.Key.CourseID,
+            ApplyDate = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().ApplyDate,
+            Course = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Course,
+            Member = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Member,
+            MemberId = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().MemberId,
+            CoursePrice = g.Sum(x => x.CoursePrice)
+        }).ToList();
+        return query;
     }
 
     public List<ApplyCourseLog> GetIncomeByYear(int year)
     {
-        return GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Year == year).ToList();
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Year == year).ToList();
+        var query = list.GroupBy(o => new { o.Course.CourseType, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
+        {
+            CourseID = g.Where(o=>o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().CourseID,
+            ApplyDate = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().ApplyDate,
+            Course = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().Course,
+            Member = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().Member,
+            MemberId = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().MemberId,
+            CoursePrice = g.Sum(x => x.CoursePrice)
+        }).ToList();
+        return query;
     }
 }

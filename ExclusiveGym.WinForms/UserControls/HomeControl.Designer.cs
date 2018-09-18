@@ -65,11 +65,11 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Prompt", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.Red;
             this.label29.Location = new System.Drawing.Point(15, 15);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(216, 40);
+            this.label29.Size = new System.Drawing.Size(198, 31);
             this.label29.TabIndex = 12;
             this.label29.Text = "สมาชิกเข้าใช้ล่าสุด";
             // 
@@ -88,23 +88,23 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Prompt", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DimGray;
             this.label6.Location = new System.Drawing.Point(368, 63);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 40);
+            this.label6.Size = new System.Drawing.Size(57, 31);
             this.label6.TabIndex = 2;
             this.label6.Text = "บาท";
             // 
             // lblIncome
             // 
             this.lblIncome.AutoSize = true;
-            this.lblIncome.Font = new System.Drawing.Font("Prompt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncome.ForeColor = System.Drawing.Color.LightPink;
             this.lblIncome.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblIncome.Location = new System.Drawing.Point(268, 36);
             this.lblIncome.Name = "lblIncome";
-            this.lblIncome.Size = new System.Drawing.Size(62, 72);
+            this.lblIncome.Size = new System.Drawing.Size(51, 55);
             this.lblIncome.TabIndex = 1;
             this.lblIncome.Text = "0";
             this.lblIncome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -113,11 +113,11 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DimGray;
             this.label8.Location = new System.Drawing.Point(297, 4);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 32);
+            this.label8.Size = new System.Drawing.Size(100, 25);
             this.label8.TabIndex = 0;
             this.label8.Text = "รายได้วันนี้";
             // 
@@ -147,11 +147,11 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Prompt", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DimGray;
             this.label5.Location = new System.Drawing.Point(254, 72);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 40);
+            this.label5.Size = new System.Drawing.Size(46, 31);
             this.label5.TabIndex = 2;
             this.label5.Text = "คน";
             // 
@@ -159,11 +159,11 @@
             // 
             this.lblMemberCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMemberCount.AutoSize = true;
-            this.lblMemberCount.Font = new System.Drawing.Font("Prompt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMemberCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMemberCount.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.lblMemberCount.Location = new System.Drawing.Point(166, 40);
             this.lblMemberCount.Name = "lblMemberCount";
-            this.lblMemberCount.Size = new System.Drawing.Size(79, 72);
+            this.lblMemberCount.Size = new System.Drawing.Size(78, 55);
             this.lblMemberCount.TabIndex = 1;
             this.lblMemberCount.Text = "10";
             this.lblMemberCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -172,11 +172,11 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(183, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 32);
+            this.label3.Size = new System.Drawing.Size(127, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "เข้าใช้งานวันนี้";
             // 

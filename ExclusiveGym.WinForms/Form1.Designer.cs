@@ -232,11 +232,11 @@
             // 
             this.lblDeviceStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblDeviceStatus.AutoSize = true;
-            this.lblDeviceStatus.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeviceStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeviceStatus.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblDeviceStatus.Location = new System.Drawing.Point(105, 6);
             this.lblDeviceStatus.Name = "lblDeviceStatus";
-            this.lblDeviceStatus.Size = new System.Drawing.Size(46, 19);
+            this.lblDeviceStatus.Size = new System.Drawing.Size(43, 16);
             this.lblDeviceStatus.TabIndex = 2;
             this.lblDeviceStatus.Text = "status";
             this.lblDeviceStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -245,11 +245,11 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label3.Location = new System.Drawing.Point(6, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 19);
+            this.label3.Size = new System.Drawing.Size(97, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Device Status :";
             // 
@@ -257,11 +257,11 @@
             // 
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblDate.Location = new System.Drawing.Point(634, 6);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(88, 19);
+            this.lblDate.Size = new System.Drawing.Size(78, 16);
             this.lblDate.TabIndex = 1;
             this.lblDate.Text = "16/09/2018 |";
             // 
@@ -269,11 +269,11 @@
             // 
             this.lblTimer.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimer.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTimer.Location = new System.Drawing.Point(721, 6);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(69, 19);
+            this.lblTimer.Size = new System.Drawing.Size(56, 16);
             this.lblTimer.TabIndex = 0;
             this.lblTimer.Text = "00:00:00";
             // 
