@@ -60,7 +60,12 @@ namespace ExclusiveGym.WinForms
                 //btn.Location = new Point(195, 5);
                 //panel.Controls.Add(btn);
                 PictureBox pb = new PictureBox();
-                pb.Image = Image.FromFile(@"Images\baht.png");
+                pb.Image = Image.FromFile(@"images\baht.png");
+                pb.Width = 50;
+                pb.Height = 50;
+                pb.Location = new Point(245, 5);
+                pb.SizeMode = PictureBoxSizeMode.Zoom;
+                pb.Click += img_Click;
                 panel.Controls.Add(pb);
                 courseFlowLayout.Controls.Add(panel);
             }
@@ -102,6 +107,20 @@ namespace ExclusiveGym.WinForms
         private void panel_Click(object sender, System.EventArgs e)
         {
             Panel panel = (Panel)sender;
+            foreach (Panel p in panel.Parent.Controls)
+            {
+                if (p != panel) p.BackColor = Color.White;
+            }
+            //panel.BackColor = (panel.BackColor == Color.White) ? Color.OrangeRed : Color.White;
+            panel.BackColor = Color.FromArgb(240, 173, 78);
+
+            currentCourse = (Course)panel.Tag;
+        }
+
+        private void img_Click(object sender,System.EventArgs e)
+        {
+            PictureBox pb = (PictureBox)sender;
+            Panel panel = (Panel)pb.Parent;
             foreach (Panel p in panel.Parent.Controls)
             {
                 if (p != panel) p.BackColor = Color.White;
