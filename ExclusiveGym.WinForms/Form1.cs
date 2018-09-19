@@ -45,76 +45,19 @@ namespace ExclusiveGym.WinForms
             controlsToMove.Add(this.TitleBarPanel);
             m_instance = this;
         }
-        private System.Threading.Thread watching;
+        private System.Threading.Thread m_backgroundWorker;
         private void Form1_Load(object sender, EventArgs e)
         {
+            Console.WriteLine("Form1_Load");
             SetupFingerprint();
-            // Date
-            lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy") + " |";
-            //timer interval
-            t.Interval = 1000;  //in milliseconds
-            t.Tick += new EventHandler(this.t_Tick);
-            //start timer when form loads
-            t.Start();  //this will use t_Tick() method
-
-            
             homeControl1.BringToFront();
             btnHomeMenu.BackColor = Color.DimGray;
-            watching = new System.Threading.Thread(WatchingDevice);
-            watching.IsBackground = true;
-            watching.Start();
+
+            m_backgroundWorker = new System.Threading.Thread(BackgroundThreadForm1);
+            m_backgroundWorker.IsBackground = true;
+            m_backgroundWorker.Start();
         }
-
-        #region Timer
-        //timer eventhandler
-        private void t_Tick(object sender, EventArgs e)
-        {
-            //get current time
-            int hh = DateTime.Now.Hour;
-            int mm = DateTime.Now.Minute;
-            int ss = DateTime.Now.Second;
-
-            //time
-            string time = "";
-
-            //padding leading zero
-            if (hh < 10)
-            {
-                time += "0" + hh;
-            }
-            else
-            {
-                time += hh;
-            }
-            time += ":";
-
-            if (mm < 10)
-            {
-                time += "0" + mm;
-            }
-            else
-            {
-                time += mm;
-            }
-            time += ":";
-
-            if (ss < 10)
-            {
-                time += "0" + ss;
-            }
-            else
-            {
-                time += ss;
-            }
-
-            //update label
-            lblTimer.Text = time;
-        }
-        #endregion
-
-      
-
-
+        
         private void InitialAxZkfp()
         {
             try
@@ -141,13 +84,16 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private void WatchingDevice()
+        private void BackgroundThreadForm1()
         {
             while(true)
             {
                 System.Threading.Thread.Sleep(1000);
                // Console.WriteLine("watching you " + m_zkFprint.InitEngine());
                 InitialAxZkfp();
+
+               
+                this.lblDate.BeginInvoke((MethodInvoker)delegate () { this.lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy hh:mm:ss tt", new System.Globalization.CultureInfo("th-TH")); });
             }
         }
         public static Form1 m_instance;

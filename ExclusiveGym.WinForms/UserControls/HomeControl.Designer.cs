@@ -98,17 +98,18 @@
             // 
             // lblIncome
             // 
-            this.lblIncome.AutoSize = true;
+            this.lblIncome.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblIncome.BackColor = System.Drawing.Color.White;
             this.lblIncome.Font = new System.Drawing.Font("Prompt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncome.ForeColor = System.Drawing.Color.LightPink;
-            this.lblIncome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblIncome.Location = new System.Drawing.Point(270, 33);
+            this.lblIncome.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblIncome.Location = new System.Drawing.Point(3, 33);
             this.lblIncome.Name = "lblIncome";
-            this.lblIncome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblIncome.Size = new System.Drawing.Size(62, 72);
+            this.lblIncome.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblIncome.Size = new System.Drawing.Size(362, 72);
             this.lblIncome.TabIndex = 1;
             this.lblIncome.Text = "0";
-            this.lblIncome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblIncome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
             // 

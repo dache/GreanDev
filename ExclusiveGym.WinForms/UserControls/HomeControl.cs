@@ -39,8 +39,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 if (course.CourseType == COURSETYPE.DAILY) income += acl.CoursePrice;
             }
 
-            lblIncome.Text = $"฿ { income.ToString() } ";
-            //lblIncome.Text = $"฿ { 100 } ";
+            lblIncome.Text = $" { income.ToString() } ฿";
 
         }
         public void Refresh()

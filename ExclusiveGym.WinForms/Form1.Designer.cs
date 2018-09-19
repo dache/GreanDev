@@ -47,11 +47,10 @@
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.lblTimer = new System.Windows.Forms.Label();
-            this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
             this.memberControl1 = new ExclusiveGym.WinForms.UserControls.MemberControl();
+            this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -250,7 +249,6 @@
             this.panel1.Controls.Add(this.lblDeviceStatus);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lblDate);
-            this.panel1.Controls.Add(this.lblTimer);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(205, 620);
             this.panel1.Name = "panel1";
@@ -285,34 +283,14 @@
             // lblDate
             // 
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblDate.Location = new System.Drawing.Point(634, 6);
+            this.lblDate.Location = new System.Drawing.Point(540, 6);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(78, 16);
+            this.lblDate.Size = new System.Drawing.Size(243, 16);
             this.lblDate.TabIndex = 1;
-            this.lblDate.Text = "16/09/2018 |";
-            // 
-            // lblTimer
-            // 
-            this.lblTimer.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTimer.Location = new System.Drawing.Point(721, 6);
-            this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(56, 16);
-            this.lblTimer.TabIndex = 0;
-            this.lblTimer.Text = "00:00:00";
-            // 
-            // homeControl1
-            // 
-            this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
-            this.homeControl1.Location = new System.Drawing.Point(205, 34);
-            this.homeControl1.Name = "homeControl1";
-            this.homeControl1.Size = new System.Drawing.Size(800, 583);
-            this.homeControl1.TabIndex = 13;
+            this.lblDate.Text = "16/09/2018 ";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // reportControl1
             // 
@@ -334,6 +312,14 @@
             this.memberControl1.Name = "memberControl1";
             this.memberControl1.Size = new System.Drawing.Size(800, 570);
             this.memberControl1.TabIndex = 10;
+            // 
+            // homeControl1
+            // 
+            this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.homeControl1.Location = new System.Drawing.Point(205, 34);
+            this.homeControl1.Name = "homeControl1";
+            this.homeControl1.Size = new System.Drawing.Size(800, 580);
+            this.homeControl1.TabIndex = 13;
             // 
             // Form1
             // 
@@ -374,7 +360,6 @@
         private System.Windows.Forms.Panel TitleBarPanel;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.Label lblDate;
         private UserControls.MemberControl memberControl1;
         private System.Windows.Forms.Label label3;

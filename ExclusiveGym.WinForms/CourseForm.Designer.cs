@@ -68,7 +68,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 22);
             this.label1.TabIndex = 9;
-            this.label1.Text = "ชื่อครอส";
+            this.label1.Text = "ชื่อคอร์ส";
             // 
             // panel1
             // 

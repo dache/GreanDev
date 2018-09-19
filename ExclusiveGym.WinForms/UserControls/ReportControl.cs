@@ -24,6 +24,7 @@ namespace ExclusiveGym.WinForms.UserControls
             yearSumPriceLabel.Text = dailySumPriceLabel.Text;
             dailyDatePicker.CustomFormat = dailyDatePicker.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
             monthDateTimePicker.CustomFormat = monthDateTimePicker.Value.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
+            yearDateTimePicker.CustomFormat = yearDateTimePicker.Value.ToString("yyyy ", new System.Globalization.CultureInfo("th-TH"));
         }
 
         private void dailyView_Click(object sender, EventArgs e)
@@ -151,11 +152,12 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void monthDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            monthDateTimePicker.CustomFormat = monthDateTimePicker.Value.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
+            monthDateTimePicker.CustomFormat = monthDateTimePicker.Value.ToString("yyyy ", new System.Globalization.CultureInfo("th-TH"));
         }
 
         private void yearDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
+            yearDateTimePicker.CustomFormat = yearDateTimePicker.Value.ToString("yyyy ", new System.Globalization.CultureInfo("th-TH"));
 
         }
     }
