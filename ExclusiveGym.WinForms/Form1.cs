@@ -12,7 +12,6 @@ using AxZKFPEngXControl;
 using ExclusiveGym.WinForms.Models;
 using ExclusiveGym.WinForms.CustomControls;
 
-
 namespace ExclusiveGym.WinForms
 {
     public partial class Form1 : Form, IMessageFilter
@@ -37,7 +36,6 @@ namespace ExclusiveGym.WinForms
         public Form1()
         {
             InitializeComponent();
-
             //
             StorageManager.GetSingleton();
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
@@ -45,12 +43,12 @@ namespace ExclusiveGym.WinForms
             // Custom Move title bar 
             Application.AddMessageFilter(this);
             controlsToMove.Add(this.TitleBarPanel);
+            m_instance = this;
         }
-
+        private System.Threading.Thread watching;
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitialAxZkfp();
-            homeControl1.Refresh();
+            SetupFingerprint();
             // Date
             lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy") + " |";
             //timer interval
@@ -60,10 +58,11 @@ namespace ExclusiveGym.WinForms
             t.Start();  //this will use t_Tick() method
 
             
-
-            // 
             homeControl1.BringToFront();
             btnHomeMenu.BackColor = Color.DimGray;
+            watching = new System.Threading.Thread(WatchingDevice);
+            watching.IsBackground = true;
+            watching.Start();
         }
 
         #region Timer
@@ -120,18 +119,20 @@ namespace ExclusiveGym.WinForms
         {
             try
             {
-                SetupFingerprint();
+                string status = "Not Connected";
                 if (m_zkFprint.InitEngine() == 0)
                 {
                     m_zkFprint.FPEngineVersion = "9";
-                    m_zkFprint.EnrollCount = 3;
-                    //deviceSerial.Text += " " + m_zkFprint.SensorSN + " Count: " + m_zkFprint.SensorCount.ToString() + " Index: " + m_zkFprint.SensorIndex.ToString();
                     Console.WriteLine("Device successfully connected");
-                    lblDeviceStatus.Text = "Connected";
+                    status = "Connected " + m_zkFprint.Active;
+                }
+                if (this.lblDeviceStatus.InvokeRequired)
+                {
+                    this.lblDeviceStatus.BeginInvoke((MethodInvoker)delegate () { this.lblDeviceStatus.Text = status; });
                 }
                 else
                 {
-                    lblDeviceStatus.Text = "Not Connected";
+                    this.lblDeviceStatus.Text = status;
                 }
             }
             catch (Exception ex)
@@ -140,7 +141,17 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private void SetupFingerprint()
+        private void WatchingDevice()
+        {
+            while(true)
+            {
+                System.Threading.Thread.Sleep(1000);
+               // Console.WriteLine("watching you " + m_zkFprint.InitEngine());
+                InitialAxZkfp();
+            }
+        }
+        public static Form1 m_instance;
+        public void SetupFingerprint()
         {
             FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
@@ -201,7 +212,6 @@ namespace ExclusiveGym.WinForms
 
         }
 
-
         private void btnVerify_Click(object sender, EventArgs e)
         {
 
@@ -244,6 +254,7 @@ namespace ExclusiveGym.WinForms
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            //watching.Abort();
             Application.Exit();
         }
 

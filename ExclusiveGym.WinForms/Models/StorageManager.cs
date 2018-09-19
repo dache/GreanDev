@@ -101,9 +101,9 @@ class StorageManager
         return GetDB().Courses.ToList();
     }
 
-    public List<AccessLog> GetAccessLogList()
+    public List<AccessLog> GetAccessLogListToday()
     {
-        return GetDB().AccessLog.Include("Member").ToList();
+        return GetDB().AccessLog.Include("Member").Where(accesslog => accesslog.AccessDate.Day == DateTime.Now.Day && accesslog.AccessDate.Month == DateTime.Now.Month && accesslog.AccessDate.Year == DateTime.Now.Year).ToList();
     }
 
     public Course GetDailyCourse()

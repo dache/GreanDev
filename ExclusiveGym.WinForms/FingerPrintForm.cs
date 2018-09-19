@@ -62,7 +62,7 @@ namespace ExclusiveGym.WinForms
         }
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
-            Console.WriteLine("zkFprint_OnImageReceived 2");
+            //Console.WriteLine("zkFprint_OnImageReceived 2");
             Graphics g = fingerPicture.CreateGraphics();
             Bitmap bmp = new Bitmap(fingerPicture.Width, fingerPicture.Height);
             g = Graphics.FromImage(bmp);
@@ -74,7 +74,7 @@ namespace ExclusiveGym.WinForms
 
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
-            Console.WriteLine("zkFprint_OnFeatureInfo 2");
+           // Console.WriteLine("zkFprint_OnFeatureInfo 2");
             String strTemp = string.Empty;
             if (m_zkFprint.EnrollIndex != 1)
             {
@@ -92,7 +92,7 @@ namespace ExclusiveGym.WinForms
 
         private async void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
-            Console.WriteLine("zkFprint_OnEnroll 2");
+            //Console.WriteLine("zkFprint_OnEnroll 2");
             if (e.actionResult)
             {
                 string template = m_zkFprint.EncodeTemplate1(e.aTemplate);

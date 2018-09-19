@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.currentMenuPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,10 +48,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
@@ -76,6 +76,44 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(205, 650);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(11, 558);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(181, 1);
+            this.panel2.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(83, 612);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 19);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "083-163-4088";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(26, 583);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(155, 29);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Drunken Coder";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 564);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 19);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Develope By.";
             // 
             // label2
             // 
@@ -268,50 +306,12 @@
             this.lblTimer.TabIndex = 0;
             this.lblTimer.Text = "00:00:00";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 564);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 19);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Develope By.";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 583);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(155, 29);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Drunken Coder";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(83, 612);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 19);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "083-163-4088";
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(11, 558);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(181, 1);
-            this.panel2.TabIndex = 11;
-            // 
             // homeControl1
             // 
             this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
-            this.homeControl1.Location = new System.Drawing.Point(204, 41);
+            this.homeControl1.Location = new System.Drawing.Point(205, 34);
             this.homeControl1.Name = "homeControl1";
-            this.homeControl1.Size = new System.Drawing.Size(800, 580);
+            this.homeControl1.Size = new System.Drawing.Size(800, 583);
             this.homeControl1.TabIndex = 13;
             // 
             // reportControl1
@@ -381,11 +381,11 @@
         private System.Windows.Forms.Label lblDeviceStatus;
         private UserControls.CourseControl courseControl1;
         private UserControls.ReportControl reportControl1;
-        private UserControls.HomeControl homeControl1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
+        private UserControls.HomeControl homeControl1;
     }
 }
 

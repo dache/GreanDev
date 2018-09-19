@@ -32,13 +32,14 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.Columns.Remove("editButton");
 
             InitMember();
+            Form1.m_instance.SetupFingerprint();
         }
 
         private void InitMember()
         {
             List<Member> members = StorageManager.GetSingleton().GetMemberList();
 
-
+           // Form1.
             gvMembers.DataSource = members;
 
             gvMembers.Columns[0].Visible = false;
@@ -130,8 +131,6 @@ namespace ExclusiveGym.WinForms.UserControls
             }
 
             gvMembers.ClearSelection();
-            //gvMembers.DefaultCellStyle.SelectionBackColor = Color.Transparent;
-            
         }
 
         private void gvMembers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -152,12 +151,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 mForm.ShowDialog();
             }
         }
-
-        private void NonFunc()
-        {
-
-        }
-
+        
         private void txtMemberSearch_Enter(object sender, EventArgs e)
         {
             if (txtMemberSearch.Text == "ค้นหาจาก ชื่อหรือนามสกุล")

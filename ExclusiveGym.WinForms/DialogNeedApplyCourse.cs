@@ -181,7 +181,7 @@ namespace ExclusiveGym.WinForms
         {
             Course a = this.currentCourse;
 
-            //StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply, a);
+            StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply, a);
             m_finishCallback(this.m_currentMemberWillApply);
             this.Close();
         }

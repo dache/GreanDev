@@ -209,17 +209,17 @@ namespace ExclusiveGym.WinForms
         }
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
-            Console.WriteLine("zkFprint_OnImageReceived 2");
+            Console.WriteLine("zkFprint_OnImageReceived member form");
         }
 
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
-            Console.WriteLine("zkFprint_OnFeatureInfo 2");
+            Console.WriteLine("zkFprint_OnFeatureInfo  member form");
         }
 
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
-            Console.WriteLine("zkFprint_OnEnroll 2");
+            Console.WriteLine("zkFprint_OnEnroll  member form");
         }
 
         #region BG Tranparent
@@ -363,9 +363,7 @@ namespace ExclusiveGym.WinForms
 
                 //StorageManager.GetSingleton().MemberApplyCourse(this.Member, StorageManager.GetSingleton().GetCourseByID(1));
                 //StorageManager.GetSingleton().MemberAccessGym(this.Member);
-                m_registryiSdone();
-
-                this.Close();
+                CloseForm();
             }
         }
 

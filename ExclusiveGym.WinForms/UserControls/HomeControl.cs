@@ -23,7 +23,7 @@ namespace ExclusiveGym.WinForms.UserControls
         private void InitHome()
         {
 
-            var logs = StorageManager.GetSingleton().GetAccessLogList();
+            var logs = StorageManager.GetSingleton().GetAccessLogListToday();
             foreach (var memberLog in logs)
             {
                 var customControl = new MemberSignControl(memberLog);
