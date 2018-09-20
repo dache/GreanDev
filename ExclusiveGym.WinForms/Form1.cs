@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using AxZKFPEngXControl;
 using ExclusiveGym.WinForms.Models;
 using ExclusiveGym.WinForms.CustomControls;
+using USBLib;
+using static USBLib.USB;
 
 namespace ExclusiveGym.WinForms
 {
@@ -30,13 +32,14 @@ namespace ExclusiveGym.WinForms
         private AxZKFPEngX m_zkFprint;
         private bool Check;
 
-        Timer t = new Timer();
 
-        private Member m_testMember;
+        private System.Threading.Thread m_backgroundWorker;
+
         public Form1()
         {
             InitializeComponent();
-            //
+
+           // UsbNotification.RegisterUsbDeviceNotification(this.Handle);
             StorageManager.GetSingleton();
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
 
@@ -45,11 +48,70 @@ namespace ExclusiveGym.WinForms
             controlsToMove.Add(this.TitleBarPanel);
             m_instance = this;
         }
-        private System.Threading.Thread m_backgroundWorker;
+        
+        //protected override void WndProc(ref Message m)
+        //{
+        //    base.WndProc(ref m);
+        //    if (m.Msg == UsbNotification.WmDevicechange)
+        //    {
+        //        switch ((int)m.WParam)
+        //        {
+        //            case UsbNotification.DbtDeviceremovecomplete:
+
+
+        //                //m_zkFprint.EndInit();
+        //                //Console.WriteLine(m_zkFprint.Active);
+        //                bool isFingerprintConnected = false;
+        //                foreach(USBDevice d in USB.GetConnectedDevices())
+        //                {
+        //                    if (d.DeviceName.ToLower().IndexOf("fingerprint") != -1)
+        //                    {
+        //                        isFingerprintConnected = true;
+        //                        break;
+        //                    }
+        //                }
+        //                if(!isFingerprintConnected)
+        //                {
+        //                    if (m_zkFprint.Active)
+        //                    {
+        //                        m_zkFprint.EndEngine();
+        //                        m_zkFprint.EndInit();
+        //                        FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
+                                
+        //                        this.lblDeviceStatus.Text = "Disconnected";
+        //                    }
+        //                }
+        //                    //Usb_DeviceRemoved(); // this is where you do your magic
+        //                    break;
+        //            case UsbNotification.DbtDevicearrival:
+        //               // Console.WriteLine("m_zkFprint " + m_zkFprint.SensorSN);
+        //                foreach (USBDevice d in USB.GetConnectedDevices())
+        //                {
+        //                    if(d.DeviceName.ToLower().IndexOf("fingerprint") != -1)
+        //                    {
+        //                        if (m_zkFprint == null || !m_zkFprint.Active)
+        //                        {
+        //                            //FingerPrint.GetSingleton().BeginInit();
+        //                            m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
+        //                            SetupFingerprint();
+        //                            InitialAxZkfp();
+        //                        }
+        //                        break;
+        //                    }
+                            
+        //                }
+                        
+        //                //Usb_DeviceAdded(); // this is where you do your magic
+        //                break;
+        //        }
+        //    }
+        //}
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Console.WriteLine("Form1_Load");
             SetupFingerprint();
+            InitialAxZkfp();
             homeControl1.BringToFront();
             btnHomeMenu.BackColor = Color.DimGray;
 
@@ -66,8 +128,8 @@ namespace ExclusiveGym.WinForms
                 if (m_zkFprint.InitEngine() == 0)
                 {
                     m_zkFprint.FPEngineVersion = "9";
-                    Console.WriteLine("Device successfully connected");
-                    status = "Connected " + m_zkFprint.Active;
+                    
+                    status = "Connected ";
                 }
                 if (this.lblDeviceStatus.InvokeRequired)
                 {
@@ -89,10 +151,7 @@ namespace ExclusiveGym.WinForms
             while(true)
             {
                 System.Threading.Thread.Sleep(1000);
-               // Console.WriteLine("watching you " + m_zkFprint.InitEngine());
-                InitialAxZkfp();
-
-               
+                
                 this.lblDate.BeginInvoke((MethodInvoker)delegate () { this.lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy hh:mm:ss tt", new System.Globalization.CultureInfo("th-TH")); });
             }
         }
@@ -187,6 +246,7 @@ namespace ExclusiveGym.WinForms
             else if (btn == btnMemberMenu)
             {
                 memberControl1.BringToFront();
+                memberControl1.InitMember();
             }
             else if (btn == btnPromotionMenu)
             {
@@ -195,12 +255,14 @@ namespace ExclusiveGym.WinForms
             else if (btn == btnIncomeMenu)
             {
                 reportControl1.BringToFront();
+                reportControl1.TotalOfReport();
             }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             //watching.Abort();
+            m_zkFprint.EndEngine();
             Application.Exit();
         }
 

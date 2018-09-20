@@ -186,7 +186,23 @@ class StorageManager
     {
         return GetDB().AccessLog.Where(accesslog => accesslog.AccessDate.Day == DateTime.Now.Day && accesslog.AccessDate.Month == DateTime.Now.Month && accesslog.AccessDate.Year == DateTime.Now.Year).ToList();
     }
-    
+
+    public List<ApplyCourseLog> GetIncomeTotal()
+    {
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.ToList();
+
+        var query = list.GroupBy(o => new { o.CourseID }).Select(g => new ApplyCourseLog
+        {
+            CourseID = g.Key.CourseID,
+            ApplyDate = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().ApplyDate,
+            Course = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Course,
+            Member = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Member,
+            MemberId = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().MemberId,
+            CoursePrice = g.Sum(x => x.CoursePrice)
+        }).ToList();
+        return query;
+    }
+
     public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
     {
         List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(applycourseLog => applycourseLog.ApplyDate.Day == day 

@@ -29,20 +29,18 @@ public class FingerPrint
     {
         if (m_zkFprint == null)
         {
-            m_zkFprint = new AxZKFPEngX();
-
-            m_zkFprint.OnCapture += zkFprint_OnCapture;
-            m_zkFprint.OnImageReceived += zkFprint_OnImageReceived;
-            m_zkFprint.OnFeatureInfo += zkFprint_OnFeatureInfo;
-            m_zkFprint.OnEnroll += zkFprint_OnEnroll;
-            // m_zkFprint.Dispose();
+            BeginInit();
         }
         return m_zkFprint;
     }
 
-    public void InitForm(System.Windows.Forms.Control.ControlCollection Controls)
+    public void BeginInit()
     {
-        //Controls.Add(m_zkFprint);
+        m_zkFprint = new AxZKFPEngX();
+        m_zkFprint.OnCapture += zkFprint_OnCapture;
+        m_zkFprint.OnImageReceived += zkFprint_OnImageReceived;
+        m_zkFprint.OnFeatureInfo += zkFprint_OnFeatureInfo;
+        m_zkFprint.OnEnroll += zkFprint_OnEnroll;
     }
     private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
     {

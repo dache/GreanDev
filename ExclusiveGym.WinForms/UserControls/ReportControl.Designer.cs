@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.ReportTabpage = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dailyTab = new System.Windows.Forms.TabPage();
             this.dailyDatePicker = new System.Windows.Forms.DateTimePicker();
             this.dailyView = new System.Windows.Forms.Button();
@@ -48,6 +51,8 @@
             this.yearSumPriceLabel = new System.Windows.Forms.Label();
             this.yearDataView = new System.Windows.Forms.DataGridView();
             this.ReportTabpage.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.dailyTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dailyDataView)).BeginInit();
             this.monthlyTab.SuspendLayout();
@@ -58,6 +63,7 @@
             // 
             // ReportTabpage
             // 
+            this.ReportTabpage.Controls.Add(this.tabPage1);
             this.ReportTabpage.Controls.Add(this.dailyTab);
             this.ReportTabpage.Controls.Add(this.monthlyTab);
             this.ReportTabpage.Controls.Add(this.yearTab);
@@ -67,6 +73,46 @@
             this.ReportTabpage.SelectedIndex = 0;
             this.ReportTabpage.Size = new System.Drawing.Size(776, 577);
             this.ReportTabpage.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 33);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(768, 540);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "ทั้งหมด";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
+            this.label4.Location = new System.Drawing.Point(16, 479);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(737, 29);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "รายได้รวม  : {0} บาท";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 43);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(737, 409);
+            this.dataGridView1.TabIndex = 20;
             // 
             // dailyTab
             // 
@@ -90,7 +136,7 @@
             this.dailyDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dailyDatePicker.Location = new System.Drawing.Point(126, 12);
             this.dailyDatePicker.Name = "dailyDatePicker";
-            this.dailyDatePicker.Size = new System.Drawing.Size(168, 27);
+            this.dailyDatePicker.Size = new System.Drawing.Size(144, 27);
             this.dailyDatePicker.TabIndex = 29;
             this.dailyDatePicker.ValueChanged += new System.EventHandler(this.dailyDatePicker_ValueChanged);
             // 
@@ -111,23 +157,24 @@
             // 
             // dailySumPriceLabel
             // 
-            this.dailySumPriceLabel.AutoSize = true;
+            this.dailySumPriceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dailySumPriceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dailySumPriceLabel.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailySumPriceLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.dailySumPriceLabel.Location = new System.Drawing.Point(575, 477);
+            this.dailySumPriceLabel.Location = new System.Drawing.Point(16, 479);
             this.dailySumPriceLabel.Name = "dailySumPriceLabel";
             this.dailySumPriceLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dailySumPriceLabel.Size = new System.Drawing.Size(186, 29);
+            this.dailySumPriceLabel.Size = new System.Drawing.Size(740, 29);
             this.dailySumPriceLabel.TabIndex = 19;
             this.dailySumPriceLabel.Text = "รายได้รวม  : {0} บาท";
-            this.dailySumPriceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.dailySumPriceLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // dailyDataView
             // 
             this.dailyDataView.AllowUserToAddRows = false;
             this.dailyDataView.AllowUserToDeleteRows = false;
             this.dailyDataView.AllowUserToResizeColumns = false;
+            this.dailyDataView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dailyDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dailyDataView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dailyDataView.Location = new System.Drawing.Point(19, 52);
@@ -200,19 +247,19 @@
             // 
             // monthlySumPriceLabel
             // 
-            this.monthlySumPriceLabel.AutoSize = true;
             this.monthlySumPriceLabel.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthlySumPriceLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.monthlySumPriceLabel.Location = new System.Drawing.Point(570, 477);
+            this.monthlySumPriceLabel.Location = new System.Drawing.Point(19, 479);
             this.monthlySumPriceLabel.Name = "monthlySumPriceLabel";
             this.monthlySumPriceLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.monthlySumPriceLabel.Size = new System.Drawing.Size(186, 29);
+            this.monthlySumPriceLabel.Size = new System.Drawing.Size(737, 29);
             this.monthlySumPriceLabel.TabIndex = 27;
             this.monthlySumPriceLabel.Text = "รายได้รวม  : {0} บาท";
-            this.monthlySumPriceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.monthlySumPriceLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // montDataView
             // 
+            this.montDataView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.montDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.montDataView.Location = new System.Drawing.Point(19, 52);
             this.montDataView.Name = "montDataView";
@@ -272,19 +319,19 @@
             // 
             // yearSumPriceLabel
             // 
-            this.yearSumPriceLabel.AutoSize = true;
             this.yearSumPriceLabel.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yearSumPriceLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.yearSumPriceLabel.Location = new System.Drawing.Point(575, 479);
+            this.yearSumPriceLabel.Location = new System.Drawing.Point(19, 479);
             this.yearSumPriceLabel.Name = "yearSumPriceLabel";
             this.yearSumPriceLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.yearSumPriceLabel.Size = new System.Drawing.Size(186, 29);
+            this.yearSumPriceLabel.Size = new System.Drawing.Size(737, 29);
             this.yearSumPriceLabel.TabIndex = 27;
             this.yearSumPriceLabel.Text = "รายได้รวม  : {0} บาท";
-            this.yearSumPriceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.yearSumPriceLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // yearDataView
             // 
+            this.yearDataView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.yearDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.yearDataView.Location = new System.Drawing.Point(19, 52);
             this.yearDataView.Name = "yearDataView";
@@ -298,7 +345,10 @@
             this.Controls.Add(this.ReportTabpage);
             this.Name = "ReportControl";
             this.Size = new System.Drawing.Size(800, 580);
+            this.Load += new System.EventHandler(this.ReportControl_Load);
             this.ReportTabpage.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.dailyTab.ResumeLayout(false);
             this.dailyTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dailyDataView)).EndInit();
@@ -333,5 +383,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker yearDateTimePicker;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

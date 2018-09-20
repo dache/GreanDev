@@ -159,6 +159,9 @@
     </Compile>
     <Compile Include="scripts\DelegateDecare.cs" />
     <Compile Include="scripts\FingerPrint.cs" />
+    <Compile Include="scripts\Functions.cs" />
+    <Compile Include="scripts\USB.cs" />
+    <Compile Include="scripts\UsbNotification.cs" />
     <Compile Include="UserControls\CourseControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

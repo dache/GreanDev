@@ -27,6 +27,37 @@ namespace ExclusiveGym.WinForms.UserControls
             yearDateTimePicker.CustomFormat = yearDateTimePicker.Value.ToString("yyyy ", new System.Globalization.CultureInfo("th-TH"));
         }
 
+        public void TotalOfReport()
+        {
+            List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeTotal();
+            List<ReportTotal> reportData = new List<ReportTotal>();
+            foreach (var log in applyCourseLogs)
+            {
+                var r = new ReportTotal()
+                {
+                    CourseName = log.Course.CourseName,
+                    CoursePrice = log.CoursePrice
+                };
+                reportData.Add(r);
+            }
+            dataGridView1.DataSource = reportData;
+            decimal sumPrice = reportData.Sum(f => f.CoursePrice);
+            label4.Text = string.Format(m_sumTxt, sumPrice);
+
+            dataGridView1.Columns[0].HeaderText = "ชื่อครอส";
+            dataGridView1.Columns[1].HeaderText = "ราคา";
+
+            dataGridView1.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            dataGridView1.Columns[0].Width = 330;
+            dataGridView1.Columns[1].Width = 200;
+            dataGridView1.Refresh();
+        }
         private void dailyView_Click(object sender, EventArgs e)
         {
             List<ApplyCourseLog> applyCourseLogs = StorageManager.GetSingleton().GetIncomeByDay(dailyDatePicker.Value.Day, dailyDatePicker.Value.Month, dailyDatePicker.Value.Year);
@@ -58,12 +89,13 @@ namespace ExclusiveGym.WinForms.UserControls
 
             dailyDataView.Columns[0].DefaultCellStyle.Format = "dd MMMM yyyy";
             dailyDataView.Columns[0].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
-            dailyDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dailyDataView.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dailyDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dailyDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            dailyDataView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dailyDataView.Columns[0].Width = 200;
-            dailyDataView.Columns[1].Width = 100;
+            dailyDataView.Columns[1].Width = 230;
             dailyDataView.Columns[2].Width = 100;
             dailyDataView.Columns[3].Width = 250;
             dailyDataView.Refresh();
@@ -97,12 +129,13 @@ namespace ExclusiveGym.WinForms.UserControls
 
             montDataView.Columns[0].DefaultCellStyle.Format = "MMMM yyyy";
             montDataView.Columns[0].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
-            montDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            montDataView.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            montDataView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             montDataView.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
             montDataView.Columns[0].Width = 200;
-            montDataView.Columns[1].Width = 100;
+            montDataView.Columns[1].Width = 230;
             montDataView.Columns[2].Width = 100;
             montDataView.Refresh();
         }
@@ -160,6 +193,11 @@ namespace ExclusiveGym.WinForms.UserControls
             yearDateTimePicker.CustomFormat = yearDateTimePicker.Value.ToString("yyyy ", new System.Globalization.CultureInfo("th-TH"));
 
         }
+
+        private void ReportControl_Load(object sender, EventArgs e)
+        {
+            TotalOfReport();
+        }
     }
 
     public class ReportTypeDaily
@@ -183,5 +221,11 @@ namespace ExclusiveGym.WinForms.UserControls
         public string CourseName { get; set; }
         public decimal CoursePrice { get; set; }
     }
-    
+
+    public class ReportTotal
+    {
+        public string CourseName { get; set; }
+        public decimal CoursePrice { get; set; }
+    }
+
 }
