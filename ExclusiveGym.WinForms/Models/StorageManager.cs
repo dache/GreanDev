@@ -56,6 +56,8 @@ class StorageManager
         return GetDB().Members.ToList();
     }
 
+    
+
     public List<MedicalProblem> GetMedicalProblemsByMemberId(int id)
     {
         return GetDB().MedicalProblems.Where(f => f.MemberId == id).ToList();

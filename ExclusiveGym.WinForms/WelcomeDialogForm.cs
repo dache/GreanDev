@@ -21,7 +21,8 @@ namespace ExclusiveGym.WinForms
             SetStyle(ControlStyles.Opaque, true);
 
             lblMessage.Text = $"สวัสดี คุณ{member.Name} {member.LastName}";
-            lblTime.Text = $"เข้าฟิสเนต เวลา {DateTime.Now}";
+            //lblTime.Text = $"เวลาเข้าฟิสเนต {DateTime.Now.ToString("dd MMMM yyyy hh:mm:ss", new System.Globalization.CultureInfo("th-TH"))}";
+            lblTime.Text = $"สมาชิกหมดอายุวันที่ {member.ExpireDate.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"))}";
             StorageManager.GetSingleton().MemberAccessGym(member);
         }
 
