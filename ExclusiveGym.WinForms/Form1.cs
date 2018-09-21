@@ -118,6 +118,19 @@ namespace ExclusiveGym.WinForms
             m_backgroundWorker = new System.Threading.Thread(BackgroundThreadForm1);
             m_backgroundWorker.IsBackground = true;
             m_backgroundWorker.Start();
+            //for(int i = 0;i<300; i++)
+            //{
+            //    Member m = new Member();
+            //    m.Name = i.ToString();
+            //    m.LastName = i.ToString();
+            //    m.FingerPrint = i.ToString();
+            //    m.BirthDate = DateTime.Now;
+            //    m.CreateDate = DateTime.Now;
+            //    m.Age = 0;
+            //    m.MemberId = i + 5;
+            //    StorageManager.GetSingleton().AddMember(m);
+            //}
+            
         }
         
         private void InitialAxZkfp()

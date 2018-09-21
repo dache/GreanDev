@@ -20,9 +20,11 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void MemberControl_Load(object sender, EventArgs e)
         {
-
-            InitMember();
+            //InitMember();
             
+
+            // InitMember();
+
         }
 
         private void FinishCallback()
@@ -36,7 +38,7 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.BeginInvoke((MethodInvoker)delegate () 
             {
                 gvMembers.DataSource = null;
-                gvMembers.Update();
+                
                 gvMembers.Refresh();
                 try
                 {
@@ -46,7 +48,8 @@ namespace ExclusiveGym.WinForms.UserControls
                 catch { }
                 List<Member> members = StorageManager.GetSingleton().GetMemberList();
                 gvMembers.DataSource = members;
-
+                
+                gvMembers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing; //or even better .DisableResizing. Most time consumption enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
                 gvMembers.Columns[0].Visible = false;
                 gvMembers.Columns[3].Visible = false;
                 gvMembers.Columns[5].Visible = false;
@@ -78,7 +81,6 @@ namespace ExclusiveGym.WinForms.UserControls
                 gvMembers.Columns[4].Width = 70;
                 gvMembers.Columns[19].Width = 120;
 
-                //log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"))
 
                 gvMembers.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 gvMembers.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -87,7 +89,6 @@ namespace ExclusiveGym.WinForms.UserControls
 
                 gvMembers.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 gvMembers.Columns[19].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
 
                 DataGridViewButtonColumn courseButton = new DataGridViewButtonColumn();
                 courseButton.Name = "courseButton";
@@ -116,8 +117,8 @@ namespace ExclusiveGym.WinForms.UserControls
                 {
                     gvMembers.Columns.Insert(23, editButton);
                 }
-
-                //gvMembers.ClearSelection();
+                gvMembers.Update();
+                gvMembers.ClearSelection();
             });
 
             
