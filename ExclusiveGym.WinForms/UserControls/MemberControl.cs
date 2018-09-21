@@ -50,25 +50,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate }).ToList();
                 
                 gvMembers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing; //or even better .DisableResizing. Most time consumption enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-                //gvMembers.Columns[0].Visible = false;
-                //gvMembers.Columns[3].Visible = false;
-                //gvMembers.Columns[5].Visible = false;
-                //gvMembers.Columns[6].Visible = false;
-                //gvMembers.Columns[7].Visible = false;
-                //gvMembers.Columns[8].Visible = false;
-                //gvMembers.Columns[9].Visible = false;
-                //gvMembers.Columns[10].Visible = false;
-                //gvMembers.Columns[11].Visible = false;
-                //gvMembers.Columns[12].Visible = false;
-                //gvMembers.Columns[13].Visible = false;
-                //gvMembers.Columns[14].Visible = false;
-                //gvMembers.Columns[15].Visible = false;
-                //gvMembers.Columns[16].Visible = false;
-                //gvMembers.Columns[17].Visible = false;
-                //gvMembers.Columns[18].Visible = false;
-                //gvMembers.Columns[20].Visible = false;
-                //gvMembers.Columns[21].Visible = false;
-
+               
                 gvMembers.Columns[0].HeaderText = "ชื่อ";
                 gvMembers.Columns[1].HeaderText = "นามสกุล";
                 gvMembers.Columns[2].HeaderText = "อายุ";
