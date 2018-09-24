@@ -47,10 +47,11 @@ namespace ExclusiveGym.WinForms.UserControls
                 }
                 catch { }
                //List<Member> members = StorageManager.GetSingleton().GetMemberList();
-                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate }).ToList();
+                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
                 
                 gvMembers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing; //or even better .DisableResizing. Most time consumption enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-               
+
+                gvMembers.Columns[4].Visible = false;
                 gvMembers.Columns[0].HeaderText = "ชื่อ";
                 gvMembers.Columns[1].HeaderText = "นามสกุล";
                 gvMembers.Columns[2].HeaderText = "อายุ";
@@ -83,7 +84,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 courseButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
                 if (gvMembers.Columns["courseButton"] == null)
                 {
-                    gvMembers.Columns.Insert(4, courseButton);
+                    gvMembers.Columns.Insert(5, courseButton);
                 }
 
                 DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
@@ -97,7 +98,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
                 if (gvMembers.Columns["editButton"] == null)
                 {
-                    gvMembers.Columns.Insert(5, editButton);
+                    gvMembers.Columns.Insert(6, editButton);
                 }
                 gvMembers.Update();
                 gvMembers.ClearSelection();
@@ -118,7 +119,7 @@ namespace ExclusiveGym.WinForms.UserControls
             if (e.ColumnIndex == gvMembers.Columns["editButton"].Index)
             {
                 //Do something with your button.
-                Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                Member member = StorageManager.GetSingleton().GetMemeberById((int)gvMembers.CurrentRow.Cells[4].Value);
                 var mForm = new MemberForm(member);
                 mForm.m_registryiSdone = FinishCallback;
                 mForm.ShowDialog();
@@ -126,7 +127,9 @@ namespace ExclusiveGym.WinForms.UserControls
             if (e.ColumnIndex == gvMembers.Columns["courseButton"].Index)
             {
                 //Do something with your button.
-                Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                //Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                Member member = StorageManager.GetSingleton().GetMemeberById((int)gvMembers.CurrentRow.Cells[4].Value);
+
                 var mForm = new DialogNeedApplyCourse(member, null);
                 mForm.ShowDialog();
             }
