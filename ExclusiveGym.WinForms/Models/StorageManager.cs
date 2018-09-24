@@ -56,6 +56,8 @@ class StorageManager
         return GetDB().Members.ToList();
     }
 
+    
+
     public List<MedicalProblem> GetMedicalProblemsByMemberId(int id)
     {
         return GetDB().MedicalProblems.Where(f => f.MemberId == id).ToList();
@@ -189,7 +191,7 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeTotal()
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.ToList();
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").ToList();
 
         var query = list.GroupBy(o => new { o.CourseID }).Select(g => new ApplyCourseLog
         {
@@ -205,7 +207,7 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(applycourseLog => applycourseLog.ApplyDate.Day == day 
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(applycourseLog => applycourseLog.ApplyDate.Day == day 
         && applycourseLog.ApplyDate.Month == month 
         && applycourseLog.ApplyDate.Year == year).ToList();
 
@@ -223,7 +225,7 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByMonth(int month, int year)
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year).ToList();
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year).ToList();
         var query = list.GroupBy(o => new { o.CourseID, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
         {
             CourseID = g.Key.CourseID,
@@ -238,7 +240,7 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByYear(int year)
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Year == year).ToList();
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(f => f.ApplyDate.Year == year).ToList();
         var query = list.GroupBy(o => new { o.Course.CourseType, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
         {
             CourseID = g.Where(o=>o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().CourseID,

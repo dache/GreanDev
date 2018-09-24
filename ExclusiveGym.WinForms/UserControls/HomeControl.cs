@@ -36,7 +36,7 @@ namespace ExclusiveGym.WinForms.UserControls
             foreach (ApplyCourseLog acl in applyCourseLogs)
             {
                 var course = StorageManager.GetSingleton().GetCourseByID(acl.CourseID);
-                if (course.CourseType == COURSETYPE.DAILY) income += acl.CoursePrice;
+                income += acl.CoursePrice;
             }
 
             lblIncome.Text = $" { income.ToString() } ฿";

@@ -201,8 +201,8 @@ namespace ExclusiveGym.WinForms
             {
                 if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
                 {
-                    txtName.Text = member.Name;
-                    txtLastName.Text = member.LastName = txtLastName.Text;
+                    this.Member = member;
+                    InitMember();
                     break;
                 }
             }

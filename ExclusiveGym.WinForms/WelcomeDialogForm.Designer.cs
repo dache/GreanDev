@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.lblHeader = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +47,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 184);
             this.panel1.TabIndex = 0;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTime.Location = new System.Drawing.Point(48, 91);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(79, 24);
+            this.lblTime.TabIndex = 9;
+            this.lblTime.Text = "Message";
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.ForeColor = System.Drawing.Color.DimGray;
+            this.lblMessage.Location = new System.Drawing.Point(48, 56);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(79, 24);
+            this.lblMessage.TabIndex = 8;
+            this.lblMessage.Text = "Message";
             // 
             // lblHeader
             // 
@@ -75,28 +97,6 @@
             this.btnClose.Text = "ปิด";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.ForeColor = System.Drawing.Color.DimGray;
-            this.lblMessage.Location = new System.Drawing.Point(48, 57);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(79, 24);
-            this.lblMessage.TabIndex = 8;
-            this.lblMessage.Text = "Message";
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTime.Location = new System.Drawing.Point(48, 92);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(79, 24);
-            this.lblTime.TabIndex = 9;
-            this.lblTime.Text = "Message";
             // 
             // WelcomeDialogForm
             // 

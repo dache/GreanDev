@@ -20,9 +20,11 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void MemberControl_Load(object sender, EventArgs e)
         {
-
-            InitMember();
+            //InitMember();
             
+
+            // InitMember();
+
         }
 
         private void FinishCallback()
@@ -36,7 +38,7 @@ namespace ExclusiveGym.WinForms.UserControls
             gvMembers.BeginInvoke((MethodInvoker)delegate () 
             {
                 gvMembers.DataSource = null;
-                gvMembers.Update();
+                
                 gvMembers.Refresh();
                 try
                 {
@@ -44,50 +46,32 @@ namespace ExclusiveGym.WinForms.UserControls
                     gvMembers.Columns.Remove("editButton");
                 }
                 catch { }
-                List<Member> members = StorageManager.GetSingleton().GetMemberList();
-                gvMembers.DataSource = members;
+               //List<Member> members = StorageManager.GetSingleton().GetMemberList();
+                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
+                
+                gvMembers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing; //or even better .DisableResizing. Most time consumption enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
 
-                gvMembers.Columns[0].Visible = false;
-                gvMembers.Columns[3].Visible = false;
-                gvMembers.Columns[5].Visible = false;
-                gvMembers.Columns[6].Visible = false;
-                gvMembers.Columns[7].Visible = false;
-                gvMembers.Columns[8].Visible = false;
-                gvMembers.Columns[9].Visible = false;
-                gvMembers.Columns[10].Visible = false;
-                gvMembers.Columns[11].Visible = false;
-                gvMembers.Columns[12].Visible = false;
-                gvMembers.Columns[13].Visible = false;
-                gvMembers.Columns[14].Visible = false;
-                gvMembers.Columns[15].Visible = false;
-                gvMembers.Columns[16].Visible = false;
-                gvMembers.Columns[17].Visible = false;
-                gvMembers.Columns[18].Visible = false;
-                gvMembers.Columns[20].Visible = false;
-                gvMembers.Columns[21].Visible = false;
+                gvMembers.Columns[4].Visible = false;
+                gvMembers.Columns[0].HeaderText = "ชื่อ";
+                gvMembers.Columns[1].HeaderText = "นามสกุล";
+                gvMembers.Columns[2].HeaderText = "อายุ";
+                gvMembers.Columns[3].HeaderText = "วันหมดอายุ";
+                gvMembers.Columns[3].DefaultCellStyle.Format = "dd MMMM yyyy";
+                gvMembers.Columns[3].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
 
-                gvMembers.Columns[1].HeaderText = "ชื่อ";
-                gvMembers.Columns[2].HeaderText = "นามสกุล";
-                gvMembers.Columns[4].HeaderText = "อายุ";
-                gvMembers.Columns[19].HeaderText = "วันหมดอายุ";
-                gvMembers.Columns[19].DefaultCellStyle.Format = "dd MMMM yyyy";
-                gvMembers.Columns[19].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
-
+                gvMembers.Columns[0].Width = 180;
                 gvMembers.Columns[1].Width = 180;
-                gvMembers.Columns[2].Width = 180;
-                gvMembers.Columns[4].Width = 70;
-                gvMembers.Columns[19].Width = 120;
+                gvMembers.Columns[2].Width = 70;
+                gvMembers.Columns[3].Width = 120;
 
-                //log.ApplyDate.ToString("MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"))
 
+                gvMembers.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 gvMembers.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 gvMembers.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                gvMembers.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                gvMembers.Columns[19].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                gvMembers.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                gvMembers.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                gvMembers.Columns[19].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+                gvMembers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                gvMembers.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 DataGridViewButtonColumn courseButton = new DataGridViewButtonColumn();
                 courseButton.Name = "courseButton";
@@ -100,7 +84,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 courseButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
                 if (gvMembers.Columns["courseButton"] == null)
                 {
-                    gvMembers.Columns.Insert(22, courseButton);
+                    gvMembers.Columns.Insert(5, courseButton);
                 }
 
                 DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
@@ -114,10 +98,10 @@ namespace ExclusiveGym.WinForms.UserControls
                 editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
                 if (gvMembers.Columns["editButton"] == null)
                 {
-                    gvMembers.Columns.Insert(23, editButton);
+                    gvMembers.Columns.Insert(6, editButton);
                 }
-
-                //gvMembers.ClearSelection();
+                gvMembers.Update();
+                gvMembers.ClearSelection();
             });
 
             
@@ -135,7 +119,7 @@ namespace ExclusiveGym.WinForms.UserControls
             if (e.ColumnIndex == gvMembers.Columns["editButton"].Index)
             {
                 //Do something with your button.
-                Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                Member member = StorageManager.GetSingleton().GetMemeberById((int)gvMembers.CurrentRow.Cells[4].Value);
                 var mForm = new MemberForm(member);
                 mForm.m_registryiSdone = FinishCallback;
                 mForm.ShowDialog();
@@ -143,7 +127,9 @@ namespace ExclusiveGym.WinForms.UserControls
             if (e.ColumnIndex == gvMembers.Columns["courseButton"].Index)
             {
                 //Do something with your button.
-                Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                //Member member = (Member)gvMembers.CurrentRow.DataBoundItem;
+                Member member = StorageManager.GetSingleton().GetMemeberById((int)gvMembers.CurrentRow.Cells[4].Value);
+
                 var mForm = new DialogNeedApplyCourse(member, null);
                 mForm.ShowDialog();
             }
