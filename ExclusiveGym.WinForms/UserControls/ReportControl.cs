@@ -196,7 +196,7 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void ReportControl_Load(object sender, EventArgs e)
         {
-            TotalOfReport();
+            //TotalOfReport();
         }
     }
 

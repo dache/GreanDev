@@ -13,6 +13,7 @@ using ExclusiveGym.WinForms.Models;
 using ExclusiveGym.WinForms.CustomControls;
 using USBLib;
 using static USBLib.USB;
+using System.IO;
 
 namespace ExclusiveGym.WinForms
 {
@@ -39,7 +40,7 @@ namespace ExclusiveGym.WinForms
         {
             InitializeComponent();
 
-           // UsbNotification.RegisterUsbDeviceNotification(this.Handle);
+            // UsbNotification.RegisterUsbDeviceNotification(this.Handle);
             StorageManager.GetSingleton();
             m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
 
@@ -47,8 +48,11 @@ namespace ExclusiveGym.WinForms
             Application.AddMessageFilter(this);
             controlsToMove.Add(this.TitleBarPanel);
             m_instance = this;
+
         }
-        
+
+      
+
         //protected override void WndProc(ref Message m)
         //{
         //    base.WndProc(ref m);
@@ -77,7 +81,7 @@ namespace ExclusiveGym.WinForms
         //                        m_zkFprint.EndEngine();
         //                        m_zkFprint.EndInit();
         //                        FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
-                                
+
         //                        this.lblDeviceStatus.Text = "Disconnected";
         //                    }
         //                }
@@ -98,9 +102,9 @@ namespace ExclusiveGym.WinForms
         //                        }
         //                        break;
         //                    }
-                            
+
         //                }
-                        
+
         //                //Usb_DeviceAdded(); // this is where you do your magic
         //                break;
         //        }
@@ -119,7 +123,7 @@ namespace ExclusiveGym.WinForms
             m_backgroundWorker.IsBackground = true;
             m_backgroundWorker.Start();
         }
-        
+
         private void InitialAxZkfp()
         {
             try
@@ -128,7 +132,7 @@ namespace ExclusiveGym.WinForms
                 if (m_zkFprint.InitEngine() == 0)
                 {
                     m_zkFprint.FPEngineVersion = "9";
-                    
+
                     status = "Connected ";
                 }
                 if (this.lblDeviceStatus.InvokeRequired)
@@ -148,10 +152,10 @@ namespace ExclusiveGym.WinForms
 
         private void BackgroundThreadForm1()
         {
-            while(true)
+            while (true)
             {
                 System.Threading.Thread.Sleep(1000);
-                
+
                 this.lblDate.BeginInvoke((MethodInvoker)delegate () { this.lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy hh:mm:ss tt", new System.Globalization.CultureInfo("th-TH")); });
             }
         }
@@ -237,7 +241,7 @@ namespace ExclusiveGym.WinForms
 
             Button btn = (Button)sender;
             currentMenuPanel.Top = btn.Top;
-            btn.BackColor = Color.DimGray ;
+            btn.BackColor = Color.DimGray;
 
             if (btn == btnHomeMenu)
             {
@@ -322,6 +326,6 @@ namespace ExclusiveGym.WinForms
             //case 1
             DisplayNeedRegistryForm();
             //SampleData();
-        }      
+        }
     }
 }
