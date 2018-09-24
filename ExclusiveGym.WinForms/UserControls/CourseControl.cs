@@ -30,6 +30,7 @@ namespace ExclusiveGym.WinForms.UserControls
             gvCourses.Update();
             gvCourses.Refresh();
             gvCourses.Columns.Remove("editButton");
+            gvCourses.Columns.Remove("delButton");
 
             InitCourse();
         }
@@ -74,11 +75,24 @@ namespace ExclusiveGym.WinForms.UserControls
             editButton.DefaultCellStyle.BackColor = Color.FromArgb(240, 173, 78);
             editButton.FlatStyle = FlatStyle.Flat;
             editButton.DefaultCellStyle.ForeColor = Color.White;
-            editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
-            
+            editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;            
             if (gvCourses.Columns["editButton"] == null)
             {
                 gvCourses.Columns.Insert(6, editButton);
+            }
+
+            DataGridViewButtonColumn delButton = new DataGridViewButtonColumn();
+            delButton.Name = "delButton";
+            delButton.Text = "ลบ";
+            delButton.HeaderText = "";
+            delButton.UseColumnTextForButtonValue = true;
+            delButton.DefaultCellStyle.BackColor = Color.FromArgb(212, 63, 58);
+            delButton.FlatStyle = FlatStyle.Flat;
+            delButton.DefaultCellStyle.ForeColor = Color.White;
+            delButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
+            if (gvCourses.Columns["delButton"] == null)
+            {
+                gvCourses.Columns.Insert(7, delButton);
             }
         }
 
@@ -89,7 +103,18 @@ namespace ExclusiveGym.WinForms.UserControls
                 Course course = (Course)gvCourses.CurrentRow.DataBoundItem;
                 var CourseForm = new CourseForm(course, FinishCallback);
                 CourseForm.ShowDialog();
-            }           
+            }
+
+            if (e.ColumnIndex == gvCourses.Columns["delButton"].Index)
+            {
+                Course course = (Course)gvCourses.CurrentRow.DataBoundItem;
+                var form = new DialogForm("ยืนยันการลบคอร์ส?", $"ลบคอร์ส {course.CourseName}");
+                if(form.ShowDialog() == DialogResult.OK)
+                {
+                    StorageManager.GetSingleton().RemoveCourse(course);
+                    FinishCallback();
+                }
+            }
         }
     }
 }

@@ -39,13 +39,23 @@ class StorageManager
         return m_gymDB;
     }
 
+
+    #region MEMBER
+
     public void AddMember(Member m)
     {
         GetDB().Members.Add(m);
         SaveDB();
     }
 
-    #region MEMBER
+    public void RemoveMember(Member m)
+    {
+        //var mem = GetMemeberById(m.MemberId);
+        //mem.IsActive = false;
+        m.IsActive = false;
+        SaveDB();
+    }
+
     public Member GetMemeberById(int memberId)
     {
         return GetDB().Members.Where(f => f.MemberId == memberId).SingleOrDefault();
@@ -53,10 +63,8 @@ class StorageManager
 
     public List<Member> GetMemberList()
     {
-        return GetDB().Members.ToList();
+        return GetDB().Members.Where(f => f.IsActive == true).ToList();
     }
-
-    
 
     public List<MedicalProblem> GetMedicalProblemsByMemberId(int id)
     {
@@ -79,6 +87,11 @@ class StorageManager
     }
     #endregion
 
+    public void RemoveCourse(Course course)
+    {
+        GetDB().Courses.Remove(course);
+        SaveDB();
+    }
 
     public List<Course> GetCourseList()
     {
@@ -123,7 +136,7 @@ class StorageManager
         return GetDB().MemberApplyCourses.Where(x => x.MemberId == id).FirstOrDefault();
     }
 
- 
+
     public void MemberApplyCourse(Member member, Course course)
     {
         ApplyCourseLog acl = new ApplyCourseLog();
@@ -166,9 +179,9 @@ class StorageManager
 
     public void MemberAccessGym(Member member)
     {
-        var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day 
-        && f.AccessDate.Month == DateTime.Now.Month 
-        && f.AccessDate.Year == DateTime.Now.Year) && 
+        var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day
+        && f.AccessDate.Month == DateTime.Now.Month
+        && f.AccessDate.Year == DateTime.Now.Year) &&
         f.MemberID == member.MemberId).SingleOrDefault();
         if (access == null)
         {
@@ -182,8 +195,8 @@ class StorageManager
             SaveDB();
         }
     }
-  
-    
+
+
     public List<AccessLog> GetMemberAccessGymToday()
     {
         return GetDB().AccessLog.Where(accesslog => accesslog.AccessDate.Day == DateTime.Now.Day && accesslog.AccessDate.Month == DateTime.Now.Month && accesslog.AccessDate.Year == DateTime.Now.Year).ToList();
@@ -207,15 +220,15 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(applycourseLog => applycourseLog.ApplyDate.Day == day 
-        && applycourseLog.ApplyDate.Month == month 
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(applycourseLog => applycourseLog.ApplyDate.Day == day
+        && applycourseLog.ApplyDate.Month == month
         && applycourseLog.ApplyDate.Year == year).ToList();
 
         var query = list.GroupBy(o => o).Select(g => new ApplyCourseLog
         {
             CourseID = g.Key.CourseID,
             ApplyDate = g.Key.ApplyDate,
-            Course = g.Where(o=> o.CourseID == g.Key.CourseID && o.ApplyDate == g.Key.ApplyDate).FirstOrDefault().Course,
+            Course = g.Where(o => o.CourseID == g.Key.CourseID && o.ApplyDate == g.Key.ApplyDate).FirstOrDefault().Course,
             Member = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Member,
             MemberId = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().MemberId,
             CoursePrice = g.Sum(x => x.CoursePrice)
@@ -243,7 +256,7 @@ class StorageManager
         List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(f => f.ApplyDate.Year == year).ToList();
         var query = list.GroupBy(o => new { o.Course.CourseType, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
         {
-            CourseID = g.Where(o=>o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().CourseID,
+            CourseID = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().CourseID,
             ApplyDate = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().ApplyDate,
             Course = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().Course,
             Member = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().Member,

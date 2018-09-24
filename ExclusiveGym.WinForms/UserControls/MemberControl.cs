@@ -21,7 +21,7 @@ namespace ExclusiveGym.WinForms.UserControls
         private void MemberControl_Load(object sender, EventArgs e)
         {
             //InitMember();
-            
+
 
             // InitMember();
 
@@ -35,20 +35,21 @@ namespace ExclusiveGym.WinForms.UserControls
 
         private void LoadMember()
         {
-            gvMembers.BeginInvoke((MethodInvoker)delegate () 
+            gvMembers.BeginInvoke((MethodInvoker)delegate ()
             {
                 gvMembers.DataSource = null;
-                
+
                 gvMembers.Refresh();
                 try
                 {
                     gvMembers.Columns.Remove("courseButton");
                     gvMembers.Columns.Remove("editButton");
+                    gvMembers.Columns.Remove("delButton");
                 }
                 catch { }
-               //List<Member> members = StorageManager.GetSingleton().GetMemberList();
-                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
-                
+                //List<Member> members = StorageManager.GetSingleton().GetMemberList();
+                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Where(f => f.IsActive == true).Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
+
                 gvMembers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing; //or even better .DisableResizing. Most time consumption enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
 
                 gvMembers.Columns[4].Visible = false;
@@ -100,18 +101,33 @@ namespace ExclusiveGym.WinForms.UserControls
                 {
                     gvMembers.Columns.Insert(6, editButton);
                 }
+
+                DataGridViewButtonColumn delButton = new DataGridViewButtonColumn();
+                delButton.Name = "delButton";
+                delButton.Text = "ลบ";
+                delButton.HeaderText = "";
+                delButton.UseColumnTextForButtonValue = true;
+                delButton.DefaultCellStyle.BackColor = Color.FromArgb(212, 63, 58);
+                delButton.FlatStyle = FlatStyle.Flat;
+                delButton.DefaultCellStyle.ForeColor = Color.White;
+                delButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
+                if (gvMembers.Columns["delButton"] == null)
+                {
+                    gvMembers.Columns.Insert(7, delButton);
+                }
+
                 gvMembers.Update();
                 gvMembers.ClearSelection();
             });
 
-            
+
         }
         public void InitMember()
         {
             System.Threading.Thread loadthread = new System.Threading.Thread(LoadMember);
             loadthread.IsBackground = true;
             loadthread.Start();
-            
+
         }
 
         private void gvMembers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -133,8 +149,19 @@ namespace ExclusiveGym.WinForms.UserControls
                 var mForm = new DialogNeedApplyCourse(member, null);
                 mForm.ShowDialog();
             }
+            if (e.ColumnIndex == gvMembers.Columns["delButton"].Index)
+            {
+                Member member = StorageManager.GetSingleton().GetMemeberById((int)gvMembers.CurrentRow.Cells[4].Value);
+
+                var mForm = new DialogForm("ยืนยันการลบสมาชิก?", $"ลบ {member.Name} {member.LastName}");
+                if(mForm.ShowDialog() == DialogResult.OK)
+                {
+                    StorageManager.GetSingleton().RemoveMember(member);
+                    MessageBox.Show("ลบข้อมูลเรียบร้อยแล้ว");
+                }
+            }
         }
-        
+
         private void txtMemberSearch_Enter(object sender, EventArgs e)
         {
             if (txtMemberSearch.Text == "ค้นหาจาก ชื่อหรือนามสกุล")
@@ -165,7 +192,7 @@ namespace ExclusiveGym.WinForms.UserControls
             List<Member> members = StorageManager.GetSingleton().GetMemberList();
 
             var name = txtMemberSearch.Text.Trim();
-            if(name == "" || name == "ค้นหาจาก ชื่อหรือนามสกุล")
+            if (name == "" || name == "ค้นหาจาก ชื่อหรือนามสกุล")
             {
                 gvMembers.DataSource = members;
             }
@@ -173,10 +200,10 @@ namespace ExclusiveGym.WinForms.UserControls
             {
                 gvMembers.DataSource = members.Where(f => f.Name.StartsWith(name)).ToList();
             }
-            
+
         }
 
-       
+
     }
-   
+
 }
