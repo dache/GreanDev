@@ -47,10 +47,10 @@
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
+            this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
             this.memberControl1 = new ExclusiveGym.WinForms.UserControls.MemberControl();
-            this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -58,7 +58,7 @@
             // 
             // MenuPanel
             // 
-            this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(213)))), ((int)(((byte)(212)))));
+            this.MenuPanel.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.MenuPanel.Controls.Add(this.panel2);
             this.MenuPanel.Controls.Add(this.label6);
             this.MenuPanel.Controls.Add(this.label5);
@@ -146,8 +146,10 @@
             // 
             // btnIncomeMenu
             // 
+            this.btnIncomeMenu.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.btnIncomeMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIncomeMenu.FlatAppearance.BorderSize = 0;
+            this.btnIncomeMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnIncomeMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIncomeMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncomeMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -157,15 +159,17 @@
             this.btnIncomeMenu.Name = "btnIncomeMenu";
             this.btnIncomeMenu.Size = new System.Drawing.Size(193, 45);
             this.btnIncomeMenu.TabIndex = 0;
-            this.btnIncomeMenu.Text = "    Income";
+            this.btnIncomeMenu.Text = "  รายงาน";
             this.btnIncomeMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnIncomeMenu.UseVisualStyleBackColor = true;
+            this.btnIncomeMenu.UseVisualStyleBackColor = false;
             this.btnIncomeMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnPromotionMenu
             // 
+            this.btnPromotionMenu.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.btnPromotionMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPromotionMenu.FlatAppearance.BorderSize = 0;
+            this.btnPromotionMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnPromotionMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPromotionMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPromotionMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -175,15 +179,17 @@
             this.btnPromotionMenu.Name = "btnPromotionMenu";
             this.btnPromotionMenu.Size = new System.Drawing.Size(193, 45);
             this.btnPromotionMenu.TabIndex = 0;
-            this.btnPromotionMenu.Text = "    Course";
+            this.btnPromotionMenu.Text = "  จัดการคอร์ส";
             this.btnPromotionMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPromotionMenu.UseVisualStyleBackColor = true;
+            this.btnPromotionMenu.UseVisualStyleBackColor = false;
             this.btnPromotionMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnMemberMenu
             // 
+            this.btnMemberMenu.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.btnMemberMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMemberMenu.FlatAppearance.BorderSize = 0;
+            this.btnMemberMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnMemberMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMemberMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMemberMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -193,15 +199,17 @@
             this.btnMemberMenu.Name = "btnMemberMenu";
             this.btnMemberMenu.Size = new System.Drawing.Size(193, 45);
             this.btnMemberMenu.TabIndex = 0;
-            this.btnMemberMenu.Text = "    Member";
+            this.btnMemberMenu.Text = "  สมาชิก";
             this.btnMemberMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMemberMenu.UseVisualStyleBackColor = true;
+            this.btnMemberMenu.UseVisualStyleBackColor = false;
             this.btnMemberMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnHomeMenu
             // 
+            this.btnHomeMenu.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.btnHomeMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHomeMenu.FlatAppearance.BorderSize = 0;
+            this.btnHomeMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnHomeMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHomeMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomeMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -211,9 +219,9 @@
             this.btnHomeMenu.Name = "btnHomeMenu";
             this.btnHomeMenu.Size = new System.Drawing.Size(193, 45);
             this.btnHomeMenu.TabIndex = 0;
-            this.btnHomeMenu.Text = "    Home";
+            this.btnHomeMenu.Text = "  เมนูหลัก";
             this.btnHomeMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHomeMenu.UseVisualStyleBackColor = true;
+            this.btnHomeMenu.UseVisualStyleBackColor = false;
             this.btnHomeMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // TitleBarPanel
@@ -223,7 +231,7 @@
             this.TitleBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TitleBarPanel.Location = new System.Drawing.Point(205, 0);
             this.TitleBarPanel.Name = "TitleBarPanel";
-            this.TitleBarPanel.Size = new System.Drawing.Size(795, 40);
+            this.TitleBarPanel.Size = new System.Drawing.Size(800, 34);
             this.TitleBarPanel.TabIndex = 1;
             // 
             // btnClose
@@ -235,7 +243,7 @@
             this.btnClose.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(745, 2);
+            this.btnClose.Location = new System.Drawing.Point(750, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(38, 30);
             this.btnClose.TabIndex = 9;
@@ -252,7 +260,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(205, 620);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(795, 30);
+            this.panel1.Size = new System.Drawing.Size(800, 30);
             this.panel1.TabIndex = 8;
             // 
             // lblDeviceStatus
@@ -285,12 +293,20 @@
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblDate.Location = new System.Drawing.Point(540, 6);
+            this.lblDate.Location = new System.Drawing.Point(545, 6);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(243, 16);
             this.lblDate.TabIndex = 1;
             this.lblDate.Text = "16/09/2018 ";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // homeControl1
+            // 
+            this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.homeControl1.Location = new System.Drawing.Point(205, 34);
+            this.homeControl1.Name = "homeControl1";
+            this.homeControl1.Size = new System.Drawing.Size(800, 580);
+            this.homeControl1.TabIndex = 13;
             // 
             // reportControl1
             // 
@@ -313,19 +329,11 @@
             this.memberControl1.Size = new System.Drawing.Size(800, 570);
             this.memberControl1.TabIndex = 10;
             // 
-            // homeControl1
-            // 
-            this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
-            this.homeControl1.Location = new System.Drawing.Point(205, 34);
-            this.homeControl1.Name = "homeControl1";
-            this.homeControl1.Size = new System.Drawing.Size(800, 580);
-            this.homeControl1.TabIndex = 13;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.ClientSize = new System.Drawing.Size(1005, 650);
             this.Controls.Add(this.homeControl1);
             this.Controls.Add(this.reportControl1);
             this.Controls.Add(this.courseControl1);

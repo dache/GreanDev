@@ -234,12 +234,6 @@ namespace ExclusiveGym.WinForms
 
         }
 
-        private void btnVerify_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void InitMenu()
         {
 
@@ -281,10 +275,6 @@ namespace ExclusiveGym.WinForms
             //watching.Abort();
             m_zkFprint.EndEngine();
             Application.Exit();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
         }
 
         //private void btnSlideMenu_Click(object sender, EventArgs e)
@@ -340,5 +330,7 @@ namespace ExclusiveGym.WinForms
             DisplayNeedRegistryForm();
             //SampleData();
         }
+
+      
     }
 }

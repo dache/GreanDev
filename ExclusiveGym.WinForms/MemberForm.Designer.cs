@@ -135,7 +135,7 @@
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPanel.BackColor = System.Drawing.Color.White;
+            this.mainPanel.BackColor = System.Drawing.Color.DarkOliveGreen;
             this.mainPanel.Controls.Add(this.btnEdit);
             this.mainPanel.Controls.Add(this.memberKnowPanel);
             this.mainPanel.Controls.Add(this.problemPanel);
@@ -223,7 +223,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.ForeColor = System.Drawing.Color.GreenYellow;
             this.label7.Location = new System.Drawing.Point(6, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(139, 22);
@@ -294,7 +294,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DimGray;
+            this.label8.ForeColor = System.Drawing.Color.GreenYellow;
             this.label8.Location = new System.Drawing.Point(7, 2);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(163, 22);
@@ -414,7 +414,7 @@
             // 
             this.lblMemberCourse.AutoSize = true;
             this.lblMemberCourse.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMemberCourse.ForeColor = System.Drawing.Color.DimGray;
+            this.lblMemberCourse.ForeColor = System.Drawing.Color.GreenYellow;
             this.lblMemberCourse.Location = new System.Drawing.Point(10, 42);
             this.lblMemberCourse.Name = "lblMemberCourse";
             this.lblMemberCourse.Size = new System.Drawing.Size(140, 32);
@@ -434,10 +434,11 @@
             this.btnFingerPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFingerPrint.BackColor = System.Drawing.Color.PeachPuff;
             this.btnFingerPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFingerPrint.FlatAppearance.BorderSize = 0;
+            this.btnFingerPrint.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnFingerPrint.FlatAppearance.BorderSize = 2;
             this.btnFingerPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFingerPrint.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFingerPrint.Location = new System.Drawing.Point(623, 106);
+            this.btnFingerPrint.Location = new System.Drawing.Point(625, 126);
             this.btnFingerPrint.Name = "btnFingerPrint";
             this.btnFingerPrint.Size = new System.Drawing.Size(105, 36);
             this.btnFingerPrint.TabIndex = 46;
@@ -655,7 +656,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.DimGray;
+            this.label26.ForeColor = System.Drawing.Color.GreenYellow;
             this.label26.Location = new System.Drawing.Point(520, 248);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(93, 22);
@@ -686,7 +687,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.DimGray;
+            this.label25.ForeColor = System.Drawing.Color.GreenYellow;
             this.label25.Location = new System.Drawing.Point(334, 248);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(56, 22);
@@ -697,7 +698,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.DimGray;
+            this.label24.ForeColor = System.Drawing.Color.GreenYellow;
             this.label24.Location = new System.Drawing.Point(178, 248);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(78, 22);
@@ -708,7 +709,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.DimGray;
+            this.label23.ForeColor = System.Drawing.Color.GreenYellow;
             this.label23.Location = new System.Drawing.Point(12, 248);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(87, 22);
@@ -719,7 +720,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.DimGray;
+            this.label22.ForeColor = System.Drawing.Color.GreenYellow;
             this.label22.Location = new System.Drawing.Point(472, 190);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(38, 22);
@@ -730,7 +731,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.DimGray;
+            this.label14.ForeColor = System.Drawing.Color.GreenYellow;
             this.label14.Location = new System.Drawing.Point(316, 190);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 22);
@@ -741,7 +742,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.DimGray;
+            this.label13.ForeColor = System.Drawing.Color.GreenYellow;
             this.label13.Location = new System.Drawing.Point(140, 190);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 22);
@@ -752,7 +753,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.DimGray;
+            this.label12.ForeColor = System.Drawing.Color.GreenYellow;
             this.label12.Location = new System.Drawing.Point(84, 190);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 22);
@@ -763,7 +764,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.DimGray;
+            this.label11.ForeColor = System.Drawing.Color.GreenYellow;
             this.label11.Location = new System.Drawing.Point(12, 190);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 22);
@@ -774,7 +775,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.DimGray;
+            this.label10.ForeColor = System.Drawing.Color.GreenYellow;
             this.label10.Location = new System.Drawing.Point(289, 133);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 22);
@@ -825,7 +826,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.DimGray;
+            this.label21.ForeColor = System.Drawing.Color.GreenYellow;
             this.label21.Location = new System.Drawing.Point(147, 306);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(52, 22);
@@ -847,7 +848,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.ForeColor = System.Drawing.Color.GreenYellow;
             this.label6.Location = new System.Drawing.Point(344, 74);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 22);
@@ -858,7 +859,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DimGray;
+            this.label5.ForeColor = System.Drawing.Color.GreenYellow;
             this.label5.Location = new System.Drawing.Point(219, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 22);
@@ -959,7 +960,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.ForeColor = System.Drawing.Color.GreenYellow;
             this.label1.Location = new System.Drawing.Point(12, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 22);
@@ -970,7 +971,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.ForeColor = System.Drawing.Color.GreenYellow;
             this.label2.Location = new System.Drawing.Point(178, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 22);
@@ -981,7 +982,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.DimGray;
+            this.label20.ForeColor = System.Drawing.Color.GreenYellow;
             this.label20.Location = new System.Drawing.Point(15, 306);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(63, 22);
@@ -1032,7 +1033,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DimGray;
+            this.label4.ForeColor = System.Drawing.Color.GreenYellow;
             this.label4.Location = new System.Drawing.Point(12, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 22);
