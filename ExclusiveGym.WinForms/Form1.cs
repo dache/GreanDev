@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AxZKFPEngXControl;
 using ExclusiveGym.WinForms.Models;
-using ExclusiveGym.WinForms.CustomControls;
 using USBLib;
 using static USBLib.USB;
 using System.IO;
@@ -48,10 +42,11 @@ namespace ExclusiveGym.WinForms
             Application.AddMessageFilter(this);
             controlsToMove.Add(this.TitleBarPanel);
             m_instance = this;
-
+            FormManager.GetSingleton().SetMainForm(this);
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
         }
 
-      
+
 
         //protected override void WndProc(ref Message m)
         //{
@@ -113,7 +108,6 @@ namespace ExclusiveGym.WinForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("Form1_Load");
             SetupFingerprint();
             InitialAxZkfp();
             homeControl1.BringToFront();
@@ -134,7 +128,7 @@ namespace ExclusiveGym.WinForms
             //    m.MemberId = i + 5;
             //    StorageManager.GetSingleton().AddMember(m);
             //}
-            
+
         }
 
         private void InitialAxZkfp()
@@ -173,28 +167,33 @@ namespace ExclusiveGym.WinForms
             }
         }
         public static Form1 m_instance;
+        public void FocusToMainForm()
+        {
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
+        }
         public void SetupFingerprint()
         {
+            FocusToMainForm();
             FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
 
         private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
         {
-            Console.WriteLine("zkFprint_OnImageReceived");
+            //Console.WriteLine("zkFprint_OnImageReceived");
         }
         private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
         {
-            Console.WriteLine("zkFprint_OnFeatureInfo");
+            //Console.WriteLine("zkFprint_OnFeatureInfo");
         }
         private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
         {
-            Console.WriteLine("zkFprint_OnEnroll");
+            //Console.WriteLine("zkFprint_OnEnroll");
         }
         private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
         {
-            Console.WriteLine("zkFprint_OnCapture");
+           // Console.WriteLine("zkFprint_OnCapture");
             string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
-            Console.WriteLine("Scan string : " + template);
+            //Console.WriteLine("Scan string : " + template);
 
             Member currentMember = null;
             foreach (Member member in StorageManager.GetSingleton().GetMemberList())
@@ -208,37 +207,36 @@ namespace ExclusiveGym.WinForms
 
             if (currentMember == null)
             {
-                DisplayNeedRegistryForm();
+                //DisplayNeedRegistryForm();
+                NotificationManager.GetSingleton().ShowNotification(this, "ไม่พบข้อมูลสมาชิก");
             }
             else
             {
                 if (currentMember.ExpireDate == null || currentMember.ExpireDate < DateTime.Now)
                 {
-                    var dialogForm = new DialogForm("Exclusive Gym", $"คุณ {currentMember.Name} {currentMember.LastName} \r\nยังไม่ได้สมัครคอร์ส ต้องการสมัครคอร์สหรือไม่");
-                    if (dialogForm.ShowDialog() == DialogResult.OK)
-                    {
-                        var DialogNeedApplyCourse = new DialogNeedApplyCourse(currentMember, ApplyCourseCallback);
-                        DialogNeedApplyCourse.ShowDialog();
-                    }
+                    //var dialogForm = new DialogForm("Exclusive Gym", $"คุณ {currentMember.Name} {currentMember.LastName} \r\nยังไม่ได้สมัครคอร์ส ต้องการสมัครคอร์สหรือไม่");
+                    //if (dialogForm.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    var DialogNeedApplyCourse = new DialogNeedApplyCourse(currentMember, ApplyCourseCallback);
+                    //    DialogNeedApplyCourse.ShowDialog();
+                    //}
+                    NotificationManager.GetSingleton().ShowNotification(this, $"สวัสดี คุณ {currentMember.Name} {currentMember.LastName} \nยังไม่ได้สมัครคอร์ส");
                 }
                 else
                 {
-                    var welcomeForm = new WelcomeDialogForm(currentMember);
-                    welcomeForm.ShowDialog();
-                    MemberApplyCourse memberApplyCourse = StorageManager.GetSingleton().GetMemberApplyCourseByMemberID(currentMember.MemberId);
-                    Course course = StorageManager.GetSingleton().GetCourseByID(memberApplyCourse.CourseID);
-                    homeControl1.Refresh();
+                    NotificationManager.GetSingleton().ShowNotification(this, $"สวัสดี คุณ {currentMember.Name} {currentMember.LastName}" + $"\nสมาชิกหมดอายุวันที่ {currentMember.ExpireDate.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"))}");
+                    StorageManager.GetSingleton().MemberAccessGym(currentMember);
 
+                    //var welcomeForm = new WelcomeDialogForm(currentMember);
+                    //welcomeForm.ShowDialog();
+                    //MemberApplyCourse memberApplyCourse = StorageManager.GetSingleton().GetMemberApplyCourseByMemberID(currentMember.MemberId);
+                    //Course course = StorageManager.GetSingleton().GetCourseByID(memberApplyCourse.CourseID);
+                    homeControl1.Refresh();
                 }
             }
 
         }
-
-        private void InitMenu()
-        {
-
-        }
-
+        
         protected void btnMenu_Click(object sender, EventArgs e)
         {
             btnHomeMenu.BackColor = Color.Transparent;
@@ -249,10 +247,11 @@ namespace ExclusiveGym.WinForms
             Button btn = (Button)sender;
             currentMenuPanel.Top = btn.Top;
             btn.BackColor = Color.DimGray;
-
+           // NotificationManager.GetSingleton().ShowNotification(this, "สวัสดี คุณ "+ btn.Name);
             if (btn == btnHomeMenu)
             {
                 homeControl1.BringToFront();
+                homeControl1.Refresh();
             }
             else if (btn == btnMemberMenu)
             {
@@ -272,17 +271,10 @@ namespace ExclusiveGym.WinForms
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            //watching.Abort();
             m_zkFprint.EndEngine();
             Application.Exit();
         }
-
-        //private void btnSlideMenu_Click(object sender, EventArgs e)
-        //{
-        //    var menuWidth = (MenuPanel.Width == 205) ? 50 : 205;
-        //    MenuPanel.Width = menuWidth;
-        //}
-
+        
         public bool PreFilterMessage(ref Message m)
         {
             if (m.Msg == WM_LBUTTONDOWN &&
@@ -295,10 +287,6 @@ namespace ExclusiveGym.WinForms
             return false;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            OpenMemberForm();
-        }
         private void DisplayNeedRegistryForm()
         {
             var dialogForm = new DialogForm("Exclusive Gym", "ไม่พบข้อมูลสมาชิก ต้องการสมัครสมาชิกใหม่หรือไม่");
@@ -308,29 +296,26 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private async void OpenMemberForm()
+        private void OpenMemberForm()
         {
-            FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
+            //FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
             var memberForm = new MemberForm();
             memberForm.m_registryiSdone = SetupFingerprint;
             memberForm.ShowDialog();
         }
-
+     
         private void ApplyCourseCallback(Member member)
         {
-            var welcomeForm = new WelcomeDialogForm(member);
-            welcomeForm.ShowDialog();
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
+            NotificationManager.GetSingleton().ShowNotification(this, $"สวัสดี คุณ {member.Name} {member.LastName}" + $"\nสมาชิกหมดอายุวันที่ {member.ExpireDate.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"))}");
+            StorageManager.GetSingleton().MemberAccessGym(member);
+            //var welcomeForm = new WelcomeDialogForm(member);
+            //welcomeForm.ShowDialog();
 
             homeControl1.Refresh();
-        }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            //case 1
-            DisplayNeedRegistryForm();
-            //SampleData();
-        }
 
-      
+            
+        }
     }
 }

@@ -100,19 +100,6 @@ class StorageManager
 
     public List<Course> GetAllCourses()
     {
-        //var courses = GetDB().Courses.ToList();
-        //if (courses.Count == 0)
-        //{
-        //    var course = new Course() { CourseID = 1, CourseName = "รายวัน", TotalDay = 1, CoursePrice = 100, CourseType = COURSETYPE.DAILY, CreateDate = DateTime.Now };
-        //    GetDB().Courses.Add(course);
-        //    course = new Course() { CourseID = 2, CourseName = "3 เดือน", TotalDay = 1, CoursePrice = 300, CourseType = COURSETYPE.MONTLY, CreateDate = DateTime.Now };
-        //    GetDB().Courses.Add(course);
-        //    course = new Course() { CourseID = 3, CourseName = "6 เดือน", TotalDay = 1, CoursePrice = 600, CourseType = COURSETYPE.MONTLY, CreateDate = DateTime.Now };
-        //    GetDB().Courses.Add(course);
-        //    course = new Course() { CourseID = 4, CourseName = "12 เดือน", TotalDay = 1, CoursePrice = 1000, CourseType = COURSETYPE.MONTLY, CreateDate = DateTime.Now };
-        //    GetDB().Courses.Add(course);
-        //    GetDB().SaveChanges();
-        //}
         return GetDB().Courses.ToList();
     }
 

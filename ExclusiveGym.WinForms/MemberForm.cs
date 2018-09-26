@@ -18,7 +18,7 @@ namespace ExclusiveGym.WinForms
 
         public FinishCallback m_registryiSdone;
 
-        private AxZKFPEngX m_zkFprint;
+        //private AxZKFPEngX m_zkFprint;
 
         public Member Member { get; set; }
 
@@ -31,14 +31,17 @@ namespace ExclusiveGym.WinForms
             // new Member
             this.Member = new Member();
 
-            // 
+            textBox1.Text = DateTime.Now.Day.ToString();
+            comboBox1.Text = DateTime.Now.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
+            textBox2.Text = DateTime.Now.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
+
             btnSave.BringToFront();
-            datePicker.CustomFormat = datePicker.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
         }
 
         public MemberForm(Member member)
         {
             InitializeComponent();
+            SetStyle(ControlStyles.Opaque, true);
             this.Member = member;
             lblHeader.Text = "ดู/แก้ไข ข้อมูลสมาชิก";
             InitMember();
@@ -52,7 +55,10 @@ namespace ExclusiveGym.WinForms
             txtName.Text = this.Member.Name;
             txtLastName.Text = this.Member.LastName;
             txtThaiId.Text = this.Member.ThaiId;
-            datePicker.Value = this.Member.BirthDate;
+
+            textBox1.Text = this.Member.BirthDate.Day.ToString();
+            comboBox1.Text = this.Member.BirthDate.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
+            textBox2.Text = this.Member.BirthDate.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
             txtAge.Text = this.Member.Age.ToString();
             lblFingerPrint.Text = this.Member.FingerPrint;
 
@@ -71,35 +77,46 @@ namespace ExclusiveGym.WinForms
             txtPhoneNumber.Text = this.Member.PhoneNumber;
             txtEmail.Text = this.Member.Email;
 
-            foreach (var problem in StorageManager.GetSingleton().GetMedicalProblemsByMemberId(this.Member.MemberId))
-            {
-                var chk = problemPanel.Controls.OfType<CheckBox>().Where(f => f.Text == problem.ProblemName).SingleOrDefault();
-                if (chk != null)
-                    chk.Checked = true;
-                else
-                    txtOtherProblem.Text += problem.ProblemName + " ";
-            }
-            //
-            foreach (var memberKnow in StorageManager.GetSingleton().GetMemberKnowsByMemberId(this.Member.MemberId))
-            {
-                var chk = memberKnowPanel.Controls.OfType<CheckBox>().Where(f => f.Name.ToString().Replace("chkKnow", "") == memberKnow.MemberKnowFrom.ToString("D")).SingleOrDefault();
-                if (chk != null)
-                    chk.Checked = true;
-            }
+            //foreach (var problem in StorageManager.GetSingleton().GetMedicalProblemsByMemberId(this.Member.MemberId))
+            //{
+            //    var chk = problemPanel.Controls.OfType<CheckBox>().Where(f => f.Text == problem.ProblemName).SingleOrDefault();
+            //    if (chk != null)
+            //        chk.Checked = true;
+            //    else
+            //        txtOtherProblem.Text += problem.ProblemName + " ";
+            //}
+            ////
+            //foreach (var memberKnow in StorageManager.GetSingleton().GetMemberKnowsByMemberId(this.Member.MemberId))
+            //{
+            //    var chk = memberKnowPanel.Controls.OfType<CheckBox>().Where(f => f.Name.ToString().Replace("chkKnow", "") == memberKnow.MemberKnowFrom.ToString("D")).SingleOrDefault();
+            //    if (chk != null)
+            //        chk.Checked = true;
+            //}
 
             // Member Course
             //lblCourse.Text = "";
         }
 
-        private async void MemberForm_Load(object sender, EventArgs e)
+        private void MemberForm_Load(object sender, EventArgs e)
         {
-            m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
-            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
+            //System.Threading.Thread backgroundWorker = new System.Threading.Thread(BeginDisplay);
+            //backgroundWorker.IsBackground = true;
+            //backgroundWorker.Start();
+            //m_zkFprint = FingerPrint.GetSingleton().GetFingerprint();
+            //FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
         }
-
-        private async void CloseForm()
+        void BeginDisplay()
         {
-            FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
+            lblCourse.BeginInvoke((MethodInvoker)async delegate ()
+            {
+                await Task.Delay(1000);
+                NotificationManager.GetSingleton().ShowNotification(this, "test");
+            });
+        }
+        private void CloseForm()
+        {
+            //FingerPrint.GetSingleton().RemoveFingerprintEvent(Controls);
             if (m_registryiSdone != null)
                 m_registryiSdone();
             this.Close();
@@ -107,7 +124,19 @@ namespace ExclusiveGym.WinForms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            CloseForm();
+             CloseForm();
+            //DateTime dateTime = DateTime.ParseExact(textBox1.Text+" "+comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
+            // new System.Globalization.CultureInfo("th-TH"));
+            //Console.WriteLine(dateTime.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")));
+            //DateTime zeroTime = new DateTime(1, 1, 1);
+            //DateTime toDay = DateTime.Now;
+            //TimeSpan span = (toDay - dateTime);
+            //int years = (zeroTime + span).Year - 1;
+            //txtAge.Text = years.ToString();
+
+            //Console.WriteLine(DateTime.Compare(DateTime.Now,dateTime));
+
+            //Console.WriteLine((DateTime.Now - dateTime));
         }
 
 
@@ -119,7 +148,9 @@ namespace ExclusiveGym.WinForms
                 this.Member.Name = txtName.Text;
                 this.Member.LastName = txtLastName.Text;
                 this.Member.ThaiId = txtThaiId.Text;
-                this.Member.BirthDate = DateTime.Now;
+                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
+            new System.Globalization.CultureInfo("th-TH"));
+                this.Member.BirthDate = dateTime;
                 this.Member.Age = Convert.ToInt32(txtAge.Text);
                 this.Member.FingerPrint = lblFingerPrint.Text;
                 this.Member.Gender = (chkMale.Checked) ? enumGender.Male : enumGender.Female;
@@ -136,8 +167,8 @@ namespace ExclusiveGym.WinForms
                 this.Member.Email = txtEmail.Text;
                 this.Member.CreateDate = DateTime.Now;
                 this.Member.IsActive = true;
-                this.Member.Problems = GetMedicalProblem();
-                this.Member.MemberKnows = GetMemberKnows();
+                //this.Member.Problems = GetMedicalProblem();
+                //this.Member.MemberKnows = GetMemberKnows();
 
                 StorageManager.GetSingleton().AddMember(this.Member);
                 CloseForm();
@@ -158,6 +189,12 @@ namespace ExclusiveGym.WinForms
                 MessageBox.Show("กรุณาเลือกเพศ");
                 return false;
             }
+
+            if (string.IsNullOrEmpty(textBox1.Text) && string.IsNullOrEmpty(comboBox1.SelectedText) && string.IsNullOrEmpty(textBox2.Text))
+            {
+                MessageBox.Show("กรุณากรอกวันเกิดให้ครบ");
+                return false;
+            }
             if (string.IsNullOrEmpty(lblFingerPrint.Text))
             {
                 // MessageBox.Show("กรุณาเก็บลายนิ้วมือ");
@@ -173,13 +210,13 @@ namespace ExclusiveGym.WinForms
             return true;
         }
 
-        public async void ReceiveFingerPrint(string fingerPrint)
+        public void ReceiveFingerPrint(string fingerPrint)
         {
-            FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+           // FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
             lblFingerPrint.Text = fingerPrint;
         }
 
-        private async void btnFingerPrint_Click(object sender, EventArgs e)
+        private void btnFingerPrint_Click(object sender, EventArgs e)
         {
             ShowRecordFingerprint();
         }
@@ -191,37 +228,7 @@ namespace ExclusiveGym.WinForms
             fingerForm.m_fingerPrintCallback = ReceiveFingerPrint;
             fingerForm.ShowDialog();
         }
-
-        private void zkFprint_OnCapture(object sender, IZKFPEngXEvents_OnCaptureEvent e)
-        {
-            string template = m_zkFprint.EncodeTemplate1(e.aTemplate);
-            Console.WriteLine("Scan string : " + template);
-            bool Check = false;
-            foreach (Member member in StorageManager.GetSingleton().GetMemberList())
-            {
-                if (m_zkFprint.VerFingerFromStr(ref template, member.FingerPrint, false, ref Check))
-                {
-                    this.Member = member;
-                    InitMember();
-                    break;
-                }
-            }
-        }
-        private void zkFprint_OnImageReceived(object sender, IZKFPEngXEvents_OnImageReceivedEvent e)
-        {
-            Console.WriteLine("zkFprint_OnImageReceived member form");
-        }
-
-        private void zkFprint_OnFeatureInfo(object sender, IZKFPEngXEvents_OnFeatureInfoEvent e)
-        {
-            Console.WriteLine("zkFprint_OnFeatureInfo  member form");
-        }
-
-        private void zkFprint_OnEnroll(object sender, IZKFPEngXEvents_OnEnrollEvent e)
-        {
-            Console.WriteLine("zkFprint_OnEnroll  member form");
-        }
-
+        
         #region BG Tranparent
         protected override CreateParams CreateParams
         {
@@ -264,15 +271,6 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private void datePicker_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime zeroTime = new DateTime(1, 1, 1);
-            DateTime toDay = DateTime.Now;
-            TimeSpan span = (toDay - datePicker.Value);
-            int years = (zeroTime + span).Year - 1;
-            txtAge.Text = years.ToString();
-            datePicker.CustomFormat = datePicker.Value.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH"));
-        }
 
         private void chkGender_CheckedChanged(object sender, EventArgs e)
         {
@@ -302,7 +300,9 @@ namespace ExclusiveGym.WinForms
                 this.Member.Name = txtName.Text;
                 this.Member.LastName = txtLastName.Text;
                 this.Member.ThaiId = txtThaiId.Text;
-                this.Member.BirthDate = DateTime.Now;
+                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
+            new System.Globalization.CultureInfo("th-TH"));
+                this.Member.BirthDate = dateTime;
                 this.Member.Age = Convert.ToInt32(txtAge.Text);
                 this.Member.FingerPrint = lblFingerPrint.Text;
                 this.Member.Gender = (chkMale.Checked) ? enumGender.Male : enumGender.Female;
@@ -319,46 +319,46 @@ namespace ExclusiveGym.WinForms
                 this.Member.Email = txtEmail.Text;
 
 
-                List<MedicalProblem> medicalProblemsOriginal = this.Member.Problems;
+                //List<MedicalProblem> medicalProblemsOriginal = this.Member.Problems;
 
-                List<MedicalProblem> medicalProblemsNew = GetMedicalProblem();
+                //List<MedicalProblem> medicalProblemsNew = GetMedicalProblem();
 
 
-                foreach (MedicalProblem medicalProblem in medicalProblemsOriginal.ToList())
-                {
-                    MedicalProblem mp = medicalProblemsNew.Where(f => f.ProblemName == medicalProblem.ProblemName).SingleOrDefault();
-                    if (mp == null)
-                    {
-                        StorageManager.GetSingleton().GetDB().Entry(medicalProblem).State = System.Data.Entity.EntityState.Deleted;
-                    }
-                }
-                foreach (MedicalProblem medicalProblem in medicalProblemsNew)
-                {
-                    MedicalProblem mp = this.Member.Problems.Where(f => f.ProblemName == medicalProblem.ProblemName).SingleOrDefault();
-                    if (mp == null)
-                    {
-                        this.Member.Problems.Add(medicalProblem);
-                    }
-                }
+                //foreach (MedicalProblem medicalProblem in medicalProblemsOriginal.ToList())
+                //{
+                //    MedicalProblem mp = medicalProblemsNew.Where(f => f.ProblemName == medicalProblem.ProblemName).SingleOrDefault();
+                //    if (mp == null)
+                //    {
+                //        StorageManager.GetSingleton().GetDB().Entry(medicalProblem).State = System.Data.Entity.EntityState.Deleted;
+                //    }
+                //}
+                //foreach (MedicalProblem medicalProblem in medicalProblemsNew)
+                //{
+                //    MedicalProblem mp = this.Member.Problems.Where(f => f.ProblemName == medicalProblem.ProblemName).SingleOrDefault();
+                //    if (mp == null)
+                //    {
+                //        this.Member.Problems.Add(medicalProblem);
+                //    }
+                //}
 
-                List<MemberKnow> memberKnowsOriginal = this.Member.MemberKnows;
-                List<MemberKnow> memberKnowsNew = GetMemberKnows();
-                foreach (MemberKnow mk in memberKnowsOriginal.ToList())
-                {
-                    MemberKnow mp = memberKnowsNew.Where(f => f.MemberKnowFrom == mk.MemberKnowFrom).SingleOrDefault();
-                    if (mp == null)
-                    {
-                        StorageManager.GetSingleton().GetDB().Entry(mk).State = System.Data.Entity.EntityState.Deleted;
-                    }
-                }
-                foreach (MemberKnow mk in memberKnowsNew)
-                {
-                    MemberKnow mp = this.Member.MemberKnows.Where(f => f.MemberKnowFrom == mk.MemberKnowFrom).SingleOrDefault();
-                    if (mp == null)
-                    {
-                        this.Member.MemberKnows.Add(mk);
-                    }
-                }
+                //List<MemberKnow> memberKnowsOriginal = new List<MemberKnow>();
+                //List<MemberKnow> memberKnowsNew = GetMemberKnows();
+                //foreach (MemberKnow mk in memberKnowsOriginal.ToList())
+                //{
+                //    MemberKnow mp = memberKnowsNew.Where(f => f.MemberKnowFrom == mk.MemberKnowFrom).SingleOrDefault();
+                //    if (mp == null)
+                //    {
+                //        StorageManager.GetSingleton().GetDB().Entry(mk).State = System.Data.Entity.EntityState.Deleted;
+                //    }
+                //}
+                //foreach (MemberKnow mk in memberKnowsNew)
+                //{
+                //    MemberKnow mp = this.Member.MemberKnows.Where(f => f.MemberKnowFrom == mk.MemberKnowFrom).SingleOrDefault();
+                //    if (mp == null)
+                //    {
+                //        this.Member.MemberKnows.Add(mk);
+                //    }
+                //}
                 StorageManager.GetSingleton().SaveObjectChanged(this.Member);
 
                 //StorageManager.GetSingleton().MemberApplyCourse(this.Member, StorageManager.GetSingleton().GetCourseByID(1));
@@ -367,42 +367,76 @@ namespace ExclusiveGym.WinForms
             }
         }
 
-        private List<MemberKnow> GetMemberKnows()
+        //private List<MemberKnow> GetMemberKnows()
+        //{
+        //    var mk = new List<MemberKnow>();
+        //    foreach (CheckBox c in memberKnowPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
+        //    {
+        //        var mem = new MemberKnow();
+        //        mem.MemberKnowFrom = (enumMemberKnow)Enum.Parse(typeof(enumMemberKnow), c.Name.ToString().Replace("chkKnow", "")); //Convert.ToInt32();
+        //        mem.MemberId = this.Member.MemberId;
+        //        mem.Member = this.Member;
+        //        mk.Add(mem);
+        //    }
+        //    return mk;
+        //}
+
+        //private List<MedicalProblem> GetMedicalProblem()
+        //{
+        //    var mp = new List<MedicalProblem>();
+        //    if (!string.IsNullOrEmpty(txtOtherProblem.Text))
+        //    {
+        //        var problem = new MedicalProblem();
+        //        problem.ProblemName = txtOtherProblem.Text;
+        //        problem.MemberId = this.Member.MemberId;
+        //        problem.Member = this.Member;
+        //        mp.Add(problem);
+        //    }
+        //    foreach (CheckBox c in problemPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
+        //    {
+        //        string mId = c.Name.ToString().Replace("chk", "");
+        //        var problem = new MedicalProblem();
+        //        problem.MedicalID = (mId == "NoProblem") ? 0 : Convert.ToInt32(mId);
+        //        problem.ProblemName = c.Text;
+        //        problem.MemberId = this.Member.MemberId;
+        //        problem.Member = this.Member;
+        //        mp.Add(problem);
+        //    }
+        //    return mp;
+        //}
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var mk = new List<MemberKnow>();
-            foreach (CheckBox c in memberKnowPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
-            {
-                var mem = new MemberKnow();
-                mem.MemberKnowFrom = (enumMemberKnow)Enum.Parse(typeof(enumMemberKnow), c.Name.ToString().Replace("chkKnow", "")); //Convert.ToInt32();
-                mem.MemberId = this.Member.MemberId;
-                mem.Member = this.Member;
-                mk.Add(mem);
-            }
-            return mk;
+            CalcAge();
         }
 
-        private List<MedicalProblem> GetMedicalProblem()
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            var mp = new List<MedicalProblem>();
-            if (!string.IsNullOrEmpty(txtOtherProblem.Text))
+            CalcAge();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            CalcAge();
+        }
+
+        private void CalcAge()
+        {
+            try
             {
-                var problem = new MedicalProblem();
-                problem.ProblemName = txtOtherProblem.Text;
-                problem.MemberId = this.Member.MemberId;
-                problem.Member = this.Member;
-                mp.Add(problem);
+                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
+            new System.Globalization.CultureInfo("th-TH"));
+                //Console.WriteLine(dateTime.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")));
+                DateTime zeroTime = new DateTime(1, 1, 1);
+                DateTime toDay = DateTime.Now;
+                TimeSpan span = (toDay - dateTime);
+                int years = (zeroTime + span).Year - 1;
+                txtAge.Text = years.ToString();
             }
-            foreach (CheckBox c in problemPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
+            catch
             {
-                string mId = c.Name.ToString().Replace("chk", "");
-                var problem = new MedicalProblem();
-                problem.MedicalID = (mId == "NoProblem") ? 0 : Convert.ToInt32(mId);
-                problem.ProblemName = c.Text;
-                problem.MemberId = this.Member.MemberId;
-                problem.Member = this.Member;
-                mp.Add(problem);
+
             }
-            return mp;
         }
     }
 }

@@ -33,6 +33,22 @@ namespace ExclusiveGym.WinForms.UserControls
             Form1.m_instance.SetupFingerprint();
         }
 
+        private void AddNewButton(string courseName, string courseText, Color buttonColor)
+        {
+            DataGridViewButtonColumn newButton = new DataGridViewButtonColumn();
+            newButton.Name = courseName;
+            newButton.Text = courseText;
+            newButton.HeaderText = "";
+            newButton.UseColumnTextForButtonValue = true;
+            newButton.DefaultCellStyle.BackColor = buttonColor;
+            newButton.FlatStyle = FlatStyle.Flat;
+            newButton.DefaultCellStyle.ForeColor = Color.White;
+            newButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
+            if (gvMembers.Columns[courseName] == null)
+            {
+                gvMembers.Columns.Insert(gvMembers.Columns.Count, newButton);
+            }
+        }
         private void LoadMember()
         {
             gvMembers.BeginInvoke((MethodInvoker)delegate ()
@@ -74,47 +90,9 @@ namespace ExclusiveGym.WinForms.UserControls
                 gvMembers.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 gvMembers.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                DataGridViewButtonColumn courseButton = new DataGridViewButtonColumn();
-                courseButton.Name = "courseButton";
-                courseButton.Text = "สมัครคอร์ส";
-                courseButton.HeaderText = "";
-                courseButton.UseColumnTextForButtonValue = true;
-                courseButton.DefaultCellStyle.BackColor = Color.FromArgb(91, 192, 222);
-                courseButton.FlatStyle = FlatStyle.Flat;
-                courseButton.DefaultCellStyle.ForeColor = Color.White;
-                courseButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
-                if (gvMembers.Columns["courseButton"] == null)
-                {
-                    gvMembers.Columns.Insert(5, courseButton);
-                }
-
-                DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
-                editButton.Name = "editButton";
-                editButton.Text = "แก้ไข";
-                editButton.HeaderText = "";
-                editButton.UseColumnTextForButtonValue = true;
-                editButton.DefaultCellStyle.BackColor = Color.FromArgb(240, 173, 78);
-                editButton.FlatStyle = FlatStyle.Flat;
-                editButton.DefaultCellStyle.ForeColor = Color.White;
-                editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
-                if (gvMembers.Columns["editButton"] == null)
-                {
-                    gvMembers.Columns.Insert(6, editButton);
-                }
-
-                DataGridViewButtonColumn delButton = new DataGridViewButtonColumn();
-                delButton.Name = "delButton";
-                delButton.Text = "ลบ";
-                delButton.HeaderText = "";
-                delButton.UseColumnTextForButtonValue = true;
-                delButton.DefaultCellStyle.BackColor = Color.FromArgb(212, 63, 58);
-                delButton.FlatStyle = FlatStyle.Flat;
-                delButton.DefaultCellStyle.ForeColor = Color.White;
-                delButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
-                if (gvMembers.Columns["delButton"] == null)
-                {
-                    gvMembers.Columns.Insert(7, delButton);
-                }
+                AddNewButton("courseButton", "สมัครคอร์ส", Color.FromArgb(91, 192, 222));
+                AddNewButton("editButton", "แก้ไข", Color.FromArgb(240, 173, 78));
+                AddNewButton("delButton", "ลบ", Color.FromArgb(212, 63, 58));
 
                 gvMembers.Update();
                 gvMembers.ClearSelection();
@@ -157,7 +135,9 @@ namespace ExclusiveGym.WinForms.UserControls
                 if(mForm.ShowDialog() == DialogResult.OK)
                 {
                     StorageManager.GetSingleton().RemoveMember(member);
+                    InitMember();
                     MessageBox.Show("ลบข้อมูลเรียบร้อยแล้ว");
+
                 }
             }
         }
@@ -198,7 +178,7 @@ namespace ExclusiveGym.WinForms.UserControls
             }
             else
             {
-                gvMembers.DataSource = members.Where(f => f.Name.StartsWith(name)).ToList();
+                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Where(f => f.Name.StartsWith(name)).Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
             }
 
         }

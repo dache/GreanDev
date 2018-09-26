@@ -42,7 +42,6 @@ C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\Exclu
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.CustomControls.OpacityBGForm.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.DialogNeedApplyCourse.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.FingerPrintForm.resources
-C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.FormCourseList.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.ReportForm.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.UserControls.CourseControl.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.UserControls.ReportControl.resources

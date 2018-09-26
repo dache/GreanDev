@@ -23,7 +23,7 @@ namespace ExclusiveGym.WinForms.UserControls
             var CourseForm = new CourseForm(null, FinishCallback);
             CourseForm.ShowDialog();
         }
-
+        
         private void FinishCallback()
         {
             gvCourses.DataSource = null;
@@ -31,7 +31,7 @@ namespace ExclusiveGym.WinForms.UserControls
             gvCourses.Refresh();
             gvCourses.Columns.Remove("editButton");
             gvCourses.Columns.Remove("delButton");
-
+            Form1.m_instance.FocusToMainForm();
             InitCourse();
         }
 
@@ -40,9 +40,25 @@ namespace ExclusiveGym.WinForms.UserControls
             InitCourse();            
         }
 
+        private void AddNewButton(string courseName, string courseText, Color buttonColor)
+        {
+            DataGridViewButtonColumn newButton = new DataGridViewButtonColumn();
+            newButton.Name = courseName;
+            newButton.Text = courseText;
+            newButton.HeaderText = "";
+            newButton.UseColumnTextForButtonValue = true;
+            newButton.DefaultCellStyle.BackColor = buttonColor;
+            newButton.FlatStyle = FlatStyle.Flat;
+            newButton.DefaultCellStyle.ForeColor = Color.White;
+            newButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
+            if (gvCourses.Columns[courseName] == null)
+            {
+                gvCourses.Columns.Insert(gvCourses.Columns.Count, newButton);
+            }
+        }
+
         private void InitCourse()
         {
-
             List<Course> courses = StorageManager.GetSingleton().GetAllCourses();
             gvCourses.DataSource = courses;
 
@@ -66,34 +82,9 @@ namespace ExclusiveGym.WinForms.UserControls
             gvCourses.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             gvCourses.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
-            editButton.Name = "editButton";
-            editButton.Text = "แก้ไข";
-            editButton.HeaderText = "";
-            editButton.UseColumnTextForButtonValue = true;
-            editButton.Width = 130;
-            editButton.DefaultCellStyle.BackColor = Color.FromArgb(240, 173, 78);
-            editButton.FlatStyle = FlatStyle.Flat;
-            editButton.DefaultCellStyle.ForeColor = Color.White;
-            editButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;            
-            if (gvCourses.Columns["editButton"] == null)
-            {
-                gvCourses.Columns.Insert(6, editButton);
-            }
-
-            DataGridViewButtonColumn delButton = new DataGridViewButtonColumn();
-            delButton.Name = "delButton";
-            delButton.Text = "ลบ";
-            delButton.HeaderText = "";
-            delButton.UseColumnTextForButtonValue = true;
-            delButton.DefaultCellStyle.BackColor = Color.FromArgb(212, 63, 58);
-            delButton.FlatStyle = FlatStyle.Flat;
-            delButton.DefaultCellStyle.ForeColor = Color.White;
-            delButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
-            if (gvCourses.Columns["delButton"] == null)
-            {
-                gvCourses.Columns.Insert(7, delButton);
-            }
+            AddNewButton("editButton", "แก้ไข", Color.FromArgb(240, 173, 78));
+            AddNewButton("delButton", "ลบ", Color.FromArgb(212, 63, 58));
+            
         }
 
         private void gvCourses_CellClick(object sender, DataGridViewCellEventArgs e)

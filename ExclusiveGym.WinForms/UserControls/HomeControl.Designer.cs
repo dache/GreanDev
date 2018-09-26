@@ -59,7 +59,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(762, 365);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(881, 394);
             this.tableLayoutPanel1.TabIndex = 15;
             // 
             // label29
@@ -79,9 +79,9 @@
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.lblIncome);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Location = new System.Drawing.Point(346, 453);
+            this.panel4.Location = new System.Drawing.Point(346, 493);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(434, 115);
+            this.panel4.Size = new System.Drawing.Size(553, 112);
             this.panel4.TabIndex = 13;
             // 
             // label6
@@ -90,7 +90,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Prompt", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(363, 56);
+            this.label6.Location = new System.Drawing.Point(482, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 40);
             this.label6.TabIndex = 2;
@@ -103,7 +103,7 @@
             this.lblIncome.Font = new System.Drawing.Font("Prompt", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIncome.ForeColor = System.Drawing.Color.LightPink;
             this.lblIncome.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblIncome.Location = new System.Drawing.Point(3, 33);
+            this.lblIncome.Location = new System.Drawing.Point(122, 32);
             this.lblIncome.Name = "lblIncome";
             this.lblIncome.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblIncome.Size = new System.Drawing.Size(362, 72);
@@ -117,7 +117,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DimGray;
-            this.label8.Location = new System.Drawing.Point(328, 4);
+            this.label8.Location = new System.Drawing.Point(447, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 29);
             this.label8.TabIndex = 0;
@@ -130,7 +130,7 @@
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.lblMemberCount);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(18, 453);
+            this.panel3.Location = new System.Drawing.Point(18, 493);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(320, 115);
             this.panel3.TabIndex = 14;
@@ -193,7 +193,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Name = "HomeControl";
-            this.Size = new System.Drawing.Size(800, 580);
+            this.Size = new System.Drawing.Size(917, 630);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);

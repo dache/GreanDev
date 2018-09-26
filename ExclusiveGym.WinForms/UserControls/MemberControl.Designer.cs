@@ -85,7 +85,7 @@
             this.gvMembers.RowHeadersVisible = false;
             this.gvMembers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gvMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvMembers.Size = new System.Drawing.Size(767, 387);
+            this.gvMembers.Size = new System.Drawing.Size(882, 499);
             this.gvMembers.TabIndex = 0;
             this.gvMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMembers_CellClick);
             // 
@@ -127,6 +127,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Tomato;
             this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 32);
@@ -142,7 +143,7 @@
             this.btnNewMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewMember.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewMember.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNewMember.Location = new System.Drawing.Point(662, 44);
+            this.btnNewMember.Location = new System.Drawing.Point(777, 44);
             this.btnNewMember.Name = "btnNewMember";
             this.btnNewMember.Size = new System.Drawing.Size(120, 35);
             this.btnNewMember.TabIndex = 3;
@@ -159,7 +160,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gvMembers);
             this.Name = "MemberControl";
-            this.Size = new System.Drawing.Size(800, 570);
+            this.Size = new System.Drawing.Size(917, 630);
             ((System.ComponentModel.ISupportInitialize)(this.gvMembers)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -23,14 +23,14 @@ namespace ExclusiveGym.WinForms
 
         public DialogNeedApplyCourse(Member member, FinishCallbackWithMember callback)
         {
-
+            
             m_finishCallback = callback;
             m_currentMemberWillApply = member;
             InitializeComponent();
             SetStyle(ControlStyles.Opaque, true);
             label1.Text = $"ยินดีต้อนรับ : {member.Name + " " + member.LastName}";
             SetStyle(ControlStyles.Opaque, true);
-
+            btnApply.Enabled = false;
             // create button course
             var courses = StorageManager.GetSingleton().GetAllCourses().ToList();
             foreach (var course in courses)
@@ -71,6 +71,7 @@ namespace ExclusiveGym.WinForms
                 pb.Click += img_Click;
                 panel.Controls.Add(pb);
                 courseFlowLayout.Controls.Add(panel);
+                
             }
         }
 
@@ -99,6 +100,7 @@ namespace ExclusiveGym.WinForms
                     CheckBox c = panel.Controls.OfType<CheckBox>().SingleOrDefault();
                     if (c != chk) c.Checked = false;
                 }
+                
                 chk.Parent.BackColor = Color.Red;
             }
             else
@@ -118,6 +120,7 @@ namespace ExclusiveGym.WinForms
             panel.BackColor = Color.FromArgb(240, 173, 78);
 
             currentCourse = (Course)panel.Tag;
+           // NotificationManager.GetSingleton().ShowNotification(this, "From form 1");
         }
 
         private void img_Click(object sender,System.EventArgs e)
@@ -184,6 +187,11 @@ namespace ExclusiveGym.WinForms
             StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply, a);
             m_finishCallback(this.m_currentMemberWillApply);
             this.Close();
+        }
+
+        private void DialogNeedApplyCourse_Load(object sender, EventArgs e)
+        {
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
         }
     }
 }

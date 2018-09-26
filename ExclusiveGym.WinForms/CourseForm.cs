@@ -20,17 +20,13 @@ namespace ExclusiveGym.WinForms
         public CourseForm(Course course, FinishCallback callback)
         {
             InitializeComponent();
-
-            typeBox.Items.Add(new ComboboxItem() { Text = "รายวัน", Value = COURSETYPE.DAILY });
-            typeBox.Items.Add(new ComboboxItem() { Text = "รายเดือน", Value = COURSETYPE.MONTLY });
-
+            
             if (course == null)
             {
                 HeaderTxt.Text = "เพิ่มข้อมูล";
                 btnSave.Text = "เพิ่ม";
                 m_currentCourse = new Course();
                 m_currentCourse.CreateDate = DateTime.Now;
-                typeBox.SelectedIndex = 1;
             }
             else
             {
@@ -41,24 +37,49 @@ namespace ExclusiveGym.WinForms
                 txtName.Text = m_currentCourse.CourseName;
                 priceTxt.Text = m_currentCourse.CoursePrice.ToString();
                 totalDayTxt.Text = m_currentCourse.TotalDay.ToString();                
-                typeBox.SelectedIndex = (m_currentCourse.CourseType == COURSETYPE.DAILY) ? 0 : 1;
             }
             m_finishCallback = callback;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        #region BGOpacity
+        private const int WS_EX_TRANSPARENT = 0x20;
+        protected override CreateParams CreateParams
         {
-            this.Close();
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
+                return cp;
+            }
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            using (var brush = new SolidBrush(Color.FromArgb(50 * 255 / 100, this.BackColor)))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+            base.OnPaint(e);
+        }
+
+        #endregion
+
+        private void EndForm()
+        {
+            if(m_finishCallback != null)
+                m_finishCallback();
+            this.Close();
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            EndForm();
+        }
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
             m_currentCourse.CourseName = txtName.Text;
             m_currentCourse.CoursePrice = int.Parse(priceTxt.Text);
-            if (typeBox.Text == "รายวัน")
-                m_currentCourse.CourseType = COURSETYPE.DAILY;
-            else
-                m_currentCourse.CourseType = COURSETYPE.MONTLY;
+            m_currentCourse.CourseType = COURSETYPE.MONTLY;
             m_currentCourse.TotalDay = int.Parse(totalDayTxt.Text);
 
             if (m_isUpdate)
@@ -68,8 +89,12 @@ namespace ExclusiveGym.WinForms
 
             StorageManager.GetSingleton().GetDB().SaveChanges();
 
-            m_finishCallback();
-            this.Close();
+            EndForm();
+        }
+
+        private void CourseForm_Load(object sender, EventArgs e)
+        {
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
         }
     }
 

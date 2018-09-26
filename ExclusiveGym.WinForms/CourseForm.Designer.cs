@@ -32,8 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.typeBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.priceTxt = new System.Windows.Forms.TextBox();
@@ -53,6 +51,7 @@
             // 
             this.HeaderTxt.AutoSize = true;
             this.HeaderTxt.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderTxt.ForeColor = System.Drawing.Color.Tomato;
             this.HeaderTxt.Location = new System.Drawing.Point(10, 10);
             this.HeaderTxt.Name = "HeaderTxt";
             this.HeaderTxt.Size = new System.Drawing.Size(149, 32);
@@ -88,32 +87,8 @@
             this.txtName.Location = new System.Drawing.Point(5, 5);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(240, 20);
-            this.txtName.TabIndex = 7;
+            this.txtName.TabIndex = 1;
             this.txtName.Text = "ชื่อ";
-            // 
-            // typeBox
-            // 
-            this.typeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
-            this.typeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.typeBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.typeBox.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.typeBox.FormattingEnabled = true;
-            this.typeBox.ItemHeight = 19;
-            this.typeBox.Location = new System.Drawing.Point(291, 80);
-            this.typeBox.Name = "typeBox";
-            this.typeBox.Size = new System.Drawing.Size(153, 27);
-            this.typeBox.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label2.Location = new System.Drawing.Point(287, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 22);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "ประเภท";
             // 
             // label3
             // 
@@ -144,7 +119,7 @@
             this.priceTxt.Location = new System.Drawing.Point(5, 5);
             this.priceTxt.Name = "priceTxt";
             this.priceTxt.Size = new System.Drawing.Size(101, 20);
-            this.priceTxt.TabIndex = 9;
+            this.priceTxt.TabIndex = 3;
             this.priceTxt.Text = "0";
             // 
             // label4
@@ -176,7 +151,7 @@
             this.totalDayTxt.Location = new System.Drawing.Point(5, 5);
             this.totalDayTxt.Name = "totalDayTxt";
             this.totalDayTxt.Size = new System.Drawing.Size(112, 20);
-            this.totalDayTxt.TabIndex = 10;
+            this.totalDayTxt.TabIndex = 4;
             this.totalDayTxt.Text = "0";
             // 
             // btnSave
@@ -226,9 +201,7 @@
             this.panel4.Controls.Add(this.btnCancel);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.typeBox);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Location = new System.Drawing.Point(271, 174);
@@ -240,13 +213,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.ClientSize = new System.Drawing.Size(1109, 700);
             this.Controls.Add(this.panel4);
             this.Name = "CourseForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateCourseForm";
+            this.Load += new System.EventHandler(this.CourseForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -265,8 +238,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.ComboBox typeBox;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox priceTxt;

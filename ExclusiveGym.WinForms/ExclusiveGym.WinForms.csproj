@@ -157,12 +157,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCourseList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormCourseList.Designer.cs">
-      <DependentUpon>FormCourseList.cs</DependentUpon>
-    </Compile>
     <Compile Include="MemberForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,7 +179,9 @@
     </Compile>
     <Compile Include="scripts\DelegateDecare.cs" />
     <Compile Include="scripts\FingerPrint.cs" />
+    <Compile Include="scripts\FormManager.cs" />
     <Compile Include="scripts\Functions.cs" />
+    <Compile Include="scripts\NotificationManager.cs" />
     <Compile Include="scripts\USB.cs" />
     <Compile Include="scripts\UsbNotification.cs" />
     <Compile Include="UserControls\CourseControl.cs">
@@ -238,9 +234,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormCourseList.resx">
-      <DependentUpon>FormCourseList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberForm.resx">
       <DependentUpon>MemberForm.cs</DependentUpon>

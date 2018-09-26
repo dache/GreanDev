@@ -30,13 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberForm));
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.memberKnowPanel = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.chkKnow1 = new System.Windows.Forms.CheckBox();
-            this.chkKnow2 = new System.Windows.Forms.CheckBox();
-            this.chkKnow3 = new System.Windows.Forms.CheckBox();
-            this.chkKnow4 = new System.Windows.Forms.CheckBox();
             this.problemPanel = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -89,7 +90,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtThaiId = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblHeader = new System.Windows.Forms.Label();
@@ -108,7 +108,8 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
-            this.memberKnowPanel.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.problemPanel.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -136,8 +137,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.mainPanel.Controls.Add(this.label9);
+            this.mainPanel.Controls.Add(this.label3);
+            this.mainPanel.Controls.Add(this.comboBox1);
+            this.mainPanel.Controls.Add(this.panel9);
+            this.mainPanel.Controls.Add(this.panel5);
             this.mainPanel.Controls.Add(this.btnEdit);
-            this.mainPanel.Controls.Add(this.memberKnowPanel);
             this.mainPanel.Controls.Add(this.problemPanel);
             this.mainPanel.Controls.Add(this.lblCourse);
             this.mainPanel.Controls.Add(this.lblMemberCourse);
@@ -169,7 +174,6 @@
             this.mainPanel.Controls.Add(this.panel12);
             this.mainPanel.Controls.Add(this.panel7);
             this.mainPanel.Controls.Add(this.label21);
-            this.mainPanel.Controls.Add(this.datePicker);
             this.mainPanel.Controls.Add(this.label6);
             this.mainPanel.Controls.Add(this.label5);
             this.mainPanel.Controls.Add(this.lblHeader);
@@ -185,8 +189,114 @@
             this.mainPanel.Controls.Add(this.label4);
             this.mainPanel.Location = new System.Drawing.Point(126, 41);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(740, 573);
+            this.mainPanel.Size = new System.Drawing.Size(849, 637);
             this.mainPanel.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.GreenYellow;
+            this.label9.Location = new System.Drawing.Point(249, 134);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(20, 22);
+            this.label9.TabIndex = 56;
+            this.label9.Text = "ปี";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.GreenYellow;
+            this.label3.Location = new System.Drawing.Point(124, 134);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 22);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "เดือน";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "มกราคม",
+            "กุมภาพันธ์",
+            "มีนาคม",
+            "เมษายน",
+            "พฤษภาคม",
+            "มิถุนายน",
+            "กรกฎาคม",
+            "สิงหาคม",
+            "กันยายน",
+            "ตุลาคม",
+            "พฤศจิกายน",
+            "ธันวาคม"});
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.DropDownWidth = 109;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.ItemHeight = 13;
+            this.comboBox1.Items.AddRange(new object[] {
+            "มกราคม",
+            "กุมภาพันธ์",
+            "มีนาคม",
+            "เมษายน",
+            "พฤษภาคม",
+            "มิถุนายน",
+            "กรกฎาคม",
+            "สิงหาคม",
+            "กันยายน",
+            "ตุลาคม",
+            "พฤศจิกายน",
+            "ธันวาคม"});
+            this.comboBox1.Location = new System.Drawing.Point(84, 162);
+            this.comboBox1.MaxDropDownItems = 12;
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(109, 21);
+            this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.panel9.Controls.Add(this.textBox2);
+            this.panel9.Location = new System.Drawing.Point(217, 158);
+            this.panel9.Name = "panel9";
+            this.panel9.Padding = new System.Windows.Forms.Padding(5);
+            this.panel9.Size = new System.Drawing.Size(84, 30);
+            this.panel9.TabIndex = 53;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(5, 5);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(71, 20);
+            this.textBox2.TabIndex = 6;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Location = new System.Drawing.Point(19, 157);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(5);
+            this.panel5.Size = new System.Drawing.Size(47, 30);
+            this.panel5.TabIndex = 52;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(5, 5);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(36, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnEdit
             // 
@@ -197,82 +307,15 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnEdit.Location = new System.Drawing.Point(370, 528);
+            this.btnEdit.Location = new System.Drawing.Point(406, 592);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnEdit.Size = new System.Drawing.Size(370, 45);
+            this.btnEdit.Size = new System.Drawing.Size(443, 45);
             this.btnEdit.TabIndex = 51;
             this.btnEdit.Text = "แก้ไข";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // memberKnowPanel
-            // 
-            this.memberKnowPanel.Controls.Add(this.label7);
-            this.memberKnowPanel.Controls.Add(this.chkKnow1);
-            this.memberKnowPanel.Controls.Add(this.chkKnow2);
-            this.memberKnowPanel.Controls.Add(this.chkKnow3);
-            this.memberKnowPanel.Controls.Add(this.chkKnow4);
-            this.memberKnowPanel.Location = new System.Drawing.Point(16, 367);
-            this.memberKnowPanel.Name = "memberKnowPanel";
-            this.memberKnowPanel.Size = new System.Drawing.Size(634, 59);
-            this.memberKnowPanel.TabIndex = 50;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label7.Location = new System.Drawing.Point(6, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 22);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "ท่านทราบข่าวสารจาก";
-            // 
-            // chkKnow1
-            // 
-            this.chkKnow1.AutoSize = true;
-            this.chkKnow1.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow1.Location = new System.Drawing.Point(15, 30);
-            this.chkKnow1.Name = "chkKnow1";
-            this.chkKnow1.Size = new System.Drawing.Size(140, 23);
-            this.chkKnow1.TabIndex = 15;
-            this.chkKnow1.Text = "ประชาสัมพันธ์โฆษณา";
-            this.chkKnow1.UseVisualStyleBackColor = true;
-            // 
-            // chkKnow2
-            // 
-            this.chkKnow2.AutoSize = true;
-            this.chkKnow2.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow2.Location = new System.Drawing.Point(161, 30);
-            this.chkKnow2.Name = "chkKnow2";
-            this.chkKnow2.Size = new System.Drawing.Size(78, 23);
-            this.chkKnow2.TabIndex = 16;
-            this.chkKnow2.Text = "Internet";
-            this.chkKnow2.UseVisualStyleBackColor = true;
-            // 
-            // chkKnow3
-            // 
-            this.chkKnow3.AutoSize = true;
-            this.chkKnow3.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow3.Location = new System.Drawing.Point(245, 30);
-            this.chkKnow3.Name = "chkKnow3";
-            this.chkKnow3.Size = new System.Drawing.Size(88, 23);
-            this.chkKnow3.TabIndex = 17;
-            this.chkKnow3.Text = "Facebook";
-            this.chkKnow3.UseVisualStyleBackColor = true;
-            // 
-            // chkKnow4
-            // 
-            this.chkKnow4.AutoSize = true;
-            this.chkKnow4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkKnow4.Location = new System.Drawing.Point(339, 30);
-            this.chkKnow4.Name = "chkKnow4";
-            this.chkKnow4.Size = new System.Drawing.Size(119, 23);
-            this.chkKnow4.TabIndex = 18;
-            this.chkKnow4.Text = "จากเพื่อนที่แนะนำ";
-            this.chkKnow4.UseVisualStyleBackColor = true;
             // 
             // problemPanel
             // 
@@ -285,9 +328,9 @@
             this.problemPanel.Controls.Add(this.chk5);
             this.problemPanel.Controls.Add(this.chkNoProblem);
             this.problemPanel.Controls.Add(this.chk6);
-            this.problemPanel.Location = new System.Drawing.Point(16, 427);
+            this.problemPanel.Location = new System.Drawing.Point(16, 380);
             this.problemPanel.Name = "problemPanel";
-            this.problemPanel.Size = new System.Drawing.Size(634, 93);
+            this.problemPanel.Size = new System.Drawing.Size(823, 195);
             this.problemPanel.TabIndex = 49;
             // 
             // label8
@@ -297,9 +340,9 @@
             this.label8.ForeColor = System.Drawing.Color.GreenYellow;
             this.label8.Location = new System.Drawing.Point(7, 2);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(163, 22);
+            this.label8.Size = new System.Drawing.Size(139, 22);
             this.label8.TabIndex = 19;
-            this.label8.Text = "ท่านมีโรคประจำตัวหรือไม่";
+            this.label8.Text = "สถานะสมาชิกปัจจุบัน";
             // 
             // panel6
             // 
@@ -319,7 +362,7 @@
             this.txtOtherProblem.Location = new System.Drawing.Point(5, 5);
             this.txtOtherProblem.Name = "txtOtherProblem";
             this.txtOtherProblem.Size = new System.Drawing.Size(110, 20);
-            this.txtOtherProblem.TabIndex = 7;
+            this.txtOtherProblem.TabIndex = 17;
             // 
             // chk1
             // 
@@ -328,7 +371,7 @@
             this.chk1.Location = new System.Drawing.Point(137, 27);
             this.chk1.Name = "chk1";
             this.chk1.Size = new System.Drawing.Size(74, 23);
-            this.chk1.TabIndex = 20;
+            this.chk1.TabIndex = 50;
             this.chk1.Text = "โรคหัวใจ";
             this.chk1.UseVisualStyleBackColor = true;
             // 
@@ -339,7 +382,7 @@
             this.chk2.Location = new System.Drawing.Point(217, 27);
             this.chk2.Name = "chk2";
             this.chk2.Size = new System.Drawing.Size(137, 23);
-            this.chk2.TabIndex = 21;
+            this.chk2.TabIndex = 50;
             this.chk2.Text = "โรคความดันโลหิตสูง";
             this.chk2.UseVisualStyleBackColor = true;
             // 
@@ -350,7 +393,7 @@
             this.chk3.Location = new System.Drawing.Point(360, 27);
             this.chk3.Name = "chk3";
             this.chk3.Size = new System.Drawing.Size(88, 23);
-            this.chk3.TabIndex = 22;
+            this.chk3.TabIndex = 50;
             this.chk3.Text = "โรคหอบหืด";
             this.chk3.UseVisualStyleBackColor = true;
             // 
@@ -361,7 +404,7 @@
             this.chk4.Location = new System.Drawing.Point(454, 27);
             this.chk4.Name = "chk4";
             this.chk4.Size = new System.Drawing.Size(118, 23);
-            this.chk4.TabIndex = 23;
+            this.chk4.TabIndex = 50;
             this.chk4.Text = "ปวดเมื่อยตามข้อ";
             this.chk4.UseVisualStyleBackColor = true;
             // 
@@ -372,7 +415,7 @@
             this.chk5.Location = new System.Drawing.Point(16, 56);
             this.chk5.Name = "chk5";
             this.chk5.Size = new System.Drawing.Size(92, 23);
-            this.chk5.TabIndex = 24;
+            this.chk5.TabIndex = 50;
             this.chk5.Text = "โรคเบาหวาน";
             this.chk5.UseVisualStyleBackColor = true;
             // 
@@ -383,7 +426,7 @@
             this.chkNoProblem.Location = new System.Drawing.Point(16, 27);
             this.chkNoProblem.Name = "chkNoProblem";
             this.chkNoProblem.Size = new System.Drawing.Size(115, 23);
-            this.chkNoProblem.TabIndex = 26;
+            this.chkNoProblem.TabIndex = 50;
             this.chkNoProblem.Text = "ไม่มีโรคประจำตัว";
             this.chkNoProblem.UseVisualStyleBackColor = true;
             this.chkNoProblem.CheckedChanged += new System.EventHandler(this.chkNoProblem_CheckedChanged);
@@ -395,7 +438,7 @@
             this.chk6.Location = new System.Drawing.Point(111, 56);
             this.chk6.Name = "chk6";
             this.chk6.Size = new System.Drawing.Size(71, 23);
-            this.chk6.TabIndex = 27;
+            this.chk6.TabIndex = 50;
             this.chk6.Text = "โรคอื่นๆ";
             this.chk6.UseVisualStyleBackColor = true;
             // 
@@ -424,7 +467,7 @@
             // lblFingerPrint
             // 
             this.lblFingerPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFingerPrint.Location = new System.Drawing.Point(711, 157);
+            this.lblFingerPrint.Location = new System.Drawing.Point(820, 157);
             this.lblFingerPrint.Name = "lblFingerPrint";
             this.lblFingerPrint.Size = new System.Drawing.Size(0, 13);
             this.lblFingerPrint.TabIndex = 47;
@@ -438,7 +481,7 @@
             this.btnFingerPrint.FlatAppearance.BorderSize = 2;
             this.btnFingerPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFingerPrint.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFingerPrint.Location = new System.Drawing.Point(625, 126);
+            this.btnFingerPrint.Location = new System.Drawing.Point(734, 113);
             this.btnFingerPrint.Name = "btnFingerPrint";
             this.btnFingerPrint.Size = new System.Drawing.Size(105, 36);
             this.btnFingerPrint.TabIndex = 46;
@@ -450,7 +493,7 @@
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(640, 10);
+            this.pictureBox2.Location = new System.Drawing.Point(749, 10);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(90, 90);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -461,7 +504,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(544, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(653, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 90);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -472,10 +515,10 @@
             // 
             this.chkFemale.AutoSize = true;
             this.chkFemale.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkFemale.Location = new System.Drawing.Point(344, 162);
+            this.chkFemale.Location = new System.Drawing.Point(479, 163);
             this.chkFemale.Name = "chkFemale";
             this.chkFemale.Size = new System.Drawing.Size(57, 23);
-            this.chkFemale.TabIndex = 43;
+            this.chkFemale.TabIndex = 50;
             this.chkFemale.Text = "หญิง";
             this.chkFemale.UseVisualStyleBackColor = true;
             this.chkFemale.CheckedChanged += new System.EventHandler(this.chkGender_CheckedChanged);
@@ -484,10 +527,10 @@
             // 
             this.chkMale.AutoSize = true;
             this.chkMale.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkMale.Location = new System.Drawing.Point(292, 162);
+            this.chkMale.Location = new System.Drawing.Point(427, 163);
             this.chkMale.Name = "chkMale";
             this.chkMale.Size = new System.Drawing.Size(49, 23);
-            this.chkMale.TabIndex = 42;
+            this.chkMale.TabIndex = 50;
             this.chkMale.Text = "ชาย";
             this.chkMale.UseVisualStyleBackColor = true;
             this.chkMale.CheckedChanged += new System.EventHandler(this.chkGender_CheckedChanged);
@@ -499,7 +542,7 @@
             this.panel3.Location = new System.Drawing.Point(338, 273);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(180, 30);
+            this.panel3.Size = new System.Drawing.Size(122, 30);
             this.panel3.TabIndex = 41;
             // 
             // txtProvince
@@ -509,14 +552,14 @@
             this.txtProvince.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProvince.Location = new System.Drawing.Point(5, 5);
             this.txtProvince.Name = "txtProvince";
-            this.txtProvince.Size = new System.Drawing.Size(170, 20);
-            this.txtProvince.TabIndex = 7;
+            this.txtProvince.Size = new System.Drawing.Size(117, 20);
+            this.txtProvince.TabIndex = 15;
             // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel18.Controls.Add(this.txtPostCode);
-            this.panel18.Location = new System.Drawing.Point(524, 273);
+            this.panel18.Location = new System.Drawing.Point(467, 273);
             this.panel18.Name = "panel18";
             this.panel18.Padding = new System.Windows.Forms.Padding(5);
             this.panel18.Size = new System.Drawing.Size(70, 30);
@@ -530,7 +573,7 @@
             this.txtPostCode.Location = new System.Drawing.Point(5, 5);
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(60, 20);
-            this.txtPostCode.TabIndex = 7;
+            this.txtPostCode.TabIndex = 16;
             // 
             // panel17
             // 
@@ -550,7 +593,7 @@
             this.txtLane.Location = new System.Drawing.Point(5, 5);
             this.txtLane.Name = "txtLane";
             this.txtLane.Size = new System.Drawing.Size(140, 20);
-            this.txtLane.TabIndex = 7;
+            this.txtLane.TabIndex = 11;
             // 
             // panel16
             // 
@@ -570,7 +613,7 @@
             this.txtVillageName.Location = new System.Drawing.Point(5, 5);
             this.txtVillageName.Name = "txtVillageName";
             this.txtVillageName.Size = new System.Drawing.Size(160, 20);
-            this.txtVillageName.TabIndex = 7;
+            this.txtVillageName.TabIndex = 10;
             // 
             // panel15
             // 
@@ -590,7 +633,7 @@
             this.txtVillageNumber.Location = new System.Drawing.Point(5, 5);
             this.txtVillageNumber.Name = "txtVillageNumber";
             this.txtVillageNumber.Size = new System.Drawing.Size(40, 20);
-            this.txtVillageNumber.TabIndex = 7;
+            this.txtVillageNumber.TabIndex = 9;
             // 
             // panel14
             // 
@@ -610,7 +653,7 @@
             this.txtDistrict.Location = new System.Drawing.Point(5, 5);
             this.txtDistrict.Name = "txtDistrict";
             this.txtDistrict.Size = new System.Drawing.Size(140, 20);
-            this.txtDistrict.TabIndex = 7;
+            this.txtDistrict.TabIndex = 14;
             // 
             // panel10
             // 
@@ -630,7 +673,7 @@
             this.txtHouseNumber.Location = new System.Drawing.Point(5, 5);
             this.txtHouseNumber.Name = "txtHouseNumber";
             this.txtHouseNumber.Size = new System.Drawing.Size(40, 20);
-            this.txtHouseNumber.TabIndex = 7;
+            this.txtHouseNumber.TabIndex = 8;
             // 
             // panel13
             // 
@@ -650,14 +693,14 @@
             this.txtRoad.Location = new System.Drawing.Point(5, 5);
             this.txtRoad.Name = "txtRoad";
             this.txtRoad.Size = new System.Drawing.Size(140, 20);
-            this.txtRoad.TabIndex = 7;
+            this.txtRoad.TabIndex = 12;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label26.Location = new System.Drawing.Point(520, 248);
+            this.label26.Location = new System.Drawing.Point(463, 248);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(93, 22);
             this.label26.TabIndex = 39;
@@ -681,7 +724,7 @@
             this.txtSubDistrict.Location = new System.Drawing.Point(5, 5);
             this.txtSubDistrict.Name = "txtSubDistrict";
             this.txtSubDistrict.Size = new System.Drawing.Size(150, 20);
-            this.txtSubDistrict.TabIndex = 7;
+            this.txtSubDistrict.TabIndex = 13;
             // 
             // label25
             // 
@@ -721,7 +764,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label22.Location = new System.Drawing.Point(472, 190);
+            this.label22.Location = new System.Drawing.Point(472, 191);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(38, 22);
             this.label22.TabIndex = 35;
@@ -732,7 +775,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label14.Location = new System.Drawing.Point(316, 190);
+            this.label14.Location = new System.Drawing.Point(316, 191);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 22);
             this.label14.TabIndex = 34;
@@ -776,7 +819,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label10.Location = new System.Drawing.Point(289, 133);
+            this.label10.Location = new System.Drawing.Point(424, 135);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 22);
             this.label10.TabIndex = 30;
@@ -800,7 +843,7 @@
             this.txtEmail.Location = new System.Drawing.Point(5, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(230, 20);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 18;
             // 
             // panel7
             // 
@@ -820,7 +863,7 @@
             this.txtThaiId.Location = new System.Drawing.Point(5, 5);
             this.txtThaiId.Name = "txtThaiId";
             this.txtThaiId.Size = new System.Drawing.Size(167, 20);
-            this.txtThaiId.TabIndex = 7;
+            this.txtThaiId.TabIndex = 3;
             // 
             // label21
             // 
@@ -832,17 +875,6 @@
             this.label21.Size = new System.Drawing.Size(52, 22);
             this.label21.TabIndex = 29;
             this.label21.Text = "E-Mail";
-            // 
-            // datePicker
-            // 
-            this.datePicker.CustomFormat = "dd MMMM yyyy";
-            this.datePicker.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(16, 157);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(160, 27);
-            this.datePicker.TabIndex = 28;
-            this.datePicker.ValueChanged += new System.EventHandler(this.datePicker_ValueChanged);
             // 
             // label6
             // 
@@ -860,7 +892,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label5.Location = new System.Drawing.Point(219, 133);
+            this.label5.Location = new System.Drawing.Point(354, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 22);
             this.label5.TabIndex = 12;
@@ -885,7 +917,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSave.Location = new System.Drawing.Point(370, 528);
+            this.btnSave.Location = new System.Drawing.Point(479, 592);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.btnSave.Size = new System.Drawing.Size(370, 45);
@@ -903,11 +935,11 @@
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(213)))), ((int)(((byte)(212)))));
-            this.btnCancel.Location = new System.Drawing.Point(0, 528);
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btnCancel.Location = new System.Drawing.Point(0, 592);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCancel.Size = new System.Drawing.Size(370, 45);
+            this.btnCancel.Size = new System.Drawing.Size(400, 45);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "ยกเลิก";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -918,7 +950,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel4.Controls.Add(this.txtAge);
-            this.panel4.Location = new System.Drawing.Point(209, 157);
+            this.panel4.Location = new System.Drawing.Point(344, 158);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5);
             this.panel4.Size = new System.Drawing.Size(55, 30);
@@ -928,6 +960,7 @@
             // 
             this.txtAge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAge.Enabled = false;
             this.txtAge.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAge.Location = new System.Drawing.Point(5, 5);
             this.txtAge.Name = "txtAge";
@@ -954,7 +987,7 @@
             this.txtPhoneNumber.Location = new System.Drawing.Point(5, 5);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(110, 20);
-            this.txtPhoneNumber.TabIndex = 7;
+            this.txtPhoneNumber.TabIndex = 17;
             // 
             // label1
             // 
@@ -1007,7 +1040,7 @@
             this.txtLastName.Location = new System.Drawing.Point(5, 5);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(150, 20);
-            this.txtLastName.TabIndex = 7;
+            this.txtLastName.TabIndex = 2;
             // 
             // panel1
             // 
@@ -1027,38 +1060,40 @@
             this.txtName.Location = new System.Drawing.Point(5, 5);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(150, 20);
-            this.txtName.TabIndex = 7;
+            this.txtName.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label4.Location = new System.Drawing.Point(12, 132);
+            this.label4.Location = new System.Drawing.Point(32, 133);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 22);
+            this.label4.Size = new System.Drawing.Size(28, 22);
             this.label4.TabIndex = 4;
-            this.label4.Text = "วันเกิด";
+            this.label4.Text = "วัน";
             // 
             // MemberForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.ClientSize = new System.Drawing.Size(1109, 700);
             this.Controls.Add(this.mainPanel);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MemberForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MemberForm";
             this.Load += new System.EventHandler(this.MemberForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
-            this.memberKnowPanel.ResumeLayout(false);
-            this.memberKnowPanel.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.problemPanel.ResumeLayout(false);
             this.problemPanel.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1115,11 +1150,6 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox chkKnow4;
-        private System.Windows.Forms.CheckBox chkKnow3;
-        private System.Windows.Forms.CheckBox chkKnow2;
-        private System.Windows.Forms.CheckBox chkKnow1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chk4;
@@ -1129,7 +1159,6 @@
         private System.Windows.Forms.CheckBox chkNoProblem;
         private System.Windows.Forms.CheckBox chk5;
         private System.Windows.Forms.CheckBox chk6;
-        private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txtThaiId;
         private System.Windows.Forms.Label label10;
@@ -1177,7 +1206,13 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtOtherProblem;
         private System.Windows.Forms.Panel problemPanel;
-        private System.Windows.Forms.Panel memberKnowPanel;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

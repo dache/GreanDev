@@ -51,5 +51,10 @@ namespace ExclusiveGym.WinForms
         {
             this.Close();
         }
+
+        private void DialogForm_Load(object sender, EventArgs e)
+        {
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
+        }
     }
 }

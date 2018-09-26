@@ -41,7 +41,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 13);
+            this.label1.ForeColor = System.Drawing.Color.Tomato;
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 32);
             this.label1.TabIndex = 0;
@@ -54,7 +55,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(663, 14);
+            this.button1.Location = new System.Drawing.Point(789, 41);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 35);
             this.button1.TabIndex = 1;
@@ -89,7 +90,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gvCourses.DefaultCellStyle = dataGridViewCellStyle2;
             this.gvCourses.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.gvCourses.Location = new System.Drawing.Point(20, 55);
+            this.gvCourses.Location = new System.Drawing.Point(15, 99);
             this.gvCourses.MultiSelect = false;
             this.gvCourses.Name = "gvCourses";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -104,7 +105,7 @@
             this.gvCourses.RowHeadersVisible = false;
             this.gvCourses.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.gvCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvCourses.Size = new System.Drawing.Size(757, 495);
+            this.gvCourses.Size = new System.Drawing.Size(888, 506);
             this.gvCourses.TabIndex = 2;
             this.gvCourses.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvCourses_CellClick);
             // 
@@ -116,7 +117,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "CourseControl";
-            this.Size = new System.Drawing.Size(800, 580);
+            this.Size = new System.Drawing.Size(917, 630);
             this.Load += new System.EventHandler(this.CourseControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvCourses)).EndInit();
             this.ResumeLayout(false);
