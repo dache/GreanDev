@@ -26,8 +26,8 @@ namespace ExclusiveGym.WinForms
         {
             InitializeComponent();
             SetStyle(ControlStyles.Opaque, true);
-            lblMemberCourse.Visible = false;
-            lblCourse.Visible = false;
+           // lblMemberCourse.Visible = false;
+           // lblCourse.Visible = false;
             // new Member
             this.Member = new Member();
 
@@ -108,11 +108,11 @@ namespace ExclusiveGym.WinForms
         }
         void BeginDisplay()
         {
-            lblCourse.BeginInvoke((MethodInvoker)async delegate ()
-            {
-                await Task.Delay(1000);
-                NotificationManager.GetSingleton().ShowNotification(this, "test");
-            });
+            //lblCourse.BeginInvoke((MethodInvoker)async delegate ()
+            //{
+            //    await Task.Delay(1000);
+            //    NotificationManager.GetSingleton().ShowNotification(this, "test");
+            //});
         }
         private void CloseForm()
         {

@@ -49,8 +49,6 @@
             this.chk5 = new System.Windows.Forms.CheckBox();
             this.chkNoProblem = new System.Windows.Forms.CheckBox();
             this.chk6 = new System.Windows.Forms.CheckBox();
-            this.lblCourse = new System.Windows.Forms.Label();
-            this.lblMemberCourse = new System.Windows.Forms.Label();
             this.lblFingerPrint = new System.Windows.Forms.Label();
             this.btnFingerPrint = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -107,6 +105,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -129,6 +129,7 @@
             this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -137,21 +138,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.mainPanel.Controls.Add(this.label9);
-            this.mainPanel.Controls.Add(this.label3);
-            this.mainPanel.Controls.Add(this.comboBox1);
-            this.mainPanel.Controls.Add(this.panel9);
-            this.mainPanel.Controls.Add(this.panel5);
+            this.mainPanel.Controls.Add(this.panel19);
             this.mainPanel.Controls.Add(this.btnEdit);
             this.mainPanel.Controls.Add(this.problemPanel);
-            this.mainPanel.Controls.Add(this.lblCourse);
-            this.mainPanel.Controls.Add(this.lblMemberCourse);
             this.mainPanel.Controls.Add(this.lblFingerPrint);
             this.mainPanel.Controls.Add(this.btnFingerPrint);
             this.mainPanel.Controls.Add(this.pictureBox2);
             this.mainPanel.Controls.Add(this.pictureBox1);
-            this.mainPanel.Controls.Add(this.chkFemale);
-            this.mainPanel.Controls.Add(this.chkMale);
             this.mainPanel.Controls.Add(this.panel3);
             this.mainPanel.Controls.Add(this.panel18);
             this.mainPanel.Controls.Add(this.panel17);
@@ -170,23 +163,13 @@
             this.mainPanel.Controls.Add(this.label13);
             this.mainPanel.Controls.Add(this.label12);
             this.mainPanel.Controls.Add(this.label11);
-            this.mainPanel.Controls.Add(this.label10);
             this.mainPanel.Controls.Add(this.panel12);
-            this.mainPanel.Controls.Add(this.panel7);
             this.mainPanel.Controls.Add(this.label21);
-            this.mainPanel.Controls.Add(this.label6);
-            this.mainPanel.Controls.Add(this.label5);
             this.mainPanel.Controls.Add(this.lblHeader);
             this.mainPanel.Controls.Add(this.btnSave);
             this.mainPanel.Controls.Add(this.btnCancel);
-            this.mainPanel.Controls.Add(this.panel4);
             this.mainPanel.Controls.Add(this.panel11);
-            this.mainPanel.Controls.Add(this.label1);
-            this.mainPanel.Controls.Add(this.label2);
             this.mainPanel.Controls.Add(this.label20);
-            this.mainPanel.Controls.Add(this.panel2);
-            this.mainPanel.Controls.Add(this.panel1);
-            this.mainPanel.Controls.Add(this.label4);
             this.mainPanel.Location = new System.Drawing.Point(126, 41);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(849, 637);
@@ -197,7 +180,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label9.Location = new System.Drawing.Point(249, 134);
+            this.label9.Location = new System.Drawing.Point(255, 86);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(20, 22);
             this.label9.TabIndex = 56;
@@ -208,7 +191,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label3.Location = new System.Drawing.Point(124, 134);
+            this.label3.Location = new System.Drawing.Point(130, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 22);
             this.label3.TabIndex = 55;
@@ -247,7 +230,7 @@
             "ตุลาคม",
             "พฤศจิกายน",
             "ธันวาคม"});
-            this.comboBox1.Location = new System.Drawing.Point(84, 162);
+            this.comboBox1.Location = new System.Drawing.Point(90, 114);
             this.comboBox1.MaxDropDownItems = 12;
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(109, 21);
@@ -258,7 +241,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel9.Controls.Add(this.textBox2);
-            this.panel9.Location = new System.Drawing.Point(217, 158);
+            this.panel9.Location = new System.Drawing.Point(223, 110);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
             this.panel9.Size = new System.Drawing.Size(84, 30);
@@ -280,7 +263,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel5.Controls.Add(this.textBox1);
-            this.panel5.Location = new System.Drawing.Point(19, 157);
+            this.panel5.Location = new System.Drawing.Point(25, 109);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5);
             this.panel5.Size = new System.Drawing.Size(47, 30);
@@ -442,28 +425,6 @@
             this.chk6.Text = "โรคอื่นๆ";
             this.chk6.UseVisualStyleBackColor = true;
             // 
-            // lblCourse
-            // 
-            this.lblCourse.AutoSize = true;
-            this.lblCourse.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCourse.ForeColor = System.Drawing.Color.Salmon;
-            this.lblCourse.Location = new System.Drawing.Point(153, 42);
-            this.lblCourse.Name = "lblCourse";
-            this.lblCourse.Size = new System.Drawing.Size(175, 32);
-            this.lblCourse.TabIndex = 48;
-            this.lblCourse.Text = "ยังไม่ได้เป็นสมาชิก";
-            // 
-            // lblMemberCourse
-            // 
-            this.lblMemberCourse.AutoSize = true;
-            this.lblMemberCourse.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMemberCourse.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lblMemberCourse.Location = new System.Drawing.Point(10, 42);
-            this.lblMemberCourse.Name = "lblMemberCourse";
-            this.lblMemberCourse.Size = new System.Drawing.Size(140, 32);
-            this.lblMemberCourse.TabIndex = 48;
-            this.lblMemberCourse.Text = "ประเภทสมาชิก";
-            // 
             // lblFingerPrint
             // 
             this.lblFingerPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -481,7 +442,7 @@
             this.btnFingerPrint.FlatAppearance.BorderSize = 2;
             this.btnFingerPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFingerPrint.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFingerPrint.Location = new System.Drawing.Point(734, 113);
+            this.btnFingerPrint.Location = new System.Drawing.Point(734, 110);
             this.btnFingerPrint.Name = "btnFingerPrint";
             this.btnFingerPrint.Size = new System.Drawing.Size(105, 36);
             this.btnFingerPrint.TabIndex = 46;
@@ -495,7 +456,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(749, 10);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(90, 90);
+            this.pictureBox2.Size = new System.Drawing.Size(90, 94);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 45;
             this.pictureBox2.TabStop = false;
@@ -515,7 +476,7 @@
             // 
             this.chkFemale.AutoSize = true;
             this.chkFemale.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkFemale.Location = new System.Drawing.Point(479, 163);
+            this.chkFemale.Location = new System.Drawing.Point(485, 115);
             this.chkFemale.Name = "chkFemale";
             this.chkFemale.Size = new System.Drawing.Size(57, 23);
             this.chkFemale.TabIndex = 50;
@@ -527,7 +488,7 @@
             // 
             this.chkMale.AutoSize = true;
             this.chkMale.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkMale.Location = new System.Drawing.Point(427, 163);
+            this.chkMale.Location = new System.Drawing.Point(433, 115);
             this.chkMale.Name = "chkMale";
             this.chkMale.Size = new System.Drawing.Size(49, 23);
             this.chkMale.TabIndex = 50;
@@ -539,7 +500,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel3.Controls.Add(this.txtProvince);
-            this.panel3.Location = new System.Drawing.Point(338, 273);
+            this.panel3.Location = new System.Drawing.Point(340, 277);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
             this.panel3.Size = new System.Drawing.Size(122, 30);
@@ -559,7 +520,7 @@
             // 
             this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel18.Controls.Add(this.txtPostCode);
-            this.panel18.Location = new System.Drawing.Point(467, 273);
+            this.panel18.Location = new System.Drawing.Point(469, 277);
             this.panel18.Name = "panel18";
             this.panel18.Padding = new System.Windows.Forms.Padding(5);
             this.panel18.Size = new System.Drawing.Size(70, 30);
@@ -579,7 +540,7 @@
             // 
             this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel17.Controls.Add(this.txtLane);
-            this.panel17.Location = new System.Drawing.Point(320, 215);
+            this.panel17.Location = new System.Drawing.Point(322, 219);
             this.panel17.Name = "panel17";
             this.panel17.Padding = new System.Windows.Forms.Padding(5);
             this.panel17.Size = new System.Drawing.Size(150, 30);
@@ -599,7 +560,7 @@
             // 
             this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel16.Controls.Add(this.txtVillageName);
-            this.panel16.Location = new System.Drawing.Point(144, 215);
+            this.panel16.Location = new System.Drawing.Point(146, 219);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(5);
             this.panel16.Size = new System.Drawing.Size(170, 30);
@@ -619,7 +580,7 @@
             // 
             this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel15.Controls.Add(this.txtVillageNumber);
-            this.panel15.Location = new System.Drawing.Point(88, 215);
+            this.panel15.Location = new System.Drawing.Point(90, 219);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(5);
             this.panel15.Size = new System.Drawing.Size(50, 30);
@@ -639,7 +600,7 @@
             // 
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel14.Controls.Add(this.txtDistrict);
-            this.panel14.Location = new System.Drawing.Point(182, 273);
+            this.panel14.Location = new System.Drawing.Point(184, 277);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(5);
             this.panel14.Size = new System.Drawing.Size(150, 30);
@@ -659,7 +620,7 @@
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel10.Controls.Add(this.txtHouseNumber);
-            this.panel10.Location = new System.Drawing.Point(16, 215);
+            this.panel10.Location = new System.Drawing.Point(18, 219);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(5);
             this.panel10.Size = new System.Drawing.Size(50, 30);
@@ -679,7 +640,7 @@
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel13.Controls.Add(this.txtRoad);
-            this.panel13.Location = new System.Drawing.Point(476, 215);
+            this.panel13.Location = new System.Drawing.Point(478, 219);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(5);
             this.panel13.Size = new System.Drawing.Size(150, 30);
@@ -700,7 +661,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label26.Location = new System.Drawing.Point(463, 248);
+            this.label26.Location = new System.Drawing.Point(465, 252);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(93, 22);
             this.label26.TabIndex = 39;
@@ -710,7 +671,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel8.Controls.Add(this.txtSubDistrict);
-            this.panel8.Location = new System.Drawing.Point(16, 273);
+            this.panel8.Location = new System.Drawing.Point(18, 277);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
             this.panel8.Size = new System.Drawing.Size(160, 30);
@@ -731,7 +692,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label25.Location = new System.Drawing.Point(334, 248);
+            this.label25.Location = new System.Drawing.Point(336, 252);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(56, 22);
             this.label25.TabIndex = 38;
@@ -742,7 +703,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label24.Location = new System.Drawing.Point(178, 248);
+            this.label24.Location = new System.Drawing.Point(180, 252);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(78, 22);
             this.label24.TabIndex = 37;
@@ -753,7 +714,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label23.Location = new System.Drawing.Point(12, 248);
+            this.label23.Location = new System.Drawing.Point(14, 252);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(87, 22);
             this.label23.TabIndex = 36;
@@ -764,7 +725,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label22.Location = new System.Drawing.Point(472, 191);
+            this.label22.Location = new System.Drawing.Point(474, 195);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(38, 22);
             this.label22.TabIndex = 35;
@@ -775,7 +736,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label14.Location = new System.Drawing.Point(316, 191);
+            this.label14.Location = new System.Drawing.Point(318, 195);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 22);
             this.label14.TabIndex = 34;
@@ -786,7 +747,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label13.Location = new System.Drawing.Point(140, 190);
+            this.label13.Location = new System.Drawing.Point(142, 194);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 22);
             this.label13.TabIndex = 33;
@@ -797,7 +758,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label12.Location = new System.Drawing.Point(84, 190);
+            this.label12.Location = new System.Drawing.Point(86, 194);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 22);
             this.label12.TabIndex = 32;
@@ -808,7 +769,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label11.Location = new System.Drawing.Point(12, 190);
+            this.label11.Location = new System.Drawing.Point(14, 194);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 22);
             this.label11.TabIndex = 31;
@@ -819,7 +780,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label10.Location = new System.Drawing.Point(424, 135);
+            this.label10.Location = new System.Drawing.Point(430, 87);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 22);
             this.label10.TabIndex = 30;
@@ -829,7 +790,7 @@
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel12.Controls.Add(this.txtEmail);
-            this.panel12.Location = new System.Drawing.Point(151, 331);
+            this.panel12.Location = new System.Drawing.Point(153, 335);
             this.panel12.Name = "panel12";
             this.panel12.Padding = new System.Windows.Forms.Padding(5);
             this.panel12.Size = new System.Drawing.Size(240, 30);
@@ -849,7 +810,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel7.Controls.Add(this.txtThaiId);
-            this.panel7.Location = new System.Drawing.Point(348, 99);
+            this.panel7.Location = new System.Drawing.Point(354, 51);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(5);
             this.panel7.Size = new System.Drawing.Size(180, 30);
@@ -870,7 +831,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label21.Location = new System.Drawing.Point(147, 306);
+            this.label21.Location = new System.Drawing.Point(149, 310);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(52, 22);
             this.label21.TabIndex = 29;
@@ -881,7 +842,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label6.Location = new System.Drawing.Point(344, 74);
+            this.label6.Location = new System.Drawing.Point(350, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 22);
             this.label6.TabIndex = 13;
@@ -892,7 +853,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label5.Location = new System.Drawing.Point(354, 134);
+            this.label5.Location = new System.Drawing.Point(360, 86);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 22);
             this.label5.TabIndex = 12;
@@ -902,7 +863,7 @@
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Prompt", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeader.Location = new System.Drawing.Point(10, 10);
+            this.lblHeader.Location = new System.Drawing.Point(10, 3);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(161, 32);
             this.lblHeader.TabIndex = 0;
@@ -950,7 +911,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel4.Controls.Add(this.txtAge);
-            this.panel4.Location = new System.Drawing.Point(344, 158);
+            this.panel4.Location = new System.Drawing.Point(350, 110);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5);
             this.panel4.Size = new System.Drawing.Size(55, 30);
@@ -973,7 +934,7 @@
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel11.Controls.Add(this.txtPhoneNumber);
-            this.panel11.Location = new System.Drawing.Point(19, 331);
+            this.panel11.Location = new System.Drawing.Point(21, 335);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(5);
             this.panel11.Size = new System.Drawing.Size(126, 30);
@@ -994,7 +955,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label1.Location = new System.Drawing.Point(12, 74);
+            this.label1.Location = new System.Drawing.Point(18, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 22);
             this.label1.TabIndex = 1;
@@ -1005,7 +966,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label2.Location = new System.Drawing.Point(178, 74);
+            this.label2.Location = new System.Drawing.Point(184, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 22);
             this.label2.TabIndex = 2;
@@ -1016,7 +977,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label20.Location = new System.Drawing.Point(15, 306);
+            this.label20.Location = new System.Drawing.Point(17, 310);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(63, 22);
             this.label20.TabIndex = 3;
@@ -1026,7 +987,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel2.Controls.Add(this.txtLastName);
-            this.panel2.Location = new System.Drawing.Point(182, 99);
+            this.panel2.Location = new System.Drawing.Point(188, 51);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
             this.panel2.Size = new System.Drawing.Size(160, 30);
@@ -1046,7 +1007,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel1.Controls.Add(this.txtName);
-            this.panel1.Location = new System.Drawing.Point(16, 99);
+            this.panel1.Location = new System.Drawing.Point(22, 51);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(160, 30);
@@ -1067,11 +1028,47 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label4.Location = new System.Drawing.Point(32, 133);
+            this.label4.Location = new System.Drawing.Point(38, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 22);
             this.label4.TabIndex = 4;
             this.label4.Text = "วัน";
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.label7);
+            this.panel19.Controls.Add(this.label9);
+            this.panel19.Controls.Add(this.panel1);
+            this.panel19.Controls.Add(this.label3);
+            this.panel19.Controls.Add(this.label4);
+            this.panel19.Controls.Add(this.comboBox1);
+            this.panel19.Controls.Add(this.panel2);
+            this.panel19.Controls.Add(this.panel9);
+            this.panel19.Controls.Add(this.label2);
+            this.panel19.Controls.Add(this.panel5);
+            this.panel19.Controls.Add(this.label1);
+            this.panel19.Controls.Add(this.panel4);
+            this.panel19.Controls.Add(this.label5);
+            this.panel19.Controls.Add(this.label6);
+            this.panel19.Controls.Add(this.panel7);
+            this.panel19.Controls.Add(this.label10);
+            this.panel19.Controls.Add(this.chkMale);
+            this.panel19.Controls.Add(this.chkFemale);
+            this.panel19.Location = new System.Drawing.Point(13, 37);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(561, 153);
+            this.panel19.TabIndex = 57;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.GreenYellow;
+            this.label7.Location = new System.Drawing.Point(13, 3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 22);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "ข้อมูลจำเป็น";
             // 
             // MemberForm
             // 
@@ -1130,6 +1127,8 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1201,8 +1200,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnFingerPrint;
         private System.Windows.Forms.Label lblFingerPrint;
-        private System.Windows.Forms.Label lblMemberCourse;
-        private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtOtherProblem;
         private System.Windows.Forms.Panel problemPanel;
@@ -1214,5 +1211,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Label label7;
     }
 }
