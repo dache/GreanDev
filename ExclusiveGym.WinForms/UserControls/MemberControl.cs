@@ -64,7 +64,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 }
                 catch { }
                 //List<Member> members = StorageManager.GetSingleton().GetMemberList();
-                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Where(f => f.IsActive == true).Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
+                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Where(f => f.IsActive == true && f.FingerPrint != "Daily").Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
 
                 gvMembers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing; //or even better .DisableResizing. Most time consumption enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
 

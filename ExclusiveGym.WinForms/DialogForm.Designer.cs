@@ -48,7 +48,7 @@
             this.panel5.Controls.Add(this.lblMessage);
             this.panel5.Location = new System.Drawing.Point(260, 236);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(549, 210);
+            this.panel5.Size = new System.Drawing.Size(550, 210);
             this.panel5.TabIndex = 13;
             // 
             // lblHeader
@@ -71,10 +71,10 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSave.Location = new System.Drawing.Point(280, 165);
+            this.btnSave.Location = new System.Drawing.Point(275, 165);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.btnSave.Size = new System.Drawing.Size(269, 45);
+            this.btnSave.Size = new System.Drawing.Size(275, 45);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "ตกลง";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -94,7 +94,7 @@
             this.btnCancel.Location = new System.Drawing.Point(0, 165);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCancel.Size = new System.Drawing.Size(274, 45);
+            this.btnCancel.Size = new System.Drawing.Size(275, 45);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "ยกเลิก";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

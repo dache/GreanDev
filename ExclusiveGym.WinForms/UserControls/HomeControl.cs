@@ -39,13 +39,19 @@ namespace ExclusiveGym.WinForms.UserControls
                 income += acl.CoursePrice;
             }
 
-            lblIncome.Text = $" { income.ToString() } ฿";
+            lblIncome.Text = $" { String.Format("{0:N}", income) } ฿";
 
         }
         public void Refresh()
         {
             tableLayoutPanel1.Controls.Clear();
             InitHome();
+        }
+
+        private void btnDailyRegister_Click(object sender, EventArgs e)
+        {
+            var form = new DailyDialogForm();
+            form.ShowDialog();           
         }
     }
 }

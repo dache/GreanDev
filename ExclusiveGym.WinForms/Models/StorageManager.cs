@@ -123,6 +123,13 @@ class StorageManager
         return GetDB().MemberApplyCourses.Where(x => x.MemberId == id).FirstOrDefault();
     }
 
+    public void MemberDailyApplyCourse(Member member,ApplyCourseLog memCourse)
+    {
+        AddMember(member);
+        memCourse.MemberId = member.MemberId;
+        GetDB().ApplyCourseLog.Add(memCourse);
+        SaveDB();
+    }
 
     public void MemberApplyCourse(Member member, Course course)
     {

@@ -89,7 +89,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(73, 612);
+            this.label6.Location = new System.Drawing.Point(81, 648);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 19);
             this.label6.TabIndex = 10;
@@ -99,7 +99,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 583);
+            this.label5.Location = new System.Drawing.Point(24, 619);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(155, 29);
             this.label5.TabIndex = 9;
@@ -109,7 +109,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Prompt", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 564);
+            this.label4.Location = new System.Drawing.Point(12, 600);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 19);
             this.label4.TabIndex = 8;

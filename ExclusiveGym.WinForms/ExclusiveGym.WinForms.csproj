@@ -133,6 +133,12 @@
     <Compile Include="CustomControls\TransparentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DailyDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DailyDialogForm.Designer.cs">
+      <DependentUpon>DailyDialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\OpacityBGForm.resx">
       <DependentUpon>OpacityBGForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyDialogForm.resx">
+      <DependentUpon>DailyDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DialogForm.resx">
       <DependentUpon>DialogForm.cs</DependentUpon>

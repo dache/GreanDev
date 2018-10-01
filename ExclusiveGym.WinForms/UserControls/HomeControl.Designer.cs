@@ -40,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblMemberCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnDailyRegister = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,7 +53,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 62);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 75);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -67,7 +68,7 @@
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Prompt", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label29.Location = new System.Drawing.Point(15, 15);
+            this.label29.Location = new System.Drawing.Point(16, 36);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(180, 36);
             this.label29.TabIndex = 12;
@@ -183,11 +184,26 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "จำนวนเข้าใช้วันนี้";
             // 
+            // btnDailyRegister
+            // 
+            this.btnDailyRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.btnDailyRegister.FlatAppearance.BorderSize = 0;
+            this.btnDailyRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDailyRegister.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDailyRegister.Location = new System.Drawing.Point(769, 24);
+            this.btnDailyRegister.Name = "btnDailyRegister";
+            this.btnDailyRegister.Size = new System.Drawing.Size(130, 45);
+            this.btnDailyRegister.TabIndex = 16;
+            this.btnDailyRegister.Text = "เข้าใช้งานรายวัน";
+            this.btnDailyRegister.UseVisualStyleBackColor = false;
+            this.btnDailyRegister.Click += new System.EventHandler(this.btnDailyRegister_Click);
+            // 
             // HomeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.btnDailyRegister);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.panel4);
@@ -217,5 +233,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblMemberCount;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnDailyRegister;
     }
 }
