@@ -59,12 +59,28 @@ namespace ExclusiveGym.WinForms
 
             var memCourse = new ApplyCourseLog();
             memCourse.ApplyDate = DateTime.Now;
-            memCourse.CourseID = 1;
+            memCourse.CourseName = "Daily";
+            memCourse.Name = txtName.Text.Trim();
+            memCourse.LastName = txtLastName.Text.Trim();
             memCourse.CoursePrice = Convert.ToInt32(txtPrice.Text.Trim());
 
             StorageManager.GetSingleton().MemberDailyApplyCourse(member, memCourse);
-
+            Form1.m_instance.FocusToMainForm();
             this.Close();
+        }
+
+        private void DailyDialogForm_Load(object sender, EventArgs e)
+        {
+            FormManager.GetSingleton().SetCurrentFocusForm(this);
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtPrice.Text, "[^0-9]"))
+            {
+                txtPrice.Text = txtPrice.Text.Remove(txtPrice.Text.Length - 1);
+                txtPrice.SelectionStart = txtPrice.Text.Length;
+            }
         }
     }
 }

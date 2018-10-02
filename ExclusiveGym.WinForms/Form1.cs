@@ -170,6 +170,7 @@ namespace ExclusiveGym.WinForms
         public void FocusToMainForm()
         {
             FormManager.GetSingleton().SetCurrentFocusForm(this);
+            homeControl1.Refresh();
         }
         public void SetupFingerprint()
         {

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExclusiveGym.WinForms.Models;
 
 class StorageManager
@@ -105,7 +103,7 @@ class StorageManager
 
     public List<AccessLog> GetAccessLogListToday()
     {
-        return GetDB().AccessLog.Include("Member").Where(accesslog => accesslog.AccessDate.Day == DateTime.Now.Day && accesslog.AccessDate.Month == DateTime.Now.Month && accesslog.AccessDate.Year == DateTime.Now.Year).ToList();
+        return GetDB().AccessLog.Where(accesslog => accesslog.AccessDate.Day == DateTime.Now.Day && accesslog.AccessDate.Month == DateTime.Now.Month && accesslog.AccessDate.Year == DateTime.Now.Year).ToList();
     }
 
     public Course GetDailyCourse()
@@ -123,20 +121,34 @@ class StorageManager
         return GetDB().MemberApplyCourses.Where(x => x.MemberId == id).FirstOrDefault();
     }
 
-    public void MemberDailyApplyCourse(Member member,ApplyCourseLog memCourse)
+    public void MemberDailyApplyCourse(Member member, ApplyCourseLog memCourse)
     {
-        AddMember(member);
-        memCourse.MemberId = member.MemberId;
-        GetDB().ApplyCourseLog.Add(memCourse);
-        SaveDB();
+        //AddMember(member);
+        //memCourse.MemberId = member.MemberId;
+        var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day
+       && f.AccessDate.Month == DateTime.Now.Month
+       && f.AccessDate.Year == DateTime.Now.Year) &&
+       f.Name == member.Name && f.LastName == member.LastName).SingleOrDefault();
+        if (access == null)
+        {
+            GetDB().ApplyCourseLog.Add(memCourse);
+            AccessLog accessLog = new AccessLog();
+            accessLog.AccessDate = DateTime.Now;
+            accessLog.AccessType = COURSETYPE.DAILY;
+            accessLog.Name = member.Name;
+            accessLog.LastName = member.LastName;
+            GetDB().AccessLog.Add(accessLog);
+            SaveDB();
+        }
+
     }
 
     public void MemberApplyCourse(Member member, Course course)
     {
         ApplyCourseLog acl = new ApplyCourseLog();
-        acl.MemberId = member.MemberId;
+        acl.Name = member.Name;
         acl.ApplyDate = DateTime.Now;
-        acl.CourseID = course.CourseID;
+        acl.LastName = member.LastName;
         acl.CoursePrice = course.CoursePrice;
         GetDB().ApplyCourseLog.Add(acl);
 
@@ -176,15 +188,14 @@ class StorageManager
         var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day
         && f.AccessDate.Month == DateTime.Now.Month
         && f.AccessDate.Year == DateTime.Now.Year) &&
-        f.MemberID == member.MemberId).SingleOrDefault();
+        f.Name == member.Name && f.LastName == member.LastName).SingleOrDefault();
         if (access == null)
         {
-            MemberApplyCourse mac = GetMemberApplyCourseByMemberID(member.MemberId);
-            Course course = GetCourseByID(mac.CourseID);
             AccessLog accessLog = new AccessLog();
             accessLog.AccessDate = DateTime.Now;
-            accessLog.AccessType = course.CourseType;
-            accessLog.MemberID = member.MemberId;
+            accessLog.AccessType = COURSETYPE.MONTLY;
+            accessLog.Name = member.Name;
+            accessLog.LastName = member.LastName;
             GetDB().AccessLog.Add(accessLog);
             SaveDB();
         }
@@ -198,15 +209,15 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeTotal()
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").ToList();
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.ToList();
 
-        var query = list.GroupBy(o => new { o.CourseID }).Select(g => new ApplyCourseLog
+        var query = list.GroupBy(o => new { o.CourseName }).Select(g => new ApplyCourseLog
         {
-            CourseID = g.Key.CourseID,
-            ApplyDate = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().ApplyDate,
-            Course = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Course,
-            Member = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Member,
-            MemberId = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().MemberId,
+            CourseName = g.Key.CourseName,
+            ApplyDate = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().ApplyDate,
+            Name = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().Name,
+            LastName = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().LastName,
+            AutoID = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().AutoID,
             CoursePrice = g.Sum(x => x.CoursePrice)
         }).ToList();
         return query;
@@ -214,17 +225,17 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByDay(int day, int month, int year)
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(applycourseLog => applycourseLog.ApplyDate.Day == day
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(applycourseLog => applycourseLog.ApplyDate.Day == day
         && applycourseLog.ApplyDate.Month == month
         && applycourseLog.ApplyDate.Year == year).ToList();
 
         var query = list.GroupBy(o => o).Select(g => new ApplyCourseLog
         {
-            CourseID = g.Key.CourseID,
+            AutoID = g.Key.AutoID,
             ApplyDate = g.Key.ApplyDate,
-            Course = g.Where(o => o.CourseID == g.Key.CourseID && o.ApplyDate == g.Key.ApplyDate).FirstOrDefault().Course,
-            Member = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Member,
-            MemberId = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().MemberId,
+            CourseName = g.Key.CourseName,
+            Name = g.Key.Name,
+            LastName = g.Key.LastName,
             CoursePrice = g.Sum(x => x.CoursePrice)
         }).ToList();
         return query;
@@ -232,14 +243,14 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByMonth(int month, int year)
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year).ToList();
-        var query = list.GroupBy(o => new { o.CourseID, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Month == month && f.ApplyDate.Year == year).ToList();
+        var query = list.GroupBy(o => new { o.CourseName, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
         {
-            CourseID = g.Key.CourseID,
-            ApplyDate = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().ApplyDate,
-            Course = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Course,
-            Member = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().Member,
-            MemberId = g.Where(o => o.CourseID == g.Key.CourseID).FirstOrDefault().MemberId,
+            CourseName = g.Key.CourseName,
+            AutoID = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().AutoID,
+            ApplyDate = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().ApplyDate,
+            Name = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().Name,
+            LastName = g.Where(o => o.CourseName == g.Key.CourseName).FirstOrDefault().LastName,
             CoursePrice = g.Sum(x => x.CoursePrice)
         }).ToList();
         return query;
@@ -247,14 +258,14 @@ class StorageManager
 
     public List<ApplyCourseLog> GetIncomeByYear(int year)
     {
-        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Include("Course").Include("Member").Where(f => f.ApplyDate.Year == year).ToList();
-        var query = list.GroupBy(o => new { o.Course.CourseType, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
+        List<ApplyCourseLog> list = GetDB().ApplyCourseLog.Where(f => f.ApplyDate.Year == year).ToList();
+        var query = list.GroupBy(o => new { o.CourseName, o.ApplyDate.Date.Year, o.ApplyDate.Date.Month }).Select(g => new ApplyCourseLog
         {
-            CourseID = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().CourseID,
+            CourseName = g.Key.CourseName,
+            AutoID = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().AutoID,
             ApplyDate = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().ApplyDate,
-            Course = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().Course,
-            Member = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().Member,
-            MemberId = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().MemberId,
+            Name = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().Name,
+            LastName = g.Where(o => o.ApplyDate.Date.Year == g.Key.Year).FirstOrDefault().LastName,
             CoursePrice = g.Sum(x => x.CoursePrice)
         }).ToList();
         return query;

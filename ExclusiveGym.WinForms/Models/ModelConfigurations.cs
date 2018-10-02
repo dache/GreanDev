@@ -33,9 +33,9 @@ public class ApplyCourseLogConfiguration : EntityTypeConfiguration<ApplyCourseLo
 {
     public ApplyCourseLogConfiguration()
     {
-        Property(c => c.CourseID).IsRequired();
+        //Property(c => c.CourseID).IsRequired();
         Property(c => c.CoursePrice).IsRequired();
-        Property(c => c.MemberId).IsRequired();
+        Property(c => c.Name).IsRequired();
         Property(c => c.ApplyDate).IsRequired();
     }
 }
@@ -44,7 +44,7 @@ public class AccessLogConfiguration : EntityTypeConfiguration<AccessLog>
 {
     public AccessLogConfiguration()
     {
-        Property(c => c.MemberID).IsRequired();
+        Property(c => c.Name).IsRequired();
         Property(c => c.AccessDate).IsRequired();
         Property(c => c.AccessType).IsRequired();
     }

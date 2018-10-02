@@ -47,7 +47,6 @@
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
@@ -303,19 +302,6 @@
             this.lblDate.Text = "16/09/2018 ";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.MediumBlue;
-            this.label7.Font = new System.Drawing.Font("Prompt", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Yellow;
-            this.label7.Location = new System.Drawing.Point(443, 56);
-            this.label7.Name = "label7";
-            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label7.Size = new System.Drawing.Size(215, 23);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "label7";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // homeControl1
             // 
             this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
@@ -350,7 +336,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 700);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.homeControl1);
             this.Controls.Add(this.reportControl1);
             this.Controls.Add(this.courseControl1);
@@ -396,7 +381,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private UserControls.HomeControl homeControl1;
-        private System.Windows.Forms.Label label7;
     }
 }
 

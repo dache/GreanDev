@@ -35,7 +35,6 @@ namespace ExclusiveGym.WinForms.UserControls
             int income = 0;
             foreach (ApplyCourseLog acl in applyCourseLogs)
             {
-                var course = StorageManager.GetSingleton().GetCourseByID(acl.CourseID);
                 income += acl.CoursePrice;
             }
 

@@ -35,7 +35,7 @@ namespace ExclusiveGym.WinForms.UserControls
             {
                 var r = new ReportTotal()
                 {
-                    CourseName = log.Course.CourseName,
+                    CourseName = log.CourseName,
                     CoursePrice = log.CoursePrice
                 };
                 reportData.Add(r);
@@ -67,9 +67,9 @@ namespace ExclusiveGym.WinForms.UserControls
                 var r = new ReportTypeDaily()
                 {
                     ApplyDate = log.ApplyDate,
-                    CourseName = log.Course.CourseName,
+                    CourseName = log.CourseName,
                     CoursePrice = log.CoursePrice,
-                    MemberName = $"{log.Member.Name}  {log.Member.LastName}"
+                    MemberName = $"{log.Name}  {log.LastName}"
                 };
                 reportData.Add(r);
             }
@@ -110,7 +110,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 var r = new ReportTypeMonthly()
                 {
                     ApplyDate = log.ApplyDate,
-                    CourseName = log.Course.CourseName,
+                    CourseName = log.CourseName,
                     CoursePrice = log.CoursePrice
                 };
                 reportData.Add(r);
@@ -149,7 +149,7 @@ namespace ExclusiveGym.WinForms.UserControls
                 var r = new ReportTypeYear()
                 {
                     ApplyDate = log.ApplyDate,
-                    CourseName = log.Course.CourseName,
+                    CourseName = log.CourseName,
                     CoursePrice = log.CoursePrice
                 };
                 reportData.Add(r);

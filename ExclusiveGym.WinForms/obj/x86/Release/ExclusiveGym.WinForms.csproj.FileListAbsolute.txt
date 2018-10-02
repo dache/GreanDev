@@ -46,3 +46,4 @@ C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\Exclu
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.UserControls.CourseControl.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.UserControls.ReportControl.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.WelcomeDialogForm.resources
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.DailyDialogForm.resources
