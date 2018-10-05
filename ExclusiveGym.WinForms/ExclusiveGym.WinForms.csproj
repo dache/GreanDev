@@ -208,6 +208,12 @@
     <Compile Include="UserControls\MemberControl.Designer.cs">
       <DependentUpon>MemberControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PaymentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PaymentControl.Designer.cs">
+      <DependentUpon>PaymentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ReportControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -269,6 +275,9 @@
     <EmbeddedResource Include="UserControls\MemberControl.resx">
       <DependentUpon>MemberControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PaymentControl.resx">
+      <DependentUpon>PaymentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ReportControl.resx">
       <DependentUpon>ReportControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -327,6 +336,10 @@
     </Content>
     <Content Include="Images\home.png" />
     <Content Include="Sonya-Swarm-Gym.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="temp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
