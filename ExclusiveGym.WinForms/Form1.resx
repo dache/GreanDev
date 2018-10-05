@@ -118,6 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnPayment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJ
+        TUUH4ggdDzsNTAQAEgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD1SURBVEhL
+        1dKxCoJQFAZgn8CncGxubmzoCVrsDewRwsnNRrdcg4ZobQoKGsM9aomK5lrtP/Ebl0Ju4b2RBz7wdPT8
+        6M35i8rz3IPohcdx9cKyGDJISK5jjqsXlg0F27e+cukCcN2FvWIHHY71hZt1AfLZxtCmOUQc6ws3fxLw
+        XIjrVO3lhwaMOCg0OTYSIH+7DQxoCQnHZQEL6NMKtAEp26LXBWxhSnKoxgO+/kQ/D5hBiyZgPOAGJ7qC
+        8YD6n0G9AkK4wJoOcFb6I5X1cq88U/SyK+T6R4ALPvQMkV0u11suJAUg39CGQALkdeRQbfD5HrbKce7U
+        RuUJ1WVKUAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnIncomeMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6

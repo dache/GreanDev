@@ -47,10 +47,12 @@
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
+            this.btnPayment = new System.Windows.Forms.Button();
             this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
             this.memberControl1 = new ExclusiveGym.WinForms.UserControls.MemberControl();
+            this.paymentControl1 = new ExclusiveGym.WinForms.UserControls.PaymentControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -59,6 +61,7 @@
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.MenuPanel.Controls.Add(this.btnPayment);
             this.MenuPanel.Controls.Add(this.panel2);
             this.MenuPanel.Controls.Add(this.label6);
             this.MenuPanel.Controls.Add(this.label5);
@@ -302,6 +305,26 @@
             this.lblDate.Text = "16/09/2018 ";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnPayment
+            // 
+            this.btnPayment.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPayment.FlatAppearance.BorderSize = 0;
+            this.btnPayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayment.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayment.Location = new System.Drawing.Point(16, 309);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(155, 45);
+            this.btnPayment.TabIndex = 12;
+            this.btnPayment.Text = "  ใบเสร็จ";
+            this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
             // homeControl1
             // 
             this.homeControl1.BackColor = System.Drawing.SystemColors.Control;
@@ -331,11 +354,19 @@
             this.memberControl1.Size = new System.Drawing.Size(917, 635);
             this.memberControl1.TabIndex = 10;
             // 
+            // paymentControl1
+            // 
+            this.paymentControl1.Location = new System.Drawing.Point(188, 34);
+            this.paymentControl1.Name = "paymentControl1";
+            this.paymentControl1.Size = new System.Drawing.Size(917, 630);
+            this.paymentControl1.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 700);
+            this.Controls.Add(this.paymentControl1);
             this.Controls.Add(this.homeControl1);
             this.Controls.Add(this.reportControl1);
             this.Controls.Add(this.courseControl1);
@@ -381,6 +412,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private UserControls.HomeControl homeControl1;
+        private System.Windows.Forms.Button btnPayment;
+        private UserControls.PaymentControl paymentControl1;
     }
 }
 

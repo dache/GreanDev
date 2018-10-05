@@ -244,6 +244,7 @@ namespace ExclusiveGym.WinForms
             btnMemberMenu.BackColor = Color.Transparent;
             btnPromotionMenu.BackColor = Color.Transparent;
             btnIncomeMenu.BackColor = Color.Transparent;
+            btnPayment.BackColor = Color.Transparent;
 
             Button btn = (Button)sender;
             currentMenuPanel.Top = btn.Top;
@@ -267,6 +268,10 @@ namespace ExclusiveGym.WinForms
             {
                 reportControl1.BringToFront();
                 reportControl1.TotalOfReport();
+            }
+            else if(btn == btnPayment)
+            {
+                paymentControl1.BringToFront();
             }
         }
 
