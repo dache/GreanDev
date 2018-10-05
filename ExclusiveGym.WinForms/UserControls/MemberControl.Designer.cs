@@ -70,7 +70,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gvMembers.DefaultCellStyle = dataGridViewCellStyle2;
             this.gvMembers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.gvMembers.Location = new System.Drawing.Point(15, 99);
+            this.gvMembers.Location = new System.Drawing.Point(15, 85);
             this.gvMembers.MultiSelect = false;
             this.gvMembers.Name = "gvMembers";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -143,11 +143,15 @@
             this.btnNewMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewMember.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewMember.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNewMember.Location = new System.Drawing.Point(777, 44);
+            this.btnNewMember.Image = ((System.Drawing.Image)(resources.GetObject("btnNewMember.Image")));
+            this.btnNewMember.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewMember.Location = new System.Drawing.Point(767, 24);
             this.btnNewMember.Name = "btnNewMember";
-            this.btnNewMember.Size = new System.Drawing.Size(120, 35);
+            this.btnNewMember.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnNewMember.Size = new System.Drawing.Size(130, 45);
             this.btnNewMember.TabIndex = 3;
             this.btnNewMember.Text = "เพิ่มสมาชิก";
+            this.btnNewMember.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNewMember.UseVisualStyleBackColor = false;
             this.btnNewMember.Click += new System.EventHandler(this.btnNewMember_Click);
             // 

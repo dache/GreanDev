@@ -42,10 +42,12 @@ namespace ExclusiveGym.WinForms.UserControls
             }
             dataGridView1.DataSource = reportData;
             decimal sumPrice = reportData.Sum(f => f.CoursePrice);
-            label4.Text = string.Format(m_sumTxt, sumPrice);
+            label4.Text = string.Format(m_sumTxt, String.Format("{0:N}", sumPrice));
 
             dataGridView1.Columns[0].HeaderText = "ชื่อครอส";
             dataGridView1.Columns[1].HeaderText = "ราคา";
+            dataGridView1.Columns[1].DefaultCellStyle.Format = "N0";
+
 
             dataGridView1.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -75,11 +77,12 @@ namespace ExclusiveGym.WinForms.UserControls
             }
             dailyDataView.DataSource = reportData;
             decimal sumPrice = reportData.Sum(f => f.CoursePrice);
-            dailySumPriceLabel.Text = string.Format(m_sumTxt, sumPrice);
+            dailySumPriceLabel.Text = string.Format(m_sumTxt, String.Format("{0:N}", sumPrice));
 
             dailyDataView.Columns[0].HeaderText = "วันที่";
             dailyDataView.Columns[1].HeaderText = "ชื่อครอส";
             dailyDataView.Columns[2].HeaderText = "ราคา";
+            dailyDataView.Columns[2].DefaultCellStyle.Format = "N0";
             dailyDataView.Columns[3].HeaderText = "ชื่อสมาชิก";
 
             dailyDataView.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -117,11 +120,12 @@ namespace ExclusiveGym.WinForms.UserControls
             }
             montDataView.DataSource = reportData;
             decimal sumPrice = reportData.Sum(f => f.CoursePrice);
-            monthlySumPriceLabel.Text = string.Format(m_sumTxt, sumPrice);
+            monthlySumPriceLabel.Text = string.Format(m_sumTxt, String.Format("{0:N}", sumPrice));
 
             montDataView.Columns[0].HeaderText = "วันที่";
             montDataView.Columns[1].HeaderText = "ชื่อครอส";
             montDataView.Columns[2].HeaderText = "ราคา";
+            montDataView.Columns[2].DefaultCellStyle.Format = "N0";
 
             montDataView.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             montDataView.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -156,11 +160,12 @@ namespace ExclusiveGym.WinForms.UserControls
             }
             yearDataView.DataSource = reportData;
             decimal sumPrice = reportData.Sum(f => f.CoursePrice);
-            yearSumPriceLabel.Text = string.Format(m_sumTxt, sumPrice);
+            yearSumPriceLabel.Text = string.Format(m_sumTxt, String.Format("{0:N}", sumPrice));
 
             yearDataView.Columns[0].HeaderText = "วันที่";
             yearDataView.Columns[1].HeaderText = "ชื่อครอส";
             yearDataView.Columns[2].HeaderText = "ราคา";
+            yearDataView.Columns[2].DefaultCellStyle.Format = "N0";
 
             yearDataView.Columns[0].DefaultCellStyle.Format = "MMMM yyyy";
             yearDataView.Columns[0].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");

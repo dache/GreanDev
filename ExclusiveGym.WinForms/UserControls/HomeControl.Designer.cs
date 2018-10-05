@@ -187,14 +187,19 @@
             // btnDailyRegister
             // 
             this.btnDailyRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.btnDailyRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDailyRegister.FlatAppearance.BorderSize = 0;
             this.btnDailyRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDailyRegister.Font = new System.Drawing.Font("Prompt", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDailyRegister.Location = new System.Drawing.Point(769, 24);
+            this.btnDailyRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnDailyRegister.Image")));
+            this.btnDailyRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDailyRegister.Location = new System.Drawing.Point(739, 24);
             this.btnDailyRegister.Name = "btnDailyRegister";
-            this.btnDailyRegister.Size = new System.Drawing.Size(130, 45);
+            this.btnDailyRegister.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnDailyRegister.Size = new System.Drawing.Size(160, 45);
             this.btnDailyRegister.TabIndex = 16;
-            this.btnDailyRegister.Text = "เข้าใช้งานรายวัน";
+            this.btnDailyRegister.Text = "   เข้าใช้งานรายวัน";
+            this.btnDailyRegister.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDailyRegister.UseVisualStyleBackColor = false;
             this.btnDailyRegister.Click += new System.EventHandler(this.btnDailyRegister_Click);
             // 

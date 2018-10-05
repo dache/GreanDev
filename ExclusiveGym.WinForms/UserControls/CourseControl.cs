@@ -74,6 +74,8 @@ namespace ExclusiveGym.WinForms.UserControls
             gvCourses.Columns[3].Width = 100;
             gvCourses.Columns[4].Width = 120;
 
+            gvCourses.Columns[3].DefaultCellStyle.Format = "N0";
+
             gvCourses.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvCourses.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvCourses.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
