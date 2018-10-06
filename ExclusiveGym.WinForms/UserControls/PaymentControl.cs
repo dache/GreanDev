@@ -50,16 +50,17 @@ namespace ExclusiveGym.WinForms.UserControls
 
             gvPayments.DataSource = payment.ToList();
 
-            gvPayments.Columns[0].HeaderText = "วันที่จ่ายเงิน";
-            gvPayments.Columns[1].HeaderText = "เวลา";
-            gvPayments.Columns[2].HeaderText = "ชื่อผู้จ่าย";
-            gvPayments.Columns[3].HeaderText = "ราคา";
-            gvPayments.Columns[4].Visible = false;
-
-            gvPayments.Columns[0].Width = 150;
+            gvPayments.Columns[0].HeaderText = "ประเภท";
+            gvPayments.Columns[1].HeaderText = "วันที่จ่ายเงิน";
+            gvPayments.Columns[2].HeaderText = "เวลา";
+            gvPayments.Columns[3].HeaderText = "ชื่อผู้จ่าย";
+            gvPayments.Columns[4].HeaderText = "ราคา";
+           
+            gvPayments.Columns[0].Width = 100;
             gvPayments.Columns[1].Width = 120;
-            gvPayments.Columns[2].Width = 270;
-            gvPayments.Columns[3].Width = 120;
+            gvPayments.Columns[2].Width = 120;
+            gvPayments.Columns[3].Width = 270;
+            gvPayments.Columns[4].Width = 100;
 
             gvPayments.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvPayments.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -68,10 +69,11 @@ namespace ExclusiveGym.WinForms.UserControls
 
             gvPayments.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvPayments.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gvPayments.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvPayments.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvPayments.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            gvPayments.Columns[3].DefaultCellStyle.Format = "N0";
-            gvPayments.Columns[3].DefaultCellStyle.Padding = new Padding(5, 0, 5, 0);
+            gvPayments.Columns[4].DefaultCellStyle.Format = "N0";
+            gvPayments.Columns[4].DefaultCellStyle.Padding = new Padding(5, 0, 5, 0);
 
             DataGridViewButtonColumn newButton = new DataGridViewButtonColumn();
             newButton.Name = "printButton";
@@ -99,24 +101,10 @@ namespace ExclusiveGym.WinForms.UserControls
                 printDocument1.DefaultPageSettings.PaperSize = customSize;
                 printPreviewDialog1.Document = printDocument1;
                 printPreviewDialog1.ShowDialog();
+
+                //printReceipt(); // Print แบบไม่ต้องโชว์ตัวอย่าง
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //printReceipt(); // Print แบบไม่ต้องโชว์ตัวอย่าง
-
-            //PrinterSettings ps = new PrinterSettings();
-            //IEnumerable<PaperSize> paperSizes = ps.PaperSizes.Cast<PaperSize>();
-            //PaperSize sizeA4 = paperSizes.First<PaperSize>(size => size.Kind == PaperKind.A4); //
-            PaperSize customSize = new PaperSize();
-            customSize.Width = 80;
-            customSize.Height = 150;
-
-            printDocument1.DefaultPageSettings.PaperSize = customSize;
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-        }
+        }    
 
         private void printReceipt()
         {
@@ -189,10 +177,10 @@ namespace ExclusiveGym.WinForms.UserControls
 
     public class PaymentInfo
     {
+        public string CourseName { get; set; }
         public string PayDate { get; set; }
         public string PayTime { get; set; }
         public string PayName { get; set; }
-        public decimal Price { get; set; }
-        public string CourseName { get; set; }
+        public decimal Price { get; set; }        
     }
 }
