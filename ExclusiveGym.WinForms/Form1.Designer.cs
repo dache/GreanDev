@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.btnPayment = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,12 +48,11 @@
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.btnPayment = new System.Windows.Forms.Button();
+            this.paymentControl1 = new ExclusiveGym.WinForms.UserControls.PaymentControl();
             this.homeControl1 = new ExclusiveGym.WinForms.UserControls.HomeControl();
             this.reportControl1 = new ExclusiveGym.WinForms.UserControls.ReportControl();
             this.courseControl1 = new ExclusiveGym.WinForms.UserControls.CourseControl();
             this.memberControl1 = new ExclusiveGym.WinForms.UserControls.MemberControl();
-            this.paymentControl1 = new ExclusiveGym.WinForms.UserControls.PaymentControl();
             this.MenuPanel.SuspendLayout();
             this.TitleBarPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -78,6 +78,26 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(188, 700);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // btnPayment
+            // 
+            this.btnPayment.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPayment.FlatAppearance.BorderSize = 0;
+            this.btnPayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayment.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayment.Location = new System.Drawing.Point(12, 309);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(155, 45);
+            this.btnPayment.TabIndex = 12;
+            this.btnPayment.Text = " ใบเสร็จ";
+            this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // panel2
             // 
@@ -156,7 +176,7 @@
             this.btnIncomeMenu.FlatAppearance.BorderSize = 0;
             this.btnIncomeMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnIncomeMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncomeMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncomeMenu.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIncomeMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnIncomeMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnIncomeMenu.Image")));
             this.btnIncomeMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -164,7 +184,7 @@
             this.btnIncomeMenu.Name = "btnIncomeMenu";
             this.btnIncomeMenu.Size = new System.Drawing.Size(155, 45);
             this.btnIncomeMenu.TabIndex = 0;
-            this.btnIncomeMenu.Text = "  รายงาน";
+            this.btnIncomeMenu.Text = " รายงาน";
             this.btnIncomeMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnIncomeMenu.UseVisualStyleBackColor = false;
             this.btnIncomeMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -176,7 +196,7 @@
             this.btnPromotionMenu.FlatAppearance.BorderSize = 0;
             this.btnPromotionMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnPromotionMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPromotionMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPromotionMenu.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPromotionMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnPromotionMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnPromotionMenu.Image")));
             this.btnPromotionMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -184,7 +204,8 @@
             this.btnPromotionMenu.Name = "btnPromotionMenu";
             this.btnPromotionMenu.Size = new System.Drawing.Size(155, 45);
             this.btnPromotionMenu.TabIndex = 0;
-            this.btnPromotionMenu.Text = "  จัดการคอร์ส";
+            this.btnPromotionMenu.Text = " จัดการคอร์ส";
+            this.btnPromotionMenu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPromotionMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPromotionMenu.UseVisualStyleBackColor = false;
             this.btnPromotionMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -196,7 +217,7 @@
             this.btnMemberMenu.FlatAppearance.BorderSize = 0;
             this.btnMemberMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnMemberMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMemberMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMemberMenu.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMemberMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnMemberMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMemberMenu.Image")));
             this.btnMemberMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -204,7 +225,7 @@
             this.btnMemberMenu.Name = "btnMemberMenu";
             this.btnMemberMenu.Size = new System.Drawing.Size(155, 45);
             this.btnMemberMenu.TabIndex = 0;
-            this.btnMemberMenu.Text = "  สมาชิก";
+            this.btnMemberMenu.Text = " สมาชิก";
             this.btnMemberMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMemberMenu.UseVisualStyleBackColor = false;
             this.btnMemberMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -216,7 +237,7 @@
             this.btnHomeMenu.FlatAppearance.BorderSize = 0;
             this.btnHomeMenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnHomeMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHomeMenu.Font = new System.Drawing.Font("Comic Sans MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHomeMenu.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHomeMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnHomeMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnHomeMenu.Image")));
             this.btnHomeMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,7 +245,7 @@
             this.btnHomeMenu.Name = "btnHomeMenu";
             this.btnHomeMenu.Size = new System.Drawing.Size(155, 45);
             this.btnHomeMenu.TabIndex = 0;
-            this.btnHomeMenu.Text = "  เมนูหลัก";
+            this.btnHomeMenu.Text = " หน้าหลัก";
             this.btnHomeMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHomeMenu.UseVisualStyleBackColor = false;
             this.btnHomeMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -305,25 +326,12 @@
             this.lblDate.Text = "16/09/2018 ";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnPayment
+            // paymentControl1
             // 
-            this.btnPayment.BackColor = System.Drawing.Color.DarkOliveGreen;
-            this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPayment.FlatAppearance.BorderSize = 0;
-            this.btnPayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPayment.Font = new System.Drawing.Font("Prompt", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
-            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayment.Location = new System.Drawing.Point(16, 309);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(155, 45);
-            this.btnPayment.TabIndex = 12;
-            this.btnPayment.Text = "  ใบเสร็จ";
-            this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPayment.UseVisualStyleBackColor = false;
-            this.btnPayment.Click += new System.EventHandler(this.btnMenu_Click);
+            this.paymentControl1.Location = new System.Drawing.Point(188, 34);
+            this.paymentControl1.Name = "paymentControl1";
+            this.paymentControl1.Size = new System.Drawing.Size(917, 630);
+            this.paymentControl1.TabIndex = 14;
             // 
             // homeControl1
             // 
@@ -353,13 +361,6 @@
             this.memberControl1.Name = "memberControl1";
             this.memberControl1.Size = new System.Drawing.Size(917, 635);
             this.memberControl1.TabIndex = 10;
-            // 
-            // paymentControl1
-            // 
-            this.paymentControl1.Location = new System.Drawing.Point(188, 34);
-            this.paymentControl1.Name = "paymentControl1";
-            this.paymentControl1.Size = new System.Drawing.Size(917, 630);
-            this.paymentControl1.TabIndex = 14;
             // 
             // Form1
             // 
