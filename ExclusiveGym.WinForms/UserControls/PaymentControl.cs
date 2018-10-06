@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Printing;
+using ExclusiveGym.WinForms.Models;
 
 namespace ExclusiveGym.WinForms.UserControls
 {
@@ -26,30 +27,95 @@ namespace ExclusiveGym.WinForms.UserControls
         public PaymentControl()
         {
             InitializeComponent();
-            //printDocument1.PrintPage +=
-            //    new PrintPageEventHandler(printDocument1_PrintPage);
             printDocument1.PrintPage +=
                new PrintPageEventHandler(printPage);
+
+            // Data Gridview
+            InitData();
+        }
+
+        private void InitData()
+        {
+            List<ApplyCourseLog> courses = StorageManager.GetSingleton().GetAllPayment();
+            var payment = from p in courses
+                          orderby p.ApplyDate descending
+                          select new PaymentInfo()
+                          {
+                              PayDate = p.ApplyDate.ToString("dd/MM/yyyy"),
+                              PayTime = p.ApplyDate.ToString("hh:mm:ss"),
+                              PayName = $"{p.Name} {p.LastName}",
+                              Price = p.CoursePrice,
+                              CourseName = p.CourseName
+                          };
+
+            gvPayments.DataSource = payment.ToList();
+
+            gvPayments.Columns[0].HeaderText = "วันที่จ่ายเงิน";
+            gvPayments.Columns[1].HeaderText = "เวลา";
+            gvPayments.Columns[2].HeaderText = "ชื่อผู้จ่าย";
+            gvPayments.Columns[3].HeaderText = "ราคา";
+            gvPayments.Columns[4].Visible = false;
+
+            gvPayments.Columns[0].Width = 150;
+            gvPayments.Columns[1].Width = 120;
+            gvPayments.Columns[2].Width = 270;
+            gvPayments.Columns[3].Width = 120;
+
+            gvPayments.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvPayments.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvPayments.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvPayments.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            gvPayments.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvPayments.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvPayments.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            gvPayments.Columns[3].DefaultCellStyle.Format = "N0";
+            gvPayments.Columns[3].DefaultCellStyle.Padding = new Padding(5, 0, 5, 0);
+
+            DataGridViewButtonColumn newButton = new DataGridViewButtonColumn();
+            newButton.Name = "printButton";
+            newButton.Text = "พิมพ์ใบเสร็จ";
+            newButton.HeaderText = "";
+            newButton.UseColumnTextForButtonValue = true;
+            newButton.DefaultCellStyle.BackColor = Color.FromArgb(240, 173, 78);
+            newButton.FlatStyle = FlatStyle.Flat;
+            newButton.DefaultCellStyle.ForeColor = Color.White;
+            newButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
+            if (gvPayments.Columns["printButton"] == null)
+            {
+                gvPayments.Columns.Insert(gvPayments.Columns.Count, newButton);
+                gvPayments.Columns[4].Width = 120;
+            }
+        }
+
+        private void gvPayments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == gvPayments.Columns["printButton"].Index)
+            {
+                PaperSize customSize = new PaperSize();
+                customSize.Width = 80;
+                customSize.Height = 150;
+                printDocument1.DefaultPageSettings.PaperSize = customSize;
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            generateReceipt();
-            //printReceipt();
-            ReadDocument();
+            //printReceipt(); // Print แบบไม่ต้องโชว์ตัวอย่าง
+
+            //PrinterSettings ps = new PrinterSettings();
+            //IEnumerable<PaperSize> paperSizes = ps.PaperSizes.Cast<PaperSize>();
+            //PaperSize sizeA4 = paperSizes.First<PaperSize>(size => size.Kind == PaperKind.A4); //
+            PaperSize customSize = new PaperSize();
+            customSize.Width = 80;
+            customSize.Height = 150;
+
+            printDocument1.DefaultPageSettings.PaperSize = customSize;
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
-        }
-
-        private void generateReceipt()
-        {
-            FileStream fs = new FileStream(RECEIPT, FileMode.Create);
-            StreamWriter writer = new StreamWriter(fs);
-            writer.WriteLine("========================");
-            writer.WriteLine("    EXCLUSIVE GYM      ");
-            writer.WriteLine("=======================");
-            writer.Close();
-            fs.Close();
         }
 
         private void printReceipt()
@@ -64,114 +130,69 @@ namespace ExclusiveGym.WinForms.UserControls
             fs.Close();
         }
 
-        //private void printPage(object sender, PrintPageEventArgs e)
-        //{
-        //    int charactersOnPage = 0;
-        //    int linesPerPage = 0;
-        //    Graphics graphics = e.Graphics;
-
-        //    // Sets the value of charactersOnPage to the number of characters 
-        //    // of stringToPrint that will fit within the bounds of the page.
-        //    graphics.MeasureString(stringToPrint, this.Font,
-        //        e.MarginBounds.Size, StringFormat.GenericTypographic,
-        //        out charactersOnPage, out linesPerPage);
-
-        //    // Draws the string within the bounds of the page
-        //    graphics.DrawString(stringToPrint, this.Font, Brushes.Black,
-        //        e.MarginBounds, StringFormat.GenericTypographic);
-
-        //    // Remove the portion of the string that has been printed.
-        //    stringToPrint = stringToPrint.Substring(charactersOnPage);
-
-        //    // Check to see if more pages are to be printed.
-        //    e.HasMorePages = (stringToPrint.Length > 0);
-        //}
-
-        private void ReadDocument()
-        {
-            string docName = "testPage.txt";            
-            printDocument1.DocumentName = docName;
-
-            PrinterSettings ps = new PrinterSettings();
-            IEnumerable<PaperSize> paperSizes = ps.PaperSizes.Cast<PaperSize>();
-
-            PaperSize sizeA4 = paperSizes.First<PaperSize>(size => size.Kind == PaperKind.Statement); //
-            PaperSize customSize = new PaperSize();
-            customSize.Width = 80;
-            customSize.Height = 200;
-            printDocument1.DefaultPageSettings.PaperSize = customSize;
-
-            using (FileStream stream = new FileStream(RECEIPT, FileMode.Open))
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                documentContents = reader.ReadToEnd();
-            }
-            stringToPrint = documentContents;
-        }
-
-        void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            int charactersOnPage = 0;
-            int linesPerPage = 0;
-
-            // Sets the value of charactersOnPage to the number of characters 
-            // of stringToPrint that will fit within the bounds of the page.
-            e.Graphics.MeasureString(stringToPrint, this.Font,
-                e.MarginBounds.Size, StringFormat.GenericTypographic,
-                out charactersOnPage, out linesPerPage);
-
-            // Draws the string within the bounds of the page.
-            e.Graphics.DrawString(stringToPrint, this.Font, Brushes.Black,
-            e.MarginBounds, StringFormat.GenericTypographic);
-
-            // Remove the portion of the string that has been printed.
-            stringToPrint = stringToPrint.Substring(charactersOnPage);
-
-            // Check to see if more pages are to be printed.
-            e.HasMorePages = (stringToPrint.Length > 0);
-
-            // If there are no more pages, reset the string to be printed.
-            if (!e.HasMorePages)
-                stringToPrint = documentContents;
-        }
-
-        List<string> itemList = new List<string>()
-{
-    "201", //fill from somewhere in your code
-    "202"
-};
-
         private void printPage(object sender, PrintPageEventArgs e)
         {
             Graphics graphics = e.Graphics;
 
-            Font regular = new Font(FontFamily.GenericSansSerif, 5f, FontStyle.Regular);
+            Font regular = new Font(FontFamily.GenericSansSerif, 3f, FontStyle.Regular);
             Font bold = new Font(FontFamily.GenericSansSerif, 5f, FontStyle.Bold);
 
-            //print header
-            graphics.DrawString("==================", bold, Brushes.Black, 0, 0);
-            graphics.DrawString("EXCLUSIVE GYM", bold, Brushes.Black, 10, 10);
-            graphics.DrawLine(Pens.Black, 0, 20, 80, 20);
-            graphics.DrawString("ประเภท          |          ราคา", bold, Brushes.Black, 0, 30);
-            graphics.DrawString("รายวัน           70", regular, Brushes.Black, 0, 40);            
-            graphics.DrawString($"วันที่", bold, Brushes.Black, 0, 70);
-            graphics.DrawString($"{ DateTime.Now.ToString("dd/MM/yyy hh:mm:ss")}", regular, Brushes.Black, 0, 80);
-          
-            graphics.DrawLine(Pens.Black, 0, 90, 80, 90);
+            Pen blackPen = new Pen(Color.Black, 1);
 
-            //for (int i = 0; i < itemList.Count; i++)
-            //{
-            //    graphics.DrawString(itemList[i].ToString(), regular, Brushes.Black, 20, 150 + i * 20);
-            //}
+            float[] dashValues = { 1, 1, 1, 1 };
+            Pen dashPen = new Pen(Color.Black, 0.5f);
+            dashPen.DashPattern = dashValues;
+
+            StringFormat format = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+
+            // Data
+            PaymentInfo payment = (PaymentInfo)gvPayments.CurrentRow.DataBoundItem;
+
+            //print header            
+            graphics.DrawString("EXCLUSIVE GYM", bold, Brushes.Black, 8, 5);
+            graphics.DrawString("10 ม.6 ต.แม่สอด อ.เถิน", regular, Brushes.Black, 5, 15);
+            graphics.DrawString("จ.ลำปาง 52160 โทร. 088-263-1900", regular, Brushes.Black, 5, 20);
+
+            //// Receive
+            graphics.DrawString("ใบเสร็จรับเงิน", bold, Brushes.Black, 18, 30);
+            //graphics.DrawLine(blackPen, 0, 30, 80, 30);
+            graphics.DrawString($"เลขที่ : { Guid.NewGuid()}", regular, Brushes.Black, 2, 40);
+            graphics.DrawString($"วันที่ : { payment.PayDate}", regular, Brushes.Black, 2, 45);
+            graphics.DrawString($"เวลา : { payment.PayTime}", regular, Brushes.Black, 45, 45);
+            graphics.DrawString("CASH : เงินสด", regular, Brushes.Black, 2, 50);
+            graphics.DrawString($"ชื่อลูกค้า : { payment.PayName}", regular, Brushes.Black, 2, 55);
+
+            /// Item
+            graphics.DrawString("ประเภท", regular, Brushes.Black, 13, 65);
+            graphics.DrawString("|", regular, Brushes.Black, 40, 65);
+            graphics.DrawString("ราคา", regular, Brushes.Black, 54, 65);
+            graphics.DrawLine(dashPen, 5, 72, 75, 72);
+            graphics.DrawString(payment.CourseName, regular, Brushes.Black, 5, 75);
+            graphics.DrawString(String.Format("{0:N}", payment.Price), regular, Brushes.Black, 75, 75, format);
+            // sumary
+            graphics.DrawLine(dashPen, 5, 95, 75, 95);
+            graphics.DrawString("รวม", bold, Brushes.Black, 2, 97);            
+            graphics.DrawString("บาท", bold, Brushes.Black, 78, 97, format);
+            graphics.DrawString(String.Format("{0:N}", payment.Price), bold, Brushes.Black, 65, 97, format);
 
             //print footer
-            //...
+            graphics.DrawLine(dashPen, 5, 110, 75, 110);
+            graphics.DrawString("THANK YOU.", bold, Brushes.Black, 15, 112);
 
             regular.Dispose();
             bold.Dispose();
 
             // Check to see if more pages are to be printed.
-            e.HasMorePages = (itemList.Count > 20);
+            //e.HasMorePages = (itemList.Count > 20);
         }
+    }
+
+    public class PaymentInfo
+    {
+        public string PayDate { get; set; }
+        public string PayTime { get; set; }
+        public string PayName { get; set; }
+        public decimal Price { get; set; }
+        public string CourseName { get; set; }
     }
 }

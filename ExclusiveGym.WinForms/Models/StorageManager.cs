@@ -270,4 +270,13 @@ class StorageManager
         }).ToList();
         return query;
     }
+
+    #region PAYMENTS
+
+    public List<ApplyCourseLog> GetAllPayment()
+    {
+        return GetDB().ApplyCourseLog.ToList();
+    }
+
+    #endregion
 }
