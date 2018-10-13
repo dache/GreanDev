@@ -272,6 +272,7 @@ namespace ExclusiveGym.WinForms
             else if(btn == btnPayment)
             {
                 paymentControl1.BringToFront();
+                paymentControl1.InitData();
             }
         }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExclusiveGym.WinForms.Models;
+using ExclusiveGym.WinForms.UserControls;
 
 namespace ExclusiveGym.WinForms
 {
@@ -59,12 +60,23 @@ namespace ExclusiveGym.WinForms
 
             var memCourse = new ApplyCourseLog();
             memCourse.ApplyDate = DateTime.Now;
-            memCourse.CourseName = "Daily";
+            memCourse.CourseName = "รายวัน";
+            memCourse.MemberId = member.MemberId;
             memCourse.Name = txtName.Text.Trim();
             memCourse.LastName = txtLastName.Text.Trim();
             memCourse.CoursePrice = Convert.ToInt32(txtPrice.Text.Trim());
 
             StorageManager.GetSingleton().MemberDailyApplyCourse(member, memCourse);
+
+            PaymentInfo payment = new PaymentInfo();
+            ApplyCourseLog applyCourseLog = StorageManager.GetSingleton().GetLastPayment();
+            payment.ID = applyCourseLog.AutoID;
+            payment.PayDate = applyCourseLog.ApplyDate.ToString("dd/MM/yyyy");
+            payment.PayTime = applyCourseLog.ApplyDate.ToString("hh:mm:ss");
+            payment.PayName = $"{applyCourseLog.Name} {applyCourseLog.LastName}";
+            payment.Price = applyCourseLog.CoursePrice;
+            payment.CourseName = applyCourseLog.CourseName;
+            Payment.GetPayment().PrintRecipt(payment);
             Form1.m_instance.FocusToMainForm();
             this.Close();
         }

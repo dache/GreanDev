@@ -30,7 +30,7 @@ namespace ExclusiveGym.WinForms
             SetStyle(ControlStyles.Opaque, true);
             label1.Text = $"ยินดีต้อนรับ : {member.Name + " " + member.LastName}";
             SetStyle(ControlStyles.Opaque, true);
-            btnApply.Enabled = false;
+            btnApply.Enabled = true;
             // create button course
             var courses = StorageManager.GetSingleton().GetAllCourses().ToList();
             foreach (var course in courses)
@@ -79,7 +79,8 @@ namespace ExclusiveGym.WinForms
         {
             StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply,
                 StorageManager.GetSingleton().GetDailyCourse());
-            m_finishCallback(this.m_currentMemberWillApply);
+            if(m_finishCallback!= null)
+                m_finishCallback(this.m_currentMemberWillApply);
             this.Close();
         }
 
@@ -185,7 +186,8 @@ namespace ExclusiveGym.WinForms
             Course a = this.currentCourse;
 
             StorageManager.GetSingleton().MemberApplyCourse(m_currentMemberWillApply, a);
-            m_finishCallback(this.m_currentMemberWillApply);
+            if (m_finishCallback != null)
+                m_finishCallback(this.m_currentMemberWillApply);
             this.Close();
         }
 

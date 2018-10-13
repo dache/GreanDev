@@ -188,6 +188,7 @@
     <Compile Include="scripts\FormManager.cs" />
     <Compile Include="scripts\Functions.cs" />
     <Compile Include="scripts\NotificationManager.cs" />
+    <Compile Include="scripts\Payment.cs" />
     <Compile Include="scripts\USB.cs" />
     <Compile Include="scripts\UsbNotification.cs" />
     <Compile Include="UserControls\CourseControl.cs">

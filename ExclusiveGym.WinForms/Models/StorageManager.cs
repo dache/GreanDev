@@ -121,18 +121,22 @@ class StorageManager
         return GetDB().MemberApplyCourses.Where(x => x.MemberId == id).FirstOrDefault();
     }
 
-    public void MemberDailyApplyCourse(Member member, ApplyCourseLog memCourse)
+    public ApplyCourseLog GetApplyCourseLogByMemberID(int memberID)
     {
-        //AddMember(member);
-        //memCourse.MemberId = member.MemberId;
+        return GetDB().ApplyCourseLog.Where(x => x.MemberId == memberID).OrderByDescending(p => p.ApplyDate)
+                      .FirstOrDefault(); ;
+    }
+        public void MemberDailyApplyCourse(Member member, ApplyCourseLog memCourse)
+    {
         var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day
        && f.AccessDate.Month == DateTime.Now.Month
        && f.AccessDate.Year == DateTime.Now.Year) &&
-       f.Name == member.Name && f.LastName == member.LastName).SingleOrDefault();
+       f.MemberID == member.MemberId).SingleOrDefault();
         if (access == null)
         {
             GetDB().ApplyCourseLog.Add(memCourse);
             AccessLog accessLog = new AccessLog();
+            accessLog.MemberID = member.MemberId;
             accessLog.AccessDate = DateTime.Now;
             accessLog.AccessType = COURSETYPE.DAILY;
             accessLog.Name = member.Name;
@@ -140,12 +144,28 @@ class StorageManager
             GetDB().AccessLog.Add(accessLog);
             SaveDB();
         }
-
     }
+
+    public void MemberMontlyApplyCourse(Member member, ApplyCourseLog memCourse, DateTime accessDate)
+    {
+        GetDB().ApplyCourseLog.Add(memCourse);
+        AccessLog accessLog = new AccessLog();
+        accessLog.AccessDate = accessDate;
+        accessLog.MemberID = member.MemberId;
+        accessLog.AccessType = COURSETYPE.MONTLY;
+        accessLog.Name = member.Name;
+        accessLog.LastName = member.LastName;
+
+        GetDB().AccessLog.Add(accessLog);
+        SaveDB();
+    }
+    
 
     public void MemberApplyCourse(Member member, Course course)
     {
         ApplyCourseLog acl = new ApplyCourseLog();
+        acl.CourseName = course.CourseName;
+        acl.MemberId = member.MemberId;
         acl.Name = member.Name;
         acl.ApplyDate = DateTime.Now;
         acl.LastName = member.LastName;
@@ -278,5 +298,11 @@ class StorageManager
         return GetDB().ApplyCourseLog.ToList();
     }
 
+    public ApplyCourseLog GetLastPayment()
+    {
+        //SELECT * FROM Table ORDER BY ID DESC LIMIT 1
+        return GetDB().ApplyCourseLog.OrderByDescending(p => p.AutoID)
+                       .FirstOrDefault(); ;
+    }
     #endregion
 }

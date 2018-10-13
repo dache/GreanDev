@@ -34,6 +34,7 @@ namespace ExclusiveGym.WinForms
             textBox1.Text = DateTime.Now.Day.ToString();
             comboBox1.Text = DateTime.Now.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
             textBox2.Text = DateTime.Now.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
+            problemPanel.Visible = false;
 
             btnSave.BringToFront();
         }
@@ -48,9 +49,10 @@ namespace ExclusiveGym.WinForms
 
             btnEdit.BringToFront();
         }
-
+        private ApplyCourseLog m_currentMemberCourse;
         private void InitMember()
         {
+            problemPanel.Visible = true;
             // Detail
             txtName.Text = this.Member.Name;
             txtLastName.Text = this.Member.LastName;
@@ -59,6 +61,34 @@ namespace ExclusiveGym.WinForms
             textBox1.Text = this.Member.BirthDate.Day.ToString();
             comboBox1.Text = this.Member.BirthDate.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
             textBox2.Text = this.Member.BirthDate.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
+
+            if(this.Member.ExpireDate != null)
+            {
+                textBox6.Text = this.Member.ExpireDate?.Day.ToString();
+                comboBox3.Text = this.Member.ExpireDate?.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
+                textBox5.Text = this.Member.ExpireDate?.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
+            }
+            m_currentMemberCourse = StorageManager.GetSingleton().GetApplyCourseLogByMemberID(this.Member.MemberId);
+            if(m_currentMemberCourse != null)
+            {
+                button1.Enabled = true;
+                textBox4.Text = m_currentMemberCourse.ApplyDate.Day.ToString();
+                comboBox2.Text = m_currentMemberCourse.ApplyDate.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
+                textBox3.Text = m_currentMemberCourse.ApplyDate.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
+                textBox7.Text = m_currentMemberCourse.CoursePrice.ToString();
+            }
+            else
+            {
+                textBox7.Text = "0";
+                button1.Enabled = false;
+                textBox4.Text = DateTime.Now.Day.ToString();
+                comboBox2.Text = DateTime.Now.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
+                textBox3.Text = DateTime.Now.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
+
+                textBox6.Text = DateTime.Now.Day.ToString();
+                comboBox3.Text = DateTime.Now.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
+                textBox5.Text = DateTime.Now.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
+            }
             txtAge.Text = this.Member.Age.ToString();
             lblFingerPrint.Text = this.Member.FingerPrint;
 
@@ -76,25 +106,6 @@ namespace ExclusiveGym.WinForms
             txtPostCode.Text = this.Member.PostCode;
             txtPhoneNumber.Text = this.Member.PhoneNumber;
             txtEmail.Text = this.Member.Email;
-
-            //foreach (var problem in StorageManager.GetSingleton().GetMedicalProblemsByMemberId(this.Member.MemberId))
-            //{
-            //    var chk = problemPanel.Controls.OfType<CheckBox>().Where(f => f.Text == problem.ProblemName).SingleOrDefault();
-            //    if (chk != null)
-            //        chk.Checked = true;
-            //    else
-            //        txtOtherProblem.Text += problem.ProblemName + " ";
-            //}
-            ////
-            //foreach (var memberKnow in StorageManager.GetSingleton().GetMemberKnowsByMemberId(this.Member.MemberId))
-            //{
-            //    var chk = memberKnowPanel.Controls.OfType<CheckBox>().Where(f => f.Name.ToString().Replace("chkKnow", "") == memberKnow.MemberKnowFrom.ToString("D")).SingleOrDefault();
-            //    if (chk != null)
-            //        chk.Checked = true;
-            //}
-
-            // Member Course
-            //lblCourse.Text = "";
         }
 
         private void MemberForm_Load(object sender, EventArgs e)
@@ -125,18 +136,6 @@ namespace ExclusiveGym.WinForms
         private void btnCancel_Click(object sender, EventArgs e)
         {
              CloseForm();
-            //DateTime dateTime = DateTime.ParseExact(textBox1.Text+" "+comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
-            // new System.Globalization.CultureInfo("th-TH"));
-            //Console.WriteLine(dateTime.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")));
-            //DateTime zeroTime = new DateTime(1, 1, 1);
-            //DateTime toDay = DateTime.Now;
-            //TimeSpan span = (toDay - dateTime);
-            //int years = (zeroTime + span).Year - 1;
-            //txtAge.Text = years.ToString();
-
-            //Console.WriteLine(DateTime.Compare(DateTime.Now,dateTime));
-
-            //Console.WriteLine((DateTime.Now - dateTime));
         }
 
 
@@ -252,24 +251,7 @@ namespace ExclusiveGym.WinForms
 
 
 
-        private void chkNoProblem_CheckedChanged(object sender, EventArgs e)
-        {
-            foreach (CheckBox c in problemPanel.Controls.OfType<CheckBox>().ToList())
-            {
-                if (c != chkNoProblem)
-                {
-                    if (chkNoProblem.Checked)
-                    {
-                        c.Enabled = false;
-                        c.Checked = false;
-                    }
-                    else
-                    {
-                        c.Enabled = true;
-                    }
-                }
-            }
-        }
+     
 
 
         private void chkGender_CheckedChanged(object sender, EventArgs e)
@@ -318,47 +300,7 @@ namespace ExclusiveGym.WinForms
                 this.Member.PhoneNumber = txtPhoneNumber.Text;
                 this.Member.Email = txtEmail.Text;
 
-
-                //List<MedicalProblem> medicalProblemsOriginal = this.Member.Problems;
-
-                //List<MedicalProblem> medicalProblemsNew = GetMedicalProblem();
-
-
-                //foreach (MedicalProblem medicalProblem in medicalProblemsOriginal.ToList())
-                //{
-                //    MedicalProblem mp = medicalProblemsNew.Where(f => f.ProblemName == medicalProblem.ProblemName).SingleOrDefault();
-                //    if (mp == null)
-                //    {
-                //        StorageManager.GetSingleton().GetDB().Entry(medicalProblem).State = System.Data.Entity.EntityState.Deleted;
-                //    }
-                //}
-                //foreach (MedicalProblem medicalProblem in medicalProblemsNew)
-                //{
-                //    MedicalProblem mp = this.Member.Problems.Where(f => f.ProblemName == medicalProblem.ProblemName).SingleOrDefault();
-                //    if (mp == null)
-                //    {
-                //        this.Member.Problems.Add(medicalProblem);
-                //    }
-                //}
-
-                //List<MemberKnow> memberKnowsOriginal = new List<MemberKnow>();
-                //List<MemberKnow> memberKnowsNew = GetMemberKnows();
-                //foreach (MemberKnow mk in memberKnowsOriginal.ToList())
-                //{
-                //    MemberKnow mp = memberKnowsNew.Where(f => f.MemberKnowFrom == mk.MemberKnowFrom).SingleOrDefault();
-                //    if (mp == null)
-                //    {
-                //        StorageManager.GetSingleton().GetDB().Entry(mk).State = System.Data.Entity.EntityState.Deleted;
-                //    }
-                //}
-                //foreach (MemberKnow mk in memberKnowsNew)
-                //{
-                //    MemberKnow mp = this.Member.MemberKnows.Where(f => f.MemberKnowFrom == mk.MemberKnowFrom).SingleOrDefault();
-                //    if (mp == null)
-                //    {
-                //        this.Member.MemberKnows.Add(mk);
-                //    }
-                //}
+                
                 StorageManager.GetSingleton().SaveObjectChanged(this.Member);
 
                 //StorageManager.GetSingleton().MemberApplyCourse(this.Member, StorageManager.GetSingleton().GetCourseByID(1));
@@ -366,47 +308,11 @@ namespace ExclusiveGym.WinForms
                 CloseForm();
             }
         }
-
-        //private List<MemberKnow> GetMemberKnows()
-        //{
-        //    var mk = new List<MemberKnow>();
-        //    foreach (CheckBox c in memberKnowPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
-        //    {
-        //        var mem = new MemberKnow();
-        //        mem.MemberKnowFrom = (enumMemberKnow)Enum.Parse(typeof(enumMemberKnow), c.Name.ToString().Replace("chkKnow", "")); //Convert.ToInt32();
-        //        mem.MemberId = this.Member.MemberId;
-        //        mem.Member = this.Member;
-        //        mk.Add(mem);
-        //    }
-        //    return mk;
-        //}
-
-        //private List<MedicalProblem> GetMedicalProblem()
-        //{
-        //    var mp = new List<MedicalProblem>();
-        //    if (!string.IsNullOrEmpty(txtOtherProblem.Text))
-        //    {
-        //        var problem = new MedicalProblem();
-        //        problem.ProblemName = txtOtherProblem.Text;
-        //        problem.MemberId = this.Member.MemberId;
-        //        problem.Member = this.Member;
-        //        mp.Add(problem);
-        //    }
-        //    foreach (CheckBox c in problemPanel.Controls.OfType<CheckBox>().ToList().Where(f => f.Checked))
-        //    {
-        //        string mId = c.Name.ToString().Replace("chk", "");
-        //        var problem = new MedicalProblem();
-        //        problem.MedicalID = (mId == "NoProblem") ? 0 : Convert.ToInt32(mId);
-        //        problem.ProblemName = c.Text;
-        //        problem.MemberId = this.Member.MemberId;
-        //        problem.Member = this.Member;
-        //        mp.Add(problem);
-        //    }
-        //    return mp;
-        //}
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            HandleNumber(textBox1);
             CalcAge();
         }
 
@@ -417,6 +323,7 @@ namespace ExclusiveGym.WinForms
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            HandleNumber(textBox2);
             CalcAge();
         }
 
@@ -437,6 +344,108 @@ namespace ExclusiveGym.WinForms
             {
 
             }
+        }
+
+        private void txtThaiId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            HandleNumber(textBox4);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            HandleNumber(textBox3);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            HandleNumber(textBox6);
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            HandleNumber(textBox5);
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            HandleNumber(textBox7);
+        }
+
+        private void HandleNumber(TextBox textBox)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox.Text, "[^0-9]"))
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateTime = DateTime.ParseExact(textBox4.Text + " " + comboBox2.Text + " " + textBox3.Text, "dd MMMM yyyy",
+         new System.Globalization.CultureInfo("th-TH"));
+
+                dateTime = dateTime.AddHours(DateTime.Now.Hour);
+                dateTime = dateTime.AddMinutes(DateTime.Now.Minute);
+                dateTime = dateTime.AddSeconds(DateTime.Now.Second);
+
+                DateTime expireDate = DateTime.ParseExact(textBox6.Text + " " + comboBox3.Text + " " + textBox5.Text, "dd MMMM yyyy",
+               new System.Globalization.CultureInfo("th-TH"));
+
+                this.Member.ExpireDate = expireDate;
+
+                m_currentMemberCourse.ApplyDate = dateTime;
+                m_currentMemberCourse.CoursePrice = Convert.ToInt32(textBox7.Text.Trim());
+                StorageManager.GetSingleton().SaveObjectChanged(this.Member);
+                StorageManager.GetSingleton().SaveObjectChanged(this.m_currentMemberCourse);
+            }
+            catch
+            {
+
+            }
+           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dateTime = DateTime.ParseExact(textBox4.Text + " " + comboBox2.Text + " " + textBox3.Text, "dd MMMM yyyy",
+          new System.Globalization.CultureInfo("th-TH"));
+                dateTime = dateTime.AddHours(DateTime.Now.Hour);
+                dateTime = dateTime.AddMinutes(DateTime.Now.Minute);
+                dateTime = dateTime.AddSeconds(DateTime.Now.Second);
+                var memCourse = new ApplyCourseLog();
+                memCourse.ApplyDate = dateTime;
+                
+                memCourse.MemberId = this.Member.MemberId;
+                memCourse.CourseName = "รายเดือน";
+                memCourse.Name = this.Member.Name;
+                memCourse.LastName = this.Member.LastName;
+                memCourse.CoursePrice = Convert.ToInt32(textBox7.Text.Trim());
+                
+                DateTime expireDate = DateTime.ParseExact(textBox6.Text + " " + comboBox3.Text + " " + textBox5.Text, "dd MMMM yyyy",
+               new System.Globalization.CultureInfo("th-TH"));
+
+                this.Member.ExpireDate = expireDate;
+                StorageManager.GetSingleton().SaveObjectChanged(this.Member);
+
+                StorageManager.GetSingleton().MemberMontlyApplyCourse(this.Member, memCourse, dateTime);
+
+                m_currentMemberCourse = StorageManager.GetSingleton().GetApplyCourseLogByMemberID(this.Member.MemberId);
+            }
+            catch
+            {
+
+            }
+            
         }
     }
 }
