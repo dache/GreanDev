@@ -56,7 +56,10 @@ class StorageManager
 
     public Member GetMemeberById(int memberId)
     {
-        return GetDB().Members.Where(f => f.MemberId == memberId).SingleOrDefault();
+        var member = GetDB().Members.Where(f => f.MemberId == memberId).SingleOrDefault();
+        member.MemberProfile = GetDB().MemberProfiles.Where(f => f.MemberId == memberId).SingleOrDefault();
+        return member;
+        //return GetDB().Members.Where(f => f.MemberId == memberId).SingleOrDefault();
     }
 
     public List<Member> GetMemberList()
@@ -83,6 +86,31 @@ class StorageManager
     {
         return GetDB().MemberKnows.Where(f => f.MemberKnowId == id).SingleOrDefault();
     }
+
+    public bool SaveProfileImage(MemberProfile mp)
+    {
+        try
+        {
+            var memberProfile = GetDB().MemberProfiles.Where(f => f.MemberId == mp.MemberId).SingleOrDefault();
+            if(memberProfile == null)
+            {
+                GetDB().MemberProfiles.Add(mp);
+                SaveDB();
+            }
+            else
+            {
+                memberProfile.ImageByte = mp.ImageByte;
+                SaveDB();
+            }
+           
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }     
+    }
+
     #endregion
 
     public void RemoveCourse(Course course)

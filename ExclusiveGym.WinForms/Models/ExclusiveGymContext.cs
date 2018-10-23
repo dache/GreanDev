@@ -23,6 +23,8 @@ namespace ExclusiveGym.WinForms.Models
         public DbSet<AccessLog> AccessLog { get; set; }
         public DbSet<ApplyCourseLog> ApplyCourseLog { get; set; }
 
+        public DbSet<MemberProfile> MemberProfiles { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new MemberConfiguration());

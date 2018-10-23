@@ -40,6 +40,14 @@ namespace ExclusiveGym.WinForms.Models
         public bool IsActive { get; set; }
         public virtual List<MedicalProblem> Problems { get; set; }
         public virtual List<MemberKnow> MemberKnows { get; set; }
+        public MemberProfile MemberProfile { get; set; }
+    }
+
+    public class MemberProfile
+    {
+        public Guid Id { get; set; }
+        public int MemberId { get; set; }
+        public byte[] ImageByte { get; set; }
     }
 
     public class MedicalProblem

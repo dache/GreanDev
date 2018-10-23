@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,8 @@ namespace ExclusiveGym.WinForms
         {
             InitializeComponent();
             SetStyle(ControlStyles.Opaque, true);
-           // lblMemberCourse.Visible = false;
-           // lblCourse.Visible = false;
+            // lblMemberCourse.Visible = false;
+            // lblCourse.Visible = false;
             // new Member
             this.Member = new Member();
 
@@ -47,6 +48,12 @@ namespace ExclusiveGym.WinForms
             lblHeader.Text = "ดู/แก้ไข ข้อมูลสมาชิก";
             InitMember();
 
+            if (member.MemberProfile != null)
+            {
+                Image img = (Bitmap)((new ImageConverter()).ConvertFrom(member.MemberProfile.ImageByte));
+                memberProfileImage.Image = img;
+            }
+
             btnEdit.BringToFront();
         }
         private ApplyCourseLog m_currentMemberCourse;
@@ -62,14 +69,14 @@ namespace ExclusiveGym.WinForms
             comboBox1.Text = this.Member.BirthDate.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
             textBox2.Text = this.Member.BirthDate.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
 
-            if(this.Member.ExpireDate != null)
+            if (this.Member.ExpireDate != null)
             {
                 textBox6.Text = this.Member.ExpireDate?.Day.ToString();
                 comboBox3.Text = this.Member.ExpireDate?.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
                 textBox5.Text = this.Member.ExpireDate?.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
             }
             m_currentMemberCourse = StorageManager.GetSingleton().GetApplyCourseLogByMemberID(this.Member.MemberId);
-            if(m_currentMemberCourse != null)
+            if (m_currentMemberCourse != null)
             {
                 button1.Enabled = true;
                 textBox4.Text = m_currentMemberCourse.ApplyDate.Day.ToString();
@@ -135,7 +142,7 @@ namespace ExclusiveGym.WinForms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-             CloseForm();
+            CloseForm();
         }
 
 
@@ -211,7 +218,7 @@ namespace ExclusiveGym.WinForms
 
         public void ReceiveFingerPrint(string fingerPrint)
         {
-           // FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
+            // FingerPrint.GetSingleton().SetupFingerprintEvent(Controls, zkFprint_OnFeatureInfo, zkFprint_OnImageReceived, zkFprint_OnEnroll, zkFprint_OnCapture);
             lblFingerPrint.Text = fingerPrint;
         }
 
@@ -227,7 +234,7 @@ namespace ExclusiveGym.WinForms
             fingerForm.m_fingerPrintCallback = ReceiveFingerPrint;
             fingerForm.ShowDialog();
         }
-        
+
         #region BG Tranparent
         protected override CreateParams CreateParams
         {
@@ -251,7 +258,7 @@ namespace ExclusiveGym.WinForms
 
 
 
-     
+
 
 
         private void chkGender_CheckedChanged(object sender, EventArgs e)
@@ -300,7 +307,7 @@ namespace ExclusiveGym.WinForms
                 this.Member.PhoneNumber = txtPhoneNumber.Text;
                 this.Member.Email = txtEmail.Text;
 
-                
+
                 StorageManager.GetSingleton().SaveObjectChanged(this.Member);
 
                 //StorageManager.GetSingleton().MemberApplyCourse(this.Member, StorageManager.GetSingleton().GetCourseByID(1));
@@ -308,7 +315,7 @@ namespace ExclusiveGym.WinForms
                 CloseForm();
             }
         }
-        
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -410,7 +417,7 @@ namespace ExclusiveGym.WinForms
             {
 
             }
-           
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -424,13 +431,13 @@ namespace ExclusiveGym.WinForms
                 dateTime = dateTime.AddSeconds(DateTime.Now.Second);
                 var memCourse = new ApplyCourseLog();
                 memCourse.ApplyDate = dateTime;
-                
+
                 memCourse.MemberId = this.Member.MemberId;
                 memCourse.CourseName = "รายเดือน";
                 memCourse.Name = this.Member.Name;
                 memCourse.LastName = this.Member.LastName;
                 memCourse.CoursePrice = Convert.ToInt32(textBox7.Text.Trim());
-                
+
                 DateTime expireDate = DateTime.ParseExact(textBox6.Text + " " + comboBox3.Text + " " + textBox5.Text, "dd MMMM yyyy",
                new System.Globalization.CultureInfo("th-TH"));
 
@@ -445,7 +452,40 @@ namespace ExclusiveGym.WinForms
             {
 
             }
-            
+
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Files|*.jpg;*.jpeg;*.png;";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var mp = new MemberProfile();
+
+                string path = openFileDialog.FileName;
+                using (Image image = Image.FromFile(path))
+                {
+                    using (MemoryStream m = new MemoryStream())
+                    {
+                        image.Save(m, image.RawFormat);
+                        byte[] imageBytes = m.ToArray();
+
+                        mp.Id = Guid.NewGuid();
+                        mp.MemberId = this.Member.MemberId;
+                        mp.ImageByte = imageBytes;
+
+                        StorageManager.GetSingleton().SaveProfileImage(mp);
+                        // Convert byte[] to Base64 String
+                        //string base64String = Convert.ToBase64String(imageBytes);
+                        //return base64String;                        
+                    }
+                }
+
+                Image img = (Bitmap)((new ImageConverter()).ConvertFrom(mp.ImageByte));
+                memberProfileImage.Image = img;
+
+            }
         }
     }
 }
