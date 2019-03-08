@@ -64,7 +64,11 @@ namespace ExclusiveGym.WinForms.UserControls
                 }
                 catch { }
                 //List<Member> members = StorageManager.GetSingleton().GetMemberList();
-                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().Members.Where(f => f.IsActive == true && f.FingerPrint != "Daily").Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
+                gvMembers.DataSource = StorageManager.GetSingleton().GetDB().
+                Members.Where(f => f.IsActive == true && f.FingerPrint != "Daily").
+                OrderBy(p => (p.ExpireDate != null) ? 0 : 1)
+                .ThenBy(p => p.ExpireDate).
+                Select(p => new { p.Name, p.LastName, p.Age, p.ExpireDate, p.MemberId }).ToList();
 
                 gvMembers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing; //or even better .DisableResizing. Most time consumption enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
 
@@ -73,13 +77,13 @@ namespace ExclusiveGym.WinForms.UserControls
                 gvMembers.Columns[1].HeaderText = "นามสกุล";
                 gvMembers.Columns[2].HeaderText = "อายุ";
                 gvMembers.Columns[3].HeaderText = "วันหมดอายุ";
-                gvMembers.Columns[3].DefaultCellStyle.Format = "dd MMMM yyyy";
+                gvMembers.Columns[3].DefaultCellStyle.Format = "d MMMM yyyy";
                 gvMembers.Columns[3].DefaultCellStyle.FormatProvider = new System.Globalization.CultureInfo("th-TH");
 
                 gvMembers.Columns[0].Width = 180;
                 gvMembers.Columns[1].Width = 180;
                 gvMembers.Columns[2].Width = 70;
-                gvMembers.Columns[3].Width = 120;
+                gvMembers.Columns[3].Width = 220;
 
 
                 gvMembers.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -96,6 +100,20 @@ namespace ExclusiveGym.WinForms.UserControls
 
                 gvMembers.Update();
                 gvMembers.ClearSelection();
+
+                foreach (DataGridViewRow row in gvMembers.Rows)
+                {
+                    //DateTime dateTime = DateTime.ParseExact(row.Cells[3].Value.ToString(), "d MMMM yyyy",
+            //new System.Globalization.CultureInfo("th-TH"));
+                    DateTime d = Convert.ToDateTime(row.Cells[3].Value);
+                    var hours = (d - DateTime.Now).TotalHours;
+                    if (hours < 300)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
+
+
             });
 
 

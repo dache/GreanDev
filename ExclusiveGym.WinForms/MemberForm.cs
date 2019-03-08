@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AxZKFPEngXControl;
 using ExclusiveGym.WinForms.Models;
+using AForge.Video;
+using AForge.Video.DirectShow;
 
 namespace ExclusiveGym.WinForms
 {
@@ -23,6 +25,9 @@ namespace ExclusiveGym.WinForms
 
         public Member Member { get; set; }
 
+        VideoCaptureDevice videoSource;
+        FilterInfoCollection videoDevices;
+
         public MemberForm()
         {
             InitializeComponent();
@@ -31,15 +36,28 @@ namespace ExclusiveGym.WinForms
             // lblCourse.Visible = false;
             // new Member
             this.Member = new Member();
-
+            this.Member.MemberId = -1;
             textBox1.Text = DateTime.Now.Day.ToString();
             comboBox1.Text = DateTime.Now.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
             textBox2.Text = DateTime.Now.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
             problemPanel.Visible = false;
 
+
             btnSave.BringToFront();
         }
-
+        private void DetectCamera()
+        {
+            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo info in videoDevices)
+            {
+                camerabox.Items.Add(info.Name);
+            }
+            saveImg.Visible = (camerabox.Items.Count > 0);
+            btnUpload.Visible = (camerabox.Items.Count == 0);
+            camerabox.Visible = saveImg.Visible;
+            saveImg.Enabled = saveImg.Visible && (videoSource != null);
+        }
+             
         public MemberForm(Member member)
         {
             InitializeComponent();
@@ -47,13 +65,7 @@ namespace ExclusiveGym.WinForms
             this.Member = member;
             lblHeader.Text = "ดู/แก้ไข ข้อมูลสมาชิก";
             InitMember();
-
-            if (member.MemberProfile != null)
-            {
-                Image img = (Bitmap)((new ImageConverter()).ConvertFrom(member.MemberProfile.ImageByte));
-                memberProfileImage.Image = img;
-            }
-
+            
             btnEdit.BringToFront();
         }
         private ApplyCourseLog m_currentMemberCourse;
@@ -78,7 +90,7 @@ namespace ExclusiveGym.WinForms
             m_currentMemberCourse = StorageManager.GetSingleton().GetApplyCourseLogByMemberID(this.Member.MemberId);
             if (m_currentMemberCourse != null)
             {
-                button1.Enabled = true;
+                button1.Visible = true;
                 textBox4.Text = m_currentMemberCourse.ApplyDate.Day.ToString();
                 comboBox2.Text = m_currentMemberCourse.ApplyDate.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
                 textBox3.Text = m_currentMemberCourse.ApplyDate.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
@@ -87,7 +99,7 @@ namespace ExclusiveGym.WinForms
             else
             {
                 textBox7.Text = "0";
-                button1.Enabled = false;
+                button1.Visible = false;
                 textBox4.Text = DateTime.Now.Day.ToString();
                 comboBox2.Text = DateTime.Now.Date.ToString("MMMM", new System.Globalization.CultureInfo("th-TH"));
                 textBox3.Text = DateTime.Now.Date.ToString("yyyy", new System.Globalization.CultureInfo("th-TH"));
@@ -113,10 +125,17 @@ namespace ExclusiveGym.WinForms
             txtPostCode.Text = this.Member.PostCode;
             txtPhoneNumber.Text = this.Member.PhoneNumber;
             txtEmail.Text = this.Member.Email;
+
+            if (this.Member.MemberProfile != null)
+            {
+                Image img = (Bitmap)((new ImageConverter()).ConvertFrom(this.Member.MemberProfile.ImageByte));
+                memberProfileImage.Image = img;
+            }
         }
 
         private void MemberForm_Load(object sender, EventArgs e)
         {
+            DetectCamera();
             FormManager.GetSingleton().SetCurrentFocusForm(this);
             //System.Threading.Thread backgroundWorker = new System.Threading.Thread(BeginDisplay);
             //backgroundWorker.IsBackground = true;
@@ -154,7 +173,7 @@ namespace ExclusiveGym.WinForms
                 this.Member.Name = txtName.Text;
                 this.Member.LastName = txtLastName.Text;
                 this.Member.ThaiId = txtThaiId.Text;
-                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
+                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "d MMMM yyyy",
             new System.Globalization.CultureInfo("th-TH"));
                 this.Member.BirthDate = dateTime;
                 this.Member.Age = Convert.ToInt32(txtAge.Text);
@@ -175,8 +194,15 @@ namespace ExclusiveGym.WinForms
                 this.Member.IsActive = true;
                 //this.Member.Problems = GetMedicalProblem();
                 //this.Member.MemberKnows = GetMemberKnows();
-
+                
                 StorageManager.GetSingleton().AddMember(this.Member);
+                if(m_memberProfile != null)
+                {
+                    m_memberProfile.MemberId = this.Member.MemberId;
+                    StorageManager.GetSingleton().SaveProfileImage(m_memberProfile);
+                }
+               
+
                 CloseForm();
             }
         }
@@ -289,7 +315,7 @@ namespace ExclusiveGym.WinForms
                 this.Member.Name = txtName.Text;
                 this.Member.LastName = txtLastName.Text;
                 this.Member.ThaiId = txtThaiId.Text;
-                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
+                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "d MMMM yyyy",
             new System.Globalization.CultureInfo("th-TH"));
                 this.Member.BirthDate = dateTime;
                 this.Member.Age = Convert.ToInt32(txtAge.Text);
@@ -309,6 +335,12 @@ namespace ExclusiveGym.WinForms
 
 
                 StorageManager.GetSingleton().SaveObjectChanged(this.Member);
+
+                if (m_memberProfile != null)
+                {
+                    m_memberProfile.MemberId = this.Member.MemberId;
+                    StorageManager.GetSingleton().SaveProfileImage(m_memberProfile);
+                }
 
                 //StorageManager.GetSingleton().MemberApplyCourse(this.Member, StorageManager.GetSingleton().GetCourseByID(1));
                 //StorageManager.GetSingleton().MemberAccessGym(this.Member);
@@ -338,9 +370,9 @@ namespace ExclusiveGym.WinForms
         {
             try
             {
-                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "dd MMMM yyyy",
+                DateTime dateTime = DateTime.ParseExact(textBox1.Text + " " + comboBox1.Text + " " + textBox2.Text, "d MMMM yyyy",
             new System.Globalization.CultureInfo("th-TH"));
-                //Console.WriteLine(dateTime.ToString("dd MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")));
+                //Console.WriteLine(dateTime.ToString("d MMMM yyyy ", new System.Globalization.CultureInfo("th-TH")));
                 DateTime zeroTime = new DateTime(1, 1, 1);
                 DateTime toDay = DateTime.Now;
                 TimeSpan span = (toDay - dateTime);
@@ -394,16 +426,16 @@ namespace ExclusiveGym.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DateTime dateTime = DateTime.ParseExact(textBox4.Text + " " + comboBox2.Text + " " + textBox3.Text, "dd MMMM yyyy",
+            //try
+            //{
+                DateTime dateTime = DateTime.ParseExact(textBox4.Text + " " + comboBox2.Text + " " + textBox3.Text, "d MMMM yyyy",
          new System.Globalization.CultureInfo("th-TH"));
 
                 dateTime = dateTime.AddHours(DateTime.Now.Hour);
                 dateTime = dateTime.AddMinutes(DateTime.Now.Minute);
                 dateTime = dateTime.AddSeconds(DateTime.Now.Second);
 
-                DateTime expireDate = DateTime.ParseExact(textBox6.Text + " " + comboBox3.Text + " " + textBox5.Text, "dd MMMM yyyy",
+                DateTime expireDate = DateTime.ParseExact(textBox6.Text + " " + comboBox3.Text + " " + textBox5.Text, "d MMMM yyyy",
                new System.Globalization.CultureInfo("th-TH"));
 
                 this.Member.ExpireDate = expireDate;
@@ -412,11 +444,11 @@ namespace ExclusiveGym.WinForms
                 m_currentMemberCourse.CoursePrice = Convert.ToInt32(textBox7.Text.Trim());
                 StorageManager.GetSingleton().SaveObjectChanged(this.Member);
                 StorageManager.GetSingleton().SaveObjectChanged(this.m_currentMemberCourse);
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }
+            //}
 
         }
 
@@ -424,7 +456,7 @@ namespace ExclusiveGym.WinForms
         {
             try
             {
-                DateTime dateTime = DateTime.ParseExact(textBox4.Text + " " + comboBox2.Text + " " + textBox3.Text, "dd MMMM yyyy",
+                DateTime dateTime = DateTime.ParseExact(textBox4.Text + " " + comboBox2.Text + " " + textBox3.Text, "d MMMM yyyy",
           new System.Globalization.CultureInfo("th-TH"));
                 dateTime = dateTime.AddHours(DateTime.Now.Hour);
                 dateTime = dateTime.AddMinutes(DateTime.Now.Minute);
@@ -438,7 +470,7 @@ namespace ExclusiveGym.WinForms
                 memCourse.LastName = this.Member.LastName;
                 memCourse.CoursePrice = Convert.ToInt32(textBox7.Text.Trim());
 
-                DateTime expireDate = DateTime.ParseExact(textBox6.Text + " " + comboBox3.Text + " " + textBox5.Text, "dd MMMM yyyy",
+                DateTime expireDate = DateTime.ParseExact(textBox6.Text + " " + comboBox3.Text + " " + textBox5.Text, "d MMMM yyyy",
                new System.Globalization.CultureInfo("th-TH"));
 
                 this.Member.ExpireDate = expireDate;
@@ -454,6 +486,25 @@ namespace ExclusiveGym.WinForms
             }
 
         }
+        MemberProfile m_memberProfile = null;
+        void videoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
+       {
+           Bitmap b = (Bitmap)eventArgs.Frame.Clone();
+            DateTime now = DateTime.Now;
+            Graphics g = Graphics.FromImage(b);
+            // paint current time            
+            SolidBrush brush = new SolidBrush(Color.Red);
+            g.DrawString(now.ToString(), this.Font, brush, new PointF(5, 5));
+            brush.Dispose();
+            g.Dispose();
+            cap = b;
+            memberProfileImage.Image = b;
+            saveImg.BeginInvoke((MethodInvoker) delegate ()
+            {
+                saveImg.Enabled = saveImg.Visible && videoSource.IsRunning;
+            });
+            
+        }
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
@@ -461,8 +512,6 @@ namespace ExclusiveGym.WinForms
             openFileDialog.Filter = "Files|*.jpg;*.jpeg;*.png;";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var mp = new MemberProfile();
-
                 string path = openFileDialog.FileName;
                 using (Image image = Image.FromFile(path))
                 {
@@ -470,21 +519,110 @@ namespace ExclusiveGym.WinForms
                     {
                         image.Save(m, image.RawFormat);
                         byte[] imageBytes = m.ToArray();
+                        m_memberProfile = new MemberProfile();
+                        m_memberProfile.Id = Guid.NewGuid();
+                        m_memberProfile.MemberId = this.Member.MemberId;
+                        m_memberProfile.ImageByte = imageBytes;
 
-                        mp.Id = Guid.NewGuid();
-                        mp.MemberId = this.Member.MemberId;
-                        mp.ImageByte = imageBytes;
-
-                        StorageManager.GetSingleton().SaveProfileImage(mp);
+                        //StorageManager.GetSingleton().SaveProfileImage(m_memberProfile);
                         // Convert byte[] to Base64 String
                         //string base64String = Convert.ToBase64String(imageBytes);
                         //return base64String;                        
                     }
                 }
 
-                Image img = (Bitmap)((new ImageConverter()).ConvertFrom(mp.ImageByte));
+                Image img = (Bitmap)((new ImageConverter()).ConvertFrom(m_memberProfile.ImageByte));
                 memberProfileImage.Image = img;
 
+            }
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (videoSource != null)
+            {
+                videoSource.Stop();
+            }
+            // create video source
+            videoSource = new VideoCaptureDevice(videoDevices[camerabox.SelectedIndex].MonikerString);
+            videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
+            //videoSource = new VideoCaptureDevice(info.MonikerString);
+            //videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
+            videoSource.Start();
+        }
+        Bitmap cap;
+        private void saveImg_Click(object sender, EventArgs e)
+        {
+            if (videoSource.IsRunning)
+            {
+                string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                path = path.Replace("ExclusiveGym.WinForms.exe", "temp.bmp");
+                //string fileName = Path.Combine(path, "temp.bmp");
+                cap.Save(path);
+                memberProfileImage.Image = cap;
+                using (Image image = Image.FromFile(path))
+                {
+                    using (MemoryStream m = new MemoryStream())
+                    {
+                        videoSource.Stop();
+                        image.Save(m, image.RawFormat);
+                        byte[] imageBytes = m.ToArray();
+                        m_memberProfile = new MemberProfile();
+
+                        m_memberProfile.Id = Guid.NewGuid();
+                        m_memberProfile.MemberId = this.Member.MemberId;
+                        m_memberProfile.ImageByte = imageBytes;
+                    }
+                }
+
+                Image img = (Bitmap)((new ImageConverter()).ConvertFrom(m_memberProfile.ImageByte));
+                memberProfileImage.Image = img;
+                File.Delete(path);
+                //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                //saveFileDialog1.Filter = "JPEG(*.jpg)|*.jpg|png(*.png)|*.png|Bitmap(*.bmp)|*.bmp"; videoSource.Stop(); // กล้องหยุด            
+                //videoSource.Stop();
+                //memberProfileImage.Image = cap;
+                //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                //{
+                //    cap.Save(saveFileDialog1.FileName);
+                //    m_memberProfile = new MemberProfile();
+
+                //    string path = saveFileDialog1.FileName;
+                //    using (Image image = Image.FromFile(path))
+                //    {
+                //        using (MemoryStream m = new MemoryStream())
+                //        {
+                //            image.Save(m, image.RawFormat);
+                //            byte[] imageBytes = m.ToArray();
+
+                //            m_memberProfile.Id = Guid.NewGuid();
+                //            m_memberProfile.MemberId = this.Member.MemberId;
+                //            m_memberProfile.ImageByte = imageBytes;                    
+                //        }
+                //    }
+
+                //    Image img = (Bitmap)((new ImageConverter()).ConvertFrom(m_memberProfile.ImageByte));
+                //    memberProfileImage.Image = img;
+                //}
+                //else
+                //{
+                //    videoSource.Start();
+                //}
+            }
+            else
+            {
+                videoSource.Start();
+            }
+           
+            //System.Threading.Thread.Sleep(500);
+            //videoSource.Start(); // กล้องทำงานต่อ    
+        }
+
+        private void MemberForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (videoSource != null)
+            {
+                videoSource.Stop();
             }
         }
     }

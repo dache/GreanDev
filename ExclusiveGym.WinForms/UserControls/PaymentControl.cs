@@ -24,6 +24,7 @@ namespace ExclusiveGym.WinForms.UserControls
             try
             {
                 gvPayments.Columns.Remove("printButton");
+                gvPayments.Columns.Remove("delButton");
             }
             catch { }
 
@@ -74,19 +75,27 @@ namespace ExclusiveGym.WinForms.UserControls
             gvPayments.Columns[5].DefaultCellStyle.Format = "N0";
             gvPayments.Columns[5].DefaultCellStyle.Padding = new Padding(5, 0, 5, 0);
 
+            AddNewButton("printButton", "พิมพ์ใบเสร็จ", Color.FromArgb(240, 173, 78));
+            gvPayments.Columns[gvPayments.Columns.Count - 1].Width = 120;
+            AddNewButton("delButton", "ลบ", Color.FromArgb(212, 63, 58));
+            gvPayments.Columns[gvPayments.Columns.Count - 1].Width = 70;
+        }
+
+        private void AddNewButton(string courseName, string courseText, Color buttonColor)
+        {
             DataGridViewButtonColumn newButton = new DataGridViewButtonColumn();
-            newButton.Name = "printButton";
-            newButton.Text = "พิมพ์ใบเสร็จ";
+            newButton.Name = courseName;
+            newButton.Text = courseText;
             newButton.HeaderText = "";
             newButton.UseColumnTextForButtonValue = true;
-            newButton.DefaultCellStyle.BackColor = Color.FromArgb(240, 173, 78);
+            newButton.DefaultCellStyle.BackColor = buttonColor;
             newButton.FlatStyle = FlatStyle.Flat;
             newButton.DefaultCellStyle.ForeColor = Color.White;
             newButton.DefaultCellStyle.SelectionForeColor = Color.Wheat;
-            if (gvPayments.Columns["printButton"] == null)
+            if (gvPayments.Columns[courseName] == null)
             {
                 gvPayments.Columns.Insert(gvPayments.Columns.Count, newButton);
-                gvPayments.Columns[6].Width = 120;
+               
             }
         }
 
@@ -94,7 +103,20 @@ namespace ExclusiveGym.WinForms.UserControls
         {
             if (e.ColumnIndex == gvPayments.Columns["printButton"].Index)
             {
-                Payment.GetPayment().PrintRecipt((PaymentInfo)gvPayments.CurrentRow.DataBoundItem);
+                Payment.GetPayment().PrintRecipt((PaymentInfo)gvPayments.CurrentRow.DataBoundItem, true);
+            }
+            if (e.ColumnIndex == gvPayments.Columns["delButton"].Index)
+            {
+                ApplyCourseLog applylog = StorageManager.GetSingleton().GetPaymentByID((int)gvPayments.CurrentRow.Cells[0].Value);
+
+                var mForm = new DialogForm("ยืนยันการลบ?", $"ลบ {applylog.CourseName} ราคา {applylog.CoursePrice}");
+                if (mForm.ShowDialog() == DialogResult.OK)
+                {
+                    StorageManager.GetSingleton().RemovePayment(applylog);
+                    InitData();
+                    MessageBox.Show("ลบข้อมูลเรียบร้อยแล้ว");
+
+                }
             }
         }    
     }

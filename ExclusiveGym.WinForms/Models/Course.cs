@@ -14,9 +14,11 @@ namespace ExclusiveGym.WinForms.Models
         [Key]
         public int CourseID { get; set; }
         public string CourseName { get; set; }
+        [Index]
         public COURSETYPE CourseType { get; set; }
         public int CoursePrice { get; set; }
         public int TotalDay { get; set; }
+        [Index]
         public DateTime CreateDate { get; set; }
     }
 
@@ -24,7 +26,9 @@ namespace ExclusiveGym.WinForms.Models
     {
         [Key]
         public int MemberId { get; set; }
+        [Index]
         public int CourseID { get; set; }
+        [Index]
         public DateTime ApplyDate { get; set; }
     }
 

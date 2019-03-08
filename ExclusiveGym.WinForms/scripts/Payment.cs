@@ -5,6 +5,7 @@ using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ExclusiveGym.WinForms.UserControls;
 
 class Payment
@@ -12,6 +13,7 @@ class Payment
     private static Payment m_singleton;
     private PaymentInfo payment;
     private PrintDocument printDocument1 = new PrintDocument();
+    private PrintPreviewDialog previewDialog = new PrintPreviewDialog();
 
     public static Payment GetPayment()
     {
@@ -25,12 +27,26 @@ class Payment
              new PrintPageEventHandler(printPage);
     }
 
-    public void PrintRecipt(PaymentInfo pm)
+    public void PrintRecipt(PaymentInfo pm, bool isShowDialog = false)
     {
         payment = pm;
-        printDocument1.PrintPage += new PrintPageEventHandler(printPage);
-        printDocument1.Print();
-        printDocument1.Dispose();
+       // printDocument1.PrintPage += new PrintPageEventHandler(printPage);
+        if(isShowDialog)
+        {
+            PaperSize paperSize = new PaperSize();
+            paperSize.Width = 180;
+            paperSize.Height = 320;
+            printDocument1.DefaultPageSettings.PaperSize = paperSize;
+            previewDialog.Document = printDocument1;
+            previewDialog.ShowDialog();
+        }
+        else
+        {
+           
+            printDocument1.Print();
+            printDocument1.Dispose();
+        }
+       
     }
     private void printPage(object sender, PrintPageEventArgs e)
     {

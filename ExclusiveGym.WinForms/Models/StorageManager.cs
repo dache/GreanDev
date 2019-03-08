@@ -62,6 +62,11 @@ class StorageManager
         //return GetDB().Members.Where(f => f.MemberId == memberId).SingleOrDefault();
     }
 
+    public int GetMemberCurrentMemberID()
+    {
+        return 1;
+    }
+
     public List<Member> GetMemberList()
     {
         return GetDB().Members.Where(f => f.IsActive == true).ToList();
@@ -92,7 +97,7 @@ class StorageManager
         try
         {
             var memberProfile = GetDB().MemberProfiles.Where(f => f.MemberId == mp.MemberId).SingleOrDefault();
-            if(memberProfile == null)
+            if (memberProfile == null)
             {
                 GetDB().MemberProfiles.Add(mp);
                 SaveDB();
@@ -100,15 +105,15 @@ class StorageManager
             else
             {
                 memberProfile.ImageByte = mp.ImageByte;
-                SaveDB();
+                SaveObjectChanged(memberProfile);
             }
-           
+
             return true;
         }
         catch (Exception)
         {
             return false;
-        }     
+        }
     }
 
     #endregion
@@ -154,14 +159,14 @@ class StorageManager
         return GetDB().ApplyCourseLog.Where(x => x.MemberId == memberID).OrderByDescending(p => p.ApplyDate)
                       .FirstOrDefault(); ;
     }
-        public void MemberDailyApplyCourse(Member member, ApplyCourseLog memCourse)
+    public void MemberDailyApplyCourse(Member member, ApplyCourseLog memCourse)
     {
-        var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day
-       && f.AccessDate.Month == DateTime.Now.Month
-       && f.AccessDate.Year == DateTime.Now.Year) &&
-       f.MemberID == member.MemberId).SingleOrDefault();
-        if (access == null)
-        {
+       // var access = GetDB().AccessLog.Where(f => (f.AccessDate.Day == DateTime.Now.Day
+       //&& f.AccessDate.Month == DateTime.Now.Month
+       //&& f.AccessDate.Year == DateTime.Now.Year) &&
+       //f.MemberID == member.MemberId).SingleOrDefault();
+       // if (access == null)
+       // {
             GetDB().ApplyCourseLog.Add(memCourse);
             AccessLog accessLog = new AccessLog();
             accessLog.MemberID = member.MemberId;
@@ -171,7 +176,7 @@ class StorageManager
             accessLog.LastName = member.LastName;
             GetDB().AccessLog.Add(accessLog);
             SaveDB();
-        }
+        //}
     }
 
     public void MemberMontlyApplyCourse(Member member, ApplyCourseLog memCourse, DateTime accessDate)
@@ -187,7 +192,7 @@ class StorageManager
         GetDB().AccessLog.Add(accessLog);
         SaveDB();
     }
-    
+
 
     public void MemberApplyCourse(Member member, Course course)
     {
@@ -331,6 +336,19 @@ class StorageManager
         //SELECT * FROM Table ORDER BY ID DESC LIMIT 1
         return GetDB().ApplyCourseLog.OrderByDescending(p => p.AutoID)
                        .FirstOrDefault(); ;
+    }
+
+    public ApplyCourseLog GetPaymentByID(int id)
+    {
+        //SELECT * FROM Table ORDER BY ID DESC LIMIT 1
+        return GetDB().ApplyCourseLog.Where(p => p.AutoID == id)
+                       .FirstOrDefault(); ;
+    }
+
+    public void RemovePayment(ApplyCourseLog payment)
+    {
+        GetDB().ApplyCourseLog.Remove(payment);
+        SaveDB();
     }
     #endregion
 }

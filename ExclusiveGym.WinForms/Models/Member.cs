@@ -17,6 +17,8 @@ namespace ExclusiveGym.WinForms.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int MemberId { get; set; }
+        [Index("nameindex")]
+        [StringLength(100)]
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
@@ -33,10 +35,16 @@ namespace ExclusiveGym.WinForms.Models
         public string Province { get; set; }
         public string PostCode { get; set; }
         public string PhoneNumber { get; set; }
+        [Index("emailindex")]
+        [StringLength(100)]
         public string Email { get; set; }
+        [Index("findex")]
+        [StringLength(900)]
         public string FingerPrint { get; set; }
+        [Index]
         public DateTime? ExpireDate { get; set; }
         public DateTime CreateDate { get; set; }
+        [Index]
         public bool IsActive { get; set; }
         public virtual List<MedicalProblem> Problems { get; set; }
         public virtual List<MemberKnow> MemberKnows { get; set; }

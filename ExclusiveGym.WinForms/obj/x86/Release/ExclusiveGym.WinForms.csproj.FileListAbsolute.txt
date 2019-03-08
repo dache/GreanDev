@@ -48,3 +48,9 @@ C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\Exclu
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.WelcomeDialogForm.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.DailyDialogForm.resources
 C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\obj\x86\Release\ExclusiveGym.WinForms.UserControls.PaymentControl.resources
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\bin\x86\Release\AForge.dll
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\bin\x86\Release\AForge.Video.DirectShow.dll
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\bin\x86\Release\AForge.Video.dll
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\bin\x86\Release\AForge.xml
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\bin\x86\Release\AForge.Video.xml
+C:\Users\indieos\Desktop\Excusivegym\ExclusiveGym.WinForms\bin\x86\Release\AForge.Video.DirectShow.xml

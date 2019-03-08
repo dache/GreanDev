@@ -20,6 +20,8 @@ namespace ExclusiveGym.WinForms
         {
             InitializeComponent();
             SetStyle(ControlStyles.Opaque, true);
+            txtPrice.Text = "70";
+            txtUnit.Text = "1";
         }
 
         protected override CreateParams CreateParams
@@ -50,7 +52,7 @@ namespace ExclusiveGym.WinForms
         {
             var member = new Member();
             member.Name = txtName.Text.Trim();
-            member.LastName = txtLastName.Text.Trim();
+            member.LastName = "";
             member.BirthDate = DateTime.Now;
             member.Age = 0;
             member.Gender = enumGender.Male;
@@ -63,8 +65,8 @@ namespace ExclusiveGym.WinForms
             memCourse.CourseName = "รายวัน";
             memCourse.MemberId = member.MemberId;
             memCourse.Name = txtName.Text.Trim();
-            memCourse.LastName = txtLastName.Text.Trim();
-            memCourse.CoursePrice = Convert.ToInt32(txtPrice.Text.Trim());
+            memCourse.LastName = txtUnit.Text.Trim()+" คน";
+            memCourse.CoursePrice = Convert.ToInt32(txtPrice.Text.Trim()) * Convert.ToInt32(txtUnit.Text.Trim());
 
             StorageManager.GetSingleton().MemberDailyApplyCourse(member, memCourse);
 
@@ -76,7 +78,7 @@ namespace ExclusiveGym.WinForms
             payment.PayName = $"{applyCourseLog.Name} {applyCourseLog.LastName}";
             payment.Price = applyCourseLog.CoursePrice;
             payment.CourseName = applyCourseLog.CourseName;
-            Payment.GetPayment().PrintRecipt(payment);
+            Payment.GetPayment().PrintRecipt(payment, true);
             Form1.m_instance.FocusToMainForm();
             this.Close();
         }

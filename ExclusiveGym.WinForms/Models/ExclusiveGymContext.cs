@@ -11,6 +11,7 @@ namespace ExclusiveGym.WinForms.Models
     {
         public ExclusiveGymContext() : base("ExclusiveGymDB")
         {
+            Console.WriteLine("ExclusiveGymContext init");
             Database.CreateIfNotExists();
         }
 
@@ -27,6 +28,8 @@ namespace ExclusiveGym.WinForms.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<ExclusiveGymContext>(null);
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new MemberConfiguration());
             modelBuilder.Configurations.Add(new MedicalProblemConfiguration());
             modelBuilder.Configurations.Add(new CourseConfiguration());

@@ -83,6 +83,15 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="AForge">
+      <HintPath>DLL\Release\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video">
+      <HintPath>DLL\Release\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>DLL\Release\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
     <Reference Include="AxInterop.ZKFPEngXControl, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HT.AxInterop.ZKFPEngXControl.4.0.0.0\lib\AxInterop.ZKFPEngXControl.dll</HintPath>
       <Private>True</Private>

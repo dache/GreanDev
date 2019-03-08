@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberForm));
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btnUpload = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -122,7 +123,8 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.btnUpload = new System.Windows.Forms.Button();
+            this.camerabox = new System.Windows.Forms.ComboBox();
+            this.saveImg = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -158,6 +160,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.mainPanel.Controls.Add(this.saveImg);
+            this.mainPanel.Controls.Add(this.camerabox);
             this.mainPanel.Controls.Add(this.btnUpload);
             this.mainPanel.Controls.Add(this.panel19);
             this.mainPanel.Controls.Add(this.btnEdit);
@@ -195,6 +199,23 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(849, 637);
             this.mainPanel.TabIndex = 12;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpload.BackColor = System.Drawing.Color.PeachPuff;
+            this.btnUpload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpload.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnUpload.FlatAppearance.BorderSize = 2;
+            this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpload.Font = new System.Drawing.Font("Prompt", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.Location = new System.Drawing.Point(691, 187);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(105, 36);
+            this.btnUpload.TabIndex = 58;
+            this.btnUpload.Text = "เลิอกรูปจากไฟล์";
+            this.btnUpload.UseVisualStyleBackColor = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // panel19
             // 
@@ -533,6 +554,7 @@
             // 
             // problemPanel
             // 
+            this.problemPanel.BackColor = System.Drawing.Color.DarkSlateGray;
             this.problemPanel.Controls.Add(this.button3);
             this.problemPanel.Controls.Add(this.label31);
             this.problemPanel.Controls.Add(this.label30);
@@ -567,11 +589,11 @@
             this.button3.FlatAppearance.BorderSize = 2;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(667, 146);
+            this.button3.Location = new System.Drawing.Point(665, 146);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 36);
+            this.button3.Size = new System.Drawing.Size(147, 36);
             this.button3.TabIndex = 72;
-            this.button3.Text = "ซื้อเพิ่ม";
+            this.button3.Text = "บันทึกการซื้อเพิ่ม";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -624,7 +646,7 @@
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label29.Location = new System.Drawing.Point(441, 35);
+            this.label29.Location = new System.Drawing.Point(414, 34);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(80, 22);
             this.label29.TabIndex = 70;
@@ -652,7 +674,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label28.Location = new System.Drawing.Point(121, 37);
+            this.label28.Location = new System.Drawing.Point(115, 36);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(64, 22);
             this.label28.TabIndex = 69;
@@ -663,7 +685,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label18.Location = new System.Drawing.Point(588, 70);
+            this.label18.Location = new System.Drawing.Point(551, 61);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(20, 22);
             this.label18.TabIndex = 68;
@@ -674,7 +696,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label19.Location = new System.Drawing.Point(463, 70);
+            this.label19.Location = new System.Drawing.Point(436, 61);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(42, 22);
             this.label19.TabIndex = 67;
@@ -685,7 +707,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label27.Location = new System.Drawing.Point(371, 69);
+            this.label27.Location = new System.Drawing.Point(353, 60);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(28, 22);
             this.label27.TabIndex = 63;
@@ -724,7 +746,7 @@
             "ตุลาคม",
             "พฤศจิกายน",
             "ธันวาคม"});
-            this.comboBox3.Location = new System.Drawing.Point(423, 98);
+            this.comboBox3.Location = new System.Drawing.Point(396, 89);
             this.comboBox3.MaxDropDownItems = 12;
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(109, 21);
@@ -734,7 +756,7 @@
             // 
             this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel21.Controls.Add(this.textBox5);
-            this.panel21.Location = new System.Drawing.Point(556, 94);
+            this.panel21.Location = new System.Drawing.Point(519, 85);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(5);
             this.panel21.Size = new System.Drawing.Size(84, 30);
@@ -756,7 +778,7 @@
             // 
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel22.Controls.Add(this.textBox6);
-            this.panel22.Location = new System.Drawing.Point(358, 93);
+            this.panel22.Location = new System.Drawing.Point(340, 84);
             this.panel22.Name = "panel22";
             this.panel22.Padding = new System.Windows.Forms.Padding(5);
             this.panel22.Size = new System.Drawing.Size(47, 30);
@@ -779,7 +801,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label15.Location = new System.Drawing.Point(246, 71);
+            this.label15.Location = new System.Drawing.Point(228, 62);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(20, 22);
             this.label15.TabIndex = 62;
@@ -790,7 +812,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label16.Location = new System.Drawing.Point(121, 71);
+            this.label16.Location = new System.Drawing.Point(115, 62);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(42, 22);
             this.label16.TabIndex = 61;
@@ -801,7 +823,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.GreenYellow;
-            this.label17.Location = new System.Drawing.Point(29, 70);
+            this.label17.Location = new System.Drawing.Point(29, 61);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(28, 22);
             this.label17.TabIndex = 57;
@@ -840,7 +862,7 @@
             "ตุลาคม",
             "พฤศจิกายน",
             "ธันวาคม"});
-            this.comboBox2.Location = new System.Drawing.Point(81, 99);
+            this.comboBox2.Location = new System.Drawing.Point(75, 90);
             this.comboBox2.MaxDropDownItems = 12;
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(109, 21);
@@ -850,7 +872,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel6.Controls.Add(this.textBox3);
-            this.panel6.Location = new System.Drawing.Point(214, 95);
+            this.panel6.Location = new System.Drawing.Point(196, 86);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(5);
             this.panel6.Size = new System.Drawing.Size(84, 30);
@@ -872,7 +894,7 @@
             // 
             this.panel20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(243)))), ((int)(((byte)(245)))));
             this.panel20.Controls.Add(this.textBox4);
-            this.panel20.Location = new System.Drawing.Point(16, 94);
+            this.panel20.Location = new System.Drawing.Point(16, 85);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(5);
             this.panel20.Size = new System.Drawing.Size(47, 30);
@@ -897,9 +919,9 @@
             this.label8.ForeColor = System.Drawing.Color.GreenYellow;
             this.label8.Location = new System.Drawing.Point(7, 2);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(139, 22);
+            this.label8.Size = new System.Drawing.Size(109, 22);
             this.label8.TabIndex = 19;
-            this.label8.Text = "สถานะสมาชิกปัจจุบัน";
+            this.label8.Text = "สถานะการสมัคร";
             // 
             // lblFingerPrint
             // 
@@ -918,7 +940,7 @@
             this.btnFingerPrint.FlatAppearance.BorderSize = 2;
             this.btnFingerPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFingerPrint.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFingerPrint.Location = new System.Drawing.Point(734, 294);
+            this.btnFingerPrint.Location = new System.Drawing.Point(695, 277);
             this.btnFingerPrint.Name = "btnFingerPrint";
             this.btnFingerPrint.Size = new System.Drawing.Size(105, 36);
             this.btnFingerPrint.TabIndex = 46;
@@ -930,20 +952,21 @@
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(749, 194);
+            this.pictureBox2.Location = new System.Drawing.Point(558, 282);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(90, 94);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 45;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // memberProfileImage
             // 
             this.memberProfileImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.memberProfileImage.Image = ((System.Drawing.Image)(resources.GetObject("memberProfileImage.Image")));
-            this.memberProfileImage.Location = new System.Drawing.Point(749, 9);
+            this.memberProfileImage.Location = new System.Drawing.Point(656, 5);
             this.memberProfileImage.Name = "memberProfileImage";
-            this.memberProfileImage.Size = new System.Drawing.Size(90, 100);
+            this.memberProfileImage.Size = new System.Drawing.Size(164, 149);
             this.memberProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.memberProfileImage.TabIndex = 44;
             this.memberProfileImage.TabStop = false;
@@ -1338,22 +1361,49 @@
             this.label20.TabIndex = 3;
             this.label20.Text = "เบอร์โทร";
             // 
-            // btnUpload
+            // camerabox
             // 
-            this.btnUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpload.BackColor = System.Drawing.Color.PeachPuff;
-            this.btnUpload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpload.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnUpload.FlatAppearance.BorderSize = 2;
-            this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpload.Font = new System.Drawing.Font("Prompt", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpload.Location = new System.Drawing.Point(734, 115);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(105, 36);
-            this.btnUpload.TabIndex = 58;
-            this.btnUpload.Text = "เปลี่ยนรูป";
-            this.btnUpload.UseVisualStyleBackColor = false;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            this.camerabox.AutoCompleteCustomSource.AddRange(new string[] {
+            "มกราคม",
+            "กุมภาพันธ์",
+            "มีนาคม",
+            "เมษายน",
+            "พฤษภาคม",
+            "มิถุนายน",
+            "กรกฎาคม",
+            "สิงหาคม",
+            "กันยายน",
+            "ตุลาคม",
+            "พฤศจิกายน",
+            "ธันวาคม"});
+            this.camerabox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.camerabox.DropDownWidth = 109;
+            this.camerabox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.camerabox.FormattingEnabled = true;
+            this.camerabox.ItemHeight = 13;
+            this.camerabox.Location = new System.Drawing.Point(691, 160);
+            this.camerabox.MaxDropDownItems = 12;
+            this.camerabox.Name = "camerabox";
+            this.camerabox.Size = new System.Drawing.Size(109, 21);
+            this.camerabox.TabIndex = 59;
+            this.camerabox.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // saveImg
+            // 
+            this.saveImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveImg.BackColor = System.Drawing.Color.PeachPuff;
+            this.saveImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saveImg.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.saveImg.FlatAppearance.BorderSize = 2;
+            this.saveImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveImg.Font = new System.Drawing.Font("Prompt", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveImg.Location = new System.Drawing.Point(691, 188);
+            this.saveImg.Name = "saveImg";
+            this.saveImg.Size = new System.Drawing.Size(105, 36);
+            this.saveImg.TabIndex = 60;
+            this.saveImg.Text = "บันทึกรูป";
+            this.saveImg.UseVisualStyleBackColor = false;
+            this.saveImg.Click += new System.EventHandler(this.saveImg_Click);
             // 
             // MemberForm
             // 
@@ -1369,6 +1419,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MemberForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MemberForm_FormClosing);
             this.Load += new System.EventHandler(this.MemberForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
@@ -1522,5 +1573,7 @@
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.ComboBox camerabox;
+        private System.Windows.Forms.Button saveImg;
     }
 }
